@@ -1,3 +1,13 @@
 # microservice specific routes
 
-GET        /hello-world             uk.gov.hmrc.digitalengagementplatformfrontend.controllers.HelloWorldController.helloWorld
+GET        /webchat                                                                      controllers.WebchatController.webchat(from: Option[String])
+GET        /webchat/self-assessment                                                      controllers.WebchatController.selfAssessment
+GET        /webchat/tax-credits-enquiries                                                controllers.WebchatController.taxCredits
+GET        /webchat/child-benefit                                                        controllers.WebchatController.childBenefit
+GET        /webchat/employer-enquiries                                                   controllers.WebchatController.employerEnquiries
+GET        /webchat/vat-enquiries                                                        controllers.WebchatController.vatEnquiries
+GET        /webchat/vat-online-services-helpdesk                                         controllers.WebchatController.vatOnlineServicesHelpdesk
+GET        /webchat/online-services-helpdesk                                             controllers.WebchatController.onlineServicesHelpdesk
+GET        /webchat/national-insurance-numbers                                           controllers.WebchatController.nationalInsuranceNumbers
+GET        /webchat/customs-international-trade-and-excise-enquiries                     controllers.WebchatController.customsEnquiries
+GET        /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees        controllers.WebchatController.incomeTaxEnquiries
