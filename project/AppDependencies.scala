@@ -5,14 +5,14 @@ import sbt._
 
 object AppDependencies {
 
-  val compile = Seq(
+  val compile: Seq[ModuleID] = Seq(
     "uk.gov.hmrc" %% "govuk-template" % "5.47.0-play-26",
     "uk.gov.hmrc" %% "play-ui" % "8.5.0-play-26",
     "uk.gov.hmrc" %% "bootstrap-play-26" % "1.3.0",
     "uk.gov.hmrc" %% "play-whitelist-filter" % "3.1.0-play-26"
   )
 
-  val test = Seq(
+  val test: Seq[ModuleID] = Seq(
     "uk.gov.hmrc" %% "bootstrap-play-26" % "1.3.0" % Test classifier "tests",
     "org.scalatest" %% "scalatest" % "3.0.8" % "test",
     "org.scalacheck" %% "scalacheck" % "1.13.4" % "test",
@@ -22,5 +22,7 @@ object AppDependencies {
     "org.pegdown" % "pegdown" % "1.6.0" % "test",
     "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % "test"
   )
+
+  val all: Seq[ModuleID] = compile ++ test
 
 }
