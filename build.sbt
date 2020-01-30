@@ -1,5 +1,5 @@
 import scoverage.ScoverageKeys
-import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
+import uk.gov.hmrc.DefaultBuildSettings._
 import uk.gov.hmrc.SbtArtifactory
 import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
@@ -16,22 +16,21 @@ lazy val scoverageSettings = {
 
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(play.sbt.PlayScala, SbtAutoBuildPlugin, SbtGitVersioning, SbtDistributablesPlugin, SbtArtifactory, ScoverageSbtPlugin)
-  .settings(
-    majorVersion                     := 0,
-    libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test
-  )
-  .settings(publishingSettings: _*)
   .configs(IntegrationTest)
   .settings(integrationTestSettings(): _*)
-  .settings(PlayKeys.playDefaultPort := 9956)
   .settings(
+    majorVersion                     := 0,
+    libraryDependencies ++= AppDependencies.all,
+    publishingSettings,
+    defaultSettings(),
+    scalaVersion := "2.12.8",
+    PlayKeys.playDefaultPort := 9956,
     TwirlKeys.templateImports ++= Seq(
       "play.twirl.api.HtmlFormat",
       "play.twirl.api.HtmlFormat._",
       "uk.gov.hmrc.play.views.html.helpers._",
       "uk.gov.hmrc.play.views.html.layouts._"
-    )
-  )
-  .settings(
+    ),
     scoverageSettings,
-    resolvers += Resolver.jcenterRepo)
+    resolvers += Resolver.jcenterRepo
+  )

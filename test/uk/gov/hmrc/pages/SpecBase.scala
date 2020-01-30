@@ -18,17 +18,13 @@ package uk.gov.hmrc.pages
 
 import config.AppConfig
 import org.scalatestplus.play.PlaySpec
-import org.scalatestplus.play.guice._
+import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.i18n.{Messages, MessagesApi}
 import play.api.inject.Injector
-import play.api.mvc.{AnyContent, AnyContentAsEmpty, BodyParser, BodyParsers}
+import play.api.mvc.{AnyContentAsEmpty, BodyParsers}
 import play.api.test.FakeRequest
 
-import scala.concurrent.ExecutionContext.Implicits.global
-
 trait SpecBase extends PlaySpec with GuiceOneAppPerSuite {
-
-  val ec = global.prepare()
 
   def injector: Injector = app.injector
 
