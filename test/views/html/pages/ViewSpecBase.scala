@@ -20,7 +20,6 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import play.twirl.api.Html
 import org.scalatest.Assertion
-import uk.gov.hmrc.pages.SpecBase
 
 trait ViewSpecBase extends SpecBase {
 

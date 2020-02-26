@@ -72,8 +72,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(vatEnquiriesView()))
   }
 
-  def onlineServicesHelpdesk: Action[AnyContent] = Action.async {
-    implicit request =>
+  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Ok(onlineServiceHelpdeskView()))
   }
 
@@ -81,8 +80,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(vatOnlineServiceHelpdeskView()))
   }
 
-  def nationalInsuranceNumbers: Action[AnyContent] = Action.async {
-    implicit request =>
+  def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
       Future.successful(Ok(nationalInsuranceNumbersView()))
   }
 

@@ -26,11 +26,13 @@ class AppConfig @Inject()(config: Configuration,
   private val contactBaseUrl = servicesConfig.baseUrl("contact-frontend")
 
   private val assetsUrl = config.get[String]("assets.url")
-  private val serviceIdentifier = "DEP"
+  private val serviceIdentifier = "digital-engagement-platform-frontend"
 
   val assetsPrefix: String = assetsUrl + config.get[String]("assets.version")
   val analyticsToken: String = config.get[String](s"google-analytics.token")
   val analyticsHost: String = config.get[String](s"google-analytics.host")
+
+  val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
 
   val reportAProblemPartialUrl: String =
     s"$contactBaseUrl/contact/problem_reports_ajax?service=$serviceIdentifier"

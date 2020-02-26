@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.pages
+package views.html.pages
 
 import config.AppConfig
 import org.scalatestplus.play.PlaySpec
