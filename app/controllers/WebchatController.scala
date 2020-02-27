@@ -19,6 +19,7 @@ package controllers
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import config.AppConfig
+import services.NuanceEncryptionService
 import views.html._
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 
@@ -37,7 +38,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   vatEnquiriesView: VatEnquiriesView,
                                   vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
-                                  webChatView: WebChatView)
+                                  webChatView: WebChatView,
+                                  nuanceEncryptionService: NuanceEncryptionService)
     extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
