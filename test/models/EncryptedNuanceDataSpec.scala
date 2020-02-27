@@ -40,10 +40,22 @@ case class EncryptedNuanceDataSpec() extends WordSpec with Matchers {
         sessionID = "x"
       )
 
-      encryptedNuanceData shouldBe (encryptedNuanceData)
-      encryptedNuanceData should fullyMatch regex "[0-9A-Za-z]+"
+      val nuanceHashID = encryptedNuanceData.head
+      val nuanceEncryptedID = encryptedNuanceData.last
 
+      nuanceHashID should fullyMatch regex "[0-9A-Za-z]+"
+      nuanceEncryptedID should startWith("ENCRYPTED-")
 
+      val encryptedNuanceData2 = EncryptedNuanceData.create(
+        service,
+        sessionID = "x"
+      )
+
+      val nuanceHashID2 = encryptedNuanceData2.head
+      val nuanceEncryptedID2 = encryptedNuanceData2.last
+
+      nuanceHashID should be(nuanceHashID2)
+      nuanceEncryptedID shouldNot be(nuanceEncryptedID2)
     }
   }
 }
