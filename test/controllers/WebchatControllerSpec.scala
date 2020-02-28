@@ -22,7 +22,7 @@ import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.Cookie
+import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import services.NuanceEncryptionService
@@ -30,7 +30,7 @@ import uk.gov.hmrc.play.bootstrap.tools.Stubs.stubMessagesControllerComponents
 import views.html._
 
 class WebchatControllerSpec
-    extends WordSpec
+  extends WordSpec
     with Matchers
     with GuiceOneAppPerSuite
     with ScalaCheckPropertyChecks {
@@ -52,11 +52,10 @@ class WebchatControllerSpec
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
   val mcc = stubMessagesControllerComponents()
-  implicit val messages = mcc.messagesApi.preferred(fakeRequest)
-
+  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
   private val controller = new WebchatController(
     appConfig,
-    mcc,
+    messagesCC,
     selfAssessmentView,
     taxCreditsView,
     childBenefitView,
@@ -74,20 +73,21 @@ class WebchatControllerSpec
 
   "Query parameter URLs" should {
     "All optionable strings should be 200" in {
-      forAll { (fromUrl: Option[String]) =>
+      forAll { fromUrl: Option[String] =>
         val result = controller.webchat(fromUrl)(fakeRequest)
+        val doc = asDocument(contentAsString(result))
 
         status(result) shouldBe OK
-        contentAsString(result) should include ("<h1>default.title</h1>")
+        doc.select("h1").text() shouldBe "Webchat Use the web chat on the side of the page to talk to an adviser"
       }
     }
 
-    Seq(Some("non-page"), None).map { from =>
+    Seq(Some("non-page"), None).foreach { from =>
       s"non-supported ($from) pages should render default page" in {
         val result = controller.webchat(from)(fakeRequest)
         val doc = asDocument(contentAsString(result))
 
-        doc.select("h1").text() shouldBe ("default.title default.sub.heading")
+        doc.select("h1").text() shouldBe "Webchat Use the web chat on the side of the page to talk to an adviser"
       }
     }
 
@@ -96,7 +96,7 @@ class WebchatControllerSpec
       val result = controller.webchat(from)(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      doc.select("h1").text() shouldBe ("self.assessment.title")
+      doc.select("h1").text() shouldBe "Self Assessment: webchat"
     }
 
     "tax-credits should render the tax-credits webchat page" in {
@@ -104,7 +104,7 @@ class WebchatControllerSpec
       val result = controller.webchat(from)(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
-      doc.select("h1").text() shouldBe ("tax.credits.title")
+      doc.select("h1").text() shouldBe "Tax credits: webchat"
     }
   }
 
@@ -114,7 +114,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("self.assessment.title")
+      doc.select("h1").text() shouldBe "Self Assessment: webchat"
     }
 
     "render tax-credits page" in {
@@ -122,7 +122,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("tax.credits.title")
+      doc.select("h1").text() shouldBe "Tax credits: webchat"
     }
 
     "render child benefit page" in {
@@ -130,7 +130,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("child.benefit.title")
+      doc.select("h1").text() shouldBe "Child Benefit: webchat"
     }
 
     "render employer enquiries page" in {
@@ -138,7 +138,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("employers.enquiries.title")
+      doc.select("h1").text() shouldBe "Employers: webchat"
     }
 
     "render vat enquiries page" in {
@@ -146,7 +146,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("vat.enquiries.title")
+      doc.select("h1").text() shouldBe "VAT: webchat"
     }
 
     "render vat online helpdesk page" in {
@@ -154,7 +154,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("vat.online.helpdesk.title")
+      doc.select("h1").text() shouldBe "VAT online services helpdesk: webchat"
     }
 
     "render online services helpdesk page" in {
@@ -162,7 +162,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("online.services.title")
+      doc.select("h1").text() shouldBe "Online services helpdesk: webchat"
     }
 
     "render national insurance page" in {
@@ -170,7 +170,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("national.insurance.title")
+      doc.select("h1").text() shouldBe "National Insurance: webchat"
     }
 
     "render customs page" in {
@@ -178,7 +178,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("customs.title")
+      doc.select("h1").text() shouldBe "Imports and exports: webchat"
     }
 
     "render income tax enquiries page" in {
@@ -186,7 +186,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe ("income.tax.title")
+      doc.select("h1").text() shouldBe "Income tax for individuals, pensioners and employees: webchat"
     }
   }
 }
