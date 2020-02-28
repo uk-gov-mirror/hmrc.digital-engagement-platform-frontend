@@ -16,20 +16,18 @@
 
 package controllers
 
-import java.nio.charset.Charset
-
-import akka.stream.Materializer
-import akka.util.ByteString
+import config.AppConfig
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, Result}
+import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import config.AppConfig
 import services.NuanceEncryptionService
-import views.html._
 import uk.gov.hmrc.play.bootstrap.tools.Stubs.stubMessagesControllerComponents
+import views.html._
 
 class WebchatControllerSpec
     extends WordSpec
@@ -72,102 +70,123 @@ class WebchatControllerSpec
     webChatView,
     nuanceEncryptionService)
 
-  def bodyOf(result: Result)(implicit mat: Materializer): String = {
-    val bodyBytes: ByteString = await(result.body.consumeData)
-    bodyBytes.decodeString(Charset.defaultCharset().name)
-  }
+  def asDocument(html: String): Document = Jsoup.parse(html)
 
   "Query parameter URLs" should {
-//    "All optionable strings should be 200" in {
-//      forAll { (fromUrl: Option[String]) =>
-//        val result = controller.webchat(fromUrl)(fakeRequest)
-//        status(result) shouldBe OK
-//      }
-//    }
+    "All optionable strings should be 200" in {
+      forAll { (fromUrl: Option[String]) =>
+        val result = controller.webchat(fromUrl)(fakeRequest)
 
-//    Seq(Some("non-page"), None).map { from =>
-//      s"non-supported ($from) pages should render default page" in {
-//        val result = controller.webchat(from)(fakeRequest)
-//        contentAsString(result) shouldBe webChatView().toString
-//      }
-//    }
+        status(result) shouldBe OK
+        contentAsString(result) should include ("<h1>default.title</h1>")
+      }
+    }
+
+    Seq(Some("non-page"), None).map { from =>
+      s"non-supported ($from) pages should render default page" in {
+        val result = controller.webchat(from)(fakeRequest)
+        val doc = asDocument(contentAsString(result))
+
+        doc.select("h1").text() shouldBe ("default.title default.sub.heading")
+      }
+    }
 
     "self-assessment should render the self-assessment webchat page" in {
       val from = Some("self-assessment")
-      val result = await(controller.webchat(from)(fakeRequest))
+      val result = controller.webchat(from)(fakeRequest)
+      val doc = asDocument(contentAsString(result))
 
-      implicit lazy val materializer: Materializer = app.materializer
-
-      bodyOf(result)(materializer) should include ("<title>Ask HMRC - Webchat</title>")
+      doc.select("h1").text() shouldBe ("self.assessment.title")
     }
 
-//    "tax-credits should render the tax-credits webchat page" in {
-//      val from = Some("tax-credits")
-//      val result = controller.webchat(from)(fakeRequest)
-//
-//      contentAsString(result) shouldBe taxCreditsView().toString()
-//    }
+    "tax-credits should render the tax-credits webchat page" in {
+      val from = Some("tax-credits")
+      val result = controller.webchat(from)(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      doc.select("h1").text() shouldBe ("tax.credits.title")
+    }
   }
 
-//  "fixed URLs" should {
-//    "render self-assessment page" in {
-//      val result = controller.selfAssessment(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe selfAssessmentView().toString
-//    }
-//
-//    "render tax-credits page" in {
-//      val result = controller.taxCredits(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe taxCreditsView().toString()
-//    }
-//
-//    "render child benefit page" in {
-//      val result = controller.childBenefit(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe childBenefitView().toString
-//    }
-//
-//    "render employer enquiries page" in {
-//      val result = controller.employerEnquiries(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe employerEnquiriesView().toString
-//    }
-//
-//    "render vat enquiries page" in {
-//      val result = controller.vatEnquiries(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe vatEnquiriesView().toString
-//    }
-//
-//    "render vat online helpdesk page" in {
-//      val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe vatOnlineServicesHelpdeskView().toString
-//    }
-//
-//    "render online services helpdesk page" in {
-//      val result = controller.onlineServicesHelpdesk(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe onlineServiceHelpdeskView().toString
-//    }
-//
-//    "render national insurance page" in {
-//      val result = controller.nationalInsuranceNumbers(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe nationalInsuranceNumbersView().toString
-//    }
-//
-//    "render customs page" in {
-//      val result = controller.customsEnquiries(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe customsEnquiriesView().toString
-//    }
-//
-//    "render income tax enquiries page" in {
-//      val result = controller.incomeTaxEnquiries(fakeRequest)
-//      status(result) shouldBe OK
-//      contentAsString(result) shouldBe incomeTaxEnquiriesView().toString
-//    }
-//  }
+  "fixed URLs" should {
+    "render self-assessment page" in {
+      val result = controller.selfAssessment(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("self.assessment.title")
+    }
+
+    "render tax-credits page" in {
+      val result = controller.taxCredits(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("tax.credits.title")
+    }
+
+    "render child benefit page" in {
+      val result = controller.childBenefit(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("child.benefit.title")
+    }
+
+    "render employer enquiries page" in {
+      val result = controller.employerEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("employers.enquiries.title")
+    }
+
+    "render vat enquiries page" in {
+      val result = controller.vatEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("vat.enquiries.title")
+    }
+
+    "render vat online helpdesk page" in {
+      val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("vat.online.helpdesk.title")
+    }
+
+    "render online services helpdesk page" in {
+      val result = controller.onlineServicesHelpdesk(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("online.services.title")
+    }
+
+    "render national insurance page" in {
+      val result = controller.nationalInsuranceNumbers(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("national.insurance.title")
+    }
+
+    "render customs page" in {
+      val result = controller.customsEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("customs.title")
+    }
+
+    "render income tax enquiries page" in {
+      val result = controller.incomeTaxEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe ("income.tax.title")
+    }
+  }
 }
