@@ -30,7 +30,7 @@ class NuanceEncryptionServiceSpec extends WordSpec with Matchers {
 
       plainText.split("-").toList match {
         case ::(hashed, ::(raw, Nil)) => (hashed, raw)
-        case _ => throw new  RuntimeException(s"Unable to decrypt cipherText: $cipherText")
+        case _ => throw new RuntimeException(s"Unable to decrypt cipherText: $cipherText")
       }
     }
 
@@ -52,15 +52,16 @@ class NuanceEncryptionServiceSpec extends WordSpec with Matchers {
         val crypted: String = service.encryptField(fieldValue)
         val expectedHash: String = service.hashField(fieldValue)
 
-        crypted should startWith("ENCRYPTED-")                      // should be marked as encrypted
+        crypted should startWith("ENCRYPTED-") // should be marked as encrypted
         crypted.stripPrefix("ENCRYPTED-") should not be fieldValue // should be encrypted
 
         val (outputHash, outputRaw) = service.decryptField(crypted)
 
         outputHash should be(expectedHash) // hash seems correct
 
-        outputRaw should be(fieldValue)    // we got the original value out
+        outputRaw should be(fieldValue) // we got the original value out
       }
     }
   }
+
 }
