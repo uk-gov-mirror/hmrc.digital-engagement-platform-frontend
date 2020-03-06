@@ -45,7 +45,6 @@ class WebchatControllerSpec
   val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
-  val webChatView = app.injector.instanceOf[WebChatView]
 
   val mcc = stubMessagesControllerComponents()
   implicit val messages = mcc.messagesApi.preferred(fakeRequest)
@@ -62,38 +61,7 @@ class WebchatControllerSpec
     nationalInsuranceNumbersView,
     onlineServiceHelpdeskView,
     vatEnquiriesView,
-    vatOnlineServicesHelpdeskView,
-    webChatView)
-
-  "Query parameter URLs" should {
-    "All optionable strings should be 200" in {
-      forAll { (fromUrl: Option[String]) =>
-        val result = controller.webchat(fromUrl)(fakeRequest)
-        status(result) shouldBe OK
-      }
-    }
-
-    Seq(Some("non-page"), None).map { from =>
-      s"non-supported ($from) pages should render default page" in {
-        val result = controller.webchat(from)(fakeRequest)
-        contentAsString(result) shouldBe webChatView().toString
-      }
-    }
-
-    "self-assessment should render the self-assessment webchat page" in {
-      val from = Some("self-assessment")
-      val result = controller.webchat(from)(fakeRequest)
-
-      contentAsString(result) shouldBe selfAssessmentView().toString
-    }
-
-    "tax-credits should render the tax-credits webchat page" in {
-      val from = Some("tax-credits")
-      val result = controller.webchat(from)(fakeRequest)
-
-      contentAsString(result) shouldBe taxCreditsView().toString()
-    }
-  }
+    vatOnlineServicesHelpdeskView)
 
   "fixed URLs" should {
     "render self-assessment page" in {
