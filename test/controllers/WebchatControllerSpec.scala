@@ -46,6 +46,11 @@ class WebchatControllerSpec
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
   val webChatView = app.injector.instanceOf[WebChatView]
+  val charitiesCommunityAmateurSportsView = app. injector.instanceOf[CharitiesCommunityAmateurSportsView]
+  val employingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]
+  val employmentRelatedSecuritiesView = app.injector.instanceOf[EmploymentRelatedSecuritiesView]
+  val nonUkResidentEmployeesView = app.injector.instanceOf[NonUkResidentEmployeesView]
+  val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
 
   val mcc = stubMessagesControllerComponents()
   implicit val messages = mcc.messagesApi.preferred(fakeRequest)
@@ -63,7 +68,12 @@ class WebchatControllerSpec
     onlineServiceHelpdeskView,
     vatEnquiriesView,
     vatOnlineServicesHelpdeskView,
-    webChatView)
+    webChatView,
+    charitiesCommunityAmateurSportsView,
+    employingExpatriateEmployeesView,
+    employmentRelatedSecuritiesView,
+    nonUkResidentEmployeesView,
+    nonUkResidentLandlordsView)
 
   "Query parameter URLs" should {
     "All optionable strings should be 200" in {
@@ -154,6 +164,36 @@ class WebchatControllerSpec
       val result = controller.incomeTaxEnquiries(fakeRequest)
       status(result) shouldBe OK
       contentAsString(result) shouldBe incomeTaxEnquiriesView().toString
+    }
+
+    "render charities community sports page" in {
+      val result = controller.charitiesCommunitySports(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe charitiesCommunityAmateurSportsView().toString()
+    }
+
+    "render employing expatriate employees page" in {
+      val result = controller.employingExpatriateEmployees(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe employingExpatriateEmployeesView().toString()
+    }
+
+    "render employment related securities page" in {
+      val result = controller.employmentRelatedSecurities(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe employmentRelatedSecuritiesView().toString()
+    }
+
+    "Non-UK resident employees page" in {
+      val result = controller.nonUkResidentEmployees(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe nonUkResidentEmployeesView().toString()
+    }
+
+    "Non-UK resident landlords page" in {
+      val result = controller.nonUkResidentLandlords(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe nonUkResidentLandlordsView().toString()
     }
   }
 }

@@ -36,5 +36,20 @@ customs.title=Imports and exports: webchat
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
+#Charities & community amateur sports
+charities.community.amateur.sports.title=Charities & community amateur sports: webchat
+
+#Employing Expatriate Employees
+employing.expatriate.employees.title=Employing expatriate employees: webchat
+
+#Employment Related Securities
+employment.related.securities.title=Employment-related securities: webchat
+
+#Non-Uk Resident Employees
+nonuk.resident.employees.title=Non-UK resident employees: webchat
+
+#Non-UK resident landlords
+nonUk.resident.landlords.title=Non-UK resident landlords: webchat
+
 #Test Only page
 testonly.title=Test only page
