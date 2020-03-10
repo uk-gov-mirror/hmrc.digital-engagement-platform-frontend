@@ -45,7 +45,6 @@ class WebchatControllerSpec
   val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
-  val webChatView = app.injector.instanceOf[WebChatView]
   val charitiesCommunityAmateurSportsView = app. injector.instanceOf[CharitiesCommunityAmateurSportsView]
   val employingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]
   val employmentRelatedSecuritiesView = app.injector.instanceOf[EmploymentRelatedSecuritiesView]
@@ -68,42 +67,11 @@ class WebchatControllerSpec
     onlineServiceHelpdeskView,
     vatEnquiriesView,
     vatOnlineServicesHelpdeskView,
-    webChatView,
     charitiesCommunityAmateurSportsView,
     employingExpatriateEmployeesView,
     employmentRelatedSecuritiesView,
     nonUkResidentEmployeesView,
     nonUkResidentLandlordsView)
-
-  "Query parameter URLs" should {
-    "All optionable strings should be 200" in {
-      forAll { (fromUrl: Option[String]) =>
-        val result = controller.webchat(fromUrl)(fakeRequest)
-        status(result) shouldBe OK
-      }
-    }
-
-    Seq(Some("non-page"), None).map { from =>
-      s"non-supported ($from) pages should render default page" in {
-        val result = controller.webchat(from)(fakeRequest)
-        contentAsString(result) shouldBe webChatView().toString
-      }
-    }
-
-    "self-assessment should render the self-assessment webchat page" in {
-      val from = Some("self-assessment")
-      val result = controller.webchat(from)(fakeRequest)
-
-      contentAsString(result) shouldBe selfAssessmentView().toString
-    }
-
-    "tax-credits should render the tax-credits webchat page" in {
-      val from = Some("tax-credits")
-      val result = controller.webchat(from)(fakeRequest)
-
-      contentAsString(result) shouldBe taxCreditsView().toString()
-    }
-  }
 
   "fixed URLs" should {
     "render self-assessment page" in {

@@ -1,6 +1,5 @@
 # microservice specific routes
 
-GET        /webchat                                                                      controllers.WebchatController.webchat(from: Option[String])
 GET        /webchat/self-assessment                                                      controllers.WebchatController.selfAssessment
 GET        /webchat/tax-credits-enquiries                                                controllers.WebchatController.taxCredits
 GET        /webchat/child-benefit                                                        controllers.WebchatController.childBenefit
