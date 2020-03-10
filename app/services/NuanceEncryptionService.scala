@@ -16,9 +16,13 @@
 
 package services
 
+import java.util.Base64
+
 import com.google.inject.Inject
 import play.api.Configuration
 import uk.gov.hmrc.crypto.{CryptoGCMWithKeysFromConfig, PlainText, Scrambled, Sha512Crypto}
+
+import scala.util.Random
 
 /**
  * Service for encrypting data to send to Nuance (Virtual Assistance)
@@ -32,6 +36,13 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
   private val VALUE_SEPARATOR = "-"
   private val baseSettingsKey = "request-body-encryption"
   private val hashingKey: String = configuration.get[String](s"$baseSettingsKey.hashing-key")
+  private val bytes = 32
+
+  private val saltArray =  new Array[Byte](bytes)
+
+  private val randomSalt: Unit = Random.nextBytes(saltArray)
+
+  protected val salt: String = saltArray.map(_.toChar).mkString
 
   protected lazy val crypto: CryptoGCMWithKeysFromConfig = new CryptoGCMWithKeysFromConfig(
     baseConfigKey = baseSettingsKey,
@@ -46,7 +57,7 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
   private def prefixWithHash(rawValue: String): PlainText =
     PlainText(hashValue(rawValue).value + VALUE_SEPARATOR + rawValue)
 
-  protected def hashValue(rawValue: String): Scrambled = hasher.hash(PlainText(rawValue))
+  protected def hashValue(rawValue: String): Scrambled = hasher.hash(PlainText(salt + rawValue))
 
   def hashField(rawValue: String): String = hashValue(rawValue).value
 
