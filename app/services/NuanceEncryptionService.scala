@@ -16,8 +16,6 @@
 
 package services
 
-import java.util.Base64
-
 import com.google.inject.Inject
 import play.api.Configuration
 import uk.gov.hmrc.crypto.{CryptoGCMWithKeysFromConfig, PlainText, Scrambled, Sha512Crypto}
@@ -25,10 +23,10 @@ import uk.gov.hmrc.crypto.{CryptoGCMWithKeysFromConfig, PlainText, Scrambled, Sh
 import scala.util.Random
 
 /**
- * Service for encrypting data to send to Nuance (Virtual Assistance)
- * The configuration here (and algorithm) needs to match that in userid-recovery-api
- * which contains the decryption code
- */
+  * Service for encrypting data to send to Nuance (Virtual Assistance)
+  * The configuration here (and algorithm) needs to match that in userid-recovery-api
+  * which contains the decryption code
+  */
 
 case class NuanceEncryptionService @Inject()(configuration: Configuration) {
 
@@ -38,7 +36,7 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
   private val hashingKey: String = configuration.get[String](s"$baseSettingsKey.hashing-key")
   private val bytes = 32
 
-  private val saltArray =  new Array[Byte](bytes)
+  private val saltArray = new Array[Byte](bytes)
 
   private val randomSalt: Unit = Random.nextBytes(saltArray)
 
@@ -62,11 +60,11 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
   def hashField(rawValue: String): String = hashValue(rawValue).value
 
   /**
-   * Make a Nuance safe hash value from a raw value by hashing and then
-   * mapping non-alphanumeric characters to alphanumeric characters.
-   * Why? Nuance cannot handle chars such as "+", "-", "%" etc
-   * Algorithm takes any non-alpha char and maps to A - Z
-   */
+    * Make a Nuance safe hash value from a raw value by hashing and then
+    * mapping non-alphanumeric characters to alphanumeric characters.
+    * Why? Nuance cannot handle chars such as "+", "-", "%" etc
+    * Algorithm takes any non-alpha char and maps to A - Z
+    */
   def nuanceSafeHash(rawValue: String): String =
     hashField(rawValue).map {
       char => if (char.isLetterOrDigit) char else ((char.toInt % 26) + 'A'.toInt).toChar
