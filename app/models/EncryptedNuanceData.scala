@@ -38,8 +38,6 @@ case class EncryptedNuanceData @Inject()(nuanceSessionId: String, mdtpSessionID:
 
 object EncryptedNuanceData {
 
-  implicit val hc: HeaderCarrier = HeaderCarrier()
-
   /**
     * Construct encrypted fields using data from request and header carrier
     */
