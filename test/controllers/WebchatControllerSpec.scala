@@ -48,7 +48,6 @@ class WebchatControllerSpec
   val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
-  val webChatView = app.injector.instanceOf[WebChatView]
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
   val mcc = stubMessagesControllerComponents()
@@ -66,47 +65,9 @@ class WebchatControllerSpec
     onlineServiceHelpdeskView,
     vatEnquiriesView,
     vatOnlineServicesHelpdeskView,
-    webChatView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
-
-  "Query parameter URLs" should {
-    "All optionable strings should be 200" in {
-      forAll { fromUrl: Option[String] =>
-        val result = controller.webchat(fromUrl)(fakeRequest)
-        val doc = asDocument(contentAsString(result))
-
-        status(result) shouldBe OK
-        doc.select("h1").text() shouldBe "Webchat Use the web chat on the side of the page to talk to an adviser"
-      }
-    }
-
-    Seq(Some("non-page"), None).foreach { from =>
-      s"non-supported ($from) pages should render default page" in {
-        val result = controller.webchat(from)(fakeRequest)
-        val doc = asDocument(contentAsString(result))
-
-        doc.select("h1").text() shouldBe "Webchat Use the web chat on the side of the page to talk to an adviser"
-      }
-    }
-
-    "self-assessment should render the self-assessment webchat page" in {
-      val from = Some("self-assessment")
-      val result = controller.webchat(from)(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-
-      doc.select("h1").text() shouldBe "Self Assessment: webchat"
-    }
-
-    "tax-credits should render the tax-credits webchat page" in {
-      val from = Some("tax-credits")
-      val result = controller.webchat(from)(fakeRequest)
-      val doc = asDocument(contentAsString(result))
-
-      doc.select("h1").text() shouldBe "Tax credits: webchat"
-    }
-  }
 
   "fixed URLs" should {
     "render self-assessment page" in {

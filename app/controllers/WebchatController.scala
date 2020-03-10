@@ -16,12 +16,12 @@
 
 package controllers
 
+import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import config.AppConfig
 import services.NuanceEncryptionService
-import views.html._
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+import views.html._
 
 import scala.concurrent.Future
 
@@ -38,21 +38,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   vatEnquiriesView: VatEnquiriesView,
                                   vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
-                                  webChatView: WebChatView,
                                   nuanceEncryptionService: NuanceEncryptionService)
-    extends FrontendController(mcc) {
+  extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
-
-  def webchat(from: Option[String]): Action[AnyContent] = Action.async {
-    implicit request =>
-      from match {
-        case Some("self-assessment") => Future.successful(Ok(selfAssessmentView()))
-        case Some("tax-credits")     => Future.successful(Ok(taxCreditsView()))
-        case _ =>
-          Future.successful(Ok(webChatView()))
-      }
-  }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(selfAssessmentView()))
@@ -75,7 +64,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(onlineServiceHelpdeskView()))
+    Future.successful(Ok(onlineServiceHelpdeskView()))
   }
 
   def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
@@ -83,7 +72,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(nationalInsuranceNumbersView()))
+    Future.successful(Ok(nationalInsuranceNumbersView()))
   }
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
