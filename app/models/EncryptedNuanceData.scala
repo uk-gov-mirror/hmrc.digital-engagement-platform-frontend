@@ -18,7 +18,6 @@ package models
 
 import com.google.inject.Inject
 import services.NuanceEncryptionService
-import uk.gov.hmrc.http.HeaderCarrier
 
 /**
   * Encrypted nuanceSessionId data field which need to be sent to Nuance to support gov.uk
@@ -41,6 +40,7 @@ object EncryptedNuanceData {
   /**
     * Construct encrypted fields using data from request and header carrier
     */
+
   def create(encryptionService: NuanceEncryptionService, sessionID: String): List[String] = {
     List(encryptionService.nuanceSafeHash(sessionID),
       encryptionService.encryptField(sessionID))
