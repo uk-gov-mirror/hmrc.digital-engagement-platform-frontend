@@ -40,7 +40,7 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
 
   private val randomSalt: Unit = Random.nextBytes(saltArray)
 
-  protected val salt: String = saltArray.map(_.toChar).mkString
+  private val salt: String = saltArray.map(_.toChar).mkString
 
   protected lazy val crypto: CryptoGCMWithKeysFromConfig = new CryptoGCMWithKeysFromConfig(
     baseConfigKey = baseSettingsKey,
@@ -53,11 +53,13 @@ case class NuanceEncryptionService @Inject()(configuration: Configuration) {
     FIELD_PREFIX + crypto.encrypt(prefixWithHash(rawValue)).value
 
   private def prefixWithHash(rawValue: String): PlainText =
-    PlainText(hashValue(rawValue).value + VALUE_SEPARATOR + rawValue)
+    PlainText(saltedHashValue(rawValue).value + VALUE_SEPARATOR + rawValue)
 
-  protected def hashValue(rawValue: String): Scrambled = hasher.hash(PlainText(salt + rawValue))
+  private def hashValue(rawValue: String): Scrambled = hasher.hash(PlainText(rawValue))
 
-  def hashField(rawValue: String): String = hashValue(rawValue).value
+  private def saltedHashValue(rawValue: String): Scrambled = hasher.hash(PlainText(salt + rawValue))
+
+  protected def hashField(rawValue: String): String = hashValue(rawValue).value
 
   /**
     * Make a Nuance safe hash value from a raw value by hashing and then
