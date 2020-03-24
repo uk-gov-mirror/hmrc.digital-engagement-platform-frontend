@@ -10,3 +10,9 @@ GET        /webchat/online-services-helpdesk                                    
 GET        /webchat/national-insurance-numbers                                           controllers.WebchatController.nationalInsuranceNumbers
 GET        /webchat/customs-international-trade-and-excise-enquiries                     controllers.WebchatController.customsEnquiries
 GET        /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees        controllers.WebchatController.incomeTaxEnquiries
+
+#tax.service.gov.uk/ask-hmrc/webchat/payment-problems
+#tax.service.gov.uk/ask-hmrc/webchat/payment-problems/self-assessment 
+#tax.service.gov.uk/ask-hmrc/webchat/payment-problems/vat-enquiries
+#tax.service.gov.uk/ask-hmrc/webchat/payment-problems/paye-enquiries
+#tax.service.gov.uk/ask-hmrc/webchat/payment-problems/corporation-tax-enquiries 
