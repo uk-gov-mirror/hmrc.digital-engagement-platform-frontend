@@ -33,5 +33,17 @@ customs.title=Imports and exports: webchat
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
+#Payment Problems Self Assessment
+payment.problems.self.assessment.title=Payment Problems Self Assessment: webchat
+
+#Payment Problems VAT Enquiries
+payment.problems.vat.enquiries.title=Payment Problems VAT Enquiries: webchat
+
+#Payment Problems PAYE Enquiries
+payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
+
+#Payment Problems corporation Tax Enquiries
+payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Tax Enquiries: webchat
+
 #Test Only page
 testonly.title=Test only page
