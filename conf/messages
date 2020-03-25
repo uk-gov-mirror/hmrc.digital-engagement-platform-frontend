@@ -35,3 +35,31 @@ income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
 #Test Only page
 testonly.title=Test only page
+
+#Payment Problems
+payment.problems.title=Support for businesses paying tax
+payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through HMRC’s Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
+payment.problems.p2=If you have missed a tax payment or you might miss your next payment due to COVID-19, you can contact us through webchat.
+payment.problems.h2=Webchat
+payment.problems.indent.1=Opening times:
+payment.problems.indent.2=Monday to Friday: 8am to 8pm
+payment.problems.indent.3=Advisers can only talk to you about the service you select. They cannot transfer you to another webchat team.
+payment.problems.h4.1=Self Assessment
+payment.problems.h4.2=VAT
+payment.problems.h4.3=PAYE
+payment.problems.h4.4=Corporation tax
+payment.problems.h4.5=Telephone
+payment.problems.indent.4=Monday to Friday: 8am to 4pm
+payment.problems.p5=Time to Pay service 0300 200 3835
+payment.problems.p6=Payment support service 0800 024 1222
+
+
+
+
+
+
+
+
+
+
+
