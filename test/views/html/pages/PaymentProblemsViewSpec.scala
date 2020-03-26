@@ -15,6 +15,7 @@
  */
 
 package views.html.pages
+import play.twirl.api.HtmlFormat
 
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
@@ -26,6 +27,10 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
   val view = app.injector.instanceOf[PaymentProblemsView]
+  val coronavirusReturnUrlLink: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
+  val businessSupportReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/business-payment-support-service"
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
@@ -68,7 +73,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "display the correct page title" in {
           val doc = asDocument(createView())
           doc.getElementsByTag("h1")
-          assertPageTitleEqualsMessage(doc, "Support for paying tax")
+          assertPageTitleEqualsMessage(doc, "Coronavirus (COVID-19): tax support for businesses and self-employed")
         }
 
         "display the correct guidance" in {
@@ -76,6 +81,20 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
           for (key <- expectedGuidanceKeys) assertContainsText(doc, messages(s"$key"))
         }
 
+      }
+
+      "display coronavirus helpline return link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("coronavirus-helpline-return-link")
+        val href = a.attr("href")
+        href mustBe coronavirusReturnUrlLink
+      }
+
+      "display business support return link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("business-support-return-link")
+        val href = a.attr("href")
+        href mustBe businessSupportReturnUrl
       }
 
     }
