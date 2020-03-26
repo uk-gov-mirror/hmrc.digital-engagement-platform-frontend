@@ -50,20 +50,19 @@ payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Ta
 testonly.title=Test only page
 
 #Payment Problems
-payment.problems.title=Support for paying tax
-payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through HMRC’s Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
-payment.problems.p2=If you have missed a tax payment or you might miss your next payment due to COVID-19, you can contact us through webchat.
+payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
+payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
+payment.problems.p2=Contact us through webchat if you have missed a tax payment or you might miss your next payment due to coronavirus (COVID-19).
 payment.problems.h2=Webchat
 payment.problems.indent.1=Opening times:
 payment.problems.indent.2=Monday to Friday: 8am to 8pm
 payment.problems.indent.3=Advisers can only talk to you about the service you select. They cannot transfer you to another webchat team.
 payment.problems.h4.1=Self Assessment
 payment.problems.h4.2=VAT
-payment.problems.h4.3=PAYE
+payment.problems.h4.3=Employer's PAYE
 payment.problems.h4.4=Corporation tax
-payment.problems.h4.5=Telephone
-payment.problems.indent.4=Monday to Friday: 8am to 4pm
+payment.problems.h4.5=Phone
 payment.problems.p3=Coronavirus (COVID-19) helpline
-payment.problems.p4=Due to measures put in place to stop the spread of Coronavirus (COVID-19) we have fewer advisers available to answer your calls.
+payment.problems.p4=We have fewer advisers available to answer your calls due to coronavirus (COVID-19)..
 payment.problems.p5=Payment Support Service (PSS) helpline
-payment.problems.p6=Call the PSS if you cannot pay in full before your payment deadline. Anyone can use this service, not just business.
+payment.problems.p6=If you cannot pay in full before your payment deadline call the PSS helpline. Anyone can use this service, not just businesses.

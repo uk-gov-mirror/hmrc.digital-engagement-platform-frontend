@@ -73,7 +73,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "display the correct page title" in {
           val doc = asDocument(createView())
           doc.getElementsByTag("h1")
-          assertPageTitleEqualsMessage(doc, "Support for paying tax")
+          assertPageTitleEqualsMessage(doc, "Coronavirus (COVID-19): tax support for businesses and self-employed")
         }
 
         "display the correct guidance" in {
