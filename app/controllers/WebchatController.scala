@@ -38,8 +38,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   vatEnquiriesView: VatEnquiriesView,
                                   vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
-                                  nuanceEncryptionService: NuanceEncryptionService)
-  extends FrontendController(mcc) {
+                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

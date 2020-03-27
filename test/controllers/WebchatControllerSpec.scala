@@ -26,7 +26,6 @@ import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import services.NuanceEncryptionService
-import uk.gov.hmrc.play.bootstrap.tools.Stubs.stubMessagesControllerComponents
 import views.html._
 
 class WebchatControllerSpec
@@ -50,7 +49,6 @@ class WebchatControllerSpec
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
-  val mcc = stubMessagesControllerComponents()
   val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
   private val controller = new WebchatController(
     appConfig,

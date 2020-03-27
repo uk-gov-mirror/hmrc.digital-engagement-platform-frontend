@@ -1,5 +1,7 @@
 # microservice specific routes
 
+GET         /assets/*file                                                                controllers.Assets.at(path="/public", file)
+
 GET        /webchat/self-assessment                                                      controllers.WebchatController.selfAssessment
 GET        /webchat/tax-credits-enquiries                                                controllers.WebchatController.taxCredits
 GET        /webchat/child-benefit                                                        controllers.WebchatController.childBenefit
@@ -10,3 +12,5 @@ GET        /webchat/online-services-helpdesk                                    
 GET        /webchat/national-insurance-numbers                                           controllers.WebchatController.nationalInsuranceNumbers
 GET        /webchat/customs-international-trade-and-excise-enquiries                     controllers.WebchatController.customsEnquiries
 GET        /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees        controllers.WebchatController.incomeTaxEnquiries
+
+GET       /webchat/payment-problems                                                      controllers.PaymentProblemsController.paymentProblem
