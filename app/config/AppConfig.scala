@@ -74,4 +74,9 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-expatriate-employees-expats"
   val nonUkResidentLandlordsUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-resident-landlords"
+  val paymentProblemsCoronavirusHelplineReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
+  val paymentProblemsBusinessSupportReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/business-payment-support-service"
 }
+
