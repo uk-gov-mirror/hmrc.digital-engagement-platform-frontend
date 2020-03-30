@@ -35,8 +35,11 @@ class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours {
     behave like normalPage(
       createView,
       "Ask HMRC - Webchat",
-      "Charities & community amateur sports: webchat",
+      "Charities and Community Amateur Sports Clubs: webchat",
       "Return to Contact HMRC",
-      returnUrl)
+      returnUrl,
+      "Opening times:",
+      "Monday to Friday, 8:30am to 4pm",
+    "Advisers cannot transfer you to another webchat team.")
   }
 }

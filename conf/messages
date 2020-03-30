@@ -2,6 +2,11 @@
 global.nav.title=Ask HMRC - Webchat
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.back = Back
+global.opening.times.title=Opening times:
+global.opening.times.8to4=Monday to Friday, 8am to 4pm
+global.opening.times.8_30to4=Monday to Friday, 8:30am to 4pm
+global.opening.times.weekend.p=Closed weekends and bank holidays.
+global.opening.times.advisers.p=Advisers cannot transfer you to another webchat team.
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
@@ -35,7 +40,7 @@ customs.title=Imports and exports: webchat
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
 #Charities & community amateur sports
-charities.community.amateur.sports.title=Charities & community amateur sports: webchat
+charities.community.amateur.sports.title=Charities and Community Amateur Sports Clubs: webchat
 
 #Employing Expatriate Employees
 employing.expatriate.employees.title=Employing expatriate employees: webchat
@@ -70,8 +75,6 @@ payment.problems.title=Coronavirus (COVID-19): tax support for businesses and se
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
 payment.problems.p2=Contact us through webchat if you have missed a tax payment or you might miss your next payment due to coronavirus (COVID-19).
 payment.problems.h2=Webchat
-payment.problems.indent.1=Opening times:
-payment.problems.indent.2=Monday to Friday, 8am to 4pm
 payment.problems.indent.3=Advisers can only talk to you about the service you select. They cannot transfer you to another webchat team.
 payment.problems.h4.1=Self Assessment
 payment.problems.h4.2=VAT

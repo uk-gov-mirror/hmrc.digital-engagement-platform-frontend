@@ -24,7 +24,10 @@ trait ChatViewBehaviours extends ViewSpecBase {
                  messageKeyPrefix: String,
                  messageHeading: String,
                  urlLinkText: String,
-                 returnUrlLink: String): Unit = {
+                 returnUrlLink: String,
+                 openingTimesHeader: String = "",
+                 openingTimesTime: String = "",
+                 openingTimesMessage: String = ""): Unit = {
 
     "behave like a normal page" when {
       "rendered" must {
@@ -57,6 +60,13 @@ trait ChatViewBehaviours extends ViewSpecBase {
           val href = a.attr("href")
 
           href mustBe returnUrlLink
+        }
+
+        "display the opening times text" in {
+          val doc = asDocument(view())
+          assertContainsText(doc, s"$openingTimesHeader")
+          assertContainsText(doc, s"$openingTimesTime")
+          assertContainsText(doc, s"$openingTimesMessage")
         }
       }
     }

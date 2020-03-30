@@ -25,7 +25,20 @@
 
 @main_template(title = messages("global.nav.title")) {
 
+    @components.back_link()
+
     <h1>@messages("charities.community.amateur.sports.title")</h1>
+
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.8_30to4")</p>
+        <p>@messages("global.opening.times.weekend.p")</p>
+        <p>@messages("global.opening.times.advisers.p")</p>
+    </div>
+
+    @if(!appConfig.performanceTest){
+        <div id="charities_community_amateur_clubs"></div>
+    }
 
     <p>
         <a id="return-link" href=@appConfig.charitiesCommunityAmateurSportsUrl>@messages("global.text.link.back.to.govuk.p1")</a>
