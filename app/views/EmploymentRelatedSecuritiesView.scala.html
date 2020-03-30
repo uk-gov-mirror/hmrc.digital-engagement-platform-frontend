@@ -18,16 +18,26 @@
 @import views.html._
 
 @this(
-main_template: MainTemplate,
-appConfig: AppConfig)
+    main_template: MainTemplate,
+    appConfig: AppConfig)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("global.nav.title")) {
 
-<h1>@messages("employment.related.securities.title")</h1>
+    @components.back_link()
 
-<p>
-    <a id="return-link" href=@appConfig.employmentRelatedSecuritiesUrl>@messages("global.text.link.back.to.govuk.p1")</a>
-</p>
+    <h1 class="header-margin-top">@messages("employment.related.securities.title")</h1>
+
+    <div class="govuk-inset-text">
+     <p>@messages("global.opening.times.title")</p>
+     <p>@messages("global.opening.times.8_30to4")</p>
+     <p>@messages("global.opening.times.advisers.p")</p>
+    </div>
+
+    <div id="employment_related_securities"></div>
+
+    <p>
+        <a id="return-link" href=@appConfig.employmentRelatedSecuritiesUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+    </p>
 }

@@ -35,8 +35,12 @@ class EmploymentRelatedSecuritiesViewSpec extends ChatViewBehaviours {
     behave like normalPage(
       createView,
       "Ask HMRC - Webchat",
-      "Employment-related securities: webchat",
+      "Employment related securities: webchat",
       "Return to Contact HMRC",
-      returnUrl)
+      returnUrl,
+      "Opening times:",
+      "Monday to Friday, 8:30am to 4pm",
+      "Advisers cannot transfer you to another webchat team."
+    )
   }
 }
