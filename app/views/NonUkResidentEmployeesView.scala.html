@@ -25,9 +25,21 @@ appConfig: AppConfig)
 
 @main_template(title = messages("global.nav.title")) {
 
-<h1>@messages("nonuk.resident.employees.title")</h1>
+    @components.back_link()
 
-<p>
-    <a id="return-link" href=@appConfig.nonUkResidentEmployeesUrl>@messages("global.text.link.back.to.govuk.p1")</a>
-</p>
+    <h1>@messages("nonuk.resident.employees.title")</h1>
+
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.8_30to4")</p>
+        <p>@messages("global.opening.times.advisers.p")</p>
+    </div>
+
+@if(!appConfig.performanceTest){
+<div id="nonuk_resident_employees"></div>
+}
+
+    <p>
+        <a id="return-link" href=@appConfig.nonUkResidentEmployeesUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+    </p>
 }
