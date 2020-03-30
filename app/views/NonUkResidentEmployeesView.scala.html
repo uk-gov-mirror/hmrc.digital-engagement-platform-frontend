@@ -35,9 +35,9 @@ appConfig: AppConfig)
         <p>@messages("global.opening.times.advisers.p")</p>
     </div>
 
-@if(!appConfig.performanceTest){
-<div id="nonuk_resident_employees"></div>
-}
+    @if(!appConfig.performanceTest){
+        <div id="nonuk_resident_employees"></div>
+    }
 
     <p>
         <a id="return-link" href=@appConfig.nonUkResidentEmployeesUrl>@messages("global.text.link.back.to.govuk.p1")</a>
