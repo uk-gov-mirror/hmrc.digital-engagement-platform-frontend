@@ -37,6 +37,10 @@ class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours {
       "Ask HMRC - Webchat",
       "Employing expatriate employees: webchat",
       "Return to Contact HMRC",
-      returnUrl)
+      returnUrl,
+      "Opening times:",
+      "Monday to Friday, 8:30am to 5pm",
+      "Advisers cannot transfer you to another webchat team."
+    )
   }
 }
