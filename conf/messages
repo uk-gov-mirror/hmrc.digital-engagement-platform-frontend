@@ -1,7 +1,14 @@
 #global values
 global.nav.title=Ask HMRC - Webchat
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
+global.text.link.online=online
 global.back = Back
+global.opening.times.title=Opening times:
+global.opening.times.8to4=Monday to Friday, 8am to 4pm
+global.opening.times.8_30to4=Monday to Friday, 8:30am to 4pm
+global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
+global.opening.times.weekend.p=Closed weekends and bank holidays.
+global.opening.times.advisers.p=Advisers cannot transfer you to another webchat team.
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
@@ -34,6 +41,21 @@ customs.title=Imports and exports: webchat
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
+#Charities & community amateur sports
+charities.community.amateur.sports.title=Charities and Community Amateur Sports Clubs: webchat
+
+#Employing Expatriate Employees
+employing.expatriate.employees.title=Employing expatriate employees: webchat
+
+#Employment Related Securities
+employment.related.securities.title=Employment related securities: webchat
+
+#Non-Uk Resident Employees
+nonuk.resident.employees.title=Non-UK resident employees: webchat
+
+#Non-UK resident landlords
+nonUk.resident.landlords.title=Non-UK resident landlords: webchat
+
 #Payment Problems Self Assessment
 payment.problems.self.assessment.title=Payment Problems Self Assessment: webchat
 
@@ -46,6 +68,17 @@ payment.problems.paye.enquiries.title=Payment Problems PAYE Enquiries: webchat
 #Payment Problems corporation Tax Enquiries
 payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Tax Enquiries: webchat
 
+#Corporation Tax Enquiries
+corporation.tax.enquiries.title=Corporation Tax: webchat
+corporation.tax.enquiries.p1=You’ll need you 10 digit Unique Tax Reference (UTR).
+corporation.tax.enquiries.p2=Our advisers cannot give you this reference over webchat. You can get your UTR:
+corporation.tax.enquiries.bullet.1=from your agent
+corporation.tax.enquiries.bullet.2=on letters from HMRC
+corporation.tax.enquiries.bullet.3=(sign in using Government Gateway)
+corporation.tax.enquiries.p3.1=You can also
+corporation.tax.enquiries.p3.2=ask for a copy of your Corporation Tax UTR
+corporation.tax.enquiries.p3.3=if you do not know it.
+
 #Test Only page
 testonly.title=Test only page
 
@@ -54,8 +87,6 @@ payment.problems.title=Coronavirus (COVID-19): tax support for businesses and se
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
 payment.problems.p2=Contact us through webchat if you have missed a tax payment or you might miss your next payment due to coronavirus (COVID-19).
 payment.problems.h2=Webchat
-payment.problems.indent.1=Opening times:
-payment.problems.indent.2=Monday to Friday, 8am to 4pm
 payment.problems.indent.3=Advisers can only talk to you about the service you select. They cannot transfer you to another webchat team.
 payment.problems.h4.1=Self Assessment
 payment.problems.h4.2=VAT

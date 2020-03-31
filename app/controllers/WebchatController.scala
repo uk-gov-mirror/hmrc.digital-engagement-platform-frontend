@@ -36,8 +36,13 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   nationalInsuranceNumbersView: NationalInsuranceNumbersView,
                                   onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
                                   vatEnquiriesView: VatEnquiriesView,
-                                  vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView)
-    extends FrontendController(mcc) {
+                                  vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
+                                  charitiesCommunitySportsView: CharitiesCommunityAmateurSportsView,
+                                  employingExpatriateEmployeesView: EmployingExpatriateEmployeesView,
+                                  employmentRelatedSecuritiesView: EmploymentRelatedSecuritiesView,
+                                  nonUkResidentEmployeesView: NonUkResidentEmployeesView,
+                                  nonUkResidentLandlordsView: NonUkResidentLandlordsView,
+                                  corporationTaxEnquiriesView: CorporationTaxEnquiriesView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -79,6 +84,30 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(incomeTaxEnquiriesView()))
+  }
+
+  def charitiesCommunitySports: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(charitiesCommunitySportsView()))
+  }
+
+  def employingExpatriateEmployees: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(employingExpatriateEmployeesView()))
+  }
+
+  def employmentRelatedSecurities: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(employmentRelatedSecuritiesView()))
+  }
+
+  def nonUkResidentEmployees: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(nonUkResidentEmployeesView()))
+  }
+
+  def nonUkResidentLandlords: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(nonUkResidentLandlordsView()))
+  }
+
+  def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(corporationTaxEnquiriesView()))
   }
 }
 

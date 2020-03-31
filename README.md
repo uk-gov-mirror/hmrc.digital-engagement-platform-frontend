@@ -23,7 +23,7 @@ sbt run
 and then access the application at
 
 ```
-http://localhost:9956/ask-hmrc/webchat
+http://localhost:9956/ask-hmrc/webchat/self-assessment
 ```
 
 ## Unit tests
