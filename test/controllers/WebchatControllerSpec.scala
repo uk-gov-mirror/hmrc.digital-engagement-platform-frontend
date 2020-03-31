@@ -50,6 +50,7 @@ class WebchatControllerSpec
   val employmentRelatedSecuritiesView = app.injector.instanceOf[EmploymentRelatedSecuritiesView]
   val nonUkResidentEmployeesView = app.injector.instanceOf[NonUkResidentEmployeesView]
   val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
+  val corporationTaxEnquiriesView = app.injector.instanceOf[CorporationTaxEnquiriesView]
 
   val mcc = stubMessagesControllerComponents()
   implicit val messages = mcc.messagesApi.preferred(fakeRequest)
@@ -71,7 +72,8 @@ class WebchatControllerSpec
     employingExpatriateEmployeesView,
     employmentRelatedSecuritiesView,
     nonUkResidentEmployeesView,
-    nonUkResidentLandlordsView)
+    nonUkResidentLandlordsView,
+    corporationTaxEnquiriesView)
 
   "fixed URLs" should {
     "render self-assessment page" in {
@@ -162,6 +164,12 @@ class WebchatControllerSpec
       val result = controller.nonUkResidentLandlords(fakeRequest)
       status(result) shouldBe OK
       contentAsString(result) shouldBe nonUkResidentLandlordsView().toString()
+    }
+
+    "Corporation tax enquiries page" in {
+      val result = controller.corporationTaxEnquiries(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe corporationTaxEnquiriesView().toString()
     }
   }
 }

@@ -78,5 +78,11 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
   val paymentProblemsBusinessSupportReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/business-payment-support-service"
+  val corporationTaxEnquiriesReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
+  val signInGovernmentGatewayUrl: String =
+    "https://www.access.service.gov.uk/login/signin/creds"
+  val askForCorporationUTRUrl: String =
+  "https://www.tax.service.gov.uk/ask-for-copy-of-your-corporation-tax-utr?_ga=2.110462341.1468384612.1585563310-562413295.1579691516"
 }
 

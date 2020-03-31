@@ -17,5 +17,6 @@ GET        /webchat/employing-expatriate-employees                              
 GET        /webchat/employment-related-securities                                        controllers.WebchatController.employmentRelatedSecurities
 GET        /webchat/non-UK-resident-employees                                            controllers.WebchatController.nonUkResidentEmployees
 GET        /webchat/non-UK-resident-landlords                                            controllers.WebchatController.nonUkResidentLandlords
+GET        /webchat/corporation-tax-enquiries                                            controllers.WebchatController.corporationTaxEnquiries
 
 GET        /webchat/payment-problems                                                     controllers.PaymentProblemsController.paymentProblem
