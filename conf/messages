@@ -79,20 +79,30 @@ corporation.tax.enquiries.p3.1=You can also
 corporation.tax.enquiries.p3.2=ask for a copy of your Corporation Tax UTR
 corporation.tax.enquiries.p3.3=if you do not know it.
 
-#Test Only page
-testonly.title=Test only page
+#Construction Industry Scheme
+construction.industry.scheme.title=Construction Industry Scheme: webchat
+construction.industry.scheme.h2.1=Registering if you’re a contractor
+construction.industry.scheme.p1=If you’re a contractor you’ll need your Unique Taxpayer Reference (UTR), account office reference or PAYE reference.
+construction.industry.scheme.p1.2.1=If you do not have a UTR you can
+construction.industry.scheme.p1.2.2=register for Self Assessment
+construction.industry.scheme.p1.2.3=to get one.
+construction.industry.scheme.h2.2=Registering if you’re a subcontractor
+construction.industry.scheme.p2=If you’re a subcontractor you’ll need your UTR or National Insurance number.
+construction.industry.scheme.h2.3=Registering if you’re a company secretary
+construction.industry.scheme.p3.1=If you’re a company secretary you can register a company as a subcontractor under the Construction Industry Scheme using
+construction.industry.scheme.p3.2=form CIS305
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
 payment.problems.p2=Contact us through webchat if you have missed a tax payment or you might miss your next payment due to coronavirus (COVID-19).
-payment.problems.h2=Webchat
+payment.problems.h2.1=Webchat
 payment.problems.indent.3=Advisers can only talk to you about the service you select. They cannot transfer you to another webchat team.
-payment.problems.h4.1=Self Assessment
-payment.problems.h4.2=VAT
-payment.problems.h4.3=Employers PAYE
-payment.problems.h4.4=Corporation tax
-payment.problems.h4.5=Phone
+payment.problems.h3.1=Self Assessment
+payment.problems.h3.2=VAT
+payment.problems.h3.3=Employers PAYE
+payment.problems.h3.4=Corporation tax
+payment.problems.h2.2=Phone
 payment.problems.p3=Coronavirus (COVID-19) helpline
 payment.problems.p4=We have fewer advisers available to answer your calls due to coronavirus (COVID-19).
 payment.problems.p5=Payment Support Service (PSS) helpline
