@@ -23,7 +23,7 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("global.nav.title")) {
+@main_template(title = messages("construction.industry.scheme.title")) {
 
     @components.back_link()
 
@@ -41,7 +41,7 @@
         <div id="HMRC_FIXED_1"></div>
     }
 
-    <h3>@messages("construction.industry.scheme.h3.1")</h3>
+    <h2>@messages("construction.industry.scheme.h2.1")</h2>
     <p>@messages("construction.industry.scheme.p1")</p>
     <p>
         @messages("construction.industry.scheme.p1.2.1")
@@ -50,10 +50,10 @@
         @messages("construction.industry.scheme.p1.2.3")
     </p>
 
-    <h3>@messages("construction.industry.scheme.h3.2")</h3>
+    <h2>@messages("construction.industry.scheme.h2.2")</h2>
     <p>@messages("construction.industry.scheme.p2")</p>
 
-    <h3>@messages("construction.industry.scheme.h3.3")</h3>
+    <h2>@messages("construction.industry.scheme.h2.3")</h2>
     <p>@messages("construction.industry.scheme.p3.1")
         <a id="logIn-self-assessment-tax-return-link" href=@appConfig.constructionIndustrySchemeCompanyRegistrationCis305Url>
             @messages("construction.industry.scheme.p3.2")</a>

@@ -34,7 +34,7 @@ class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
+      "Construction Industry Scheme: webchat",
       "Construction Industry Scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,

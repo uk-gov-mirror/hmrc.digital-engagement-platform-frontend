@@ -81,19 +81,16 @@ corporation.tax.enquiries.p3.3=if you do not know it.
 
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
-construction.industry.scheme.h3.1=Registering if you’re a contractor
+construction.industry.scheme.h2.1=Registering if you’re a contractor
 construction.industry.scheme.p1=If you’re a contractor you’ll need your Unique Taxpayer Reference (UTR), account office reference or PAYE reference.
 construction.industry.scheme.p1.2.1=If you do not have a UTR you can
 construction.industry.scheme.p1.2.2=register for Self Assessment
 construction.industry.scheme.p1.2.3=to get one.
-construction.industry.scheme.h3.2=Registering if you’re a subcontractor
+construction.industry.scheme.h2.2=Registering if you’re a subcontractor
 construction.industry.scheme.p2=If you’re a subcontractor you’ll need your UTR or National Insurance number.
-construction.industry.scheme.h3.3=Registering if you’re a company secretary
+construction.industry.scheme.h2.3=Registering if you’re a company secretary
 construction.industry.scheme.p3.1=If you’re a company secretary you can register a company as a subcontractor under the Construction Industry Scheme using
 construction.industry.scheme.p3.2=form CIS305
-
-#Test Only page
-testonly.title=Test only page
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
