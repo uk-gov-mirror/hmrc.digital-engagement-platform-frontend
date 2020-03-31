@@ -83,6 +83,12 @@ class AppConfig @Inject()(config: Configuration,
   val signInGovernmentGatewayUrl: String =
     "https://www.access.service.gov.uk/login/signin/creds"
   val askForCorporationUTRUrl: String =
-  "https://www.tax.service.gov.uk/ask-for-copy-of-your-corporation-tax-utr?_ga=2.110462341.1468384612.1585563310-562413295.1579691516"
+    "https://www.tax.service.gov.uk/ask-for-copy-of-your-corporation-tax-utr?_ga=2.110462341.1468384612.1585563310-562413295.1579691516"
+  val logInSelfAssessmentTaxReturnUrl: String =
+    "https://www.gov.uk/log-in-file-self-assessment-tax-return"
+  val constructionIndustrySchemeCompanyRegistrationCis305Url: String =
+    "https://www.gov.uk/government/publications/construction-industry-scheme-company-registration-cis305"
+  val constructionIndustrySchemeReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
 }
 
