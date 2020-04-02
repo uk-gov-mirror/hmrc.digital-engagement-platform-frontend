@@ -34,7 +34,7 @@ class SelfAssessmentViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
+      "Self Assessment: webchat",
       "Self Assessment: webchat",
       "Return to Contact HMRC",
       returnUrl)
