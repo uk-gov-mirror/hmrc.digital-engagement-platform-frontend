@@ -80,14 +80,6 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/business-payment-support-service"
   val corporationTaxEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/corporation-tax-enquiries"
-  val signInGovernmentGatewayUrl: String =
-    "https://www.access.service.gov.uk/login/signin/creds"
-  val askForCorporationUTRUrl: String =
-     "https://www.tax.service.gov.uk/ask-for-copy-of-your-corporation-tax-utr?_ga=2.249854086.1632590635.1585550909-645419185.1582630696"
-  val logInSelfAssessmentTaxReturnUrl: String =
-    "https://www.gov.uk/log-in-file-self-assessment-tax-return"
-  val constructionIndustrySchemeCompanyRegistrationCis305Url: String =
-    "https://www.gov.uk/government/publications/construction-industry-scheme-company-registration-cis305"
   val constructionIndustrySchemeReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
 }

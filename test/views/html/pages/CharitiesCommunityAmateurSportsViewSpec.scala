@@ -39,8 +39,7 @@ class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours {
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 8:30am to 5pm",
-    "Advisers cannot transfer you to another webchat team."
+      "Monday to Friday, 8:30am to 4pm",
     )
   }
 }

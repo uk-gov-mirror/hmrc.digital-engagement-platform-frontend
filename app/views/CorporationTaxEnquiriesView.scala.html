@@ -31,32 +31,17 @@
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.8to4")</p>
+        <p>@messages("global.opening.times.8to6")</p>
         <p>@messages("global.opening.times.weekend.p")</p>
-        <p>@messages("global.opening.times.advisers.p")</p>
     </div>
+
+    <h2 class="margin-top">Webchat</h2>
 
     @if(!appConfig.performanceTest){
         <div id="HMRC_FIXED_1"></div>
     }
 
     <p>@messages("corporation.tax.enquiries.p1")</p>
-    <p>@messages("corporation.tax.enquiries.p2")</p>
-
-    <div>
-        <li>@messages("corporation.tax.enquiries.bullet.1")</li>
-        <li>@messages("corporation.tax.enquiries.bullet.2")</li>
-        <li>
-            <a id="gov-gateway-link" href=@appConfig.signInGovernmentGatewayUrl>@messages("global.text.link.online")</a>
-            @messages("corporation.tax.enquiries.bullet.3")
-        </li>
-    </div>
-
-    <div class="margin-top">
-        @messages("corporation.tax.enquiries.p3.1")
-        <a id="corporation-tax-utr-link" href=@appConfig.askForCorporationUTRUrl>@messages("corporation.tax.enquiries.p3.2")</a>
-        @messages("corporation.tax.enquiries.p3.3")
-    </div>
 
     <p class="margin-top">
         <a id="return-link" href=@appConfig.corporationTaxEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
