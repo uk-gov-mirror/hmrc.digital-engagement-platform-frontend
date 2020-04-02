@@ -35,7 +35,7 @@ class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
+      "Income tax for individuals, pensioners and employees: webchat",
       "Income tax for individuals, pensioners and employees: webchat",
       "Return to Contact HMRC",
       returnUrl)

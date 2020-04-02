@@ -34,7 +34,7 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
+      "Corporation Tax: webchat",
       "Corporation Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
