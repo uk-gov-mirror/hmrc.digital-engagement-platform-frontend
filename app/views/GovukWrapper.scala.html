@@ -31,7 +31,8 @@
     appConfig: AppConfig
 )
 
-@(title: String,
+@(appConfig: config.AppConfig,
+        title: String,
         mainClass: Option[String] = None,
         mainDataAttributes: Option[Html] = None,
         bodyClasses: Option[String] = None,
@@ -86,6 +87,8 @@
         @main_content_header(contentHeader = contentHeader.get)
     }
 }
+
+@getHelpForm = @{reportAProblemLink(appConfig.reportAProblemPartialUrl, appConfig.reportAProblemNonJSUrl)}
 
 @content = {
     @main_content(

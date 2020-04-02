@@ -29,7 +29,7 @@ import services.NuanceEncryptionService
 import views.html._
 
 class WebchatControllerSpec
-  extends WordSpec
+    extends WordSpec
     with Matchers
     with GuiceOneAppPerSuite
     with ScalaCheckPropertyChecks {
@@ -47,7 +47,15 @@ class WebchatControllerSpec
   val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
+  val charitiesCommunityAmateurSportsView = app. injector.instanceOf[CharitiesCommunityAmateurSportsView]
+  val employingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]
+  val employmentRelatedSecuritiesView = app.injector.instanceOf[EmploymentRelatedSecuritiesView]
+  val nonUkResidentEmployeesView = app.injector.instanceOf[NonUkResidentEmployeesView]
+  val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
+  val corporationTaxEnquiriesView = app.injector.instanceOf[CorporationTaxEnquiriesView]
+  val constructionIndustrySchemeView = app.injector.instanceOf[ConstructionIndustrySchemeView]
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
+
 
   val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
   private val controller = new WebchatController(
@@ -63,6 +71,13 @@ class WebchatControllerSpec
     onlineServiceHelpdeskView,
     vatEnquiriesView,
     vatOnlineServicesHelpdeskView,
+    charitiesCommunityAmateurSportsView,
+    employingExpatriateEmployeesView,
+    employmentRelatedSecuritiesView,
+    nonUkResidentEmployeesView,
+    nonUkResidentLandlordsView,
+    corporationTaxEnquiriesView,
+    constructionIndustrySchemeView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -146,6 +161,62 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Income tax for individuals, pensioners and employees: webchat"
+    }
+
+    "render charities community sports page" in {
+      val result = controller.charitiesCommunitySports(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Charities and Community Amateur Sports Clubs: webchat"
+    }
+
+    "render employing expatriate employees page" in {
+      val result = controller.employingExpatriateEmployees(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Employing expatriate employees: webchat"
+    }
+
+    "render employment related securities page" in {
+      val result = controller.employmentRelatedSecurities(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Employment related securities: webchat"
+    }
+
+    "Non-UK resident employees page" in {
+      val result = controller.nonUkResidentEmployees(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Non-UK resident employees: webchat"
+    }
+
+    "Non-UK resident landlords page" in {
+      val result = controller.nonUkResidentLandlords(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Non-UK resident landlords: webchat"
+    }
+
+    "Corporation tax enquiries page" in {
+      val result = controller.corporationTaxEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Corporation Tax: webchat"
+    }
+
+    "Construction industry scheme page" in {
+      val result = controller.constructionIndustryScheme(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Construction Industry Scheme: webchat"
     }
   }
 }
