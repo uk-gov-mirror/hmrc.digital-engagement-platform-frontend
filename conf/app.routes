@@ -18,6 +18,6 @@ GET        /webchat/employment-related-securities                               
 GET        /webchat/non-UK-resident-employees                                            controllers.WebchatController.nonUkResidentEmployees
 GET        /webchat/non-UK-resident-landlords                                            controllers.WebchatController.nonUkResidentLandlords
 GET        /webchat/corporation-tax-enquiries                                            controllers.WebchatController.corporationTaxEnquiries
-GET        /webchat/construction-industry-scheme                                         controllers.WebchatController.constructionIndustryScheme
+GET        /webchat/construction-industry-scheme-enquiries                               controllers.WebchatController.constructionIndustryScheme
 
 GET        /webchat/payment-problems                                                     controllers.PaymentProblemsController.paymentProblem

@@ -3,12 +3,15 @@ global.nav.title=Ask HMRC - Webchat
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.text.link.online=online
 global.back = Back
+global.webchat.title.h2=Webchat
 global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
 global.opening.times.8_30to4=Monday to Friday, 8:30am to 4pm
 global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
+global.opening.times.8to6=Monday to Friday, 8am to 6pm
+global.opening.times.8to8=Monday to Friday, 8am to 8pm
+global.opening.times.saturday.8to4=Saturday, 8am to 4pm
 global.opening.times.weekend.p=Closed weekends and bank holidays.
-global.opening.times.advisers.p=Advisers cannot transfer you to another webchat team.
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
@@ -71,26 +74,9 @@ payment.problems.corporation.tax.enquiries.title=Payment Problems Corporation Ta
 #Corporation Tax Enquiries
 corporation.tax.enquiries.title=Corporation Tax: webchat
 corporation.tax.enquiries.p1=You’ll need you 10 digit Unique Tax Reference (UTR).
-corporation.tax.enquiries.p2=Our advisers cannot give you this reference over webchat. You can get your UTR:
-corporation.tax.enquiries.bullet.1=from your agent
-corporation.tax.enquiries.bullet.2=on letters from HMRC
-corporation.tax.enquiries.bullet.3=(sign in using Government Gateway)
-corporation.tax.enquiries.p3.1=You can also
-corporation.tax.enquiries.p3.2=ask for a copy of your Corporation Tax UTR
-corporation.tax.enquiries.p3.3=if you do not know it.
 
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
-construction.industry.scheme.h2.1=Registering if you’re a contractor
-construction.industry.scheme.p1=If you’re a contractor you’ll need your Unique Taxpayer Reference (UTR), account office reference or PAYE reference.
-construction.industry.scheme.p1.2.1=If you do not have a UTR you can
-construction.industry.scheme.p1.2.2=register for Self Assessment
-construction.industry.scheme.p1.2.3=to get one.
-construction.industry.scheme.h2.2=Registering if you’re a subcontractor
-construction.industry.scheme.p2=If you’re a subcontractor you’ll need your UTR or National Insurance number.
-construction.industry.scheme.h2.3=Registering if you’re a company secretary
-construction.industry.scheme.p3.1=If you’re a company secretary you can register a company as a subcontractor under the Construction Industry Scheme using
-construction.industry.scheme.p3.2=form CIS305
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
