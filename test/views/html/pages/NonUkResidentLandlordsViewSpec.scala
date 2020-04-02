@@ -34,7 +34,7 @@ class NonUkResidentLandlordsViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
+      "Non-UK resident landlords: webchat",
       "Non-UK resident landlords: webchat",
       "Return to Contact HMRC",
       returnUrl,

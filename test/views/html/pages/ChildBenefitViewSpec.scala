@@ -34,7 +34,7 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Ask HMRC - Webchat",
+      "Child Benefit: webchat",
       "Child Benefit: webchat",
       "Return to Contact HMRC",
       returnUrl)
