@@ -40,6 +40,7 @@ class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours {
       returnUrl,
       "Opening times:",
       "Monday to Friday, 8:30am to 4pm",
+      "Closed weekends and bank holidays."
     )
   }
 }
