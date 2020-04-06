@@ -12,6 +12,7 @@ global.opening.times.8to6=Monday to Friday, 8am to 6pm
 global.opening.times.8to8=Monday to Friday, 8am to 8pm
 global.opening.times.saturday.8to4=Saturday, 8am to 4pm
 global.opening.times.weekend.p=Closed weekends and bank holidays.
+global.opening.times.24_7=24 hours a day, 7 days a week
 
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
@@ -79,7 +80,7 @@ corporation.tax.enquiries.p1=You’ll need you 10 digit Unique Tax Reference (UT
 construction.industry.scheme.title=Construction Industry Scheme: webchat
 
 #National Clearance Hub
-national.clearance.hub.title=National clearance hub: webchat
+national.clearance.hub.title=National Clearance Hub: webchat
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed

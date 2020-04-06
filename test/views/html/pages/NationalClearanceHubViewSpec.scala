@@ -36,12 +36,12 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours {
       //TODO add correct content
       behave like normalPage(
         createView,
-        "National clearance hub: webchat",
-        "National clearance hub: webchat",
+        "National Clearance Hub: webchat",
+        "National Clearance Hub: webchat",
         "Return to Contact HMRC",
         returnUrl,
         "Opening times:",
-        "Monday to Friday, 8am to 4pm"
+        "24 hours a day, 7 days a week"
       )
     }
 }
