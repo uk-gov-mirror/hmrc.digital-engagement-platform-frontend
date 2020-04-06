@@ -36,12 +36,12 @@ class VatRegistrationViewSpec extends ChatViewBehaviours {
     //TODO add content to test
     behave like normalPage(
       createView,
-      "VAT Registration: webchat",
-      "VAT Registration: webchat",
+      "VAT registration: webchat",
+      "VAT registration: webchat",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 8:30am to 4pm"
+      "Monday to Friday, 8am to 5pm"
     )
   }
 }
