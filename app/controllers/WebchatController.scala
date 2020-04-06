@@ -43,7 +43,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   nonUkResidentEmployeesView: NonUkResidentEmployeesView,
                                   nonUkResidentLandlordsView: NonUkResidentLandlordsView,
                                   corporationTaxEnquiriesView: CorporationTaxEnquiriesView,
-                                  constructionIndustrySchemeView: ConstructionIndustrySchemeView) extends FrontendController(mcc) {
+                                  constructionIndustrySchemeView: ConstructionIndustrySchemeView,
+                                  nationalClearanceHubView: NationalClearanceHubView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -113,6 +114,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(constructionIndustrySchemeView()))
+  }
+
+  def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(nationalClearanceHubView()))
   }
 }
 

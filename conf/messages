@@ -78,6 +78,9 @@ corporation.tax.enquiries.p1=You’ll need you 10 digit Unique Tax Reference (UT
 #Construction Industry Scheme
 construction.industry.scheme.title=Construction Industry Scheme: webchat
 
+#National Clearance Hub
+national.clearance.hub.title=National Clearance Hub: webchat
+
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
