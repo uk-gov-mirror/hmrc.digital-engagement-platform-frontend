@@ -52,6 +52,7 @@ class WebchatControllerSpec
   val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
   val corporationTaxEnquiriesView = app.injector.instanceOf[CorporationTaxEnquiriesView]
   val constructionIndustrySchemeView = app.injector.instanceOf[ConstructionIndustrySchemeView]
+  val vatRegistrationView = app.injector.instanceOf[VatRegistrationView]
   val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
 
   val mcc = stubMessagesControllerComponents()
@@ -77,6 +78,7 @@ class WebchatControllerSpec
     nonUkResidentLandlordsView,
     corporationTaxEnquiriesView,
     constructionIndustrySchemeView,
+    vatRegistrationView,
     nationalClearanceHubView)
 
   "fixed URLs" should {
@@ -180,6 +182,12 @@ class WebchatControllerSpec
       val result = controller.constructionIndustryScheme(fakeRequest)
       status(result) shouldBe OK
       contentAsString(result) shouldBe constructionIndustrySchemeView().toString()
+    }
+
+    "VAT registration page" in {
+      val result = controller.vatRegistration(fakeRequest)
+      status(result) shouldBe OK
+      contentAsString(result) shouldBe vatRegistrationView().toString()
     }
 
     "National clearance hub page" in {
