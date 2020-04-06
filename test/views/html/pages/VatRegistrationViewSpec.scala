@@ -31,7 +31,7 @@ class VatRegistrationViewSpec extends ChatViewBehaviours {
   "Vat registration view" must {
     //TODO add return url
     val returnUrl: String =
-      "VAT_REGISTRATION_RETURN_URL"
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-registration-applications-exceptions-and-changes"
 
     //TODO add content to test
     behave like normalPage(
