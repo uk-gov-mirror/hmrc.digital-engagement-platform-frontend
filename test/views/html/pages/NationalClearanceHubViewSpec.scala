@@ -28,12 +28,10 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours {
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  //TODO add correct return url
     "Non Uk Resident Employees view" must {
       val returnUrl: String =
-        "NATIONAL_CLEARANCE_HUB_RETURN_URL"
+        "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
 
-      //TODO add correct content
       behave like normalPage(
         createView,
         "National Clearance Hub: webchat",

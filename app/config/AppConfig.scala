@@ -83,6 +83,6 @@ class AppConfig @Inject()(config: Configuration,
   val constructionIndustrySchemeReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
   val nationalClearanceHubReturnUrl: String =
-    "NATIONAL_CLEARANCE_HUB_RETURN_URL"
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
 }
 
