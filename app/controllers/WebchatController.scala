@@ -16,12 +16,12 @@
 
 package controllers
 
-import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import config.AppConfig
 import services.NuanceEncryptionService
-import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html._
+import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 
 import scala.concurrent.Future
 
@@ -45,6 +45,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   nonUkResidentLandlordsView: NonUkResidentLandlordsView,
                                   corporationTaxEnquiriesView: CorporationTaxEnquiriesView,
                                   constructionIndustrySchemeView: ConstructionIndustrySchemeView,
+                                  vatRegistrationView: VatRegistrationView,
+                                  nationalClearanceHubView: NationalClearanceHubView,
                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -115,5 +117,13 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(constructionIndustrySchemeView()))
+  }
+
+  def vatRegistration: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(vatRegistrationView()))
+  }
+
+  def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(nationalClearanceHubView()))
   }
 }

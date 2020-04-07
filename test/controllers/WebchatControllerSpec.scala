@@ -54,8 +54,10 @@ class WebchatControllerSpec
   val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
   val corporationTaxEnquiriesView = app.injector.instanceOf[CorporationTaxEnquiriesView]
   val constructionIndustrySchemeView = app.injector.instanceOf[ConstructionIndustrySchemeView]
-  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
+  val vatRegistrationView = app.injector.instanceOf[VatRegistrationView]
+  val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
 
+  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
   val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
   private val controller = new WebchatController(
@@ -78,6 +80,8 @@ class WebchatControllerSpec
     nonUkResidentLandlordsView,
     corporationTaxEnquiriesView,
     constructionIndustrySchemeView,
+    vatRegistrationView,
+    nationalClearanceHubView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -217,6 +221,22 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Construction Industry Scheme: webchat"
+    }
+
+    "VAT registration page" in {
+      val result = controller.vatRegistration(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "VAT registration: webchat"
+    }
+
+    "National clearance hub page" in {
+      val result = controller.nationalClearanceHub(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "National Clearance Hub: webchat"
     }
   }
 }
