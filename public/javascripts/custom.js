@@ -27,7 +27,28 @@ $(document).ready(function() {
 
 });
 
+// dynamically re-position nuance divs before footer for accessibility
 $(window).on("load", function() {
-	document.querySelectorAll('#inqChatStage a').forEach(x => x.tabIndex = 2);
-	document.querySelectorAll('#footer a').forEach(x => x.tabIndex = 3);
+
+    var waitForEl = function(selector, callback, count) {
+        if (jQuery(selector).length) {
+        callback();
+        } else {
+        setTimeout(function() {
+          if(!count) {
+            count=0;
+          }
+          count++;
+          console.log("count: " + count);
+          if(count<3) {
+            waitForEl(selector,callback,count);
+          } else {return;}
+        }, 1000);
+      }
+    }
+
+    waitForEl("#inqChatStage", function() {
+        $('#footer').appendTo(document.body);
+    });
+
 });
