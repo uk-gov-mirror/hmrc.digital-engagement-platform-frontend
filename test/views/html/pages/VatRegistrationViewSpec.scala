@@ -29,11 +29,9 @@ class VatRegistrationViewSpec extends ChatViewBehaviours {
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Vat registration view" must {
-    //TODO add return url
     val returnUrl: String =
       "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-registration-applications-exceptions-and-changes"
 
-    //TODO add content to test
     behave like normalPage(
       createView,
       "VAT registration: webchat",
