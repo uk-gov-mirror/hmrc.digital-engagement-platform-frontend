@@ -19,6 +19,7 @@ package controllers
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import config.AppConfig
+import services.NuanceEncryptionService
 import views.html._
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 
@@ -45,7 +46,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   corporationTaxEnquiriesView: CorporationTaxEnquiriesView,
                                   constructionIndustrySchemeView: ConstructionIndustrySchemeView,
                                   vatRegistrationView: VatRegistrationView,
-                                  nationalClearanceHubView: NationalClearanceHubView) extends FrontendController(mcc) {
+                                  nationalClearanceHubView: NationalClearanceHubView,
+                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -70,7 +72,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(onlineServiceHelpdeskView()))
+    Future.successful(Ok(onlineServiceHelpdeskView()))
   }
 
   def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
@@ -78,7 +80,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
-      Future.successful(Ok(nationalInsuranceNumbersView()))
+    Future.successful(Ok(nationalInsuranceNumbersView()))
   }
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
@@ -125,4 +127,3 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(nationalClearanceHubView()))
   }
 }
-

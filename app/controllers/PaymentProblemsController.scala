@@ -18,15 +18,19 @@ package controllers
 
 import com.google.inject.Inject
 import config.AppConfig
+import javax.inject.Singleton
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html._
 
 import scala.concurrent.Future
 
+@Singleton
 class PaymentProblemsController @Inject()( appConfig: AppConfig,
                                             mcc: MessagesControllerComponents,
-                                            view: PaymentProblemsView
+                                            view: PaymentProblemsView,
+                                            nuanceEncryptionService: NuanceEncryptionService
                                           ) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig

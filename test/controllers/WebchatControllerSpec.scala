@@ -16,15 +16,17 @@
 
 package controllers
 
+import config.AppConfig
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.Cookie
+import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import config.AppConfig
+import services.NuanceEncryptionService
 import views.html._
-import uk.gov.hmrc.play.bootstrap.tools.Stubs.stubMessagesControllerComponents
 
 class WebchatControllerSpec
     extends WordSpec
@@ -55,12 +57,12 @@ class WebchatControllerSpec
   val vatRegistrationView = app.injector.instanceOf[VatRegistrationView]
   val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
 
-  val mcc = stubMessagesControllerComponents()
-  implicit val messages = mcc.messagesApi.preferred(fakeRequest)
+  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
+  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
   private val controller = new WebchatController(
     appConfig,
-    mcc,
+    messagesCC,
     selfAssessmentView,
     taxCreditsView,
     childBenefitView,
@@ -79,121 +81,162 @@ class WebchatControllerSpec
     corporationTaxEnquiriesView,
     constructionIndustrySchemeView,
     vatRegistrationView,
-    nationalClearanceHubView)
+    nationalClearanceHubView,
+    nuanceEncryptionService)
+
+  def asDocument(html: String): Document = Jsoup.parse(html)
 
   "fixed URLs" should {
     "render self-assessment page" in {
       val result = controller.selfAssessment(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe selfAssessmentView().toString
+      doc.select("h1").text() shouldBe "Self Assessment: webchat"
     }
 
     "render tax-credits page" in {
       val result = controller.taxCredits(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe taxCreditsView().toString()
+      doc.select("h1").text() shouldBe "Tax credits: webchat"
     }
 
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe childBenefitView().toString
+      doc.select("h1").text() shouldBe "Child Benefit: webchat"
     }
 
     "render employer enquiries page" in {
       val result = controller.employerEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe employerEnquiriesView().toString
+      doc.select("h1").text() shouldBe "Employers: webchat"
     }
 
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe vatEnquiriesView().toString
+      doc.select("h1").text() shouldBe "VAT: webchat"
     }
 
     "render vat online helpdesk page" in {
       val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe vatOnlineServicesHelpdeskView().toString
+      doc.select("h1").text() shouldBe "VAT online services helpdesk: webchat"
     }
 
     "render online services helpdesk page" in {
       val result = controller.onlineServicesHelpdesk(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe onlineServiceHelpdeskView().toString
+      doc.select("h1").text() shouldBe "Online services helpdesk: webchat"
     }
 
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe nationalInsuranceNumbersView().toString
+      doc.select("h1").text() shouldBe "National Insurance: webchat"
     }
 
     "render customs page" in {
       val result = controller.customsEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe customsEnquiriesView().toString
+      doc.select("h1").text() shouldBe "Imports and exports: webchat"
     }
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe incomeTaxEnquiriesView().toString
+      doc.select("h1").text() shouldBe "Income tax for individuals, pensioners and employees: webchat"
     }
 
     "render charities community sports page" in {
       val result = controller.charitiesCommunitySports(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe charitiesCommunityAmateurSportsView().toString()
+      doc.select("h1").text() shouldBe "Charities and Community Amateur Sports Clubs: webchat"
     }
 
     "render employing expatriate employees page" in {
       val result = controller.employingExpatriateEmployees(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe employingExpatriateEmployeesView().toString()
+      doc.select("h1").text() shouldBe "Employing expatriate employees: webchat"
     }
 
     "render employment related securities page" in {
       val result = controller.employmentRelatedSecurities(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe employmentRelatedSecuritiesView().toString()
+      doc.select("h1").text() shouldBe "Employment related securities: webchat"
     }
 
     "Non-UK resident employees page" in {
       val result = controller.nonUkResidentEmployees(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe nonUkResidentEmployeesView().toString()
+      doc.select("h1").text() shouldBe "Non-UK resident employees: webchat"
     }
 
     "Non-UK resident landlords page" in {
       val result = controller.nonUkResidentLandlords(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe nonUkResidentLandlordsView().toString()
+      doc.select("h1").text() shouldBe "Non-UK resident landlords: webchat"
     }
 
     "Corporation tax enquiries page" in {
       val result = controller.corporationTaxEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe corporationTaxEnquiriesView().toString()
+      doc.select("h1").text() shouldBe "Corporation Tax: webchat"
     }
 
     "Construction industry scheme page" in {
       val result = controller.constructionIndustryScheme(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe constructionIndustrySchemeView().toString()
+      doc.select("h1").text() shouldBe "Construction Industry Scheme: webchat"
     }
 
     "VAT registration page" in {
       val result = controller.vatRegistration(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe vatRegistrationView().toString()
+      doc.select("h1").text() shouldBe "VAT registration: webchat"
     }
 
     "National clearance hub page" in {
       val result = controller.nationalClearanceHub(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe nationalClearanceHubView().toString()
+      doc.select("h1").text() shouldBe "National Clearance Hub: webchat"
     }
   }
 }

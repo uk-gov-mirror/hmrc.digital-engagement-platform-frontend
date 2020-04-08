@@ -17,13 +17,15 @@
 package controllers
 
 import config.AppConfig
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.Cookie
+import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import uk.gov.hmrc.play.bootstrap.tools.Stubs.stubMessagesControllerComponents
+import services.NuanceEncryptionService
 import views.html._
 
 class PaymentProblemsControllerSpec
@@ -36,20 +38,25 @@ class PaymentProblemsControllerSpec
 
   implicit val appConfig = app.injector.instanceOf[AppConfig]
   val paymentProblemsView = app.injector.instanceOf[PaymentProblemsView]
+  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
-  val mcc = stubMessagesControllerComponents()
-  implicit val messages = mcc.messagesApi.preferred(fakeRequest)
+  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
 
   private val controller = new PaymentProblemsController(
     appConfig,
-    mcc,
-    paymentProblemsView)
+    messagesCC,
+    paymentProblemsView,
+    nuanceEncryptionService)
+
+  def asDocument(html: String): Document = Jsoup.parse(html)
 
   "fixed URLs" should {
     "render payment problems page" in {
       val result = controller.paymentProblem(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
       status(result) shouldBe OK
-      contentAsString(result) shouldBe paymentProblemsView().toString
+      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): tax support for businesses and self-employed"
     }
   }
 }
