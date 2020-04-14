@@ -17,16 +17,12 @@
 package controllers
 
 import config.AppConfig
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}
-import org.scalatest.MustMatchers._
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.mvc.{Cookie, MessagesControllerComponents}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import play.api.test._
 import services.NuanceEncryptionService
 import views.html._
 
@@ -39,59 +35,31 @@ class IvrControllerSpec
   implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
   implicit val appConfig = app.injector.instanceOf[AppConfig]
-  val selfAssessmentView = app.injector.instanceOf[SelfAssessmentView]
   val taxCreditsView = app.injector.instanceOf[TaxCreditsView]
   val childBenefitView = app.injector.instanceOf[ChildBenefitView]
-  val customsEnquiriesView = app.injector.instanceOf[CustomsEnquiriesView]
-  val employerEnquiriesView = app.injector.instanceOf[EmployerEnquiriesView]
   val incomeTaxEnquiriesView = app.injector.instanceOf[IncomeTaxEnquiriesView]
-  val nationalInsuranceNumbersView = app.injector.instanceOf[NationalInsuranceNumbersView]
-  val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
+  val employerEnquiriesView = app.injector.instanceOf[EmployerEnquiriesView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
-  val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
-  val charitiesCommunityAmateurSportsView = app. injector.instanceOf[CharitiesCommunityAmateurSportsView]
-  val employingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]
-  val employmentRelatedSecuritiesView = app.injector.instanceOf[EmploymentRelatedSecuritiesView]
-  val nonUkResidentEmployeesView = app.injector.instanceOf[NonUkResidentEmployeesView]
-  val nonUkResidentLandlordsView = app.injector.instanceOf[NonUkResidentLandlordsView]
-  val corporationTaxEnquiriesView = app.injector.instanceOf[CorporationTaxEnquiriesView]
-  val constructionIndustrySchemeView = app.injector.instanceOf[ConstructionIndustrySchemeView]
-  val vatRegistrationView = app.injector.instanceOf[VatRegistrationView]
-  val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
-
+  val nationalInsuranceNumbersView = app.injector.instanceOf[NationalInsuranceNumbersView]
+  val customsEnquiriesView = app.injector.instanceOf[CustomsEnquiriesView]
+  val selfAssessmentView = app.injector.instanceOf[SelfAssessmentView]
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
   val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
   private val controller = new IvrController(
     appConfig,
     messagesCC,
-    selfAssessmentView,
     taxCreditsView,
     childBenefitView,
-    customsEnquiriesView,
-    employerEnquiriesView,
     incomeTaxEnquiriesView,
-    nationalInsuranceNumbersView,
-    onlineServiceHelpdeskView,
+    employerEnquiriesView,
     vatEnquiriesView,
-    vatOnlineServicesHelpdeskView,
-    charitiesCommunityAmateurSportsView,
-    employingExpatriateEmployeesView,
-    employmentRelatedSecuritiesView,
-    nonUkResidentEmployeesView,
-    nonUkResidentLandlordsView,
-    corporationTaxEnquiriesView,
-    constructionIndustrySchemeView,
-    vatRegistrationView,
-    nationalClearanceHubView,
+    nationalInsuranceNumbersView,
+    customsEnquiriesView,
+    selfAssessmentView,
     nuanceEncryptionService)
 
-  "fixed URLs" should {
-    "render self-assessment page" in {
-      val result = controller.selfAssessment(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-assessment?nuance=ivr")
-    }
+  "ivr redirect URLs" should {
 
     "render tax-credits page" in {
       val result = controller.taxCredits(fakeRequest)
@@ -103,6 +71,12 @@ class IvrControllerSpec
       val result = controller.childBenefit(fakeRequest)
       status(result) shouldBe SEE_OTHER
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/child-benefit?nuance=ivr")
+    }
+
+    "render income tax enquiries page" in {
+      val result = controller.incomeTaxEnquiries(fakeRequest)
+      status(result) shouldBe SEE_OTHER
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/income-tax-enquiries-for-individuals-pensioners-and-employees?nuance=ivr")
     }
 
     "render employer enquiries page" in {
@@ -117,18 +91,6 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/vat-enquiries?nuance=ivr")
     }
 
-    "render vat online helpdesk page" in {
-      val result = controller.vatOnlineServicesHelpdesk(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/vat-online-services-helpdesk?nuance=ivr")
-    }
-
-    "render online services helpdesk page" in {
-      val result = controller.onlineServicesHelpdesk(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/online-services-helpdesk?nuance=ivr")
-    }
-
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
       status(result) shouldBe SEE_OTHER
@@ -141,64 +103,11 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/customs-international-trade-and-excise-enquiries?nuance=ivr")
     }
 
-    "render income tax enquiries page" in {
-      val result = controller.incomeTaxEnquiries(fakeRequest)
+    "render self-assessment page" in {
+      val result = controller.selfAssessment(fakeRequest)
       status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/income-tax-enquiries-for-individuals-pensioners-and-employees?nuance=ivr")
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-assessment?nuance=ivr")
     }
 
-    "render charities community sports page" in {
-      val result = controller.charitiesCommunitySports(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/charities-and-community-sports?nuance=ivr")
-    }
-
-    "render employing expatriate employees page" in {
-      val result = controller.employingExpatriateEmployees(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/employing-expatriate-employees?nuance=ivr")
-    }
-
-    "render employment related securities page" in {
-      val result = controller.employmentRelatedSecurities(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/employment-related-securities?nuance=ivr")
-    }
-
-    "Non-UK resident employees page" in {
-      val result = controller.nonUkResidentEmployees(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/non-UK-resident-employees?nuance=ivr")
-    }
-
-    "Non-UK resident landlords page" in {
-      val result = controller.nonUkResidentLandlords(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/non-UK-resident-landlords?nuance=ivr")
-    }
-
-    "Corporation tax enquiries page" in {
-      val result = controller.corporationTaxEnquiries(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/corporation-tax-enquiries?nuance=ivr")
-    }
-
-    "Construction industry scheme page" in {
-      val result = controller.constructionIndustryScheme(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/construction-industry-scheme-enquiries?nuance=ivr")
-    }
-
-    "VAT registration page" in {
-      val result = controller.vatRegistration(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/vat-registration?nuance=ivr")
-    }
-
-    "National clearance hub page" in {
-      val result = controller.nationalClearanceHub(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/national-clearance-hub?nuance=ivr")
-    }
   }
 }

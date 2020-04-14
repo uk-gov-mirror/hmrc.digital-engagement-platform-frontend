@@ -24,25 +24,11 @@ GET        /webchat/national-clearance-hub                                      
 
 GET        /webchat/payment-problems                                                     controllers.PaymentProblemsController.paymentProblem
 
-
-GET        /ivr/self-assessment                                                         controllers.IvrController.selfAssessment
-GET        /ivr/tax-credits-enquiries                                                   controllers.IvrController.taxCredits
-GET        /ivr/child-benefit                                                           controllers.IvrController.childBenefit
-GET        /ivr/employer-enquiries                                                      controllers.IvrController.employerEnquiries
-GET        /ivr/vat-enquiries                                                           controllers.IvrController.vatEnquiries
-GET        /ivr/vat-online-services-helpdesk                                            controllers.IvrController.vatOnlineServicesHelpdesk
-GET        /ivr/online-services-helpdesk                                                controllers.IvrController.onlineServicesHelpdesk
-GET        /ivr/national-insurance-numbers                                              controllers.IvrController.nationalInsuranceNumbers
-GET        /ivr/customs-international-trade-and-excise-enquiries                        controllers.IvrController.customsEnquiries
-GET        /ivr/income-tax-enquiries-for-individuals-pensioners-and-employees           controllers.IvrController.incomeTaxEnquiries
-GET        /ivr/charities-and-community-sports                                          controllers.IvrController.charitiesCommunitySports
-GET        /ivr/employing-expatriate-employees                                          controllers.IvrController.employingExpatriateEmployees
-GET        /ivr/employment-related-securities                                           controllers.IvrController.employmentRelatedSecurities
-GET        /ivr/non-UK-resident-employees                                               controllers.IvrController.nonUkResidentEmployees
-GET        /ivr/non-UK-resident-landlords                                               controllers.IvrController.nonUkResidentLandlords
-GET        /ivr/corporation-tax-enquiries                                               controllers.IvrController.corporationTaxEnquiries
-GET        /ivr/construction-industry-scheme-enquiries                                  controllers.IvrController.constructionIndustryScheme
-GET        /ivr/vat-registration                                                        controllers.IvrController.vatRegistration
-GET        /ivr/national-clearance-hub                                                  controllers.IvrController.nationalClearanceHub
-
-GET        /ivr/payment-problems                                                        controllers.IvrController.paymentProblem
+GET        /ivr/taxcredits                                                              controllers.IvrController.taxCredits
+GET        /ivr/childbenefit                                                            controllers.IvrController.childBenefit
+GET        /ivr/paye                                                                    controllers.IvrController.incomeTaxEnquiries
+GET        /ivr/employers                                                               controllers.IvrController.employerEnquiries
+GET        /ivr/vat                                                                     controllers.IvrController.vatEnquiries
+GET        /ivr/nino                                                                    controllers.IvrController.nationalInsuranceNumbers
+GET        /ivr/excise                                                                  controllers.IvrController.customsEnquiries
+GET        /ivr/sa                                                                      controllers.IvrController.selfAssessment

@@ -28,109 +28,50 @@ import scala.concurrent.Future
 @Singleton
 class IvrController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              selfAssessmentView: SelfAssessmentView,
                               taxCreditsView: TaxCreditsView,
                               childBenefitView: ChildBenefitView,
-                              customsEnquiriesView: CustomsEnquiriesView,
-                              employerEnquiriesView: EmployerEnquiriesView,
                               incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
-                              nationalInsuranceNumbersView: NationalInsuranceNumbersView,
-                              onlineServiceHelpdeskView: OnlineServiceHelpdeskView,
+                              employerEnquiriesView: EmployerEnquiriesView,
                               vatEnquiriesView: VatEnquiriesView,
-                              vatOnlineServiceHelpdeskView: VatOnlineServicesHelpdeskView,
-                              charitiesCommunitySportsView: CharitiesCommunityAmateurSportsView,
-                              employingExpatriateEmployeesView: EmployingExpatriateEmployeesView,
-                              employmentRelatedSecuritiesView: EmploymentRelatedSecuritiesView,
-                              nonUkResidentEmployeesView: NonUkResidentEmployeesView,
-                              nonUkResidentLandlordsView: NonUkResidentLandlordsView,
-                              corporationTaxEnquiriesView: CorporationTaxEnquiriesView,
-                              constructionIndustrySchemeView: ConstructionIndustrySchemeView,
-                              vatRegistrationView: VatRegistrationView,
-                              nationalClearanceHubView: NationalClearanceHubView,
+                              nationalInsuranceNumbersView: NationalInsuranceNumbersView,
+                              customsEnquiriesView: CustomsEnquiriesView,
+                              selfAssessmentView: SelfAssessmentView,
                               nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   val param: String = "?nuance=ivr"
 
-  def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.selfAssessment().url + param))
-  }
-
-  def taxCredits: Action[AnyContent] = Action.async { implicit request =>
+  def taxCredits: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.taxCredits().url + param))
   }
 
-  def childBenefit: Action[AnyContent] = Action.async { implicit request =>
+  def childBenefit: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.childBenefit().url + param))
   }
 
-  def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.employerEnquiries().url + param))
-  }
-
-  def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.vatEnquiries().url + param))
-  }
-
-  def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.onlineServicesHelpdesk().url + param))
-  }
-
-  def vatOnlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.vatOnlineServicesHelpdesk().url + param))
-  }
-
-  def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.nationalInsuranceNumbers().url + param))
-  }
-
-  def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.customsEnquiries().url + param))
-  }
-
-  def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
+  def incomeTaxEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.incomeTaxEnquiries().url + param))
   }
 
-  def charitiesCommunitySports: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.charitiesCommunitySports().url + param))
+  def employerEnquiries: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.employerEnquiries().url + param))
   }
 
-  def employingExpatriateEmployees: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.employingExpatriateEmployees().url + param))
+  def vatEnquiries: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.vatEnquiries().url + param))
   }
 
-  def employmentRelatedSecurities: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.employmentRelatedSecurities().url + param))
+  def nationalInsuranceNumbers: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.nationalInsuranceNumbers().url + param))
   }
 
-  def nonUkResidentEmployees: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.nonUkResidentEmployees().url + param))
+  def customsEnquiries: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.customsEnquiries().url + param))
   }
 
-  def nonUkResidentLandlords: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.nonUkResidentLandlords().url + param))
-  }
-
-  def corporationTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.corporationTaxEnquiries().url + param))
-  }
-
-  def constructionIndustryScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.constructionIndustryScheme().url + param))
-  }
-
-  def vatRegistration: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.vatRegistration().url + param))
-  }
-
-  def nationalClearanceHub: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.WebchatController.nationalClearanceHub().url + param))
-  }
-
-  def paymentProblem: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(controllers.routes.PaymentProblemsController.paymentProblem().url + param))
+  def selfAssessment: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.selfAssessment().url + param))
   }
 
 }
