@@ -20,10 +20,15 @@
     main_template: MainTemplate,
     appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("customs.title")) {
-    <h1>@messages("customs.title")</h1>
+
+    @if(!isIvrRedirect) {
+        @components.back_link()
+    }
+
+    <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("customs.title")</h1>
 
     <p>
         <a id="return-link" href=@appConfig.customsEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>

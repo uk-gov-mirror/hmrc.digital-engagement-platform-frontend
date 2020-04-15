@@ -20,11 +20,22 @@
     main_template: MainTemplate,
     appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("tax.credits.title")) {
 
-    <h1>@messages("tax.credits.title")</h1>
+    @if(!isIvrRedirect) {
+        @components.back_link()
+    }
+
+    <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("tax.credits.title")</h1>
+
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.mon.sat.8to10")</p>
+        <p>@messages("global.opening.times.sun.9to10.8to4")</p>
+        <p>@messages("global.opening.times.bankholidays.p")</p>
+    </div>
 
     <p>
         <a  id="return-link"href=@appConfig.taxCreditsEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
