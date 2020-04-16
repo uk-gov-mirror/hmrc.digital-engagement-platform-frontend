@@ -36,7 +36,15 @@
         <p>@messages("global.opening.times.bankholidays.p")</p>
     </div>
 
-    <p>
-        <a id="return-link" href=@appConfig.incomeTaxEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
+
+    @if(!appConfig.performanceTest){
+        <div id="HMRC_Fixed_1"></div>
+    }
+
+    <p class="margin-top">
+        <a id="return-link" href=@appConfig.incomeTaxEnquiriesReturnUrl>
+            @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
+        </a>
     </p>
 }

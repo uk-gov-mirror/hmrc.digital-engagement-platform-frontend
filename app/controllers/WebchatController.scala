@@ -17,7 +17,7 @@
 package controllers
 
 import javax.inject.{Inject, Singleton}
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Request}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import config.AppConfig
 import services.NuanceEncryptionService
 import views.html._
@@ -52,28 +52,28 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  private def isIvrRedirect(request: Request[AnyContent]): Boolean = {
+  private def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
     request.getQueryString("nuance").contains("ivr")
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(selfAssessmentView(isIvrRedirect(request))))
+    Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(taxCreditsView(isIvrRedirect(request))))
+    Future.successful(Ok(taxCreditsView(isIvrRedirect())))
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(childBenefitView(isIvrRedirect(request))))
+    Future.successful(Ok(childBenefitView(isIvrRedirect())))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(employerEnquiriesView(isIvrRedirect(request))))
+    Future.successful(Ok(employerEnquiriesView(isIvrRedirect())))
   }
 
   def vatEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(vatEnquiriesView(isIvrRedirect(request))))
+    Future.successful(Ok(vatEnquiriesView(isIvrRedirect())))
   }
 
   def onlineServicesHelpdesk: Action[AnyContent] = Action.async { implicit request =>
@@ -85,15 +85,15 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def nationalInsuranceNumbers: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nationalInsuranceNumbersView(isIvrRedirect(request))))
+    Future.successful(Ok(nationalInsuranceNumbersView(isIvrRedirect())))
   }
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(customsEnquiriesView(isIvrRedirect(request))))
+    Future.successful(Ok(customsEnquiriesView(isIvrRedirect())))
   }
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(incomeTaxEnquiriesView(isIvrRedirect(request))))
+    Future.successful(Ok(incomeTaxEnquiriesView(isIvrRedirect())))
   }
 
   def charitiesCommunitySports: Action[AnyContent] = Action.async { implicit request =>

@@ -30,7 +30,21 @@
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("customs.title")</h1>
 
-    <p>
-        <a id="return-link" href=@appConfig.customsEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.8to6")</p>
+        <p>@messages("global.opening.times.weekend.p")</p>
+    </div>
+
+    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
+
+    @if(!appConfig.performanceTest){
+        <div id="HMRC_Fixed_1"></div>
+    }
+
+    <p class="margin-top">
+        <a id="return-link" href=@appConfig.customsEnquiriesReturnUrl>
+            @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
+        </a>
     </p>
 }
