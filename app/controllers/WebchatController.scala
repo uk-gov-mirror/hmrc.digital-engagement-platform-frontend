@@ -133,7 +133,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def jobRetentionScheme: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(jobRetentionSchemeView()))
+    Future.successful(Ok(jobRetentionSchemeView(isIvrRedirect())))
   }
 
 }

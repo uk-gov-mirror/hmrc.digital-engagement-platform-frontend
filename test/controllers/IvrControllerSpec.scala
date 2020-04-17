@@ -109,5 +109,11 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-assessment?nuance=ivr")
     }
 
+    "render job retention page" in {
+      val result = controller.jobRetentionScheme(fakeRequest)
+      status(result) shouldBe SEE_OTHER
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/job-retention-scheme?nuance=ivr")
+    }
+
   }
 }
