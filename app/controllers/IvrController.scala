@@ -74,4 +74,8 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(controllers.routes.WebchatController.selfAssessment().url + param))
   }
 
+  def jobRetentionScheme: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.jobRetentionScheme().url + param))
+  }
+
 }

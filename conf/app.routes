@@ -33,3 +33,4 @@ GET        /ivr/vat                                                             
 GET        /ivr/nino                                                                    controllers.IvrController.nationalInsuranceNumbers
 GET        /ivr/excise                                                                  controllers.IvrController.customsEnquiries
 GET        /ivr/sa                                                                      controllers.IvrController.selfAssessment
+GET        /ivr/jobretention                                                            controllers.IvrController.jobRetentionScheme
