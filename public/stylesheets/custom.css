@@ -6,6 +6,10 @@
     margin-top: 20px;
 }
 
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
 .govuk-inset-text {
     line-height: 1.25;
     color: #0b0c0c;
