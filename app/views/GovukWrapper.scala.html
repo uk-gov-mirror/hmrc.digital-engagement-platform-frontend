@@ -41,7 +41,7 @@
         mainContent: Html = HtmlFormat.empty,
         serviceInfoContent: Html = HtmlFormat.empty,
         scriptElem: Option[Html] = None,
-        navTitle: String = "global.nav.title")(implicit request: Request[_], messages: play.api.i18n.Messages)
+        navTitle: Option[String] = None)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @headContent = {
     @head(
@@ -55,7 +55,7 @@
 
 @insideHeader = {
     @header_nav(
-        navTitle = Some(Messages(navTitle)),
+        navTitle = navTitle.orElse(Some(Messages("global.nav.title"))),
         navTitleLink = None,
         showBetaLink = false,
         navLinks = Some(headerNavLinks))

@@ -1,5 +1,6 @@
 #global values
 global.nav.title=Ask HMRC - Webchat
+global.nav.va.title=Ask HMRC’s digital assistant
 global.text.link.back.to.govuk.p1=Return to Contact HMRC
 global.text.link.ivr.to.govuk.p1=More ways to contact HMRC
 global.text.link.online=online
@@ -113,6 +114,5 @@ payment.problems.p6=If you cannot pay in full before your payment deadline call 
 
 #Support for Coronavirus
 support.for.coronavirus.title=Use HMRC’s digital assistant
-support.for.coronavirus.p1=Use the digital assistant to find information about coronavirus (COVID-19) support schemes, or:
 support.for.coronavirus.linkto.general.info=find general coronavirus information
-support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus help
+support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus

@@ -29,6 +29,7 @@
 )
 
 @(title: String,
+    navTitle: Option[String] = None,
     sidebarLinks: Option[Html] = None,
     contentHeader: Option[Html] = None,
     bodyClasses: Option[String] = None,
@@ -67,6 +68,7 @@
 
 @govuk_wrapper(appConfig = appConfig,
                title = title,
+               navTitle = navTitle,
                mainClass = mainClass,
                bodyClasses = bodyClasses,
                sidebar = sidebarContent,
