@@ -39,7 +39,7 @@ class SupportForCoronavirusViewSpec extends ChatViewBehaviours {
             val doc = asDocument(createView())
             val nav = doc.getElementById("proposition-menu")
             val span = nav.children.first
-            span.text mustBe messages("global.nav.title")
+            span.text mustBe messages("Ask HMRC’s digital assistant")
           }
 
           "display the correct browser title" in {

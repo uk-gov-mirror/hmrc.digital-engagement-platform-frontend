@@ -22,13 +22,15 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("support.for.coronavirus.title")) {
+@main_template(title = messages("support.for.coronavirus.title"), navTitle = Some(messages("global.nav.va.title"))) {
 
     @components.back_link()
 
     <h1 class="header-margin-top">@messages("support.for.coronavirus.title")</h1>
 
-    <p>@messages("support.for.coronavirus.p1")</p>
+    @if(!appConfig.performanceTest){
+        <div id="HMRC_Fixed_1"></div>
+    }
 
     <ul class="list list-bullet">
         <li>
@@ -38,9 +40,5 @@
             <a id="coronavirus-helpline-return-link" href="@appConfig.paymentProblemsCoronavirusHelplineReturnUrl">@messages("support.for.coronavirus.linkto.coronavirus.help")</a>
         </li>
     </ul>
-
-    @if(!appConfig.performanceTest){
-        <div id="HMRC_Fixed_1"></div>
-    }
 
 }
