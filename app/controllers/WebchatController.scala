@@ -49,7 +49,9 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   nationalClearanceHubView: NationalClearanceHubView,
                                   jobRetentionSchemeView: JobRetentionSchemeView,
                                   selfEmploymentIncomeSupportSchemeView: SelfEmploymentIncomeSupportView,
+                                  probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
+
                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -140,6 +142,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(selfEmploymentIncomeSupportSchemeView(isIvrRedirect())))
+  }
+
+  def probate: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(probateView()))
   }
 
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
