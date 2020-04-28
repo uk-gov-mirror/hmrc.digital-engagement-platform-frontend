@@ -95,5 +95,7 @@ class AppConfig @Inject()(config: Configuration,
   "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-coronavirus-job-retention-scheme"
   val probateReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-general-enquiries"
+  val inheritanceTaxReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
 }
 
