@@ -51,7 +51,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   selfEmploymentIncomeSupportSchemeView: SelfEmploymentIncomeSupportView,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
-
                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
