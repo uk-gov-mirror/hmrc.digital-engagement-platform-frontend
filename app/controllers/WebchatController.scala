@@ -148,6 +148,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def inheritanceTax: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(inheritanceTaxView(isIvrRedirect())))
+    Future.successful(Ok(inheritanceTaxView()))
   }
 }
