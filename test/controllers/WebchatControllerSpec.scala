@@ -60,6 +60,7 @@ class WebchatControllerSpec
   val selfEmploymentIncomeSupportView = app.injector.instanceOf[SelfEmploymentIncomeSupportView]
   val probateView = app.injector.instanceOf[ProbateView]
   val inheritanceTaxView = app.injector.instanceOf[InheritanceTaxView]
+  val additionalNeedsHelpView = app.injector.instanceOf[AdditionalNeedsHelpView]
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
@@ -91,6 +92,7 @@ class WebchatControllerSpec
     selfEmploymentIncomeSupportView,
     probateView,
     inheritanceTaxView,
+    additionalNeedsHelpView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -279,5 +281,14 @@ class WebchatControllerSpec
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Inheritance Tax"
     }
+
+    "Additional Needs page" in {
+      val result = controller.additionalNeedsHelp(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Get help if you need extra support"
+    }
+
   }
 }

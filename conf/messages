@@ -10,6 +10,7 @@ global.opening.times.title=Opening times:
 global.opening.times.8to4=Monday to Friday, 8am to 4pm
 global.opening.times.8to5=Monday to Friday, 8am to 5pm
 global.opening.times.9to4=Monday to Friday, 9am to 4pm
+global.opening.times.9to5=Monday to Friday, 9am to 5pm
 global.opening.times.8_30to4=Monday to Friday, 8:30am to 4pm
 global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
 global.opening.times.8to6=Monday to Friday, 8am to 6pm
@@ -112,6 +113,9 @@ probate.title=Coronavirus (COVID-19): Probate
 
 #Inheritance Tax View
 inheritance.tax.title=Coronavirus (COVID-19): Inheritance Tax
+
+#Additional Needs View
+additional.needs.title=Coronavirus (COVID-19): Get help if you need extra support
 
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed

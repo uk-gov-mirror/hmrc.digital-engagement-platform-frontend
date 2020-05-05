@@ -97,5 +97,7 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-general-enquiries"
   val inheritanceTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
+  val additionalNeedsReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/Get-help-from-HMRC's-Extra-Support-Team"
 }
 
