@@ -41,7 +41,7 @@ class TaxCreditsViewSpec extends ChatViewBehaviours {
       "Opening times:",
       "Monday to Saturday, 8am to 10pm",
       "Sunday, 9am to 10pm",
-      "Open 8am to 4pm on bank holidays."
+      "Bank Holidays, 8am to 4pm."
     )
   }
 }
