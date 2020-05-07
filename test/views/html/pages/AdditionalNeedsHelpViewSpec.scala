@@ -30,7 +30,7 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours {
 
     "Additional Needs Help view" must {
       val returnUrl: String =
-        "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrcs-extra-support-team"
+        "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
 
       behave like normalPage(
         createView,
