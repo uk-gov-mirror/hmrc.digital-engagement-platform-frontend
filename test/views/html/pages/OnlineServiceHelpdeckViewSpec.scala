@@ -40,7 +40,7 @@ class OnlineServiceHelpdeckViewSpec extends ChatViewBehaviours {
       returnUrl,
       "Opening times:",
       "Monday to Sunday, 8am to 10pm",
-      "Closed weekends and bank holidays."
+      "Closed bank holidays."
     )
   }
 }
