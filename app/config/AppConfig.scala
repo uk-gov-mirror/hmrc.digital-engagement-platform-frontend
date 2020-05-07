@@ -98,6 +98,6 @@ class AppConfig @Inject()(config: Configuration,
   val inheritanceTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
   val additionalNeedsReturnUrl: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrcs-extra-support-team"
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
 }
 
