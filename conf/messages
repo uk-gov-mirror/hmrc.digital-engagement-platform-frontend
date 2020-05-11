@@ -29,10 +29,6 @@ global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4p
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
 
-#JRS and SEISS temp opening times
-temp.opening.times.mon.thur=Monday to Friday, 8am to 8pm
-temp.closed.times.weekends=Closed weekends and bank holidays.
-
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC
