@@ -34,8 +34,8 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours {
 
       behave like normalPage(
         createView,
-        "Coronavirus (COVID-19): Get help if you need extra support",
-        "Coronavirus (COVID-19): Get help if you need extra support",
+        "Get help if you need extra support: webchat",
+        "Get help if you need extra support: webchat",
         "Return to Contact HMRC",
         returnUrl,
         "Opening times:",
