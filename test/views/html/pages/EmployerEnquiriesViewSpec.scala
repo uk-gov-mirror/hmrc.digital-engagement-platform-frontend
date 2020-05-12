@@ -37,11 +37,7 @@ class EmployerEnquiriesViewSpec extends ChatViewBehaviours {
       "Employers: webchat",
       "Employers: webchat",
       "Return to Contact HMRC",
-      returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Saturday, 8am to 4pm",
-      "Closed Sunday and bank holidays."
+      returnUrl
     )
   }
 }

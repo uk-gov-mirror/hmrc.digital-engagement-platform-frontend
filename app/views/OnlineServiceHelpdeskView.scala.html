@@ -30,14 +30,6 @@
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("online.services.title")</h1>
 
-    <div class="govuk-inset-text">
-        <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.mon.sun.8to10")</p>
-        <p>@messages("global.closed.time.bankholidays")</p>
-    </div>
-
-    <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
-
     @if(!appConfig.performanceTest){
         <div id="HMRC_Fixed_1"></div>
     }
