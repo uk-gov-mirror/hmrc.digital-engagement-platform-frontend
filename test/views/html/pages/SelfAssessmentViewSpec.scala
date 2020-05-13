@@ -37,11 +37,7 @@ class SelfAssessmentViewSpec extends ChatViewBehaviours {
       "Self Assessment: webchat",
       "Self Assessment: webchat",
       "Return to Contact HMRC",
-      returnUrl,
-      "Opening times:",
-      "Monday to Saturday, 8am to 10pm",
-      "Sunday, 9am to 10pm",
-      "Closed on bank holidays."
+      returnUrl
     )
   }
 }
