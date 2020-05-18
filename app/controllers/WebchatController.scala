@@ -49,6 +49,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   nationalClearanceHubView: NationalClearanceHubView,
                                   jobRetentionSchemeView: JobRetentionSchemeView,
                                   selfEmploymentIncomeSupportSchemeView: SelfEmploymentIncomeSupportView,
+                                  c19EmployerEnquiriesView: C19EmployerEnquiriesView,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additioonalNeedsHelpView: AdditionalNeedsHelpView,
@@ -146,6 +147,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def selfEmploymentIncomeSupportScheme: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(selfEmploymentIncomeSupportSchemeView(isIvrRedirect())))
+  }
+
+  def c19EmployerEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(c19EmployerEnquiriesView(isIvrRedirect())))
   }
 
   def probate: Action[AnyContent] = Action.async { implicit request =>

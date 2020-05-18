@@ -58,6 +58,7 @@ class WebchatControllerSpec
   val nationalClearanceHubView = app.injector.instanceOf[NationalClearanceHubView]
   val jobRetentionSchemeView = app.injector.instanceOf[JobRetentionSchemeView]
   val selfEmploymentIncomeSupportView = app.injector.instanceOf[SelfEmploymentIncomeSupportView]
+  val c19EmployerEnquiriesView = app.injector.instanceOf[C19EmployerEnquiriesView]
   val probateView = app.injector.instanceOf[ProbateView]
   val inheritanceTaxView = app.injector.instanceOf[InheritanceTaxView]
   val additionalNeedsHelpView = app.injector.instanceOf[AdditionalNeedsHelpView]
@@ -90,6 +91,7 @@ class WebchatControllerSpec
     nationalClearanceHubView,
     jobRetentionSchemeView,
     selfEmploymentIncomeSupportView,
+    c19EmployerEnquiriesView,
     probateView,
     inheritanceTaxView,
     additionalNeedsHelpView,
@@ -264,6 +266,14 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Self-Employment Income Support Scheme"
+    }
+
+    "C19 Employer Enquiries page" in {
+      val result = controller.c19EmployerEnquiries(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Statutory sick pay rebate scheme"
     }
 
     "Probate page" in {
