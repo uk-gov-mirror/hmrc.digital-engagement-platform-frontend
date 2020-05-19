@@ -112,6 +112,9 @@ probate.title=Coronavirus (COVID-19): Probate
 #Inheritance Tax View
 inheritance.tax.title=Coronavirus (COVID-19): Inheritance Tax
 
+#C19 Employer Enquiries
+c19EmployerEnquiries.title=Coronavirus (COVID-19): Statutory Sick Pay rebate scheme
+
 #Additional Needs View
 additional.needs.title=HMRC’s Extra Support team: webchat
 

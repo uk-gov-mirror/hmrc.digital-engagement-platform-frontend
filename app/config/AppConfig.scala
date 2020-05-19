@@ -98,6 +98,8 @@ class AppConfig @Inject()(config: Configuration,
   "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-coronavirus-job-retention-scheme"
   val probateReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-general-enquiries"
+  val c19EmployerEnquiriesReturnRul: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-statutory-sick-pay-rebate-scheme"
   val inheritanceTaxReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-and-inheritance-tax-enquiries"
   val additionalNeedsReturnUrl: String =

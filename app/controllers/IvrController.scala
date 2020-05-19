@@ -82,4 +82,7 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(controllers.routes.WebchatController.selfEmploymentIncomeSupportScheme().url + param))
   }
 
+  def c19EmployerEnquiries: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.c19EmployerEnquiries().url + param))
+  }
 }
