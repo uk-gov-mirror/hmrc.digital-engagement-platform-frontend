@@ -273,7 +273,7 @@ class WebchatControllerSpec
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
-      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Statutory sick pay rebate scheme"
+      doc.select("h1").text() shouldBe "Coronavirus (COVID-19): Statutory Sick Pay rebate scheme"
     }
 
     "Probate page" in {

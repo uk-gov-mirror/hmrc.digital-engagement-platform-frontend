@@ -34,8 +34,8 @@ class C19EmployerEnquiriesViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Coronavirus (COVID-19): Statutory sick pay rebate scheme",
-      "Coronavirus (COVID-19): Statutory sick pay rebate scheme",
+      "Coronavirus (COVID-19): Statutory Sick Pay rebate scheme",
+      "Coronavirus (COVID-19): Statutory Sick Pay rebate scheme",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
