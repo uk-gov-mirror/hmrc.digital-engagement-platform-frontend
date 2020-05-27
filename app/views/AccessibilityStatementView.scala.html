@@ -1,0 +1,123 @@
+@*
+ * Copyright 2020 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@import config.AppConfig
+@import uk.gov.hmrc.urls.Link
+
+@this(
+    main_template: MainTemplate,
+    appConfig: AppConfig)
+
+
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+
+@main_template(title = messages("accessibility.statement.title")) {
+
+    <header class="page-header">
+      <h1 id="page-header">@messages("accessibility.statement.title")</h1>
+    </header>
+
+    <p>@messages("accessibility.statement.askhmrcwebchat.p1")<p>
+
+    <p>@messages("accessibility.statement.askhmrcwebchat.p2")</p>
+
+    <ul class="bullets">
+        <li>@messages("accessibility.statement.askhmrcwebchat.li1")</li>
+        <li>@messages("accessibility.statement.askhmrcwebchat.li2")</li>
+        <li>@messages("accessibility.statement.askhmrcwebchat.li3")</li>
+        <li>@messages("accessibility.statement.askhmrcwebchat.li4")</li>
+    </ul>
+
+    <p>
+        @Html(
+            messages(
+                "accessibility.statement.askhmrcwebchat.p3",
+                Link.toExternalPage(url = {appConfig.abilityNetUrl},
+                value = Some(messages("accessibility.statement.askhmrcwebchat.p4"))).toHtml
+            )
+        )
+    </p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.howaccessible.h2")</h2>
+
+    <p>@messages("accessibility.statement.howaccessible.p1")</p>
+
+    <ul class="bullets">
+        <li>@messages("accessibility.statement.howaccessible.li1")</li>
+        <li>@messages("accessibility.statement.howaccessible.li2")</li>
+        <li>@messages("accessibility.statement.howaccessible.li3")</li>
+        <li>@messages("accessibility.statement.howaccessible.li4")</li>
+    </ul>
+
+    <h2 class="heading-large">@messages("accessibility.statement.reportingproblems.h2")</h2>
+
+    <p>
+        @messages("accessibility.statement.reportingproblems.p1")
+        <a href="mailto:@{appConfig.reportingProblemsEmail}">
+            @Some(messages("accessibility.statement.reportingproblems.emailtext"))</a>
+    </p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.Enforcementprocedure.h2")</h2>
+
+    <p>
+        @Html(
+            messages(
+                "accessibility.statement.Enforcementprocedure.p1",
+                Link.toExternalPage(url = {appConfig.equalityAdvisoryServiceUrl},
+                value = Some(messages("accessibility.statement.Enforcementprocedure.p2"))).toHtml
+            )
+        )
+    </p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.technicalinformation.h2")</h2>
+
+    <p>@messages("accessibility.statement.technicalinformation.p1")</p>
+
+    <p>
+        @Html(
+            messages(
+                "accessibility.statement.technicalinformation.p2",
+                Link.toExternalPage(url = {appConfig.technicalInformationUrl},
+                    value = Some(messages("accessibility.statement.technicalinformation.urltext"))).toHtml
+            )
+        )
+        @messages("accessibility.statement.technicalinformation.p3")
+    </p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.nonaccessiblecontent.h2")</h2>
+
+    <p>@messages("accessibility.statement.nonaccessiblecontent.p1")</p>
+
+    <h2 class="bullets">@messages("accessibility.statement.nonaccessiblecontent.h2bullets")</h2>
+
+    <ul class="bullets">
+        <li>@messages("accessibility.statement.nonaccessiblecontent.li1")</li>
+        <li>@messages("accessibility.statement.nonaccessiblecontent.li2")</li>
+        <li>@messages("accessibility.statement.nonaccessiblecontent.li3")</li>
+    </ul>
+
+    <h2 class="heading-large">@messages("accessibility.statement.howwetested.h2")</h2>
+
+    <p>@messages("accessibility.statement.howwetested.p1")</p>
+    <p>@messages("accessibility.statement.howwetested.p2")</p>
+    <p>@messages("accessibility.statement.howwetested.p3")</p>
+    <p>@messages("accessibility.statement.howwetested.p4")</p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.whatweredoing.h2")</h2>
+
+    <p>@messages("accessibility.statement.whatweredoing.p1")</p>
+    <p>@messages("accessibility.statement.whatweredoing.p2")</p>
+}
