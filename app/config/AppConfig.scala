@@ -106,5 +106,10 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
   val nonUkResidentEntertainersUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/non-uk-resident-entertainers"
+
+  val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
+  val reportingProblemsEmail: String = "digitalengagementplatform@hmrc.gov.uk"
+  val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
+  val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
 }
 
