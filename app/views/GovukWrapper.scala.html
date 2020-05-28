@@ -75,6 +75,13 @@
 
 @footerTop = {}
 
+@footerLinks = {
+    @footer_links()
+    <ul>
+        <a href="@appConfig.accessibilityStatementUrl" target="_blank">Accessibility Statement</a>
+    </ul>
+}
+
 @serviceInfoBlock = {
     @serviceInfo(
         betaBanner = HtmlFormat.empty,
@@ -100,4 +107,11 @@
         sidebar = sidebar)
 }
 
-@hmrcGovUkTemplate(Some(title), bodyClasses)(headContent, bodyEnd, insideHeader, afterHeader, footerTop, Some(footer_links()), true)(content)
+@hmrcGovUkTemplate(Some(title), bodyClasses)(
+    head = headContent,
+    bodyEnd = bodyEnd,
+    insideHeader = insideHeader,
+    afterHeader = afterHeader,
+    footerTop = footerTop,
+    footerLinks = Some(footerLinks),
+    nav = true)(content)

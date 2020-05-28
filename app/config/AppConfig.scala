@@ -111,5 +111,7 @@ class AppConfig @Inject()(config: Configuration,
   val reportingProblemsEmail: String = "digitalengagementplatform@hmrc.gov.uk"
   val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
   val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
+
+  val accessibilityStatementUrl: String = "https://www.tax.service.gov.uk/ask-hmrc/accessibility-statement"
 }
 
