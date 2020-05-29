@@ -37,6 +37,7 @@ class AppConfig @Inject()(config: Configuration,
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
   val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
+  val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
@@ -111,5 +112,9 @@ class AppConfig @Inject()(config: Configuration,
   val reportingProblemsEmail: String = "digitalengagementplatform@hmrc.gov.uk"
   val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
   val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
-}
 
+  val accessibilityStatementUrl: String = "https://www.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlDev: String = "https://www.development.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlQa: String = "https://www.qa.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlStaging: String = "https://www.staging.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+}
