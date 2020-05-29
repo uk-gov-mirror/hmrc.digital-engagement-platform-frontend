@@ -76,6 +76,24 @@
 
 @footerTop = {}
 
+@footerLinks = {
+    @footer_links()
+    <ul>
+        @if(appConfig.accessibilityStatementMode == "prod") {
+            <a href="@appConfig.accessibilityStatementUrl" target="_blank">Accessibility Statement</a>
+        }
+        @if(appConfig.accessibilityStatementMode == "dev") {
+            <a href="@appConfig.accessibilityStatementUrlDev" target="_blank">Accessibility Statement</a>
+        }
+        @if(appConfig.accessibilityStatementMode == "qa") {
+            <a href="@appConfig.accessibilityStatementUrlQa" target="_blank">Accessibility Statement</a>
+        }
+        @if(appConfig.accessibilityStatementMode == "staging") {
+            <a href="@appConfig.accessibilityStatementUrlStaging" target="_blank">Accessibility Statement</a>
+        }
+    </ul>
+}
+
 @serviceInfoBlock = {
     @serviceInfo(
         betaBanner = HtmlFormat.empty,
@@ -101,4 +119,11 @@
         sidebar = sidebar)
 }
 
-@hmrcGovUkTemplate(Some(title), bodyClasses)(headContent, bodyEnd, insideHeader, afterHeader, footerTop, Some(footer_links()), true)(content)
+@hmrcGovUkTemplate(Some(title), bodyClasses)(
+    head = headContent,
+    bodyEnd = bodyEnd,
+    insideHeader = insideHeader,
+    afterHeader = afterHeader,
+    footerTop = footerTop,
+    footerLinks = Some(footerLinks),
+    nav = true)(content)
