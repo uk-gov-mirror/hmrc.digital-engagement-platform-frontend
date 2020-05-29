@@ -117,4 +117,5 @@ class AppConfig @Inject()(config: Configuration,
   val accessibilityStatementUrlDev: String = "https://www.development.tax.service.gov.uk/ask-hmrc/accessibility-statement"
   val accessibilityStatementUrlQa: String = "https://www.qa.tax.service.gov.uk/ask-hmrc/accessibility-statement"
   val accessibilityStatementUrlStaging: String = "https://www.staging.tax.service.gov.uk/ask-hmrc/accessibility-statement"
+  val accessibilityStatementUrlLocal: String = "http://localhost:9956/ask-hmrc/accessibility-statement"
 }

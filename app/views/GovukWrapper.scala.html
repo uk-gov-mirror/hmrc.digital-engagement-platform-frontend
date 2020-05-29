@@ -81,6 +81,9 @@
         @if(appConfig.accessibilityStatementMode == "prod") {
             <a href="@appConfig.accessibilityStatementUrl" target="_blank">Accessibility Statement</a>
         }
+        @if(appConfig.accessibilityStatementMode == "local") {
+            <a href="@appConfig.accessibilityStatementUrlLocal" target="_blank">Accessibility Statement</a>
+        }
         @if(appConfig.accessibilityStatementMode == "dev") {
             <a href="@appConfig.accessibilityStatementUrlDev" target="_blank">Accessibility Statement</a>
         }
