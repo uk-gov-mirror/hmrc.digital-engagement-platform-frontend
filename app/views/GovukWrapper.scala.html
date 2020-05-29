@@ -78,7 +78,18 @@
 @footerLinks = {
     @footer_links()
     <ul>
-        <a href="@appConfig.accessibilityStatementUrl" target="_blank">Accessibility Statement</a>
+        @if(appConfig.accessibilityStatementMode == "prod") {
+            <a href="@appConfig.accessibilityStatementUrl" target="_blank">Accessibility Statement</a>
+        }
+        @if(appConfig.accessibilityStatementMode == "dev") {
+            <a href="@appConfig.accessibilityStatementUrlDev" target="_blank">Accessibility Statement</a>
+        }
+        @if(appConfig.accessibilityStatementMode == "qa") {
+            <a href="@appConfig.accessibilityStatementUrlQa" target="_blank">Accessibility Statement</a>
+        }
+        @if(appConfig.accessibilityStatementMode == "staging") {
+            <a href="@appConfig.accessibilityStatementUrlStaging" target="_blank">Accessibility Statement</a>
+        }
     </ul>
 }
 
