@@ -24,7 +24,7 @@
 		var localData = d.querySelectorAll('[data-gtag]');
 		var localObj = {
 			'event': 'DOMContentLoaded',
-			'Status change': document.getElementById('HMRC_Fixed_1').value,
+			'Status change': document.getElementById('HMRC_Fixed_1').getAttribute('value'),
 			'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
 			'Hit TimeStamp': new Date().toUTCString()
 		};
