@@ -24,6 +24,7 @@
 		var localData = d.querySelectorAll('[data-gtag]');
 		var localObj = {
 			'event': 'DOMContentLoaded',
+			'Status change': document.getAttribute('HMRC_Fixed_1'),
 			'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
 			'Hit TimeStamp': new Date().toUTCString()
 		};
@@ -33,21 +34,5 @@
 
 		w.dataLayer.push(localObj);
 	})
-
-	ready(function() {
-    		w.dataLayer = w.dataLayer || [];
-    		var localData = d.querySelectorAll('[data-gtag]');
-    		var localObj = {
-    			'event': 'DOMContentLoaded',
-    			'Status change': 'change tag',
-    			'change': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
-    			'Hit TimeStamp': new Date().toUTCString()
-    		};
-    		Array.prototype.forEach.call(localData, function (el, i) {
-    			localObj = Object.assign( localObj, parseData(el.getAttribute('data-gtag')) )
-    		});
-
-    		w.dataLayer.push(localObj);
-    	})
 
 })(document,window);
