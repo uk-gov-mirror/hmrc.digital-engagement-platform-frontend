@@ -35,7 +35,7 @@
           if(count<3) {
             waitForEl(selector,callback,count);
           } else {return;}
-        }, 1000);
+        }, 10000);
       }
     }
 
