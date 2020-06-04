@@ -38,9 +38,11 @@
 			'Status change 10': document.getElementById('HMRC_Fixed_1').onChange = function () {
                                     document.getElementById('hidden_field_id').value = document.getElementById('span').innerHTML;
                                 },
-
-
-
+            'Status change 11': if (document.querySelector('[id=HMRC_Fixed_1] div span').innerText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
+                                    'Not Available'
+                                } else {
+                                    'Available'
+                                }
 
 			'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
 			'Hit TimeStamp': new Date().toUTCString()
