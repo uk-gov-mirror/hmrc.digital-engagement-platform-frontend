@@ -19,24 +19,41 @@
 		return obj
 	}
 
-
-
 	ready(function() {
 		w.dataLayer = w.dataLayer || [];
 		var localData = d.querySelectorAll('[data-gtag]');
-		var nuanceText = document.querySelector('[id=HMRC_Fixed_1] div span').innerText;
 
-        if(nuanceText == "Advisers are available to chat.") {
-            var availability = 'Ready';
-        } else if(nuanceText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
-            var availability = 'Busy';
-        } else if(nuanceText == "You are in a webchat.") {
-            var availability = 'In Progress';
-        } else if(nuanceText == "Our webchat is now closed.") {
-            var availability = 'Offline';
-        } else {
-            var availability = 'Not Responding';
-        }
+    var waitForEl = function(selector, callback, count) {
+      if (jQuery(selector).length) {
+        callback();
+      } else {
+        setTimeout(function() {
+          if(!count) {
+           count=0;
+          }
+          count++;
+          if(count<3) {
+            waitForEl(selector,callback,count);
+          } else {return;}
+        }, 1000);
+      }
+    }
+
+    var nuanceText = waitForEl("[id=HMRC_Fixed_1] div span", function() {
+      document.querySelector('[id=HMRC_Fixed_1] div span').innerText;
+    });
+
+    if(nuanceText == "Advisers are available to chat.") {
+        var availability = 'Ready';
+    } else if(nuanceText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
+        var availability = 'Busy';
+    } else if(nuanceText == "You are in a webchat.") {
+        var availability = 'In Progress';
+    } else if(nuanceText == "Our webchat is now closed.") {
+        var availability = 'Offline';
+    } else {
+        var availability = 'Not Responding';
+    }
 
 		var localObj = {
 			'event': 'DOMContentLoaded',
