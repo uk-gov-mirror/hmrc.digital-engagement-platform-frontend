@@ -24,7 +24,20 @@
 	ready(function() {
 		w.dataLayer = w.dataLayer || [];
 		var localData = d.querySelectorAll('[data-gtag]');
-        var availability = (document.querySelector('[id=HMRC_Fixed_1] div span').innerText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") ? "Not Available":"Available";
+		var nuanceText = document.querySelector('[id=HMRC_Fixed_1] div span').innerText;
+
+        if(nuanceText == "Advisers are available to chat.") {
+            var availability = 'Ready';
+        } else if(nuanceText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
+            var availability = 'Busy';
+        } else if(nuanceText == "You are in a webchat.") {
+            var availability = 'In Progress';
+        } else if(nuanceText == "Our webchat is now closed.") {
+            var availability = 'Offline';
+        } else {
+            var availability = 'Not Responding';
+        }
+
 		var localObj = {
 			'event': 'DOMContentLoaded',
 			'Status change 1': document.getElementById('HMRC_Fixed_1').getAttribute('span'),
@@ -35,7 +48,7 @@
 			'Status change 6': document.getElementById('HMRC_Fixed_1').querySelectorAll('span'),
 			'Status change 7': document.getElementById('HMRC_Fixed_1').querySelectorAll('span').value,
 			'Status change 8': document.getElementById('HMRC_Fixed_1').innerHTML,
-			'Status change 9': document.getElementById('HMRC_Fixed_1').innerText,
+			//'Status change 9': document.getElementById('HMRC_Fixed_1').innerText,
 			'Status change 10': document.getElementById('HMRC_Fixed_1').onChange = function () {
                                     document.getElementById('hidden_field_id').value = document.getElementById('span').innerHTML;
                                 },
