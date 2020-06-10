@@ -39,13 +39,13 @@ class AccessibilityStatementViewSpec extends ChatViewBehaviours {
 
       "display the correct browser title" in {
         val doc = asDocument(createView())
-        assertEqualsMessage(doc, "title", s"Accessibility for webchat")
+        assertEqualsMessage(doc, "title", s"Accessibility statement for webchat and digital assistant")
       }
 
       "display the correct page title" in {
         val doc = asDocument(createView())
         doc.getElementsByTag("h1")
-        assertPageTitleEqualsMessage(doc, s"Accessibility for webchat")
+        assertPageTitleEqualsMessage(doc, s"Accessibility statement for webchat and digital assistant")
       }
     }
   }
