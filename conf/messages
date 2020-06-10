@@ -200,7 +200,7 @@ accessibility.statement.contactus.urltext=contact us.
 accessibility.statement.technicalinformation.h2=Technical information about this webchat’s accessibility
 accessibility.statement.technicalinformation.p1=HMRC is committed to making this service accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No.2) Accessibility Regulations 2018.
 accessibility.statement.technicalinformation.p2=This service is partially compliant with the {0}
-accessibility.statement.technicalinformation.urltext=Web Content Accessibility Guidelines version 2.1
+accessibility.statement.technicalinformation.urltext=Web Content Accessibility Guidelines version 2.1 (opens in a new tab)
 accessibility.statement.technicalinformation.p3=AA standard, due to the non-compliances listed below.
 
 accessibility.statement.nonaccessiblecontent.h2=Non accessible content
