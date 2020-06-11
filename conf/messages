@@ -136,11 +136,20 @@ payment.problems.p4=We have fewer advisers available to answer your calls due to
 payment.problems.p5=Payment Support Service (PSS) helpline
 payment.problems.p6=If you cannot pay in full before your payment deadline call the PSS helpline. Anyone can use this service, not just businesses.
 
+#VA
+#General
+va.global.h1.title=Use HMRC’s digital assistant
+va.global.h1.bullet.title=You can also:
+
 #Support for Coronavirus
-support.for.coronavirus.title=Use HMRC’s digital assistant
 support.for.coronavirus.p1=You can also:
 support.for.coronavirus.linkto.general.info=find general coronavirus information
 support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus help
+
+#Tax Credits Enquiries
+tax-credits-enquiries.p1=Use our digital assistant to find information about tax credits.
+tax-credits-enquiries.li1=manage your tax credits online
+tax-credits-enquiries.li2=find more ways to contact HMRC
 
 #Accessibility Statement
 accessibility.statement.title=Accessibility statement for webchat and digital assistant
