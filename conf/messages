@@ -155,12 +155,12 @@ accessibility.statement.title=Accessibility statement for webchat and digital as
 
 accessibility.statement.aboutthisservice.p1=This accessibility statement explains how accessible this service is, what to do if you have difficulty using it, and how to report accessibility problems with the service.
 accessibility.statement.aboutthisservice.p2=This service is part of the wider GOV.UK website {0}.
-accessibility.statement.aboutthisservice.p2urltext=There is a separate accessibility statement or the main GOV.UK website. (opens in a new tab)
+accessibility.statement.aboutthisservice.p2urltext=There is a separate accessibility statement for the main GOV.UK website. (opens in a new tab)
 accessibility.statement.aboutthisservice.p3=This page only contains information about the Ask HMRC webchat and digital assistant services, available at {0}
 accessibility.statement.aboutthisservice.p3urltext=https://www.tax.service.gov.uk/
 
 accessibility.statement.usingtheservice.h2=Using the webchat and digital assistant
-accessibility.statement.usingtheservice.p1=The Ask HMRC webchat is a service that enables you to communicate with an HMRC adviser over the internet. The HMRC digital assistant is a service that enables you to communicate with a digital assistant over the internet.
+accessibility.statement.usingtheservice.p1=The Ask HMRC webchat and digital assistant are services that enable you to communicate with an HMRC adviser or digital assistant over the internet.
 accessibility.statement.usingtheservice.p2=Both services are built and run by Nuance, a provider of customer engagement software. We want as many people as possible to be able to use this website and webchat. This means you should be able to:
 accessibility.statement.usingtheservice.li1=zoom in up to 200% without the text spilling off the screen
 accessibility.statement.usingtheservice.li2=get from the start of the webchat to the end using just a keyboard
@@ -170,7 +170,7 @@ accessibility.statement.usingtheservice.p3=We have also made the text in the ser
 accessibility.statement.askhmrcwebchat.p3={0} has advice on making your device easier to use if you have a disability.
 accessibility.statement.askhmrcwebchat.p4=AbilityNet (opens in a new tab)
 
-accessibility.statement.howaccessible.h2=How accessible this webchat is
+accessibility.statement.howaccessible.h2=How accessible this service is
 accessibility.statement.howaccessible.p1a=This service is partially compliant with the {0}
 accessibility.statement.howaccessible.urltext=Web Content Accessibility Guidelines version 2.1 (opens in a new tab)
 accessibility.statement.howaccessible.p1b=AA standard.
