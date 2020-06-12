@@ -30,16 +30,40 @@
       <h1 id="page-header">@messages("accessibility.statement.title")</h1>
     </header>
 
-    <p>@messages("accessibility.statement.askhmrcwebchat.p1")<p>
+    <p>@messages("accessibility.statement.aboutthisservice.p1")<p>
 
-    <p>@messages("accessibility.statement.askhmrcwebchat.p2")</p>
+    <p>
+        @Html(
+            messages(
+                "accessibility.statement.aboutthisservice.p2",
+                Link.toExternalPage(url = {appConfig.generalAccessibilityStatementUrl},
+                value = Some(messages("accessibility.statement.aboutthisservice.p2urltext"))).toHtml
+            )
+        )
+    </p>
+    <p>
+        @Html(
+            messages(
+                "accessibility.statement.aboutthisservice.p3",
+                Link.toExternalPage(url = {appConfig.hmRevenueCustomsUrl},
+                value = Some(messages("accessibility.statement.aboutthisservice.p3urltext"))).toHtml
+            )
+        )
+    </p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.usingtheservice.h2")</h2>
+
+    <p>@messages("accessibility.statement.usingtheservice.p1")<p>
+    <p>@messages("accessibility.statement.usingtheservice.p2")</p>
 
     <ul class="bullets">
-        <li>@messages("accessibility.statement.askhmrcwebchat.li1")</li>
-        <li>@messages("accessibility.statement.askhmrcwebchat.li2")</li>
-        <li>@messages("accessibility.statement.askhmrcwebchat.li3")</li>
-        <li>@messages("accessibility.statement.askhmrcwebchat.li4")</li>
+        <li>@messages("accessibility.statement.usingtheservice.li1")</li>
+        <li>@messages("accessibility.statement.usingtheservice.li2")</li>
+        <li>@messages("accessibility.statement.usingtheservice.li3")</li>
+        <li>@messages("accessibility.statement.usingtheservice.li4")</li>
     </ul>
+
+    <p>@messages("accessibility.statement.usingtheservice.p3")</p>
 
     <p>
         @Html(
@@ -53,13 +77,31 @@
 
     <h2 class="heading-large">@messages("accessibility.statement.howaccessible.h2")</h2>
 
-    <p>@messages("accessibility.statement.howaccessible.p1")</p>
+    <p>
+        @Html(
+            messages(
+                "accessibility.statement.howaccessible.p1a",
+                Link.toExternalPage(url = {appConfig.technicalInformationUrl},
+                value = Some(messages("accessibility.statement.howaccessible.urltext"))).toHtml
+            )
+        )
+        @messages("accessibility.statement.howaccessible.p1b")
+    </p>
+
+    <p>@messages("accessibility.statement.howaccessible.p2")</p>
 
     <ul class="bullets">
         <li>@messages("accessibility.statement.howaccessible.li1")</li>
         <li>@messages("accessibility.statement.howaccessible.li2")</li>
         <li>@messages("accessibility.statement.howaccessible.li3")</li>
         <li>@messages("accessibility.statement.howaccessible.li4")</li>
+        <li>@messages("accessibility.statement.howaccessible.li5")</li>
+        <li>@messages("accessibility.statement.howaccessible.li6")</li>
+        <li>@messages("accessibility.statement.howaccessible.li7")</li>
+        <li>@messages("accessibility.statement.howaccessible.li8")</li>
+        <li>@messages("accessibility.statement.howaccessible.li9")</li>
+        <li>@messages("accessibility.statement.howaccessible.li10")</li>
+        <li>@messages("accessibility.statement.howaccessible.li11")</li>
     </ul>
 
     <h2 class="heading-large">@messages("accessibility.statement.reportingproblems.h2")</h2>
@@ -70,14 +112,40 @@
             @Some(messages("accessibility.statement.reportingproblems.emailtext"))</a>
     </p>
 
-    <h2 class="heading-large">@messages("accessibility.statement.Enforcementprocedure.h2")</h2>
+    <h2 class="heading-large">@messages("accessibility.statement.ifyournothappy.h2")</h2>
+
+    <p>
+        @messages("accessibility.statement.ifyournothappy.p1a")
+        @Html(
+            messages(
+                "accessibility.statement.ifyournothappy.p1b",
+                Link.toExternalPage(url = {appConfig.equalityAdvisoryServiceUrl},
+                value = Some(messages("accessibility.statement.ifyournothappy.eassurltext"))).toHtml
+            )
+        )
+
+        @Html(
+            messages(
+                "accessibility.statement.ifyournothappy.p1c",
+                Link.toExternalPage(url = {appConfig.equalityOrgUrl},
+                value = Some(messages("accessibility.statement.ifyournothappy.ecniurltext"))).toHtml
+            )
+        )
+        @messages("accessibility.statement.ifyournothappy.p1d")
+    </p>
+
+    <h2 class="heading-large">@messages("accessibility.statement.contactus.h2")</h2>
+
+    <p>@messages("accessibility.statement.contactus.p1")</p>
+
+    <p>@messages("accessibility.statement.contactus.p2")</p>
 
     <p>
         @Html(
             messages(
-                "accessibility.statement.Enforcementprocedure.p1",
-                Link.toExternalPage(url = {appConfig.equalityAdvisoryServiceUrl},
-                value = Some(messages("accessibility.statement.Enforcementprocedure.p2"))).toHtml
+                "accessibility.statement.contactus.p3",
+                Link.toExternalPage(url = {appConfig.getHelpHmrcExtraSupportUrl},
+                value = Some(messages("accessibility.statement.contactus.urltext"))).toHtml
             )
         )
     </p>
@@ -101,12 +169,14 @@
 
     <p>@messages("accessibility.statement.nonaccessiblecontent.p1")</p>
 
-    <h2 class="bullets">@messages("accessibility.statement.nonaccessiblecontent.h2bullets")</h2>
+    <h2>@messages("accessibility.statement.nonaccessiblecontent.h2bullets")</h2>
 
     <ul class="bullets">
         <li>@messages("accessibility.statement.nonaccessiblecontent.li1")</li>
         <li>@messages("accessibility.statement.nonaccessiblecontent.li2")</li>
         <li>@messages("accessibility.statement.nonaccessiblecontent.li3")</li>
+        <li>@messages("accessibility.statement.nonaccessiblecontent.li4")</li>
+        <li>@messages("accessibility.statement.nonaccessiblecontent.li5")</li>
     </ul>
 
     <h2 class="heading-large">@messages("accessibility.statement.howwetested.h2")</h2>
@@ -116,8 +186,4 @@
     <p>@messages("accessibility.statement.howwetested.p3")</p>
     <p>@messages("accessibility.statement.howwetested.p4")</p>
 
-    <h2 class="heading-large">@messages("accessibility.statement.whatweredoing.h2")</h2>
-
-    <p>@messages("accessibility.statement.whatweredoing.p1")</p>
-    <p>@messages("accessibility.statement.whatweredoing.p2")</p>
 }
