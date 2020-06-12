@@ -29,7 +29,7 @@
       } else {
         setTimeout(function() {
           waitForEl(selector, callback);
-        }, 3000);
+        }, 10000);
       }
     };
 
@@ -55,19 +55,7 @@
 
 	   	var localObj = {
 			  'event': 'DOMContentLoaded',
-			  'Status change 1': document.getElementById('HMRC_Fixed_1').getAttribute('span'),
-			  'Status change 2': document.getElementById('HMRC_Fixed_1').value,
-			  'Status change 3': document.getElementById('HMRC_Fixed_1').value = document.getElementById('span'),
-			  'Status change 4': document.getElementById('span'),
-			  'Status change 5': document.getElementById('HMRC_Fixed_1').span,
-			  'Status change 6': document.getElementById('HMRC_Fixed_1').querySelectorAll('span'),
-			  'Status change 7': document.getElementById('HMRC_Fixed_1').querySelectorAll('span').value,
-			  'Status change 8': document.getElementById('HMRC_Fixed_1').innerHTML,
-			  //'Status change 9': document.getElementById('HMRC_Fixed_1').innerText,
-			  'Status change 10': document.getElementById('HMRC_Fixed_1').onChange = function () {
-                                      document.getElementById('hidden_field_id').value = document.getElementById('span').innerHTML;
-                                  },
-        'Status change 11': availability,
+        'Status': availability,
 			  'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
 			  'Hit TimeStamp': new Date().toUTCString()
 	  	};
