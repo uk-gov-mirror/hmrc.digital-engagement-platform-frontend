@@ -19,8 +19,23 @@
 		return obj
 	}
 
-  var nuanceText = document.querySelector('[id=HMRC_Fixed_1] div span').innerText;
+  var nuanceText;
   var availability;
+  $(window).on("load", function() {
+
+    var waitForEl = function(selector, callback) {
+      if (jQuery(selector).length) {
+        callback();
+      } else {
+        setTimeout(function() {
+          waitForEl(selector, callback);
+        }, 3000);
+      }
+    };
+
+    waitForEl('#HMRC_Fixed_1 div span', function() {
+       nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
+    });
 
   if(nuanceText == "Advisers are available to chat.") {
       availability = 'Ready';
@@ -38,29 +53,30 @@
 	  	w.dataLayer = w.dataLayer || [];
 	  	var localData = d.querySelectorAll('[data-gtag]');
 
-		var localObj = {
-			'event': 'DOMContentLoaded',
-			'Status change 1': document.getElementById('HMRC_Fixed_1').getAttribute('span'),
-			'Status change 2': document.getElementById('HMRC_Fixed_1').value,
-			'Status change 3': document.getElementById('HMRC_Fixed_1').value = document.getElementById('span'),
-			'Status change 4': document.getElementById('span'),
-			'Status change 5': document.getElementById('HMRC_Fixed_1').span,
-			'Status change 6': document.getElementById('HMRC_Fixed_1').querySelectorAll('span'),
-			'Status change 7': document.getElementById('HMRC_Fixed_1').querySelectorAll('span').value,
-			'Status change 8': document.getElementById('HMRC_Fixed_1').innerHTML,
-			//'Status change 9': document.getElementById('HMRC_Fixed_1').innerText,
-			'Status change 10': document.getElementById('HMRC_Fixed_1').onChange = function () {
-                                    document.getElementById('hidden_field_id').value = document.getElementById('span').innerHTML;
-                                },
-      'Status change 11': availability,
-			'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
-			'Hit TimeStamp': new Date().toUTCString()
-		};
-		Array.prototype.forEach.call(localData, function (el, i) {
-			localObj = Object.assign( localObj, parseData(el.getAttribute('data-gtag')) )
-		});
+	   	var localObj = {
+			  'event': 'DOMContentLoaded',
+			  'Status change 1': document.getElementById('HMRC_Fixed_1').getAttribute('span'),
+			  'Status change 2': document.getElementById('HMRC_Fixed_1').value,
+			  'Status change 3': document.getElementById('HMRC_Fixed_1').value = document.getElementById('span'),
+			  'Status change 4': document.getElementById('span'),
+			  'Status change 5': document.getElementById('HMRC_Fixed_1').span,
+			  'Status change 6': document.getElementById('HMRC_Fixed_1').querySelectorAll('span'),
+			  'Status change 7': document.getElementById('HMRC_Fixed_1').querySelectorAll('span').value,
+			  'Status change 8': document.getElementById('HMRC_Fixed_1').innerHTML,
+			  //'Status change 9': document.getElementById('HMRC_Fixed_1').innerText,
+			  'Status change 10': document.getElementById('HMRC_Fixed_1').onChange = function () {
+                                      document.getElementById('hidden_field_id').value = document.getElementById('span').innerHTML;
+                                  },
+        'Status change 11': availability,
+			  'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
+			  'Hit TimeStamp': new Date().toUTCString()
+	  	};
+		  Array.prototype.forEach.call(localData, function (el, i) {
+		  	localObj = Object.assign( localObj, parseData(el.getAttribute('data-gtag')) )
+		  });
 
 		w.dataLayer.push(localObj);
-	})
+	  })
+	});
 
 })(document,window);
