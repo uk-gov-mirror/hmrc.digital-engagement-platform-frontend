@@ -154,8 +154,8 @@ tax-credits-enquiries.li2=find more ways to contact HMRC
 accessibility.statement.title=Accessibility statement for webchat and digital assistant
 
 accessibility.statement.aboutthisservice.p1=This accessibility statement explains how accessible this service is, what to do if you have difficulty using it, and how to report accessibility problems with the service.
-accessibility.statement.aboutthisservice.p2=This service is part of the wider GOV.UK website {0}.
-accessibility.statement.aboutthisservice.p2urltext=There is a separate accessibility statement for the main GOV.UK website. (opens in a new tab)
+accessibility.statement.aboutthisservice.p2=This service is part of the wider GOV.UK website. {0}.
+accessibility.statement.aboutthisservice.p2urltext=There is a separate accessibility statement for the main GOV.UK website (opens in a new tab)
 accessibility.statement.aboutthisservice.p3=This page only contains information about the Ask HMRC webchat and digital assistant services, available at {0}
 accessibility.statement.aboutthisservice.p3urltext=https://www.tax.service.gov.uk/
 
@@ -179,10 +179,10 @@ accessibility.statement.howaccessible.li1=At one point you have to hit the Done 
 accessibility.statement.howaccessible.li2=If you’re using a screen reader you may need to tab past the footer of the webpage to find the webchat
 accessibility.statement.howaccessible.li3=There are some error messages in this service that may not be descriptive enough although they are compatible with common assistive technology tools
 accessibility.statement.howaccessible.li4=To find the privacy and accessibility links, users should tab beyond the message input box
-accessibility.statement.howaccessible.li5=When the digital assistant presents the user with possible solutions, it says ’Links will open in a new tab’. This text is hidden but seen by screen readers
+accessibility.statement.howaccessible.li5=When the digital assistant presents the user with possible solutions, it says ‘Links will open in a new tab’. This text is hidden but seen by screen readers
 accessibility.statement.howaccessible.li6=Chat button labelled ‘hide’in the digital assistant is not specific enough
 accessibility.statement.howaccessible.li7=After following a link from the digital assistant that opens in a new tab, then returning to the original tab with the digital assistant, focus is moved to the chat input rather than staying on the link
-accessibility.statement.howaccessible.li8=On mobile devices, the keyboard input appears after following a link within the digital assistant. This takes up a very large area of the screen and obstructs users' ability to interact with the digital assistant as a simple decision tree
+accessibility.statement.howaccessible.li8=On mobile devices, the keyboard input appears after following a link within the digital assistant. This takes up a very large area of the screen and obstructs users'' ability to interact with the digital assistant as a simple decision tree
 accessibility.statement.howaccessible.li9=The form stepper appears when entering text into the chat field on mobile
 accessibility.statement.howaccessible.li10=JAWS announces every 2 minutes how long there is left before chat closes. This doesn’t happen on Mac or iOS with VoiceOver and Safari
 accessibility.statement.howaccessible.li11=When using zoom on a mobile browser (chrome or safari accessibility settings), the auto-selection of the keyboard makes the text difficult to read before proceeding.
