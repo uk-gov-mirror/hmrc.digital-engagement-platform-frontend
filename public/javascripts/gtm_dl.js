@@ -29,14 +29,20 @@
           } else {
             setTimeout(function() {
               waitForEl(selector, callback);
-            }, 70000);
+            }, 10000);
           }
         };
 
-        waitForEl('#HMRC_Fixed_1 div span', function() {
-            nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText(callback);
+//    waitForEl('#HMRC_Fixed_1 div span', function() {
+//                nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
+//            });
+
+        function waitForNuanceText(waitForEl, callback) {
+            waitForEl('#HMRC_Fixed_1 div span', function() {
+                nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
+            });
             callback();
-        });
+        }
 
         if(nuanceText == "Advisers are available to chat.") {
           availability = 'Ready';
