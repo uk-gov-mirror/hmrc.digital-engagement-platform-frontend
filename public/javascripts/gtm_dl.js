@@ -33,16 +33,17 @@
           }
         };
 
-//    waitForEl('#HMRC_Fixed_1 div span', function() {
+    waitForEl('#HMRC_Fixed_1 div span', function(waitForEl, callback) {
+        nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
+        callback();
+    });
+
+//        function waitForNuanceText(waitForEl, callback) {
+//            waitForEl('#HMRC_Fixed_1 div span', function() {
 //                nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
 //            });
-
-        function waitForNuanceText(waitForEl, callback) {
-            waitForEl('#HMRC_Fixed_1 div span', function() {
-                nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
-            });
-            callback();
-        }
+//            callback();
+//        }
 
         if(nuanceText == "Advisers are available to chat.") {
           availability = 'Ready';
