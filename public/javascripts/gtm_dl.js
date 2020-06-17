@@ -23,18 +23,19 @@
     var availability;
     $(window).on("load", function() {
 
-    var waitForEl = function(selector, callback) {
-      if (jQuery(selector).length) {
-        callback();
-      } else {
-        setTimeout(function() {
-          waitForEl(selector, callback);
-        }, 70000);
-      }
-    };
+        var waitForEl = function(selector, callback) {
+          if (jQuery(selector).length) {
+            callback();
+          } else {
+            setTimeout(function() {
+              waitForEl(selector, callback);
+            }, 70000);
+          }
+        };
 
         waitForEl('#HMRC_Fixed_1 div span', function() {
-           nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
+            nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText(callback);
+            callback();
         });
 
         if(nuanceText == "Advisers are available to chat.") {
