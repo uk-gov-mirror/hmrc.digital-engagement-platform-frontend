@@ -29,13 +29,12 @@
       } else {
         setTimeout(function() {
           waitForEl(selector, callback);
-        }, 10000);
+        }, 70000);
       }
     };
 
-        waitForEl('#HMRC_Fixed_1 div span', function(callback) {
+        waitForEl('#HMRC_Fixed_1 div span', function() {
            nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
-           callback();
         });
 
         if(nuanceText == "Advisers are available to chat.") {
