@@ -35,19 +35,19 @@
 
         waitForEl('#HMRC_Fixed_1 div span', function() {
             nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
-
-            if(nuanceText == "Advisers are available to chat.") {
-                 availability = 'Ready';
-             } else if(nuanceText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
-                 availability = 'Busy';
-             } else if(nuanceText == "You are in a webchat.") {
-                  availability = 'In Progress';
-             } else if(nuanceText == "Our webchat is now closed.") {
-                  availability = 'Offline';
-             } else {
-                  availability = 'Not Responding';
-             }
         });
+
+        if(nuanceText == "Advisers are available to chat.") {
+             availability = 'Ready';
+         } else if(nuanceText == "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
+             availability = 'Busy';
+         } else if(nuanceText == "You are in a webchat.") {
+              availability = 'In Progress';
+         } else if(nuanceText == "Our webchat is now closed.") {
+              availability = 'Offline';
+         } else {
+              availability = 'Not Responding';
+         }
 
         ready(function() {
             w.dataLayer = w.dataLayer || [];
