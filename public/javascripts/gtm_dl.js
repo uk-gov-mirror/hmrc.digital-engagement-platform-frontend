@@ -23,17 +23,51 @@
     var availability;
     $(window).on("load", function() {
 
-        var waitForEl = function(selector, callback) {
-          if (jQuery(selector).length) {
-            callback();
-          } else {
-            setTimeout(function() {
-              waitForEl(selector, callback);
-            }, 10000);
-          }
-        };
+//        var waitForEl = function(selector, callback) {
+//          if (jQuery(selector).length) {
+//            callback();
+//          } else {
+//            setTimeout(function() {
+//              waitForEl(selector, callback);
+//            }, 10000);
+//          }
+//        };
 
-        waitForEl('#HMRC_Fixed_1 div span', function() {
+
+
+//        waitForEl('#HMRC_Fixed_1 div span', function() {
+//            nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
+//        });
+
+
+        function waitForElement(selector) {
+          return new Promise(function(resolve, reject) {
+            var element = document.querySelector(selector);
+
+            if(element) {
+              resolve(element);
+              return;
+            }
+
+            var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                var nodes = Array.from(mutation.addedNodes);
+                for(var node of nodes) {
+                  if(node.matches && node.matches(selector)) {
+                    observer.disconnect();
+                    resolve(node);
+                    return;
+                  }
+                };
+              });
+            });
+
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+          });
+        }
+
+        waitForElement('#HMRC_Fixed_1 div span').then(function(element) {
+            console.log("Element Added", element);
             nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerText;
         });
 
