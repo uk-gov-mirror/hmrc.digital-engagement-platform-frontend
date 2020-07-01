@@ -124,4 +124,6 @@ class AppConfig @Inject()(config: Configuration,
   val accessibilityStatementUrlStaging: String = "https://www.staging.tax.service.gov.uk/ask-hmrc/accessibility-statement"
   val accessibilityStatementUrlExternalTest: String = "https://test-www.tax.service.gov.uk/ask-hmrc/webchat/self-assessment"
   val accessibilityStatementUrlLocal: String = "http://localhost:9956/ask-hmrc/accessibility-statement"
+
+  lazy val authUrl = servicesConfig.baseUrl("auth")
 }

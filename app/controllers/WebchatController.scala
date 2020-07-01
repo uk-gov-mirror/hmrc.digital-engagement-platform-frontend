@@ -16,14 +16,16 @@
 
 package controllers
 
+import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
-import config.AppConfig
 import services.NuanceEncryptionService
-import views.html._
+import uk.gov.hmrc.auth.otac.{OtacAuthConnector, OtacAuthorisationFunctions}
+import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+import views.html._
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
@@ -47,13 +49,14 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   constructionIndustrySchemeView: ConstructionIndustrySchemeView,
                                   vatRegistrationView: VatRegistrationView,
                                   nationalClearanceHubView: NationalClearanceHubView,
-                                  jobRetentionSchemeView: JobRetentionSchemeView,
+                                   jobRetentionSchemeView: JobRetentionSchemeView,
                                   selfEmploymentIncomeSupportSchemeView: SelfEmploymentIncomeSupportView,
                                   c19EmployerEnquiriesView: C19EmployerEnquiriesView,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
-                                  additioonalNeedsHelpView: AdditionalNeedsHelpView,
-                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                                  additionalNeedsHelpView: AdditionalNeedsHelpView,
+                                  nuanceEncryptionService: NuanceEncryptionService,
+                                  val authConnector: OtacAuthConnector) extends FrontendController(mcc) with OtacAuthorisationFunctions {
 
   implicit val config: AppConfig = appConfig
 
@@ -66,7 +69,9 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
+    withVerifiedPasscode("digital-engagement-platform-frontend", Some("token")) {
+      Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
+    }(hc: HeaderCarrier, ec = ExecutionContext.global)
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
@@ -162,7 +167,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(additioonalNeedsHelpView()))
+    Future.successful(Ok(additionalNeedsHelpView()))
   }
 
 }
