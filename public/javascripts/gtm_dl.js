@@ -66,7 +66,6 @@
     w.dataLayer.push(localObj);
   }
 
-
   $(window).on("load", function () {
     waitForEl('#HMRC_Fixed_1 div span', function () {
       setAvailability();
