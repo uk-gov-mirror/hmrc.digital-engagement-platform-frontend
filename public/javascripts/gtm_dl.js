@@ -32,7 +32,7 @@
 
   function setAvailability() {
     var availability;
-    var nuanceText = document.querySelectorAll('#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat').innerHTML;
+    var nuanceText = document.querySelectorAll('#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat span').innerHTML;
 
     if (nuanceText === "Advisers are available to chat.") {
       availability = 'Ready';
@@ -69,7 +69,7 @@
   }
 
   $(window).on("load", function () {
-    waitForEl('#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat', function () {
+    waitForEl('#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat span', function () {
       setAvailability();
       observeStatus();
     });
