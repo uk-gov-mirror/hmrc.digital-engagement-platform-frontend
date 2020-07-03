@@ -21,7 +21,7 @@
   }
 
   function observeStatus() {
-    let elementToObserve = document.querySelectorAll("#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat");
+    let elementToObserve = document.querySelector("#HMRC_Fixed_1");
 
     let observer = new MutationObserver(function() {
       setAvailability();
@@ -32,12 +32,10 @@
 
   function setAvailability() {
     var availability;
-    var nuanceText = document.querySelectorAll('#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat span').innerHTML;
+    var nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerHTML;
 
     if (nuanceText === "Advisers are available to chat.") {
       availability = 'Ready';
-    } else if (nuanceText === "You are in a webchat. If you cannot access it, you may have another chat window open.") {
-        availability = 'Webchat in progress';
     } else if (nuanceText === "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
       availability = 'Busy';
     } else if (nuanceText === "You are in a webchat.") {
@@ -69,7 +67,7 @@
   }
 
   $(window).on("load", function () {
-    waitForEl('#HMRC_Fixed_1, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat span', function () {
+    waitForEl('#HMRC_Fixed_1 div span', function () {
       setAvailability();
       observeStatus();
     });
