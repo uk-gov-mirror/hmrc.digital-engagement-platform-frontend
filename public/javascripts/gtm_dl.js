@@ -10,7 +10,7 @@
     return obj
   }
 
-  function waitForEl (querySelectorAll, callback) {
+  function waitForEl (selector, callback) {
     if (jQuery(selector).length) {
       callback();
     } else {
