@@ -32,7 +32,7 @@
 
   function setAvailability() {
     var availability;
-    var nuanceText = document.querySelector('#HMRC_Fixed_1 div span, #pp_self_assessment_webchat, #pp_vat_webchat, #pp_paye_webchat, #pp_corporation_tax_webchat').innerHTML;
+    var nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerHTML;
 
     if (nuanceText === "Advisers are available to chat.") {
       availability = 'Ready';
@@ -42,7 +42,7 @@
       availability = 'In Progress';
     } else if (nuanceText === "Our webchat is now closed.") {
       availability = 'Offline';
-    } else if (nuanceText === "Advisers are available to chat. Speak to an adviser now") {
+    } else if (nuanceText === "You are in a webchat.") {
       availability = 'Webchat in progress';
     } else {
       availability = 'Not Responding';
