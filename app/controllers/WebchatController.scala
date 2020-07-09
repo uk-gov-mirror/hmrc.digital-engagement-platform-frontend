@@ -52,7 +52,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   c19EmployerEnquiriesView: C19EmployerEnquiriesView,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
-                                  additioonalNeedsHelpView: AdditionalNeedsHelpView,
+                                  additionalNeedsHelpView: AdditionalNeedsHelpView,
+                                  eatOutToHelpOutView: EatOutToHelpOutView,
                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -162,7 +163,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def additionalNeedsHelp: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(additioonalNeedsHelpView()))
+    Future.successful(Ok(additionalNeedsHelpView()))
   }
 
+  def eatOutToHelpOut: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(eatOutToHelpOutView()))
+  }
 }
