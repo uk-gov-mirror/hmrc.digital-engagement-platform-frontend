@@ -63,7 +63,11 @@ class WebchatControllerSpec
   val probateView = app.injector.instanceOf[ProbateView]
   val inheritanceTaxView = app.injector.instanceOf[InheritanceTaxView]
   val additionalNeedsHelpView = app.injector.instanceOf[AdditionalNeedsHelpView]
+<<<<<<< HEAD
   val authConnector = app.injector.instanceOf[OtacAuthConnector]
+=======
+  val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
+>>>>>>> master
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
@@ -97,6 +101,7 @@ class WebchatControllerSpec
     probateView,
     inheritanceTaxView,
     additionalNeedsHelpView,
+    eatOutToHelpOutView,
     nuanceEncryptionService,
     authConnector)
 
@@ -304,5 +309,12 @@ class WebchatControllerSpec
       doc.select("h1").text() shouldBe "HMRC’s Extra Support team: webchat"
     }
 
+    "Eat Out To Help Out page" in {
+      val result = controller.eatOutToHelpOut(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Eat Out to Help Out scheme: webchat"
+    }
   }
 }

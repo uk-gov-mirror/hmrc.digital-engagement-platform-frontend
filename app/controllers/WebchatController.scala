@@ -55,6 +55,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   probateView: ProbateView,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
+                                  eatOutToHelpOutView: EatOutToHelpOutView,
                                   nuanceEncryptionService: NuanceEncryptionService,
                                   val authConnector: OtacAuthConnector) extends FrontendController(mcc) with OtacAuthorisationFunctions {
 
@@ -170,4 +171,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
     Future.successful(Ok(additionalNeedsHelpView()))
   }
 
+  def eatOutToHelpOut: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(eatOutToHelpOutView()))
+  }
 }
