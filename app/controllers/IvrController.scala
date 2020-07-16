@@ -36,6 +36,7 @@ class IvrController @Inject()(appConfig: AppConfig,
                               nationalInsuranceNumbersView: NationalInsuranceNumbersView,
                               customsEnquiriesView: CustomsEnquiriesView,
                               selfAssessmentView: SelfAssessmentView,
+                              eatOutToHelpOut: EatOutToHelpOutView,
                               nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -84,5 +85,9 @@ class IvrController @Inject()(appConfig: AppConfig,
 
   def c19EmployerEnquiries: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.c19EmployerEnquiries().url + param))
+  }
+
+  def eatOutToHelpOut: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.eatOutToHelpOut().url + param))
   }
 }

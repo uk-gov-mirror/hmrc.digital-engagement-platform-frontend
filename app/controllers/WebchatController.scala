@@ -167,6 +167,6 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def eatOutToHelpOut: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(eatOutToHelpOutView()))
+    Future.successful(Ok(eatOutToHelpOutView(isIvrRedirect())))
   }
 }
