@@ -17,16 +17,18 @@
 @import config.AppConfig
 
 @this(
-main_template: MainTemplate,
-appConfig: AppConfig)
+    main_template: MainTemplate,
+    appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("eat.out.to.help.out.title")) {
 
-@components.back_link()
+    @if(!isIvrRedirect) {
+        @components.back_link()
+    }
 
-    <h1 class="header-margin-top">@messages("eat.out.to.help.out.title")</h1>
+    <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("eat.out.to.help.out.title")</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
@@ -41,6 +43,8 @@ appConfig: AppConfig)
     }
 
     <p class="margin-top">
-        <a id="return-link" href=@appConfig.eatOutToHelpOutUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+        <a id="return-link" href=@appConfig.eatOutToHelpOutUrl>
+            @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
+        </a>
     </p>
 }
