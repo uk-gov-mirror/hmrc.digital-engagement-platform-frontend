@@ -20,12 +20,10 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import services.NuanceEncryptionService
-import uk.gov.hmrc.auth.otac.{OtacAuthConnector, OtacAuthorisationFunctions}
-import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html._
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
@@ -56,8 +54,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   eatOutToHelpOutView: EatOutToHelpOutView,
-                                  nuanceEncryptionService: NuanceEncryptionService,
-                                  val authConnector: OtacAuthConnector) extends FrontendController(mcc) with OtacAuthorisationFunctions {
+                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -70,9 +67,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    withVerifiedPasscode("digital-engagement-platform-frontend", Some("token")) {
       Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
-    }(hc: HeaderCarrier, ec = ExecutionContext.global)
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>

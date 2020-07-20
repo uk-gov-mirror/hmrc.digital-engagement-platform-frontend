@@ -128,4 +128,8 @@ class AppConfig @Inject()(config: Configuration,
   val accessibilityStatementUrlLocal: String = "http://localhost:9956/ask-hmrc/accessibility-statement"
 
   lazy val authUrl = servicesConfig.baseUrl("auth")
+  lazy val isCampaignWhitelistingEnabled =
+    config.getOptional[Boolean]("passcodeAuthentication.enabled").contains(true)
+  lazy val otacUrl = config.get[String]("otac.url")
+  lazy val loginContinueURL = config.get[String]("otac.url")
 }
