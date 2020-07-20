@@ -43,6 +43,7 @@ class IvrControllerSpec
   val nationalInsuranceNumbersView = app.injector.instanceOf[NationalInsuranceNumbersView]
   val customsEnquiriesView = app.injector.instanceOf[CustomsEnquiriesView]
   val selfAssessmentView = app.injector.instanceOf[SelfAssessmentView]
+  val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
   val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
@@ -57,6 +58,7 @@ class IvrControllerSpec
     nationalInsuranceNumbersView,
     customsEnquiriesView,
     selfAssessmentView,
+    eatOutToHelpOutView,
     nuanceEncryptionService)
 
   "ivr redirect URLs" should {
@@ -121,5 +123,10 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
     }
 
+    "render eat out to help out page" in {
+      val result = controller.eatOutToHelpOut(fakeRequest)
+      status(result) shouldBe SEE_OTHER
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/eat-out-to-help-out-scheme?nuance=ivr")
+    }
   }
 }
