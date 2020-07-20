@@ -63,11 +63,7 @@ class WebchatControllerSpec
   val probateView = app.injector.instanceOf[ProbateView]
   val inheritanceTaxView = app.injector.instanceOf[InheritanceTaxView]
   val additionalNeedsHelpView = app.injector.instanceOf[AdditionalNeedsHelpView]
-<<<<<<< HEAD
-  val authConnector = app.injector.instanceOf[OtacAuthConnector]
-=======
   val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
->>>>>>> master
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
@@ -102,20 +98,19 @@ class WebchatControllerSpec
     inheritanceTaxView,
     additionalNeedsHelpView,
     eatOutToHelpOutView,
-    nuanceEncryptionService,
-    authConnector)
+    nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
   "fixed URLs" should {
-//    "render self-assessment page" in {
-//
-//      val result = controller.selfAssessment(fakeRequest)
-//      val doc = asDocument(contentAsString(result))
-//
-//      status(result) shouldBe OK
-//      doc.select("h1").text() shouldBe "Self Assessment: webchat"
-//    }
+    "render self-assessment page" in {
+
+      val result = controller.selfAssessment(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      doc.select("h1").text() shouldBe "Self Assessment: webchat"
+    }
 
     "render tax-credits page" in {
       val result = controller.taxCredits(fakeRequest)
