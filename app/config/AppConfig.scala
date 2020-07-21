@@ -41,6 +41,7 @@ class AppConfig @Inject()(config: Configuration,
 
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
+  val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$serviceIdentifier"
 
   val nuanceUrl: String =
     "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
