@@ -52,10 +52,15 @@ class AccessibilityStatementControllerSpec
 
   "fixed URLs" should {
     "render accessibility statement page" in {
-      val result = controller.accessibility(fakeRequest)
+      val userAction: String = "%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries"
+      val serviceIdentifier = "digital-engagement-platform-frontend"
+      val pageUri: String = s"https://www.tax.service.gov.uk/contact/accessibility-unauthenticated?service=$serviceIdentifier&userAction=$userAction"
+      val result = controller.accessibility(pageUri)(fakeRequest)
       val doc = asDocument(contentAsString(result))
 
       status(result) shouldBe OK
+      contentType(result) shouldBe Some("text/html")
+      charset(result) shouldBe Some("utf-8")
       doc.select("h1").text() shouldBe "Accessibility statement for webchat and digital assistant"
     }
   }

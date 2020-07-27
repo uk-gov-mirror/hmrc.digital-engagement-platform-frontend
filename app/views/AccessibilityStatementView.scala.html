@@ -22,7 +22,7 @@
     appConfig: AppConfig)
 
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(accessibilityReportUrl: String)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("accessibility.statement.title")) {
 
@@ -108,8 +108,8 @@
 
     <p>
         @messages("accessibility.statement.reportingproblems.p1")
-        <a href="mailto:@{appConfig.reportingProblemsEmail}">
-            @Some(messages("accessibility.statement.reportingproblems.emailtext"))</a>
+        <a href=@{accessibilityReportUrl}" class="govuk-link" target="_blank">
+            @Some(messages("accessibility.statement.reportingproblems.linktext"))</a>
     </p>
 
     <h2 class="heading-large">@messages("accessibility.statement.ifyournothappy.h2")</h2>

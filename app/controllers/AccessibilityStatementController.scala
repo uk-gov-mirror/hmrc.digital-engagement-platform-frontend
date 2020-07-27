@@ -32,8 +32,9 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
                                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
-
-  def accessibility: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(accessibilityStatementView()))
+  def accessibility(pageUri: String): Action[AnyContent] = Action.async { implicit request =>
+    val uri = appConfig.accessibilityReportUrl(pageUri)
+    Future.successful(Ok(accessibilityStatementView(uri)))
   }
+
 }
