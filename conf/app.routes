@@ -47,4 +47,5 @@ GET         /ivr/eatout                                                         
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
 GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
 
+GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibilityNuance
 GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility(pageUri: String)

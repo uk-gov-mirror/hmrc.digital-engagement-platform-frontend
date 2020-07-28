@@ -63,5 +63,15 @@ class AccessibilityStatementControllerSpec
       charset(result) shouldBe Some("utf-8")
       doc.select("h1").text() shouldBe "Accessibility statement for webchat and digital assistant"
     }
+
+    "render accessibility statement page from link inside webchat" in {
+      val result = controller.accessibilityNuance()(fakeRequest)
+      val doc = asDocument(contentAsString(result))
+
+      status(result) shouldBe OK
+      contentType(result) shouldBe Some("text/html")
+      charset(result) shouldBe Some("utf-8")
+      doc.select("h1").text() shouldBe "Accessibility statement for webchat and digital assistant"
+    }
   }
 }
