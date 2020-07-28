@@ -103,6 +103,11 @@ national.clearance.hub.title=National Clearance Hub: webchat
 
 #Job Retention Scheme
 job.retention.scheme.title=Coronavirus (COVID-19): Job Retention Scheme
+job.retention.scheme.p1=This webchat is for employers.
+job.retention.scheme.p2=If you are an employee, advisers cannot answer specific questions about your employer, or advise if your employer is participating in the Coronavirus Job Renention Scheme.
+job.retention.scheme.p3=For more information you can:
+job.retention.scheme.li1=report fraudulent activity
+job.retention.scheme.li2=check if your employer can use the Coronavirus Job Retention Scheme
 
 #Self Employment Income Support Scheme
 self.employment.income.support.scheme.title=Coronavirus (COVID-19): Self-Employment Income Support Scheme
