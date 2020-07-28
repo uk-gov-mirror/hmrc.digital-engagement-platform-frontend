@@ -24,4 +24,4 @@ class Filters @Inject()(
                          sessionIdFilter: SessionIdFilter,
                          frontendFilters: FrontendFilters,
                          campaignWhitelistingFilter: CampaignWhitelistingFilter
-                       ) extends DefaultHttpFilters(frontendFilters.filters :+ sessionIdFilter: _*)
+                       ) extends DefaultHttpFilters(frontendFilters.filters :+ campaignWhitelistingFilter :+ sessionIdFilter: _*)
