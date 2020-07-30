@@ -1,4 +1,5 @@
 //push any data-gtag objects in the format "key:value, key:value" into global dataLayer
+//(function (d, w) {
 function gtmDl(d, w, el) {
   function parseData(string) {
     var properties = string.split(', ');
@@ -33,6 +34,7 @@ function gtmDl(d, w, el) {
 
   function setAvailability() {
     var availability;
+    //var nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerHTML;
     var nuanceText = document.querySelector(el + 'div span').innerHTML;
 
     if (nuanceText === "Advisers are available to chat.") {
@@ -74,6 +76,7 @@ function gtmDl(d, w, el) {
       observeStatus();
     });
   });
+//})(document, window);
 };
 
 gtmDl(document, window, '#HMRC_Fixed_1');
