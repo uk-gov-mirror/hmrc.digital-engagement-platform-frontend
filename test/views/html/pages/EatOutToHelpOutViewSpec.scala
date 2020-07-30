@@ -19,28 +19,28 @@ package views.html.pages
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.ConstructionIndustrySchemeView
+import views.html.EatOutToHelpOutView
 
-class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours {
-
+class EatOutToHelpOutViewSpec extends ChatViewBehaviours {
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[ConstructionIndustrySchemeView]
+  val view = app.injector.instanceOf[EatOutToHelpOutView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Construction Industry Scheme view" must {
-    val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
+  "Probate view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-eat-out-to-help-out-scheme"
 
     behave like normalPage(
       createView,
-      "Construction Industry Scheme: webchat",
-      "Construction Industry Scheme: webchat",
+      "Eat Out to Help Out scheme: webchat",
+      "Eat Out to Help Out scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Saturday, 8am to 4pm",
-      "Closed Sundays and bank holidays."
+      "Monday to Friday, 8am to 8pm",
+      "Closed weekends and bank holidays."
     )
   }
 }
