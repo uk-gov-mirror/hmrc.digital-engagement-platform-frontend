@@ -35,7 +35,7 @@ function gtmDl(d, w, el) {
   function setAvailability() {
     var availability;
     //var nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerHTML;
-    var nuanceText = document.querySelector(el + 'div span').innerHTML;
+    var nuanceText = document.querySelector(el + ' div span').innerHTML;
 
     if (nuanceText === "Advisers are available to chat.") {
       availability = 'Ready';
@@ -71,7 +71,7 @@ function gtmDl(d, w, el) {
 
 
   $(window).on("load", function () {
-    waitForEl(el + 'div span', function () {
+    waitForEl(el + ' div span', function () {
       setAvailability();
       observeStatus();
     });
