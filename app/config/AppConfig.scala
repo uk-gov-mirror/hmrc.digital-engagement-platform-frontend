@@ -39,6 +39,9 @@ class AppConfig @Inject()(config: Configuration,
   val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
   val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
+  val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
+  val optimizelyProjectId: String = config.get[String]("optimizely.projectId")
+
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
 
