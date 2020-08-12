@@ -1,5 +1,4 @@
 //push any data-gtag objects in the format "key:value, key:value" into global dataLayer
-//(function (d, w) {
 function gtmDl(d, w, el) {
   function parseData(string) {
     var properties = string.split(', ');
@@ -13,6 +12,7 @@ function gtmDl(d, w, el) {
 
   function waitForEl (selector, callback) {
     if (jQuery(selector).length) {
+      attachClickEvent(document.querySelector(el));
       callback();
     } else {
       setTimeout(function () {
@@ -21,8 +21,13 @@ function gtmDl(d, w, el) {
     }
   }
 
+  function attachClickEvent(el) {
+    el.addEventListener('click', function() {
+      addToDataLayer('Ready', el);
+    });
+  }
+
   function observeStatus() {
-    // let elementToObserve = document.querySelector("#HMRC_Fixed_1");
     let elementToObserve = document.querySelector(el);
 
     let observer = new MutationObserver(function() {
@@ -34,7 +39,6 @@ function gtmDl(d, w, el) {
 
   function setAvailability() {
     var availability;
-    //var nuanceText = document.querySelector('#HMRC_Fixed_1 div span').innerHTML;
     var nuanceText = document.querySelector(el + ' div span').innerHTML;
 
     if (nuanceText === "Advisers are available to chat.") {
@@ -49,10 +53,10 @@ function gtmDl(d, w, el) {
       availability = 'Not Responding';
     }
 
-    addToDataLayer(availability);
+    addToDataLayer(availability, el);
   }
 
-  function addToDataLayer (status) {
+  function addToDataLayer (status, elToAdd) {
     w.dataLayer = w.dataLayer || [];
     var localData = d.querySelectorAll('[data-gtag]');
 
@@ -62,8 +66,9 @@ function gtmDl(d, w, el) {
       'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
       'Hit TimeStamp': new Date().toUTCString()
     };
-    Array.prototype.forEach.call(localData, function (el, i) {
-      localObj = Object.assign(localObj, parseData(el.getAttribute('data-gtag')))
+
+    Array.prototype.forEach.call(localData, function (elToAdd, i) {
+      localObj = Object.assign(localObj, parseData(elToAdd.getAttribute('data-gtag')))
     });
 
     w.dataLayer.push(localObj);
@@ -76,7 +81,6 @@ function gtmDl(d, w, el) {
       observeStatus();
     });
   });
-//})(document, window);
 };
 
 gtmDl(document, window, '#HMRC_Fixed_1');
