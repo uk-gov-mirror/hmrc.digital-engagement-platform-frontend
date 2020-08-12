@@ -84,3 +84,7 @@ function gtmDl(d, w, el) {
 };
 
 gtmDl(document, window, '#HMRC_Fixed_1');
+gtmDl(document, window, '#pp_self_assessment_webchat');
+gtmDl(document, window, '#pp_vat_webchat');
+gtmDl(document, window, '#pp_paye_webchat');
+gtmDl(document, window, '#pp_corporation_tax_webchat');
