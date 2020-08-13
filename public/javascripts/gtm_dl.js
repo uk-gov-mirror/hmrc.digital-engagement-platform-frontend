@@ -12,7 +12,7 @@ function gtmDl(d, w, el) {
 
   function waitForEl (selector, callback) {
     if (jQuery(selector).length) {
-      attachClickEvent(document.querySelector(el));
+      //attachClickEvent(document.querySelector(el));
       callback();
     } else {
       setTimeout(function () {
@@ -21,11 +21,11 @@ function gtmDl(d, w, el) {
     }
   }
 
-  function attachClickEvent(el) {
-    el.addEventListener('click', function() {
-      addToDataLayer('Ready', el);
-    });
-  }
+//  function attachClickEvent(el) {
+//    el.addEventListener('click', function() {
+//      addToDataLayer('Ready', el);
+//    });
+//  }
 
   function observeStatus() {
     let elementToObserve = document.querySelector(el);
