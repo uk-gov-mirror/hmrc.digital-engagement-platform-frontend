@@ -12,7 +12,6 @@ function gtmDl(d, w, el) {
 
   function waitForEl (selector, callback) {
     if (jQuery(selector).length) {
-      //attachClickEvent(document.querySelector(el));
       callback();
     } else {
       setTimeout(function () {
@@ -20,12 +19,6 @@ function gtmDl(d, w, el) {
       }, 1000);
     }
   }
-
-//  function attachClickEvent(el) {
-//    el.addEventListener('click', function() {
-//      addToDataLayer('Ready', el);
-//    });
-//  }
 
   function observeStatus() {
     let elementToObserve = document.querySelector(el);
@@ -65,6 +58,7 @@ function gtmDl(d, w, el) {
     var localObj = {
       'event': 'DOMContentLoaded',
       'Status': status,
+      'ID' : el,
       'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
       'Hit TimeStamp': new Date().toUTCString()
     };
@@ -86,7 +80,3 @@ function gtmDl(d, w, el) {
 };
 
 gtmDl(document, window, '#HMRC_Fixed_1');
-//gtmDl(document, window, '#pp_self_assessment_webchat');
-//gtmDl(document, window, '#pp_vat_webchat');
-//gtmDl(document, window, '#pp_paye_webchat');
-//gtmDl(document, window, '#pp_corporation_tax_webchat');
