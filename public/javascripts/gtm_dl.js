@@ -49,6 +49,8 @@ function gtmDl(d, w, el) {
       availability = 'In Progress';
     } else if (nuanceText === "Our webchat is now closed.") {
       availability = 'Offline';
+    } else if (nuanceText === "You are in a webchat. If you cannot access it, you may have another chat window open.") {
+      availability = 'In Chat';
     } else {
       availability = 'Not Responding';
     }
