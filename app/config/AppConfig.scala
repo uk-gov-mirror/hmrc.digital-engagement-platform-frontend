@@ -17,10 +17,12 @@
 package config
 
 import java.net.URLEncoder
+
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
 import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
+import utils.StringHelpers
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
@@ -127,7 +129,8 @@ class AppConfig @Inject()(config: Configuration,
   val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
 
   def accessibilityReportUrl(pageUri: String): String = {
-    s"$contactHost/contact/accessibility-unauthenticated?service=${serviceIdentifier}&userAction=${encodeUrl(pageUri).replaceAll("%2F", "/")}"
+    s"$contactHost/contact/accessibility-unauthenticated?service=" +
+      s"${serviceIdentifier}&userAction=${StringHelpers.tidyUpString(encodeUrl(pageUri))}"
   }
 
   lazy val reportProblemUrl: String = config.get[String]("gov-uk.reportProblemUrl")
@@ -136,5 +139,7 @@ class AppConfig @Inject()(config: Configuration,
   val equalityOrgUrl: String = "https://www.equalityni.org/Home"
   val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
 
-  def accessibilityStatementUrl(pageUri: String): String = controllers.routes.AccessibilityStatementController.accessibility(pageUri).url
+  def accessibilityStatementUrl(pageUri: String): String = {
+    StringHelpers.tidyUpString(controllers.routes.AccessibilityStatementController.accessibility(pageUri).url)
+  }
 }
