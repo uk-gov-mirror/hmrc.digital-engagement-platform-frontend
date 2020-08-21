@@ -104,7 +104,11 @@
 }
 
 @betaBanner = @{
-    components.beta_banner(appConfig)
+    if(appConfig.betaBannerMode) {
+        components.beta_banner(appConfig)
+    } else {
+        HtmlFormat.empty
+    }
 }
 
 @serviceInfoBlock = {
