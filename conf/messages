@@ -30,6 +30,12 @@ global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4p
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
 
+#Beta Banner
+global.banner.phase = BETA
+global.banner.text = This is a new service – your
+global.banner.feedback = feedback
+global.banner.helpimprove = will help us to improve it.
+
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC

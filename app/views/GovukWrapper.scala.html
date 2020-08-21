@@ -103,9 +103,17 @@
     </ul>
 }
 
+@betaBanner = @{
+    if(appConfig.betaBannerMode) {
+        components.beta_banner(appConfig)
+    } else {
+        HtmlFormat.empty
+    }
+}
+
 @serviceInfoBlock = {
     @serviceInfo(
-        betaBanner = HtmlFormat.empty,
+        betaBanner = betaBanner,
         includeGridWrapper = false,
         serviceInfoContent = Some(serviceInfoContent))
 }

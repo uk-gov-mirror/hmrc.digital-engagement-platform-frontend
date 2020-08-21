@@ -38,12 +38,14 @@ class AppConfig @Inject()(config: Configuration,
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
   val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
   val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
+  val betaBannerMode: Boolean = config.get[Boolean]("beta-banner.mode")
 
   val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
   val optimizelyProjectId: String = config.get[String]("optimizely.projectId")
 
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
+  val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$serviceIdentifier"
 
   val nuanceUrl: String =
     "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
