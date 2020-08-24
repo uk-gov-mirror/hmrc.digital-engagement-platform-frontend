@@ -131,5 +131,5 @@ class AppConfig @Inject()(config: Configuration,
   lazy val isCampaignWhitelistingEnabled =
     config.getOptional[Boolean]("passcodeAuthentication.enabled").contains(true)
   lazy val otacUrl = config.get[String]("otac.url")
-  lazy val loginContinueURL = config.get[String]("otac.url")
+  lazy val loginContinueURL = config.get[String]("otac.loginContinue")
 }
