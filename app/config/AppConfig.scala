@@ -129,8 +129,9 @@ class AppConfig @Inject()(config: Configuration,
   val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
 
   def accessibilityReportUrl(pageUri: String): String = {
+    val deckproIdentifier: String = "-nuance"
     s"$contactHost/contact/accessibility-unauthenticated?service=" +
-      s"${serviceIdentifier}&userAction=${StringHelpers.tidyUpString(encodeUrl(pageUri))}"
+      s"${serviceIdentifier}&userAction=${StringHelpers.tidyUpString(encodeUrl(pageUri))}$deckproIdentifier"
   }
 
   lazy val reportProblemUrl: String = config.get[String]("gov-uk.reportProblemUrl")
