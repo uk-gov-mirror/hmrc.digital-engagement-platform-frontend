@@ -39,7 +39,7 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
   }
 
   def accessibilityNuance: Action[AnyContent] = Action.async { implicit request =>
-    val pageUri: String = "nuance"
+    val pageUri: String = ""
     val uri = appConfig.accessibilityReportUrl(pageUri)
     Future.successful(Ok(accessibilityStatementView(uri)))
   }
