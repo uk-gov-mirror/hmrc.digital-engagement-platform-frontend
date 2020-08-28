@@ -35,11 +35,12 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
 
   def accessibility(pageUri: String): Action[AnyContent] = Action.async { implicit request =>
     val uri = appConfig.accessibilityReportUrl(pageUri)
-    Future.successful(Ok(accessibilityStatementView(uri)))
+    val deckproIdentifier: String = "-nuance"
+    Future.successful(Ok(accessibilityStatementView(uri + deckproIdentifier)))
   }
 
   def accessibilityNuance: Action[AnyContent] = Action.async { implicit request =>
-    val pageUri: String = ""
+    val pageUri: String = "nuance"
     val uri = appConfig.accessibilityReportUrl(pageUri)
     Future.successful(Ok(accessibilityStatementView(uri)))
   }
