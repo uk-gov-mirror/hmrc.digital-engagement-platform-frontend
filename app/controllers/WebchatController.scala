@@ -54,6 +54,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   eatOutToHelpOutView: EatOutToHelpOutView,
+                                  personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
                                   nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
@@ -168,5 +169,9 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def eatOutToHelpOut: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(eatOutToHelpOutView(isIvrRedirect())))
+  }
+
+  def personalTransportUnitEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(personalTransportUnitEnquiriesView()))
   }
 }
