@@ -22,7 +22,7 @@ import org.scalatest.{MustMatchers, WordSpec}
 import org.scalatestplus.mockito.MockitoSugar
 import play.api.Configuration
 
-class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
+class allowlistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
 
   val materializer = mock[Materializer]
 
@@ -35,7 +35,7 @@ class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
         Configuration(("filters.whitelist.destination" -> destination), ("filters.whitelist.excludedPaths" -> excluded))
 
       assertThrows[ConfigException] {
-        new WhitelistFilter(config, materializer)
+        new allowlistFilter(config, materializer)
       }
     }
 
@@ -49,7 +49,7 @@ class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
         ("filters.whitelist.ips"           -> ips)
       )
 
-      val whitelistFilter = new WhitelistFilter(config, materializer)
+      val whitelistFilter = new allowlistFilter(config, materializer)
 
       whitelistFilter.whitelist mustBe Seq.empty
     }
@@ -64,7 +64,7 @@ class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
         ("filters.whitelist.ips"           -> ips)
       )
 
-      val whitelistFilter = new WhitelistFilter(config, materializer)
+      val whitelistFilter = new allowlistFilter(config, materializer)
 
       whitelistFilter.whitelist mustBe Seq("0.0.0.0", "255.255.255.255")
     }

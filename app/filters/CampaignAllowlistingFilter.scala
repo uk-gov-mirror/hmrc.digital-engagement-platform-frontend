@@ -28,7 +28,7 @@ import uk.gov.hmrc.play.HeaderCarrierConverter
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.control.NonFatal
 
-class CampaignWhitelistingFilter @Inject()(
+class CampaignAllowlistingFilter @Inject()(
                                             override val mat: Materializer,
                                             val authConnector: OtacAuthConnector,
                                             appConfig: AppConfig,
@@ -40,7 +40,7 @@ class CampaignWhitelistingFilter @Inject()(
     implicit val ec: ExecutionContext = mcc.executionContext
     val messages = mcc.messagesApi.preferred(rh)
 
-    if(appConfig.isCampaignWhitelistingEnabled && rh.path.contains(app.RoutesPrefix.prefix)){
+    if(appConfig.isCampaignAllowlistingEnabled && rh.path.contains(app.RoutesPrefix.prefix)){
       rh.session.get(SessionKeys.otacToken)
         .orElse(rh.queryString.get("p").flatMap(_.headOption))
         .orElse(rh.cookies.get("whitelisting").map(_.value))

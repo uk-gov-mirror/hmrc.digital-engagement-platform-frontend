@@ -21,7 +21,7 @@ import play.api.inject.{Binding, Module}
 import play.api.{Configuration, Environment}
 import uk.gov.hmrc.auth.otac.OtacAuthConnector
 
-class WhitelistingModule extends Module {
+class AllowlistingModule extends Module {
 
   override def bindings(environment: Environment, configuration: Configuration): Seq[Binding[_]] = {
     Seq(bind[OtacAuthConnector].to[OtacAuthConnectorImpl])
