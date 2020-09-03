@@ -42,7 +42,7 @@ GET         /ivr/sa                                                             
 GET         /ivr/jobretention                                                           controllers.IvrController.jobRetentionScheme
 GET         /ivr/c19seiss                                                               controllers.IvrController.selfEmploymentIncomeSupportScheme
 GET         /ivr/c19employer                                                            controllers.IvrController.c19EmployerEnquiries
-GET         /ivr/eat-out-scheme                                                         controllers.IvrController.eatOutToHelpOut
+GET         /ivr/eatout                                                                 controllers.IvrController.eatOutToHelpOut
 
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
 GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries

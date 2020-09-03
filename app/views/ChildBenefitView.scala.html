@@ -39,12 +39,13 @@
 
     <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
-    <div>@messages("child.benefit.p1")</div>
-    <div  class="margin-top"></div>
-
     @if(!appConfig.performanceTest){
         <div id="HMRC_Fixed_1"></div>
     }
+
+    <p class="margin-top">@messages("global.adviser.busy.p1")</p>
+
+    <p class="margin-top">@messages("global.adviser.busy.p2")</p>
 
     <p class="margin-top">
         <a id="return-link" href=@appConfig.childBenefitReturnUrl>

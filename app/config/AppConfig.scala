@@ -39,6 +39,9 @@ class AppConfig @Inject()(config: Configuration,
   val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
   val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
+  val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
+  val optimizelyProjectId: String = config.get[String]("optimizely.projectId")
+
   val reportAProblemPartialUrl: String = s"$contactHost/contact/problem_reports_ajax?service=$serviceIdentifier"
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
 
@@ -97,6 +100,8 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-self-employment-income-support-scheme"
   val jobRetentionSchemeReturnUrl: String =
   "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-coronavirus-job-retention-scheme"
+  val reportFraudulentActivityUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/report-fraud-to-hmrc"
+  val checkCoveredByCoronavirusJRSUrl: String = "https://www.gov.uk/guidance/check-if-you-could-be-covered-by-the-coronavirus-job-retention-scheme"
   val probateReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/probate-general-enquiries"
   val c19EmployerEnquiriesReturnRul: String =
