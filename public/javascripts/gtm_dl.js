@@ -36,7 +36,7 @@ function gtmDl(d, w, el) {
 
     if (nuanceText === "Advisers are available to chat.") {
       availability = 'Ready';
-    } else if (nuanceText === "All of our advisers are busy at the moment. You can remain on this page and one may become available.") {
+    } else if (nuanceText === "All of our advisers are busy at the moment. Keep checking this page until the 'speak to an adviser' link becomes available.") {
       availability = 'Busy';
     } else if (nuanceText === "You are in a webchat.") {
       availability = 'In Progress';
