@@ -34,8 +34,8 @@ class PersonalTransportUnitEnquiriesViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
-      "Personal Transport Unit: Webchat",
-      "Personal Transport Unit: Webchat",
+      "Personal Transport Unit: webchat",
+      "Personal Transport Unit: webchat",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
