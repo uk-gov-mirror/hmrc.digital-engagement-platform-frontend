@@ -317,7 +317,7 @@ class WebchatControllerSpec
       val doc = asDocument (contentAsString (result) )
 
       status (result) shouldBe OK
-      doc.select ("h1").text () shouldBe "Personal Transport Unit: Webchat"
+      doc.select ("h1").text () shouldBe "Personal Transport Unit: webchat"
     }
   }
 }
