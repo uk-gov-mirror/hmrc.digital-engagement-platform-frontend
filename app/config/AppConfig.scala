@@ -118,6 +118,8 @@ class AppConfig @Inject()(config: Configuration,
   val manageYourTaxCreditsUrl: String = "https://www.gov.uk/manage-your-tax-credits"
   val eatOutToHelpOutUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-eat-out-to-help-out-scheme"
+  val personalTransportUnitEnquiriesReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
 
   val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
   val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"

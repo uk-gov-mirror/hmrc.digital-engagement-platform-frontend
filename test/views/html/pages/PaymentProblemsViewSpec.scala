@@ -49,7 +49,9 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "payment.problems.p3",
         "payment.problems.p4",
         "payment.problems.p5",
-        "payment.problems.p6"
+        "payment.problems.p6",
+        "payment.problems.p7",
+        "payment.problems.p8"
     )
 
 

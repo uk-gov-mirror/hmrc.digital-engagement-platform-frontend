@@ -29,6 +29,8 @@ global.opening.time.banckholidays.8to4=Bank Holidays, 8am to 4pm.
 global.opening.time.sat.bankholidays.8to4=Saturdays and Bank Holidays, 8am to 4pm
 global.closed.time.sun=Closed Sundays.
 global.closed.time.bankholidays=Closed bank holidays.
+global.adviser.busy.p1=When an adviser is available, select the ‘speak to an adviser’ link to open the chat.
+global.adviser.busy.p2=If you do not select the link to open the chat, you will have to wait for the next available adviser.
 
 #Beta Banner
 global.banner.phase = BETA
@@ -136,6 +138,9 @@ nonUk.resident.entertainers.title=Non-UK resident entertainers: webchat
 #Eat Out To Help Out Webchat
 eat.out.to.help.out.title=Eat Out to Help Out scheme: webchat
 
+#Personal Transport Unit Enquiries
+personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
+
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
@@ -150,6 +155,8 @@ payment.problems.p3=Coronavirus (COVID-19) helpline
 payment.problems.p4=We have fewer advisers available to answer your calls due to coronavirus (COVID-19).
 payment.problems.p5=Payment Support Service (PSS) helpline
 payment.problems.p6=If you cannot pay in full before your payment deadline call the PSS helpline. Anyone can use this service, not just businesses.
+payment.problems.p7=When an adviser is available, select the ‘speak to an adviser’ link to open the chat.
+payment.problems.p8=If you do not select the link to open the chat, you will have to wait for the next available adviser.
 
 #VA
 #General
