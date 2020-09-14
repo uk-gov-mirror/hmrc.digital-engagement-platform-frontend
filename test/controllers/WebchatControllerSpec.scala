@@ -47,7 +47,7 @@ class WebchatControllerSpec
   val onlineServiceHelpdeskView = app.injector.instanceOf[OnlineServiceHelpdeskView]
   val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
   val vatOnlineServicesHelpdeskView = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
-  val charitiesCommunityAmateurSportsView = app. injector.instanceOf[CharitiesCommunityAmateurSportsView]
+  val charitiesCommunityAmateurSportsView = app.injector.instanceOf[CharitiesCommunityAmateurSportsView]
   val employingExpatriateEmployeesView = app.injector.instanceOf[EmployingExpatriateEmployeesView]
   val employmentRelatedSecuritiesView = app.injector.instanceOf[EmploymentRelatedSecuritiesView]
   val nonUkResidentEmployeesView = app.injector.instanceOf[NonUkResidentEmployeesView]
@@ -63,6 +63,7 @@ class WebchatControllerSpec
   val inheritanceTaxView = app.injector.instanceOf[InheritanceTaxView]
   val additionalNeedsHelpView = app.injector.instanceOf[AdditionalNeedsHelpView]
   val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
+  val personalTransportUnitEnquiriesView = app.injector.instanceOf[PersonalTransportUnitEnquiriesView]
 
   val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
 
@@ -97,6 +98,7 @@ class WebchatControllerSpec
     inheritanceTaxView,
     additionalNeedsHelpView,
     eatOutToHelpOutView,
+    personalTransportUnitEnquiriesView,
     nuanceEncryptionService)
 
   def asDocument(html: String): Document = Jsoup.parse(html)
@@ -308,6 +310,14 @@ class WebchatControllerSpec
 
       status(result) shouldBe OK
       doc.select("h1").text() shouldBe "Eat Out to Help Out scheme: webchat"
+    }
+
+    "Personal Transport Unit Enquiries page" in {
+      val result = controller.personalTransportUnitEnquiries (fakeRequest)
+      val doc = asDocument (contentAsString (result) )
+
+      status (result) shouldBe OK
+      doc.select ("h1").text () shouldBe "Personal Transport Unit: webchat"
     }
   }
 }
