@@ -16,9 +16,12 @@
 
 package views.html.pages
 
+import config.AppConfig
 import play.twirl.api.HtmlFormat
 
 trait ChatViewBehaviours extends ViewSpecBase {
+
+  implicit val appConfig = app.injector.instanceOf[AppConfig]
 
   def normalPage(view: () => HtmlFormat.Appendable,
                  messageKeyPrefix: String,
@@ -64,6 +67,43 @@ trait ChatViewBehaviours extends ViewSpecBase {
         "display the opening times text" in {
           val doc = asDocument(view())
           for (key <- openingTimes) assertContainsText(doc, messages(s"$key"))
+        }
+      }
+    }
+  }
+
+  def generalContent(view: () => HtmlFormat.Appendable,
+                     messageHeading: String,
+                     betaBannerFlag: Boolean,
+                     betaBannerText: String
+                    ): Unit = {
+    "adds to a all pages" when {
+      "display the correct page title" in {
+        val doc = asDocument(view())
+        doc.getElementsByTag("h1")
+        assertPageTitleEqualsMessage(doc, s"$messageHeading")
+      }
+
+      "display the beta banner when flag is true" in {
+        val doc = asDocument(view())
+        println("**********ChatViewBhaviours**********")
+        println(s"betaBannerFlag = $betaBannerFlag")
+
+        val flag =  appConfig.betaBannerMode.equals(true)
+
+        if(flag) {
+          println("**********true route**********")
+          println(s"betaBannerFlag = $betaBannerFlag")
+          println(s"flag = $flag")
+
+          assert(appConfig.betaBannerMode.equals(true))
+          //doc.getElementById("beta-banner")
+          //assertContainsText(doc, betaBannerText)
+        } else {
+          println("**********false route**********")
+          println(s"betaBannerFlag = $betaBannerFlag")
+          //doc.getElementById("beta-banner")
+          //assertContainsText(doc, betaBannerText)
         }
       }
     }
