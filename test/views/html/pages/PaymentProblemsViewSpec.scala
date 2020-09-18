@@ -40,7 +40,7 @@ class PaymentProblemsViewSpec extends ChatViewBehaviours {
         "payment.problems.p2",
         "payment.problems.h2.1",
         "global.opening.times.title",
-        "global.opening.times.8to4",
+        "global.opening.times.8to6",
         "payment.problems.h3.1",
         "payment.problems.h3.2",
         "payment.problems.h3.3",
