@@ -80,7 +80,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
         assertPageTitleEqualsMessage(doc, s"$messageHeading")
       }
 
-      "display the beta banner when flag is true" in {
+      "display the beta banner" in {
         val doc = asDocument(view())
         doc.getElementById("beta-banner")
         assertContainsText(doc, betaBannerText)
