@@ -103,13 +103,7 @@
     </ul>
 }
 
-@betaBanner = @{
-    if(appConfig.betaBannerMode) {
-        components.beta_banner(appConfig)
-    } else {
-        HtmlFormat.empty
-    }
-}
+@betaBanner = @{components.beta_banner(appConfig)}
 
 @serviceInfoBlock = {
     @serviceInfo(

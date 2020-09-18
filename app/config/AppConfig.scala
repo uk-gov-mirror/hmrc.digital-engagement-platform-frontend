@@ -38,7 +38,6 @@ class AppConfig @Inject()(config: Configuration,
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
   val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
   val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
-  val betaBannerMode: Boolean = config.get[Boolean]("beta-banner.mode")
 
   val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
   val optimizelyProjectId: String = config.get[String]("optimizely.projectId")

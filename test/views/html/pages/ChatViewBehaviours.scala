@@ -71,7 +71,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
   def generalContent(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
-                     betaBannerFlag: Boolean,
                      betaBannerText: String
                     ): Unit = {
     "adds to a all pages" when {
@@ -83,25 +82,8 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
       "display the beta banner when flag is true" in {
         val doc = asDocument(view())
-        println("**********ChatViewBhaviours**********")
-        println(s"betaBannerFlag = $betaBannerFlag")
-        println(s"frontendAppConfig.betaBannerMode.equals(true) = ${frontendAppConfig.betaBannerMode.equals(true)}")
-
-
-        //if(frontendAppConfig.betaBannerMode.equals(true)) {
-        if(betaBannerFlag==true) {
-          println("**********true route**********")
-          println(s"betaBannerFlag = $betaBannerFlag")
-
-          assert(frontendAppConfig.betaBannerMode.equals(true))
-          //doc.getElementById("beta-banner")
-          //assertContainsText(doc, betaBannerText)
-        } else {
-          println("**********false route**********")
-          println(s"betaBannerFlag = $betaBannerFlag")
-          //doc.getElementById("beta-banner")
-          //assertContainsText(doc, betaBannerText)
-        }
+        doc.getElementById("beta-banner")
+        assertContainsText(doc, betaBannerText)
       }
     }
   }

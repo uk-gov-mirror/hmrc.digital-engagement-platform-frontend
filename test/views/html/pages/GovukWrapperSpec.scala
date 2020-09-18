@@ -30,31 +30,11 @@ class GovukWrapperSpec extends ChatViewBehaviours {
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "GovukWrapper display the beta banner when toggle turned on" must {
-    //val flag = frontendAppConfig.betaBannerMode == true
-    val betaBannerMode: Boolean = frontendAppConfig.betaBannerMode
-    val flag = betaBannerMode.equals(true)
-
-    println(s"**********ChatViewBehaviours**********")
-    println(s"betaBannerMode = $betaBannerMode")
-    println(s"flag = $flag")
-    println(s"*************************************")
-    println(s"*************************************")
-
+  "GovukWrapper display the beta banner" must {
     behave like generalContent(
       createView,
       "Self Assessment: webchat",
-      true,
       "This is a new service"
     )
   }
-
-//  "GovukWrapper display the beta banner when toggle turned off" must {
-//    behave like generalContent(
-//      createView,
-//      "Self Assessment: webchat",
-//      false,
-//      ""
-//    )
-//  }
 }
