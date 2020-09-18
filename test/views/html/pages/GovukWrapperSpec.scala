@@ -30,7 +30,7 @@ class GovukWrapperSpec extends ChatViewBehaviours {
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "GovukWrapper display the beta banner" must {
+  "GovukWrapper" must {
     behave like generalContent(
       createView,
       "Self Assessment: webchat",
