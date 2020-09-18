@@ -39,9 +39,8 @@ class TaxCreditsViewSpec extends ChatViewBehaviours {
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Saturday, 8am to 10pm",
-      "Sunday, 9am to 10pm",
-      "Closed bank holidays."
+      "Monday to Saturday, 8am to 8pm",
+      "Closed Sundays and bank holidays."
     )
   }
 }
