@@ -16,12 +16,9 @@
 
 package views.html.pages
 
-import config.AppConfig
 import play.twirl.api.HtmlFormat
 
 trait ChatViewBehaviours extends ViewSpecBase {
-
-  implicit val appConfig = app.injector.instanceOf[AppConfig]
 
   def normalPage(view: () => HtmlFormat.Appendable,
                  messageKeyPrefix: String,
@@ -88,15 +85,15 @@ trait ChatViewBehaviours extends ViewSpecBase {
         val doc = asDocument(view())
         println("**********ChatViewBhaviours**********")
         println(s"betaBannerFlag = $betaBannerFlag")
+        println(s"frontendAppConfig.betaBannerMode.equals(true) = ${frontendAppConfig.betaBannerMode.equals(true)}")
 
-        val flag =  appConfig.betaBannerMode.equals(true)
 
-        if(flag) {
+        //if(frontendAppConfig.betaBannerMode.equals(true)) {
+        if(betaBannerFlag==true) {
           println("**********true route**********")
           println(s"betaBannerFlag = $betaBannerFlag")
-          println(s"flag = $flag")
 
-          assert(appConfig.betaBannerMode.equals(true))
+          assert(frontendAppConfig.betaBannerMode.equals(true))
           //doc.getElementById("beta-banner")
           //assertContainsText(doc, betaBannerText)
         } else {
