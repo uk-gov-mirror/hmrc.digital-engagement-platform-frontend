@@ -116,8 +116,9 @@
     }
 }
 
-@getHelpForm = @{reportAProblemLink(appConfig.reportAProblemPartialUrl, appConfig.reportAProblemNonJSUrl)}
-
+@getHelpForm = @{
+    reportAProblemLink(appConfig.reportAProblemPartialUrl, appConfig.reportAProblemNonJSUrl)
+}
 @content = {
     @main_content(
         article = mainContent,
@@ -125,6 +126,7 @@
         mainDataAttributes = mainDataAttributes,
         mainContentHeader = mainContentHeader,
         serviceInfo = serviceInfoBlock,
+        getHelpForm = getHelpForm,
         sidebar = sidebar)
 }
 
