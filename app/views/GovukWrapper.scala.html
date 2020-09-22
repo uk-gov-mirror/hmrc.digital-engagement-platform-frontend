@@ -87,9 +87,11 @@
     </ul>
 }
 
+@betaBanner = @{components.beta_banner(appConfig)}
+
 @serviceInfoBlock = {
     @serviceInfo(
-        betaBanner = HtmlFormat.empty,
+        betaBanner = betaBanner,
         includeGridWrapper = false,
         serviceInfoContent = Some(serviceInfoContent))
 }
