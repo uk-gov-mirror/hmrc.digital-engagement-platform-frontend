@@ -16,7 +16,6 @@
 
 package views.html.pages
 
-import config.AppConfig
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
@@ -34,7 +33,8 @@ class GovukWrapperSpec extends ChatViewBehaviours {
     behave like generalContent(
       createView,
       "Self Assessment: webchat",
-      "This is a new service"
+      "This is a new service",
+      "Get help with this page."
     )
   }
 }
