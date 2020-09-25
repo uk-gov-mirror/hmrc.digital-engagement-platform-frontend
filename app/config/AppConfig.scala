@@ -120,6 +120,16 @@ class AppConfig @Inject()(config: Configuration,
   val personalTransportUnitEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
 
+  val stampDutyLAndTaxReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"
+  val stampDutyReserveTaxReturnUrl: String =
+  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-reserve-tax"
+  val stampDutySharesAndLAndReturnUrl: String =
+  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
+  val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
+
+
   val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
   val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
   val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"

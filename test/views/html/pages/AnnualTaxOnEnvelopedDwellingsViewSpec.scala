@@ -19,27 +19,27 @@ package views.html.pages
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.AdditionalNeedsHelpView
+import views.html.AnnualTaxOnEnvelopedDwellingsView
 
-class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours {
+class AnnualTaxOnEnvelopedDwellingsViewSpec extends ChatViewBehaviours {
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[AdditionalNeedsHelpView]
+  val view = app.injector.instanceOf[AnnualTaxOnEnvelopedDwellingsView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Additional Needs Help view" must {
+  "Annual Tax On Enveloped Dwellings View" must {
     val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
 
     behave like normalPage(
       createView,
-      "HMRC’s Extra Support team: webchat",
-      "HMRC’s Extra Support team: webchat",
+      "Annual Tax on Enveloped Dwellings: webchat",
+      "Annual Tax on Enveloped Dwellings: webchat",
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 9am to 5pm",
+      "Monday to Friday, 8:30am to 5pm",
       "Closed weekends and bank holidays."
     )
   }

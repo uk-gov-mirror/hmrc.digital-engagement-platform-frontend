@@ -22,15 +22,15 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("additional.needs.title")) {
+@main_template(title = messages("annual.tax.enveloped.dwellings.title")) {
 
     @components.back_link()
 
-    <h1 class="header-margin-top">@messages("additional.needs.title")</h1>
+    <h1 class="header-margin-top">@messages("annual.tax.enveloped.dwellings.title")</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.9to5")</p>
+        <p>@messages("global.opening.times.8_30to5")</p>
         <p>@messages("global.opening.times.weekend.p")</p>
     </div>
 
@@ -45,6 +45,6 @@
     <p class="margin-top">@messages("global.adviser.busy.p2")</p>
 
     <p class="margin-top">
-        <a id="return-link" href=@appConfig.additionalNeedsReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+        <a id="return-link" href=@appConfig.AnnualTaxOnEnvelopedDwellingsReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
     </p>
 }
