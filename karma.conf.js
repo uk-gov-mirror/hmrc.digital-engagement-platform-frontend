@@ -5,7 +5,7 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
     files: [
       './javascripts/src/*.js',
-      './javascripts/**/*.js'
+      './test/javascripts/**/*.js'
     ]
   });
 };

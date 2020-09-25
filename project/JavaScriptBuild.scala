@@ -9,7 +9,7 @@ object JavaScriptBuild {
   val npmInstall = TaskKey[Int]("npm-install")
 
   val javaScriptTestRunnerHook = Seq(
-    configDirectory := {(baseDirectory in Compile) { _ / "test" }}.value,
+    configDirectory := {(baseDirectory in Compile)}.value,
 
     npmInstall := {
       val result = Gulp.npmProcess(configDirectory.value, "install").run().exitValue()

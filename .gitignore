@@ -35,3 +35,4 @@ tmp
 bin
 project/metals.sbt
 node_modules
+package-lock.json
