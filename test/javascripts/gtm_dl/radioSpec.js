@@ -1,9 +1,5 @@
-
-
-
-
-describe("Radio show hide test suite", function() {
-  	it("It contains a spec with an expectation", function() {
+describe("Test", function() {
+  	it("Test", function() {
   	  expect(true).toBe(true);
   	});
 });
