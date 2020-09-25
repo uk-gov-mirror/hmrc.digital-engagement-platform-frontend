@@ -1,11 +1,5 @@
-//specify custom path
 
-var path = '';
-if (typeof window.__karma__ !== 'undefined') {
-  path += 'base/'
-} 
 
-//jasmine.getFixtures().fixturesPath = path + 'tests/fixtures';
 
 
 describe("Radio show hide test suite", function() {

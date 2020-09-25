@@ -24,7 +24,7 @@ lazy val microservice = Project(appName, file("."))
     majorVersion                     := 0,
     libraryDependencies ++= AppDependencies.all,
     publishingSettings,
-    javaScriptUiSettings,
+    javaScriptTestRunnerHook,
     defaultSettings(),
     scalaVersion := "2.12.8",
     PlayKeys.playDefaultPort := 9956,

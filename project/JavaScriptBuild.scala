@@ -3,19 +3,14 @@ import play.sbt.PlayImport.PlayKeys
 import sbt.Keys._
 import sbt._
 
-/**
-  * Build of UI in JavaScript
-  */
 object JavaScriptBuild {
-
   val uiDirectory = SettingKey[File]("ui-directory")
-
   val gulpBuild = TaskKey[Int]("gulp-build")
   val gulpWatch = TaskKey[Int]("gulp-watch")
   val gulpTest = TaskKey[Int]("gulp-test")
   val npmInstall = TaskKey[Int]("npm-install")
 
-  val javaScriptUiSettings = Seq(
+  val javaScriptTestRunnerHook = Seq(
 
     // the JavaScript application resides in "ui"
     uiDirectory := {(baseDirectory in Compile) { _ / "test" }}.value,
@@ -26,21 +21,20 @@ object JavaScriptBuild {
     npmInstall := {
       val result = Gulp.npmProcess(uiDirectory.value, "install").run().exitValue()
       if (result != 0)
-        throw new Exception("Npm install failed.")
+        throw new Exception("npm install failed.")
       result
     },
     gulpBuild := {
       val result = Gulp.gulpProcess(uiDirectory.value, "default").run().exitValue()
       if (result != 0)
-        throw new Exception("Gulp build failed.")
+        throw new Exception("gulp build failed.")
       result
     },
 
     gulpTest := {
-      println("ABOUT TO RUN TESTS ********************************")
       val result = Gulp.gulpProcess(uiDirectory.value, "test").run().exitValue()
       if (result != 0)
-        throw new Exception("Gulp test failed.")
+        throw new Exception("javascript tests failed")
       result
     },
 
@@ -51,9 +45,6 @@ object JavaScriptBuild {
     dist := {dist dependsOn gulpBuild}.value,
 
     (test in Test) := {(test in Test) dependsOn gulpTest}.value,
-
-    // integrate JavaScript build into play build
-    PlayKeys.playRunHooks += {uiDirectory.map(ui => Gulp(ui))}.value
   )
 
   def npmCommand(base: File) = Command.args("npm", "<npm-command>") { (state, args) =>
