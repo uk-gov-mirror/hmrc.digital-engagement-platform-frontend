@@ -2,7 +2,7 @@
 
 var gulp = require('gulp'),
 requireDir = require('require-dir');
-requireDir('./tasks', { recurse: true });
+requireDir('./gulpUtils', { recurse: true });
 
 //By default we just run the tests.
 gulp.task('default', ['test']);
