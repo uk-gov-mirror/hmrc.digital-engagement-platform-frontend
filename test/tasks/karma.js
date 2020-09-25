@@ -1,10 +1,8 @@
 'use strict';
 
-// Dependencies
 var gulp = require('gulp'),
-	Server = require('karma').Server;
+Server = require('karma').Server;
 
-// Test suite task
 gulp.task('test', function (done) {
   return new Server({
     configFile: __dirname + '/../karma.conf.js',
@@ -12,8 +10,8 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
-// Watch
-gulp.task('test:watch', function (done) {
+// ~testQuick only for js files
+gulp.task('tdd', function (done) {
   new Server({
     configFile: __dirname + '/../karma.conf.js'
   }, done).start();
