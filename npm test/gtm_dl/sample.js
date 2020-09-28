@@ -1,5 +1,6 @@
 describe("Test", function() {
   	it("Test", function() {
-  	  expect(1).toBe(1);
+		  console.log('hi')
+  	  expect(true).toBe(false);
   	});
 });
