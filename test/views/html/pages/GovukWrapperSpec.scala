@@ -16,31 +16,25 @@
 
 package views.html.pages
 
+import config.AppConfig
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.TaxCreditsView
+import views.html.SelfAssessmentView
 
-class TaxCreditsViewSpec extends ChatViewBehaviours {
+class GovukWrapperSpec extends ChatViewBehaviours {
 
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[TaxCreditsView]
+  val view = app.injector.instanceOf[SelfAssessmentView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "Tax Credits view" must {
-    val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/tax-credits-enquiries"
-
-    behave like normalPage(
+  "GovukWrapper" must {
+    behave like generalContent(
       createView,
-      "Tax credits: webchat",
-      "Tax credits: webchat",
-      "Return to Contact HMRC",
-      returnUrl,
-      "Opening times:",
-      "Monday to Saturday, 8am to 8pm",
-      "Closed Sundays and bank holidays."
+      "Self Assessment: webchat",
+      "This is a new service"
     )
   }
 }

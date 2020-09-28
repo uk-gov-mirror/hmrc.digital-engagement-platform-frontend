@@ -68,4 +68,23 @@ trait ChatViewBehaviours extends ViewSpecBase {
       }
     }
   }
+
+  def generalContent(view: () => HtmlFormat.Appendable,
+                     messageHeading: String,
+                     betaBannerText: String
+                    ): Unit = {
+    "adds to a all pages" when {
+      "display the correct page title" in {
+        val doc = asDocument(view())
+        doc.getElementsByTag("h1")
+        assertPageTitleEqualsMessage(doc, s"$messageHeading")
+      }
+
+      "display the beta banner" in {
+        val doc = asDocument(view())
+        doc.getElementById("beta-banner")
+        assertContainsText(doc, betaBannerText)
+      }
+    }
+  }
 }

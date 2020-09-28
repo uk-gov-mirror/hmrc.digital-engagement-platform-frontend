@@ -39,7 +39,7 @@ class ProbateViewSpec extends ChatViewBehaviours {
       "Return to Contact HMRC",
       returnUrl,
       "Opening times:",
-      "Monday to Friday, 9am to 4pm",
+      "Monday to Friday, 9am to 5pm",
       "Closed weekends and bank holidays."
     )
   }

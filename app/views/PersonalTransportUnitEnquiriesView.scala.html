@@ -22,22 +22,22 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("probate.title")) {
+@main_template(title = messages("personal.transport.unit.enquiries.title")) {
 
     @components.back_link()
 
-    <h1 class="header-margin-top">@messages("probate.title")</h1>
+    <h1 class="header-margin-top">@messages("personal.transport.unit.enquiries.title")</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.9to5")</p>
+        <p>@messages("global.opening.times.8_30to5")</p>
         <p>@messages("global.opening.times.weekend.p")</p>
     </div>
 
     <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
     @if(!appConfig.performanceTest){
-        <div id="HMRC_Fixed_1"></div>
+    <div id="HMRC_Fixed_1"></div>
     }
 
     <p class="margin-top">@messages("global.adviser.busy.p1")</p>
@@ -45,6 +45,6 @@
     <p class="margin-top">@messages("global.adviser.busy.p2")</p>
 
     <p class="margin-top">
-        <a id="return-link" href=@appConfig.probateReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+        <a id="return-link" href=@appConfig.personalTransportUnitEnquiriesReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
     </p>
 }
