@@ -16,6 +16,7 @@
 
 package views.html.pages
 
+import config.AppConfig
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
