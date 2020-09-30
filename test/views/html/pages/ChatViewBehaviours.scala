@@ -91,7 +91,6 @@ trait ChatViewBehaviours extends ViewSpecBase {
         val doc = asDocument(view())
         doc.getElementById("get-help-action")
         assertContainsText(doc, getHelpWithPageText)
-
       }
     }
   }

@@ -34,7 +34,8 @@
     sidebarLinks: Option[Html] = None,
     contentHeader: Option[Html] = None,
     bodyClasses: Option[String] = None,
-    mainClass: Option[String] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+    mainClass: Option[String] = None,
+    getHelpFlag: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @serviceInfoContent = {}
 
@@ -75,6 +76,7 @@
 
 @govuk_wrapper(appConfig = appConfig,
                title = title,
+               getHelpFlag = getHelpFlag,
                navTitle = navTitle,
                mainClass = mainClass,
                bodyClasses = bodyClasses,

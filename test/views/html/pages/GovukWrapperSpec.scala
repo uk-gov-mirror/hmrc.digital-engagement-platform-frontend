@@ -19,20 +19,20 @@ package views.html.pages
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.SelfAssessmentView
+import views.html.ChildBenefitView
 
 class GovukWrapperSpec extends ChatViewBehaviours {
 
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[SelfAssessmentView]
+  val view = app.injector.instanceOf[ChildBenefitView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  def createView: () => HtmlFormat.Appendable = () => view(displayGetHelp = true)(fakeRequest, messages)
 
   "GovukWrapper" must {
     behave like generalContent(
       createView,
-      "Self Assessment: webchat",
+      "Child Benefit: webchat",
       "This is a new service",
       "Get help with this page."
     )
