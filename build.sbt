@@ -1,3 +1,4 @@
+import JavaScriptBuild._
 import scoverage.ScoverageKeys
 import uk.gov.hmrc.DefaultBuildSettings._
 import uk.gov.hmrc.SbtArtifactory
@@ -23,6 +24,7 @@ lazy val microservice = Project(appName, file("."))
     majorVersion                     := 0,
     libraryDependencies ++= AppDependencies.all,
     publishingSettings,
+    javaScriptTestRunnerHook,
     defaultSettings(),
     scalaVersion := "2.12.8",
     PlayKeys.playDefaultPort := 9956,
