@@ -1,0 +1,13 @@
+{
+  "name": "digital-engagement-platform-frontend-tests",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-jasmine": "^4.0.0",
+    "require-dir": "^0.3.0",
+    "del": "^2.2.0",
+    "gulp-watch": "^4.3.5",
+    "jasmine-core": "^2.4.1"
+  }
+}
