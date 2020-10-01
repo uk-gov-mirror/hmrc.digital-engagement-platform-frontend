@@ -122,11 +122,5 @@ class IvrControllerSpec
       status(result) shouldBe SEE_OTHER
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
     }
-
-    "render eat out to help out page" in {
-      val result = controller.eatOutToHelpOut(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/eat-out-to-help-out-scheme?nuance=ivr")
-    }
   }
 }

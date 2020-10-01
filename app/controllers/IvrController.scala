@@ -87,7 +87,8 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(controllers.routes.WebchatController.c19EmployerEnquiries().url + param))
   }
 
-  def eatOutToHelpOut: Action[AnyContent] = Action.async {
+ //TODO: Once Eat Out to Help Out scheme is confirmed decomissioned, remove the below. Commented as referencing non existent route.
+ /* def eatOutToHelpOut: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.eatOutToHelpOut().url + param))
-  }
+  }*/
 }
