@@ -27,7 +27,6 @@ GET         /webchat/probate                                                    
 GET         /webchat/inheritance-tax                                                    controllers.WebchatController.inheritanceTax
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
-GET         /webchat/eat-out-to-help-out-scheme                                         controllers.WebchatController.eatOutToHelpOut
 GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
 
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
@@ -43,7 +42,6 @@ GET         /ivr/sa                                                             
 GET         /ivr/jobretention                                                           controllers.IvrController.jobRetentionScheme
 GET         /ivr/c19seiss                                                               controllers.IvrController.selfEmploymentIncomeSupportScheme
 GET         /ivr/c19employer                                                            controllers.IvrController.c19EmployerEnquiries
-GET         /ivr/eatout                                                                 controllers.IvrController.eatOutToHelpOut
 
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
 GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
