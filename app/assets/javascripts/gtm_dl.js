@@ -1,15 +1,10 @@
+
+var parser = require('parseData');
+
+
+
 //push any data-gtag objects in the format "key:value, key:value" into global dataLayer
 function gtmDl(d, w, el) {
-  function parseData(string) {
-    var properties = string.split(', ');
-    var obj = {};
-    properties.forEach(function (property) {
-      var tup = property.split(':');
-      obj[tup[0]] = tup[1]
-    });
-    return obj
-  }
-
   function waitForEl (selector, callback) {
     if (jQuery(selector).length) {
       callback();
@@ -64,7 +59,7 @@ function gtmDl(d, w, el) {
     };
 
     Array.prototype.forEach.call(localData, function (elToAdd, i) {
-      localObj = Object.assign(localObj, parseData(elToAdd.getAttribute('data-gtag')))
+      localObj = Object.assign(localObj, parser.parseData(elToAdd.getAttribute('data-gtag')))
     });
 
     w.dataLayer.push(localObj);
@@ -79,4 +74,4 @@ function gtmDl(d, w, el) {
   });
 };
 
-gtmDl(document, window, '#HMRC_Fixed_1');
+//gtmDl(document, window, '#HMRC_Fixed_1');
