@@ -34,6 +34,8 @@ lazy val microservice = Project(appName, file("."))
       "uk.gov.hmrc.play.views.html.helpers._",
       "uk.gov.hmrc.play.views.html.layouts._"
     ),
+    Concat.groups := Seq("javascripts/all-service.js" -> group(Seq("javascripts/parseData.js", "javascripts/gtm_dl.js"))),
+    pipelineStages in Assets := Seq(concat),
     scoverageSettings,
     resolvers += Resolver.jcenterRepo
   )

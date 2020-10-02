@@ -1,8 +1,4 @@
 
-var parser = require('parseData');
-
-
-
 //push any data-gtag objects in the format "key:value, key:value" into global dataLayer
 function gtmDl(d, w, el) {
   function waitForEl (selector, callback) {
