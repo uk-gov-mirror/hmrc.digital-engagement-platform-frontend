@@ -3,12 +3,16 @@
 var gulp = require('gulp');
 const del = require('del');
 const { task,src } = require('gulp');
-const jasmine = require('gulp-jasmine');
+var jest = require('gulp-jest').default;
+ 
+gulp.task('jest', function () {
+  return gulp.src('./test/javascripts/**/*.spec.js').pipe(jest({
+    "testRegex": "((\\.|/*.)(spec))\\.js?$",
+    "automock": false
+  }));
+});
 
 task('clean:node_modules', function () {
   return del(['node_modules'], {force: true});
 });
 
-task('test', function() {
-  return src('./test/javascripts/**/*.js').pipe(jasmine({verbose:true}))
-});

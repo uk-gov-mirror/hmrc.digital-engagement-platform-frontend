@@ -18,7 +18,7 @@ object JavaScriptBuild {
       result
     },
     runAllTests := {
-      val result = Gulp.gulpProcess(configDirectory.value, "test").run().exitValue()
+      val result = Gulp.gulpProcess(configDirectory.value, "jest").run().exitValue()
       if (result != 0)
         throw new Exception("javascript tests failed")
       result
