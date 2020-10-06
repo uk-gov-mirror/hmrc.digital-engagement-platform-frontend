@@ -1,5 +1,4 @@
-module.exports = {
-    parseData: function parseData(string) {
+export function parseData(string) {
       var properties = string.split(', ');
       var parsedObject = {};
       properties.forEach((property) => {
@@ -8,4 +7,4 @@ module.exports = {
       });
       return parsedObject
     }
-  }
+  
