@@ -1,3 +1,4 @@
+import * as parser from './parseData'
 
 //push any data-gtag objects in the format "key:value, key:value" into global dataLayer
 function gtmDl(d, w, el) {
@@ -70,4 +71,4 @@ function gtmDl(d, w, el) {
   });
 };
 
-//gtmDl(document, window, '#HMRC_Fixed_1');
+gtmDl(document, window, '#HMRC_Fixed_1');

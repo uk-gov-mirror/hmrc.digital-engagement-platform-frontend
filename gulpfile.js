@@ -2,8 +2,29 @@
 
 var gulp = require('gulp');
 const del = require('del');
-const { task,src } = require('gulp');
 var jest = require('gulp-jest').default;
+const rollup = require('rollup-stream');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const sourcemaps = require('gulp-sourcemaps');
+
+const rollupJS = (inputFile, options) => {
+  return () => {
+    return rollup({
+      input: options.basePath + inputFile,
+      format: options.format,
+      sourcemap: options.sourcemap
+    })
+    // point to the entry file.
+    .pipe(source(inputFile, options.basePath))
+    // we need to buffer the output, since many gulp plugins don't support streams.
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    // some transformations like uglify, rename, etc.
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(options.distPath));
+  };
+}
  
 gulp.task('jest', function () {
   return gulp.src('./test/javascripts/**/*.spec.js').pipe(jest({
@@ -12,7 +33,13 @@ gulp.task('jest', function () {
   }));
 });
 
-task('clean:node_modules', function () {
+gulp.task('clean:node_modules', function () {
   return del(['node_modules'], {force: true});
 });
 
+gulp.task('bundle', rollupJS('gtm_dl.js', {
+  basePath: './app/assets/javascripts/',
+  format: 'iife',
+  distPath: './app/assets/javascripts/bundle',
+  sourcemap: false
+}));
