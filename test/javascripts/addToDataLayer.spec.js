@@ -28,7 +28,7 @@ describe("Add to data layer", function() {
     });
     
 
-  	it("will add each property within `data-gtag` to dataLayer array", () => {
+  	it("push any data-gtag objects in the format `key:value, key:value` into global dataLayer", () => {
         document.body.innerHTML = `<input type="text" id="test" data-gtag="engine:v6, color:blue, alloys:20 inches">`
 
         var data = {
