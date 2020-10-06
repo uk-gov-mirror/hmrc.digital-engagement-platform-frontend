@@ -15,12 +15,9 @@ const rollupJS = (inputFile, options) => {
       format: options.format,
       sourcemap: options.sourcemap
     })
-    // point to the entry file.
     .pipe(source(inputFile, options.basePath))
-    // we need to buffer the output, since many gulp plugins don't support streams.
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
-    // some transformations like uglify, rename, etc.
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(options.distPath));
   };
