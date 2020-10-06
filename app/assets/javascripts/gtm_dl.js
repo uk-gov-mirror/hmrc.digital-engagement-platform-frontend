@@ -1,5 +1,5 @@
-import * as availabilityChecker from './setAvailability'
-
+import * as availabilityChecker from './getAvailability'
+import * as parser from './parseData'
 
 function addToDataLayer (status, elToAdd) {
   w.dataLayer = w.dataLayer || [];
