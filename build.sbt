@@ -24,6 +24,7 @@ lazy val microservice = Project(appName, file("."))
     majorVersion                     := 0,
     libraryDependencies ++= AppDependencies.all,
     publishingSettings,
+    javaScriptBundler,
     javaScriptTestRunnerHook,
     defaultSettings(),
     scalaVersion := "2.12.8",
@@ -34,7 +35,7 @@ lazy val microservice = Project(appName, file("."))
       "uk.gov.hmrc.play.views.html.helpers._",
       "uk.gov.hmrc.play.views.html.layouts._"
     ),
-    Concat.groups := Seq("javascripts/all-service.js" -> group(Seq("javascripts/parseData.js", "javascripts/gtm_dl.js"))),
+    Concat.groups := Seq("javascripts/bundle.js" -> group(Seq("javascripts/bundle/gtm_dl.js"))),
     pipelineStages in Assets := Seq(concat),
     scoverageSettings,
     resolvers += Resolver.jcenterRepo
