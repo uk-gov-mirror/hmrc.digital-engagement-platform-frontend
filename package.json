@@ -22,7 +22,22 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-env"
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/javascripts/setup.js"
     ]
   }
 }
