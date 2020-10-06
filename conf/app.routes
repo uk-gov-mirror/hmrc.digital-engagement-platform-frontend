@@ -29,6 +29,11 @@ GET         /webchat/help-for-users-with-additional-needs                       
 GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
 GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
 
+GET         /webchat/stamp-duty/land-tax                                                controllers.StampDutyController.landTax
+GET         /webchat/stamp-duty/reserve-tax                                             controllers.StampDutyController.reserveTax
+GET         /webchat/stamp-duty/shares-and-land                                         controllers.StampDutyController.sharesAndLand
+GET         /webchat/annual-tax-on-enveloped-dwellings                                  controllers.StampDutyController.annualTaxOnEnvelopedDwellings
+
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
 GET         /ivr/taxcredits                                                             controllers.IvrController.taxCredits

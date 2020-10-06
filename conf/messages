@@ -141,6 +141,12 @@ eat.out.to.help.out.title=Eat Out to Help Out scheme: webchat
 #Personal Transport Unit Enquiries
 personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
 
+#Stamp Duty & Annual Tax on Enveloped Dwellings
+stamp.duty.land.tax.title=Stamp Duty Land Tax: webchat
+stamp.duty.reserve.tax.title=Stamp Duty Reserve Tax: webchat
+stamp.duty.shares.and.land.tax.title=Stamp Duty shares and land: webchat
+annual.tax.enveloped.dwellings.title=Annual Tax on Enveloped Dwellings: webchat
+
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
