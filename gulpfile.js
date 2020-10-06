@@ -27,7 +27,7 @@ const rollupJS = (inputFile, options) => {
 }
  
 gulp.task('jest', function () {
-  return gulp.src('./test/javascripts/**/*.spec.js').pipe(jest({
+  return gulp.src('./test/javascripts/').pipe(jest({
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
     "automock": false
   }));
