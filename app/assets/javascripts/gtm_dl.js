@@ -1,5 +1,6 @@
 import * as availabilityChecker from './getAvailability'
 import * as parser from './parseData'
+import * as elementWatcher from './waitForEl'
 
 function addToDataLayer (status, elToAdd) {
   w.dataLayer = w.dataLayer || [];
@@ -22,16 +23,6 @@ function addToDataLayer (status, elToAdd) {
 
 //push any data-gtag objects in the format "key:value, key:value" into global dataLayer
 function gtmDl(d, w, el) {
-  function waitForEl (selector, callback) {
-    if (jQuery(selector).length) {
-      callback();
-    } else {
-      setTimeout(function () {
-        waitForEl(selector, callback);
-      }, 1000);
-    }
-  }
-
   function observeStatus() {
     let elementToObserve = document.querySelector(el);
 
@@ -45,7 +36,7 @@ function gtmDl(d, w, el) {
   }
 
   $(window).on("load", function () {
-    waitForEl(el + ' div span', function () {
+    elementWatcher.waitForEl(el + ' div span', function () {
       var nuanceText = document.querySelector(el + ' div span').innerHTML;
 
       addToDataLayer(availabilityChecker.getAvailability(nuanceText), el);
