@@ -22,7 +22,7 @@ describe("The status observer", function() {
         updateDataLayerMock.mockRestore();
     });
 
-  it("will execute callback method", () => {
+  xit("will execute callback method", () => {
 		SUT.observeStatus("test","test","test");
 
         expect(updateDataLayerMock).toHaveBeenCalled();
