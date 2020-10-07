@@ -21,12 +21,6 @@ describe("The status observer", function() {
     afterEach(() => {
         updateDataLayerMock.mockRestore();
     });
-
-  xit("will execute callback method", () => {
-		SUT.observeStatus("test","test","test");
-
-        expect(updateDataLayerMock).toHaveBeenCalled();
-    });
     
     it('will observe the element', () => {
 		SUT.observeStatus("test","test","test");
