@@ -3,7 +3,7 @@ import * as elementWatcher from './waitForEl'
 import * as dataLayer from './addToDataLayer'
 import * as statusObserver from './statusObserver'
 
-function updateDataLayer() {
+function updateDataLayer(el) {
   var nuanceText = document.querySelector(el + ' div span').innerHTML;
 
   dataLayer.addToDataLayer(availabilityChecker.getAvailability(nuanceText), el);
@@ -13,9 +13,9 @@ function updateDataLayer() {
 function gtmDl(d, w, el) {
   $(window).on("load", function () {
     elementWatcher.waitForEl(el + ' div span', function () {
-      updateDataLayer();
+      updateDataLayer(el);
 
-      statusObserver.observeStatus(updateDataLayer());
+      statusObserver.observeStatus(updateDataLayer(el));
     });
   });
 };
