@@ -1,21 +1,14 @@
-import * as availabilityChecker from './getAvailability'
 import * as elementWatcher from './waitForEl'
-import * as dataLayer from './addToDataLayer'
 import * as statusObserver from './statusObserver'
-
-function updateDataLayer(el,w,d) {
-  var nuanceText = document.querySelector(el + ' div span').innerHTML;
-
-  dataLayer.addToDataLayer(availabilityChecker.getAvailability(nuanceText), el, w, d);
-}
+import * as dataLayerUpdater from './updateDatalayer'
 
 
 function gtmDl(d, w, el) {
   $(window).on("load", function () {
     elementWatcher.waitForEl(el + ' div span', function () {
-      updateDataLayer(el,w,d);
+      dataLayerUpdater.updateDataLayer(el,w,d);
 
-      statusObserver.observeStatus(updateDataLayer(el,w,d),el);
+      statusObserver.observeStatus(el,w,d);
     });
   });
 };
