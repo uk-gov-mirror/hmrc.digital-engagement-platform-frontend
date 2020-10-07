@@ -1,6 +1,6 @@
 import * as parser from './parseData'
 
-export function addToDataLayer (status, elToAdd) {
+export function addToDataLayer (status, el, w, d) {
     w.dataLayer = w.dataLayer || [];
     var localData = d.querySelectorAll('[data-gtag]');
   

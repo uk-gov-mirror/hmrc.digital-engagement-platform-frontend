@@ -3,19 +3,19 @@ import * as elementWatcher from './waitForEl'
 import * as dataLayer from './addToDataLayer'
 import * as statusObserver from './statusObserver'
 
-function updateDataLayer(el) {
+function updateDataLayer(el,w,d) {
   var nuanceText = document.querySelector(el + ' div span').innerHTML;
 
-  dataLayer.addToDataLayer(availabilityChecker.getAvailability(nuanceText), el);
+  dataLayer.addToDataLayer(availabilityChecker.getAvailability(nuanceText), el, w, d);
 }
 
 
 function gtmDl(d, w, el) {
   $(window).on("load", function () {
     elementWatcher.waitForEl(el + ' div span', function () {
-      updateDataLayer(el);
+      updateDataLayer(el,w,d);
 
-      statusObserver.observeStatus(updateDataLayer(el));
+      statusObserver.observeStatus(updateDataLayer(el,w,d));
     });
   });
 };
