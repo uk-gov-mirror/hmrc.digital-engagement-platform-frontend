@@ -1,4 +1,5 @@
 import * as SUT from '../../app/assets/javascripts/statusObserver'
+import * as dataLayerUpdater from '../../app/assets/javascripts/updateDatalayer'
 
 describe("The status observer", function() {
     var isObserved = false;
@@ -7,20 +8,22 @@ describe("The status observer", function() {
         disconnect() {}
         observe(element, initObject) {isObserved = true;}
     };
-    global.el = "test";
 
-  	it("will execute callback method", () => {
-        var output;
+    let updateDataLayerMock;
 
-		SUT.observeStatus(() => {output = "success"});
+    beforeEach(() => {
+        updateDataLayerMock = jest.spyOn(
+            dataLayerUpdater,
+            'updateDataLayer'
+        ).mockImplementation(jest.fn());
+    });
 
-        expect(output).toBe("success");
+    afterEach(() => {
+        updateDataLayerMock.mockRestore();
     });
     
     it('will observe the element', () => {
-        var output;
-
-		SUT.observeStatus(() => true);
+		SUT.observeStatus("test","test","test");
 
         expect(isObserved).toBe(true);
     });

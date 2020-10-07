@@ -3,14 +3,14 @@ import * as SUT from '../../app/assets/javascripts/addToDataLayer'
 describe("Add to data layer", function() {
   	it("will add all base properties", () => {
         document.body.innerHTML = `<input type="text" id="test" data-gtag="test">`
-        global.w = {dataLayer : []};
-        global.el = "test";
-        global.d = {
+        var w = {dataLayer : []};
+        var el = "test";
+        var d = {
             querySelectorAll : () => {
                 return $("#test");
             }};
 
-		SUT.addToDataLayer("Pending");
+        SUT.addToDataLayer("Pending", el, w, d);
 
         expect(w.dataLayer[0].event).toBe('DOMContentLoaded');
         expect(w.dataLayer[0].ID).toBe('test');
@@ -22,13 +22,13 @@ describe("Add to data layer", function() {
 
   	it("push any data-gtag objects in the format `key:value, key:value` into global dataLayer", () => {
         document.body.innerHTML = `<input type="text" id="test" data-gtag="engine:v6, color:blue, alloys:20 inches">`
-        global.w = {dataLayer : []};
-        global.d = {querySelectorAll : () => {
+        var w = {dataLayer : []};
+        var d = {querySelectorAll : () => {
                 return $("#test");
             }};
-        global.el = "test";
+        var el = "test";
 
-		SUT.addToDataLayer("Pending");
+		SUT.addToDataLayer("Pending",el,w,d);
 
         expect(w.dataLayer[0].alloys).toBe('20 inches');
         expect(w.dataLayer[0].color).toBe('blue');
