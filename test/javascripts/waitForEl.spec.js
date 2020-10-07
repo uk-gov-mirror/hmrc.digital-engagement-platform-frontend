@@ -41,15 +41,17 @@ describe("When waiting for an element", () => {
 			expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 		});
 
-		it("after 10 attempts looking for the element, it will start looking every 5000 ms", () => {
-			document.body.innerHTML = `<input type="text" id="test2">`
-	
-			SUT.waitForEl("#test",() => true);
-	
-			checkForElement9Times();
-	
-			expect(setTimeout).toHaveBeenCalledTimes(10);
-			expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+		describe("And we have already checked 10 times", () => {
+			it("it will start looking for the element every 5000 ms", () => {
+				document.body.innerHTML = `<input type="text" id="test2">`
+		
+				SUT.waitForEl("#test",() => true);
+		
+				checkForElement9Times();
+		
+				expect(setTimeout).toHaveBeenCalledTimes(10);
+				expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+			});
 		});
 	});
 });
