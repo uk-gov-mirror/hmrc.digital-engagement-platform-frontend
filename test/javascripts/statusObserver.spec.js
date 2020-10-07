@@ -7,12 +7,11 @@ describe("The status observer", function() {
         disconnect() {}
         observe(element, initObject) {isObserved = true;}
     };
-    global.el = "test";
 
   	it("will execute callback method", () => {
         var output;
 
-		SUT.observeStatus(() => {output = "success"});
+		SUT.observeStatus(() => {output = "success"},"test");
 
         expect(output).toBe("success");
     });
@@ -20,7 +19,7 @@ describe("The status observer", function() {
     it('will observe the element', () => {
         var output;
 
-		SUT.observeStatus(() => true);
+		SUT.observeStatus(() => true,"test");
 
         expect(isObserved).toBe(true);
     });

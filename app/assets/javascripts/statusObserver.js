@@ -1,6 +1,4 @@
-import * as availabilityChecker from './getAvailability'
-
-export function observeStatus(callback) {
+export function observeStatus(callback, el) {
     let elementToObserve = document.querySelector(el);
 
     let observer = new MutationObserver(callback());
