@@ -15,7 +15,7 @@ function gtmDl(d, w, el) {
     elementWatcher.waitForEl(el + ' div span', function () {
       updateDataLayer(el,w,d);
 
-      statusObserver.observeStatus(updateDataLayer(el,w,d));
+      statusObserver.observeStatus(updateDataLayer(el,w,d),el);
     });
   });
 };
