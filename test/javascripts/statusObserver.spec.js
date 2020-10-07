@@ -11,7 +11,11 @@ describe("The status observer", function() {
   	it("will execute callback method", () => {
         var output;
 
-		SUT.observeStatus(() => {output = "success"},"test");
+        function setToSuccessfulCall(){
+            output = "success";
+        }
+
+		SUT.observeStatus(setToSuccessfulCall(output),"test");
 
         expect(output).toBe("success");
     });
