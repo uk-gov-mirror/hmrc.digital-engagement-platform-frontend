@@ -3,8 +3,8 @@ export function waitForEl (selector, callback, defaultTimeout = 1000, timesCheck
       callback();
     } else {
       setTimeout(function () {
-
         if (timesCheckedForElement>=9) {
+          console.log("waiting for " + selector)
           $("#HMRC_Fixed_1").text("Webchat is unavailable due to technical issues.")
         }
 
