@@ -1,14 +1,14 @@
-export function waitForEl (selector, callback, defaultTimeout = 1000, timesCheckedForElement = 1) {
+export function waitForEl (element, callback, defaultTimeout = 1000, timesCheckedForElement = 1) {
+    const selector = element + ' div span';
     if (jQuery(selector).length) {
       callback();
     } else {
       setTimeout(function () {
         if (timesCheckedForElement>=9) {
-          console.log("waiting for " + selector)
-          $("#HMRC_Fixed_1").text("Webchat is unavailable due to technical issues.")
+          $(element).text("Webchat is unavailable due to technical issues.")
         }
 
-        waitForEl(selector, callback, timesCheckedForElement >= 9 ? 5000 : 1000, timesCheckedForElement + 1);
+        waitForEl(element, callback, timesCheckedForElement >= 9 ? 5000 : 1000, timesCheckedForElement + 1);
       }, defaultTimeout);
     }
   }

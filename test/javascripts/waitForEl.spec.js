@@ -11,7 +11,7 @@ describe("When waiting for an element", () => {
 	});
 	it("will execute the callback if the element exists", () => {
 		var output;
-		document.body.innerHTML = `<input type="text" id="test">`
+		document.body.innerHTML = `<div id="test"><div><span>Test</span></div></div>`
 
 		SUT.waitForEl("#test",() => {output = "success"});
 
@@ -56,7 +56,7 @@ describe("When waiting for an element", () => {
 			it("will report on technical difficulties", () => {
 				document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
 		
-				SUT.waitForEl("#test",() => true);
+				SUT.waitForEl("#HMRC_Fixed_1",() => true);
 		
 				checkForElement9Times();
 		
