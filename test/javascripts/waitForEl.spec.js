@@ -42,7 +42,7 @@ describe("When waiting for an element", () => {
 		});
 
 		describe("And we have already checked 10 times", () => {
-			it("it will start looking for the element every 5000 ms", () => {
+			it("will start looking for the element every 5000 ms", () => {
 				document.body.innerHTML = `<input type="text" id="test2">`
 		
 				SUT.waitForEl("#test",() => true);
@@ -51,6 +51,16 @@ describe("When waiting for an element", () => {
 		
 				expect(setTimeout).toHaveBeenCalledTimes(10);
 				expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+			});
+
+			it("will report on technical difficulties", () => {
+				document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
+		
+				SUT.waitForEl("#test",() => true);
+		
+				checkForElement9Times();
+		
+				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is unavailable due to technical issues.")
 			});
 		});
 	});
