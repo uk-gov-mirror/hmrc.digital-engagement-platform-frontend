@@ -40,6 +40,6 @@
       "./test/javascripts/setup.js"
     ],
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
-    "verbose" : true
+    "verbose": true
   }
 }
