@@ -10,7 +10,7 @@ export function addToDataLayer (status, el, w, d) {
       localObj = Object.assign(localObj, parser.parseData(elToAdd.getAttribute('data-gtag')))
     });
   
-    w.dataLayer.push(localObj);
+    saveToDataLayer(w,localObj);
   }
 
 
@@ -22,4 +22,9 @@ export function addToDataLayer (status, el, w, d) {
       'Session ID': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
       'Hit TimeStamp': new Date().toUTCString()
     };
+  }
+
+  export function saveToDataLayer(w,itemToSave) {
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push(itemToSave);
   }
