@@ -62,6 +62,18 @@ describe("When waiting for an element", () => {
 		
 				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is unavailable due to technical issues.")
 			});
+
+			it("will report on technical difficulties only once", () => {
+				document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
+		
+				SUT.waitForEl("#HMRC_Fixed_1",() => true);
+		
+				checkForElement9Times();
+				$("#HMRC_Fixed_1").text("Text not changed")
+				jest.runOnlyPendingTimers();
+		
+				expect($("#HMRC_Fixed_1").text()).toEqual("Text not changed")
+			});
 		});
 	});
 });
