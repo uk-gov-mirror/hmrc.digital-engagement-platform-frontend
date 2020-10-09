@@ -3,14 +3,13 @@ import * as parser from './parseData'
 export function addToDataLayer (status, el, w, d) {
     w.dataLayer = w.dataLayer || [];
     var localData = d.querySelectorAll('[data-gtag]');
-  
-    var localObj = createDataLayerElement(status,el);
+    var dataLayerElement = createDataLayerElement(status,el);
   
     Array.prototype.forEach.call(localData, function (elToAdd, i) {
-      localObj = Object.assign(localObj, parser.parseData(elToAdd.getAttribute('data-gtag')))
+      dataLayerElement = Object.assign(dataLayerElement, parser.parseData(elToAdd.getAttribute('data-gtag')))
     });
   
-    reportEvent(w,localObj);
+    reportEvent(w,dataLayerElement);
   }
 
 
