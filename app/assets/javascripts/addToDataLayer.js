@@ -10,7 +10,7 @@ export function addToDataLayer (status, el, w, d) {
       localObj = Object.assign(localObj, parser.parseData(elToAdd.getAttribute('data-gtag')))
     });
   
-    saveToDataLayer(w,localObj);
+    reportEvent(w,localObj);
   }
 
 
@@ -24,7 +24,7 @@ export function addToDataLayer (status, el, w, d) {
     };
   }
 
-  export function saveToDataLayer(w,itemToSave) {
+  export function reportEvent(w,itemToSave) {
     w.dataLayer = w.dataLayer || [];
     w.dataLayer.push(itemToSave);
   }

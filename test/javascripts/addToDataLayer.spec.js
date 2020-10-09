@@ -40,7 +40,7 @@ describe("Save to data layer", function() {
     it("will save an element", () => {
         var w = {dataLayer : []};
 
-        SUT.saveToDataLayer(w,{test:"test"})
+        SUT.reportEvent(w,{test:"test"})
 
         expect(w.dataLayer[0].test).toEqual("test");
     });
@@ -48,7 +48,7 @@ describe("Save to data layer", function() {
     it("will initialise data layer if there is no dataLayer array", () => {
         var w = {dataLayer : undefined};
 
-        SUT.saveToDataLayer(w,{test:"test"})
+        SUT.reportEvent(w,{test:"test"})
 
         expect(w.dataLayer[0].test).toEqual("test");
     });
