@@ -49,7 +49,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#test",() => true, w);
 		
-				checkForElement9Times();
+				checkForElementTimes(9);
 		
 				expect(setTimeout).toHaveBeenCalledTimes(10);
 				expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
@@ -60,7 +60,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, w);
 		
-				checkForElement9Times();
+				checkForElementTimes(9);
 		
 				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is unavailable due to technical issues.")
 			});
@@ -70,7 +70,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, w);
 		
-				checkForElement9Times();
+				checkForElementTimes(9);
 		
 				expect(w.dataLayer[0].event).toBe('DOMContentLoaded');
 				expect(w.dataLayer[0].ID).toBe('#HMRC_Fixed_1');
@@ -84,7 +84,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, w);
 		
-				checkForElement9Times();
+				checkForElementTimes(9);
 				$("#HMRC_Fixed_1").text("Text not changed")
 				jest.runOnlyPendingTimers();
 		
@@ -95,15 +95,6 @@ describe("When waiting for an element", () => {
 	});
 });
 
-function checkForElement9Times() {
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-	jest.runOnlyPendingTimers();
-}
+const checkForElementTimes = (numberOfTimes) => { for (var i = 0; i < numberOfTimes; i++) jest.runOnlyPendingTimers() };
+
 
