@@ -30,7 +30,7 @@ describe("When waiting for an element", () => {
 			expect(setTimeout).toHaveBeenCalledTimes(2);
 			expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 		});
-		it("will wait by default 1000ms before attempting to check the element again", () => {
+		it("will wait by default 1 second before attempting to check the element again", () => {
 			var output;
 	
 			document.body.innerHTML = `<input type="text" id="test2">`
@@ -42,7 +42,7 @@ describe("When waiting for an element", () => {
 		});
 
 		describe("And we have already checked 10 times", () => {
-			it("will start looking for the element every 5000 ms", () => {
+			it("will start looking for the element every 5 seconds", () => {
 				document.body.innerHTML = `<input type="text" id="test2">`
 		
 				SUT.waitForEl("#test",() => true);
