@@ -30,5 +30,6 @@ export const availabilities = Object.freeze({
       InProgress: "In Progress",
       Offline: "Offline",
       InChat: "In Chat",
-      NotResponding: "Not Responding"
+      NotResponding: "Not Responding",
+      NuanceUnavailable: "Nuance Unavailable"
   })

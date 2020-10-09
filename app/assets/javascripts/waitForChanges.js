@@ -21,5 +21,5 @@ function waitForNuanceElement(el,w,d) {
     dataLayerUpdater.updateDataLayer(el,w,d);
 
     statusObserver.observeStatus(el,w,d);
-  });
+  },w);
 }
