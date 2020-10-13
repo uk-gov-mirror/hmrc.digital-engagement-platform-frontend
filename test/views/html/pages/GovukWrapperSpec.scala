@@ -28,7 +28,7 @@ class GovukWrapperSpec extends ChatViewBehaviours {
 
   val view = app.injector.instanceOf[ChildBenefitView]
 
-  def createView: () => HtmlFormat.Appendable = () => view(displayGetHelp = true)(fakeRequest, messages)
+  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "GovukWrapper" must {
     behave like generalContent(

@@ -27,7 +27,7 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
 
   val view = app.injector.instanceOf[ChildBenefitView]
 
-  def createView: () => HtmlFormat.Appendable = () => view(displayGetHelp = true)(fakeRequest, messages)
+  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Child Benefit view" must {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/child-benefit"
@@ -43,13 +43,5 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
       "Saturday, 8am to 4pm",
       "Closed Sundays and bank holidays."
     )
-
-    "not display the 'get help with this page' text" in {
-      def createView: () => HtmlFormat.Appendable = () => view(displayGetHelp = false)(fakeRequest, messages)
-
-      val doc = asDocument(createView())
-      doc.getElementById("get-help-action")
-      assertContainsText(doc, "")
-    }
   }
 }

@@ -107,12 +107,10 @@
 }
 
 @getHelpForm = {
-    @if(getHelpFlag) {
-        @uiHelpers.reportAProblemLink(
-            appConfig.reportAProblemPartialUrl,
-            appConfig.reportAProblemNonJSUrl
-        )
-    }
+    @uiHelpers.reportAProblemLink(
+        appConfig.reportAProblemPartialUrl,
+        appConfig.reportAProblemNonJSUrl
+    )
 }
 
 @content = {

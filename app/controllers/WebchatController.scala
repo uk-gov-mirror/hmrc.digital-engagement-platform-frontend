@@ -76,7 +76,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def childBenefit: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(childBenefitView(isIvrRedirect(), displayGetHelp = true)))
+    Future.successful(Ok(childBenefitView(isIvrRedirect())))
   }
 
   def employerEnquiries: Action[AnyContent] = Action.async { implicit request =>

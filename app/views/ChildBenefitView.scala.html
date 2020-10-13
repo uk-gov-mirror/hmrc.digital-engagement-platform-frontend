@@ -20,9 +20,9 @@
     main_template: MainTemplate,
     appConfig: AppConfig)
 
-@(isIvrRedirect: Boolean = false, displayGetHelp: Boolean)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("child.benefit.title"), getHelpFlag = displayGetHelp) {
+@main_template(title = messages("child.benefit.title")) {
 
     @if(!isIvrRedirect) {
         @components.back_link()
