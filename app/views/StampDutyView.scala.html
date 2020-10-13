@@ -20,17 +20,35 @@
     main_template: MainTemplate,
     appConfig: AppConfig)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(pagePram: String)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("additional.needs.title")) {
+@title = @{
+    pagePram match {
+        case "landTax" => messages("stamp.duty.land.tax.title")
+        case "reserveTax" => messages("stamp.duty.reserve.tax.title")
+        case "sharesAndLand" => messages("stamp.duty.shares.and.land.tax.title")
+        case _ => ""
+    }
+}
+
+@returnUrl = @{
+    pagePram match {
+        case "landTax" => appConfig.stampDutyLAndTaxReturnUrl
+        case "reserveTax" => appConfig.stampDutyReserveTaxReturnUrl
+        case "sharesAndLand" => appConfig.stampDutySharesAndLAndReturnUrl
+        case _ => ""
+    }
+}
+
+@main_template(title = title) {
 
     @components.back_link()
 
-    <h1 class="header-margin-top">@messages("additional.needs.title")</h1>
+    <h1 class="header-margin-top">@{title}</h1>
 
     <div class="govuk-inset-text">
         <p>@messages("global.opening.times.title")</p>
-        <p>@messages("global.opening.times.8to5")</p>
+        <p>@messages("global.opening.times.8_30to5")</p>
         <p>@messages("global.opening.times.weekend.p")</p>
     </div>
 
@@ -45,6 +63,7 @@
     <p class="margin-top">@messages("global.adviser.busy.p2")</p>
 
     <p class="margin-top">
-        <a id="return-link" href=@appConfig.additionalNeedsReturnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
+        <a id="return-link" href=@returnUrl>@messages("global.text.link.back.to.govuk.p1")</a>
     </p>
+
 }
