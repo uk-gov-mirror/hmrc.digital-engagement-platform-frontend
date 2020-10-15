@@ -18,7 +18,7 @@ package controllers
 
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html.AccessibilityStatementView
@@ -34,7 +34,7 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
   implicit val config: AppConfig = appConfig
 
   def accessibility(pageUri: String): Action[AnyContent] = Action.async { implicit request =>
-    val uri = appConfig.accessibilityReportUrl(pageUri)
+    val uri = appConfig.accessibilityReportUrl(s"$pageUri$addEntertainersToUri$addIVRToUri")
     val deckproIdentifier: String = "-nuance"
     Future.successful(Ok(accessibilityStatementView(uri + deckproIdentifier)))
   }
@@ -43,6 +43,14 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
     val pageUri: String = "nuance"
     val uri = appConfig.accessibilityReportUrl(pageUri)
     Future.successful(Ok(accessibilityStatementView(uri)))
+  }
+
+  private def addEntertainersToUri()(implicit request: RequestHeader): String = {
+    if(request.getQueryString("redirect").contains("entertainers")) "-entertainers" else ""
+  }
+
+  private def addIVRToUri()(implicit request: RequestHeader): String = {
+    if(request.getQueryString("nuance").contains("ivr")) "-ivr" else ""
   }
 
 }
