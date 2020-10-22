@@ -33,8 +33,8 @@ class AccessibilityStatementController @Inject()(appConfig: AppConfig,
 
   implicit val config: AppConfig = appConfig
 
-  def accessibility(pageUri: String): Action[AnyContent] = Action.async { implicit request =>
-    val uri = appConfig.accessibilityReportUrl(pageUri)
+  def accessibility(userAction: String): Action[AnyContent] = Action.async { implicit request =>
+    val uri = appConfig.accessibilityReportUrl(userAction)
     val deckproIdentifier: String = "-nuance"
     Future.successful(Ok(accessibilityStatementView(uri + deckproIdentifier)))
   }
