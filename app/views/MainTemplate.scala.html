@@ -19,6 +19,13 @@
 @import models.EncryptedNuanceData
 @import services.NuanceEncryptionService
 @import uk.gov.hmrc.play.HeaderCarrierConverter
+@import uk.gov.hmrc.client.WebChatClient
+@import uk.gov.hmrc.http.HeaderCarrier
+@import scala.concurrent.ExecutionContext
+@import scala.concurrent.Future
+@import scala.concurrent.duration.Duration
+@import scala.concurrent.Await
+
 
 @this(
     govuk_wrapper: GovukWrapper,
@@ -34,7 +41,8 @@
     sidebarLinks: Option[Html] = None,
     contentHeader: Option[Html] = None,
     bodyClasses: Option[String] = None,
-    mainClass: Option[String] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+    mainClass: Option[String] = None,
+    webChatClient: Option[WebChatClient] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages, hc: HeaderCarrier, ec: ExecutionContext)
 
 @serviceInfoContent = {}
 
@@ -59,17 +67,17 @@
 
 @scriptElem = {
     @if(!appConfig.performanceTest){
-        <div id="HMRC_Anchored_1"></div>
+            @{
 
-        <script type="text/javascript">
-            var nuanceData = {
-                "mdtpdfSessionID" : "@{nuanceData.nuanceSessionId}",
-                "mdtpSessionID" : "@{nuanceData.mdtpSessionID}",
-                "deviceID" : "@{nuanceData.deviceID}"
+            val z = webChatClient.map(c => c.getElements().map{ result =>
+result match {
+case Some(_) => result
+case _ => result
+}
+}).getOrElse()
+
+            z
             }
-        </script>
-
-        <script id="webchat-tag" type="text/javascript" src=@nuanceUrl></script>
     }
 }
 

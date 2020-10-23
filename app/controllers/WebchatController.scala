@@ -19,11 +19,14 @@ package controllers
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import config.AppConfig
+import play.twirl.api.Html
 import services.NuanceEncryptionService
+import uk.gov.hmrc.client.WebChatClient
 import views.html._
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 
-import scala.concurrent.Future
+import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, ExecutionContext, Future}
 
 @Singleton
 class WebchatController @Inject()(appConfig: AppConfig,
@@ -55,12 +58,21 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   eatOutToHelpOutView: EatOutToHelpOutView,
                                   personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
-                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                                  nuanceEncryptionService: NuanceEncryptionService,
+                                  webChatClient: WebChatClient
+                                 )(implicit val ec: ExecutionContext) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   private def isIvrRedirect()(implicit request: RequestHeader): Boolean = {
     request.getQueryString("nuance").contains("ivr")
+
+    /*val test = webChatClient.map(c => c.getElements().map{ result =>
+      result match {
+        case Some(_) => result
+        case _ => result
+      }
+    }).getOrElse()*/
   }
 
   private def isEntertainersRedirect()(implicit request: RequestHeader): Boolean = {
@@ -68,7 +80,17 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
+    Future.successful(Ok(selfAssessmentView(isIvrRedirect(),webChatClient)))
+
+    /*
+
+    webChatClient.getElements().map { result =>
+  result match {
+    case Some(_) => Ok(selfAssessmentView(isIvrRedirect(),result))
+    case _ => Ok(selfAssessmentView(isIvrRedirect(),result))
+  }
+}
+ */
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
