@@ -16,6 +16,7 @@
 
 package views.html.pages
 
+import org.jsoup.Jsoup
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
@@ -25,8 +26,11 @@ class AccessibilityStatementViewSpec extends ChatViewBehaviours {
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
   val view = app.injector.instanceOf[AccessibilityStatementView]
+  val userAction: String = "%2Fask-hmrc%2Fwebchat%2Fconstruction-industry-scheme-enquiries"
+  val serviceIdentifier = "digital-engagement-platform-frontend"
+  val pageUri: String = s"https://www.tax.service.gov.uk/contact/accessibility-unauthenticated?service=$serviceIdentifier&userAction=$userAction"
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  def createView: () => HtmlFormat.Appendable = () => view(pageUri)(fakeRequest, messages)
 
   "Accessibility Statement page" when {
     "rendered" must {

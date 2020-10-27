@@ -16,10 +16,13 @@
 
 package config
 
+import java.net.URLEncoder
+
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
 import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
+import utils.StringHelpers
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
@@ -28,8 +31,13 @@ class AppConfig @Inject()(config: Configuration,
 
   private val contactHost = config.get[String]("contact-frontend.host")
 
+  private def encodeUrl(url: String): String = URLEncoder.encode(url, "UTF-8")
+
   private val assetsUrl = config.get[String]("assets.url")
   private val serviceIdentifier = "digital-engagement-platform-frontend"
+
+  lazy val host: String = config.get[String]("host")
+  lazy val self: String = servicesConfig.getConfString(s"$serviceIdentifier.www.url", "")
 
   val assetsPrefix: String = assetsUrl + config.get[String]("assets.version")
   val analyticsToken: String = config.get[String](s"google-analytics.token")
@@ -133,16 +141,19 @@ class AppConfig @Inject()(config: Configuration,
   val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
   val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
   val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
-  val reportingProblemsEmail: String = "digitalengagementplatform@hmrc.gov.uk"
+
+  def accessibilityReportUrl(pageUri: String): String = {
+    s"$contactHost/contact/accessibility-unauthenticated?service=" +
+      s"${serviceIdentifier}&userAction=${StringHelpers.tidyUpString(encodeUrl(pageUri))}"
+  }
+
+  lazy val reportProblemUrl: String = config.get[String]("gov-uk.reportProblemUrl")
   val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
   val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
   val equalityOrgUrl: String = "https://www.equalityni.org/Home"
   val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
 
-  val accessibilityStatementUrl: String = "https://www.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlDev: String = "https://www.development.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlQa: String = "https://www.qa.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlStaging: String = "https://www.staging.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlExternalTest: String = "https://test-www.tax.service.gov.uk/ask-hmrc/webchat/self-assessment"
-  val accessibilityStatementUrlLocal: String = "http://localhost:9956/ask-hmrc/accessibility-statement"
+  def accessibilityStatementUrl(pageUri: String): String = {
+    StringHelpers.tidyUpString(controllers.routes.AccessibilityStatementController.accessibility(pageUri).url)
+  }
 }
