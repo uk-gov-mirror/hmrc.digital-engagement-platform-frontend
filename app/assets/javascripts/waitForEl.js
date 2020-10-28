@@ -1,7 +1,7 @@
 import {availabilities} from './getAvailability'
 import {createDataLayerElement,reportEvent} from './addToDataLayer'
 
-export function waitForEl (element, callback, w, defaultTimeout = 1000, timesCheckedForElement = 1) {
+export function waitForEl (element, callback, w, defaultTimeout = 1000, timesCheckedForElement = 0) {
     const selector = element + ' div span';
     const maxNumberOfAttempts = 9;
 
@@ -10,9 +10,9 @@ export function waitForEl (element, callback, w, defaultTimeout = 1000, timesChe
     } else {
       setTimeout(function () {
         if (timesCheckedForElement == maxNumberOfAttempts) {
-          defaultTimeout = 5000;
           $(element).text("Webchat is unavailable due to technical issues.")
           reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, element))
+          return;
         }
 
         waitForEl(element, callback, w, defaultTimeout, timesCheckedForElement + 1);

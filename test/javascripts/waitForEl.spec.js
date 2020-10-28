@@ -44,15 +44,15 @@ describe("When waiting for an element", () => {
 		});
 
 		describe("And we have already checked 10 times", () => {
-			it("will start looking for the element every 5 seconds", () => {
+			//DEP-248: Nuance will never recover from failure asyncrhronously, therefore there is no point on checking for Nuance after technical difficulties.
+			it("will cease looking for the element", () => {
 				document.body.innerHTML = `<input type="text" id="test2">`
 		
 				SUT.waitForEl("#test",() => true, window);
 		
-				checkForElementTimes(9);
+				checkForElementTimes(15);
 		
 				expect(setTimeout).toHaveBeenCalledTimes(10);
-				expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
 			});
 
 			it("will report on technical difficulties", () => {
@@ -60,7 +60,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
 		
-				checkForElementTimes(9);
+				checkForElementTimes(10);
 		
 				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is unavailable due to technical issues.")
 			});
@@ -70,7 +70,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
 		
-				checkForElementTimes(9);
+				checkForElementTimes(10);
 		
 				expect(window.dataLayer[0].event).toBe('DOMContentLoaded');
 				expect(window.dataLayer[0].ID).toBe('#HMRC_Fixed_1');
@@ -84,7 +84,7 @@ describe("When waiting for an element", () => {
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
 		
-				checkForElementTimes(9);
+				checkForElementTimes(10);
 				$("#HMRC_Fixed_1").text("Text not changed")
 				jest.runOnlyPendingTimers();
 		
