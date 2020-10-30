@@ -10,7 +10,7 @@ export function waitForEl (element, callback, w, defaultTimeout = 1000, timesChe
     } else {
       setTimeout(function () {
         if (timesCheckedForElement == maxNumberOfAttempts) {
-          $(element).text("Webchat is unavailable due to technical issues.")
+          $(element).text("Webchat is experiencing technical difficulties. Please keep refreshing the page to try again.")
           reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, element))
           return;
         }
