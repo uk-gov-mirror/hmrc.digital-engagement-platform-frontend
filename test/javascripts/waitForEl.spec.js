@@ -62,7 +62,7 @@ describe("When waiting for an element", () => {
 		
 				checkForElementTimes(10);
 		
-				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is unavailable due to technical issues.")
+				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is experiencing technical difficulties. Please keep refreshing the page to try again.")
 			});
 
 			it("will raise a technical difficultes event on data layer", () => {
