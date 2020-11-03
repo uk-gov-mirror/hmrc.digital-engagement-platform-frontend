@@ -10,7 +10,8 @@ export function waitForEl (element, callback, w, defaultTimeout = 1000, timesChe
     } else {
       setTimeout(function () {
         if (timesCheckedForElement == maxNumberOfAttempts) {
-          $(element).text("Webchat is experiencing technical difficulties. Please keep refreshing the page to try again.")
+          const message = window.location.pathname.includes("virtual-assistant") ? "The digital assistant" : "Webchat"
+          $(element).text(`${message} is experiencing technical difficulties. Please keep refreshing the page to try again.`)
           reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, element))
           return;
         }
