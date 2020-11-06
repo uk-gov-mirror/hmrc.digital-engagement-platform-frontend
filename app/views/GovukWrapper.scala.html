@@ -16,7 +16,6 @@
 
 @import config.AppConfig
 @import play.twirl.api.HtmlFormat
-@import uk.gov.hmrc.play.views.html.{helpers => uiHelpers}
 @import views.html.layouts.GovUkTemplate
 
 @this(
@@ -105,12 +104,7 @@
     }
 }
 
-@getHelpForm = {
-    @uiHelpers.reportAProblemLink(
-        appConfig.reportAProblemPartialUrl,
-        appConfig.reportAProblemNonJSUrl
-    )
-}
+@getHelpForm = @{reportAProblemLink(appConfig.reportAProblemPartialUrl, appConfig.reportAProblemNonJSUrl)}
 
 @content = {
     @main_content(
@@ -119,7 +113,6 @@
         mainDataAttributes = mainDataAttributes,
         mainContentHeader = mainContentHeader,
         serviceInfo = serviceInfoBlock,
-        getHelpForm = getHelpForm,
         sidebar = sidebar)
 }
 
