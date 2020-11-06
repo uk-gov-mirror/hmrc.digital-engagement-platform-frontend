@@ -2,16 +2,23 @@ import * as SUT from '../../app/assets/javascripts/waitForEl'
 import {availabilities} from '../../app/assets/javascripts/getAvailability'
 
 describe("When waiting for an element", () => {
-	let window;
 	beforeEach(() => {
-		window = {dataLayer : []};
-	    jest.useFakeTimers();
+		window = {
+			dataLayer : []
+		};
+		jest.useFakeTimers();
 	});
 
 	afterEach(() => {
+		delete window.location
+		delete window.dataLayer
 		jest.clearAllTimers();	
 	});
 	it("will execute the callback if the element exists", () => {
+		window.location = {
+			pathname: '/ask-hmrc/webchat/test'
+		};
+
 		var output;
 		document.body.innerHTML = `<div id="test"><div><span>Test</span></div></div>`
 
@@ -46,6 +53,10 @@ describe("When waiting for an element", () => {
 		describe("And we have already checked 10 times", () => {
 			//DEP-248: Nuance will never recover from failure asyncrhronously, therefore there is no point on checking for Nuance after technical difficulties.
 			it("will cease looking for the element", () => {
+				window.location = {
+					pathname: '/ask-hmrc/webchat/test'
+				};
+
 				document.body.innerHTML = `<input type="text" id="test2">`
 		
 				SUT.waitForEl("#test",() => true, window);
@@ -55,17 +66,42 @@ describe("When waiting for an element", () => {
 				expect(setTimeout).toHaveBeenCalledTimes(10);
 			});
 
-			it("will report on technical difficulties", () => {
-				document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
-		
-				SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
-		
-				checkForElementTimes(10);
-		
-				expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is experiencing technical difficulties. Please keep refreshing the page to try again.")
+			describe("And we are using Digital Assistant", () => {
+				it("will report on technical difficulties", () => {
+					window.location = {
+						pathname: '/ask-hmrc/virtual-assistant/payment-problems'
+					};
+					document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
+
+					SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
+
+					checkForElementTimes(10);
+
+					expect($("#HMRC_Fixed_1").text()).toEqual("The digital assistant is experiencing technical difficulties. Please keep refreshing the page to try again.")
+				});
+			});
+
+			describe("And we are using Webchat", () => {
+				it("will report on technical difficulties", () => {
+					window.location = {
+						pathname: '/ask-hmrc/webchat/test'
+					};
+
+					document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
+
+					SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
+
+					checkForElementTimes(10);
+
+					expect($("#HMRC_Fixed_1").text()).toEqual("Webchat is experiencing technical difficulties. Please keep refreshing the page to try again.")
+				});
 			});
 
 			it("will raise a technical difficultes event on data layer", () => {
+				window.location = {
+					pathname: '/ask-hmrc/webchat/test'
+				};
+
 				document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
@@ -80,6 +116,10 @@ describe("When waiting for an element", () => {
 			});
 
 			it("will report on technical difficulties and to data layer only once", () => {
+				window.location = {
+					pathname: '/ask-hmrc/webchat/test'
+				};
+
 				document.body.innerHTML = `<div id="HMRC_Fixed_1"></div>`
 		
 				SUT.waitForEl("#HMRC_Fixed_1",() => true, window);
@@ -95,6 +135,6 @@ describe("When waiting for an element", () => {
 	});
 });
 
-const checkForElementTimes = (numberOfTimes) => { for (var i = 0; i < numberOfTimes; i++) jest.runOnlyPendingTimers() };
+const checkForElementTimes = (numberOfTimes) => { for (let i = 0; i < numberOfTimes; i++) jest.runOnlyPendingTimers() };
 
 
