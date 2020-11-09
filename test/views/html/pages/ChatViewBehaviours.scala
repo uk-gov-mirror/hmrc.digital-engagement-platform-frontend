@@ -71,7 +71,8 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
   def generalContent(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
-                     betaBannerText: String
+                     betaBannerText: String,
+                     getHelpWithPageText: String
                     ): Unit = {
     "adds to a all pages" when {
       "display the correct page title" in {
@@ -84,6 +85,12 @@ trait ChatViewBehaviours extends ViewSpecBase {
         val doc = asDocument(view())
         doc.getElementById("beta-banner")
         assertContainsText(doc, betaBannerText)
+      }
+
+      "display the 'Get help with this page' text" in {
+        val doc = asDocument(view())
+        doc.getElementById("get-help-action")
+        assertContainsText(doc, getHelpWithPageText)
       }
     }
   }
