@@ -17,6 +17,7 @@
 package controllers
 
 import config.AppConfig
+import controllers.testOnlyDoNotUseInAppConf.NuanceFullPageCUIController
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}

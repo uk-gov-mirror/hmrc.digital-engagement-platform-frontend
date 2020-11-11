@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package controllers
+package controllers.testOnlyDoNotUseInAppConf
 
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
