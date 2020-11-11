@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package controllers
+package controllers.testOnlyDoNotUseInAppConf
 
 import config.AppConfig
-import controllers.testOnlyDoNotUseInAppConf.NuanceFullPageCUIController
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatest.{Matchers, WordSpec}

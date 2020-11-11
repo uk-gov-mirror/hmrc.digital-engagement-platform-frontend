@@ -13,4 +13,4 @@
 ->         /                          prod.Routes
 
 + nocsrf
-GET         /contact-us/nuance-test/t85ting-on1y-pag8-for-d8v81opm8nt                   controllers.testOnlyDoNotUseInAppConf.NuanceFullPageCUIController.nuanceFullPageCUI
+GET         /ask-hmrc/contact-us/nuance-test/t85ting-on1y-pag8-for-d8v81opm8nt                   controllers.testOnlyDoNotUseInAppConf.NuanceFullPageCUIController.nuanceFullPageCUI
