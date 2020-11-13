@@ -39,8 +39,8 @@ class NuanceEncryptionServiceSpec extends WordSpec with Matchers {
       "encrypt plain text field which can be decrypted using correct algorithm" in {
         val configuration = Configuration.from(
           Map(
-            "request-body-encryption.hashing-key" -> "yNhI04vHs9<_HWbC`]20u`37=NGLGYY5:0Tg5?y`W<NoJnXWqmjcgZBec@rOxb^G",
-            "request-body-encryption.key" -> "QmFyMTIzNDVCYXIxMjM0NQ==",
+            "request-body-encryption.hashing-key" -> "WGgQSx4tiaR2m6xjl3E1JGqTBg0FmxL+QCIcqRmGDDT1ASGCUM+6Kq5xq8XHDjSk",
+            "request-body-encryption.key" -> "l4uhRYT6/OKm9Pmf2DfdmQ==",
             "request-body-encryption.previousKeys" -> List.empty
           )
         )
