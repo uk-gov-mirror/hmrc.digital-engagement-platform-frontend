@@ -16,16 +16,12 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.StampDutyView
 
 class StampDutyViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[StampDutyView]
-
+  private val view = app.injector.instanceOf[StampDutyView]
 
   "Stamp Duty Land Tax view" must {
     def createView: () => HtmlFormat.Appendable = () => view("landTax")(fakeRequest, messages)
@@ -38,7 +34,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
       "Stamp Duty Land Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Monday to Friday, 8:30am to 5pm"
+      Seq("Monday to Friday, 8:30am to 5pm")
     )
   }
 
@@ -53,7 +49,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
       "Stamp Duty Reserve Tax: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Monday to Friday, 8:30am to 5pm"
+      Seq("Monday to Friday, 8:30am to 5pm")
     )
   }
 
@@ -68,7 +64,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
       "Stamp Duty shares and land: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Monday to Friday, 8:30am to 5pm"
+      Seq("Monday to Friday, 8:30am to 5pm")
     )
   }
 }

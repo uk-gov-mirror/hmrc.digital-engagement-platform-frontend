@@ -16,17 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.VatRegistrationView
 
 class VatRegistrationViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[VatRegistrationView]
+  private val view = app.injector.instanceOf[VatRegistrationView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Vat registration view" must {
     val returnUrl: String =
@@ -38,9 +35,11 @@ class VatRegistrationViewSpec extends ChatViewBehaviours {
       "VAT registration: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8:30am to 5pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

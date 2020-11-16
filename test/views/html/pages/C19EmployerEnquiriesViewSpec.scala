@@ -16,17 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.C19EmployerEnquiriesView
 
 class C19EmployerEnquiriesViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[C19EmployerEnquiriesView]
+  private val view = app.injector.instanceOf[C19EmployerEnquiriesView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "C19 Employer Enquiries view" must {
     val returnUrl: String =
@@ -38,9 +35,11 @@ class C19EmployerEnquiriesViewSpec extends ChatViewBehaviours {
       "Coronavirus (COVID-19): Statutory Sick Pay rebate scheme",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

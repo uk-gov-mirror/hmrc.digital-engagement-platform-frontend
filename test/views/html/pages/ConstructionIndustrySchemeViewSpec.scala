@@ -16,18 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.ConstructionIndustrySchemeView
 
 class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours {
 
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[ConstructionIndustrySchemeView]
 
-  val view = app.injector.instanceOf[ConstructionIndustrySchemeView]
-
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Construction Industry Scheme view" must {
     val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme"
@@ -38,9 +34,11 @@ class ConstructionIndustrySchemeViewSpec extends ChatViewBehaviours {
       "Construction Industry Scheme: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 8pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

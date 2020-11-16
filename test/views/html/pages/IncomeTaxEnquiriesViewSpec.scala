@@ -16,18 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.IncomeTaxEnquiriesView
 
 class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours {
 
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[IncomeTaxEnquiriesView]
 
-  val view = app.injector.instanceOf[IncomeTaxEnquiriesView]
-
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Income Tax Enquiries view" must {
     val returnUrl: String =
@@ -38,7 +34,8 @@ class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours {
       "Income tax for individuals, pensioners and employees: webchat",
       "Income tax for individuals, pensioners and employees: webchat",
       "Return to Contact HMRC",
-      returnUrl
+      returnUrl,
+      Nil
     )
   }
 }
