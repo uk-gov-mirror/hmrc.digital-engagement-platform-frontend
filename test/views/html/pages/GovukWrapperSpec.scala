@@ -34,7 +34,7 @@ class GovukWrapperSpec extends ChatViewBehaviours {
       createView,
       "Child Benefit: webchat",
       "This is a new service",
-      "Get help with this page."
+      "Is this page not working properly?"
     )
   }
 }
