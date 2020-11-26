@@ -6,7 +6,6 @@ var jest = require('gulp-jest').default;
 const rollup = require('rollup-stream');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
-const sourcemaps = require('gulp-sourcemaps');
 
 const rollupJS = (inputFile, options) => {
   return () => {
@@ -17,8 +16,6 @@ const rollupJS = (inputFile, options) => {
     })
     .pipe(source(inputFile, options.basePath))
     .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(options.distPath));
   };
 }
