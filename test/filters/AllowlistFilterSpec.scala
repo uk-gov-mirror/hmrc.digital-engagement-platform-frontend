@@ -22,11 +22,11 @@ import org.scalatest.{MustMatchers, WordSpec}
 import org.scalatestplus.mockito.MockitoSugar
 import play.api.Configuration
 
-class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
+class AllowlistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
 
   val materializer = mock[Materializer]
 
-  "WhiteList Filter" must {
+  "AllowList Filter" must {
 
     "throw an exception when ip configurations are missing" in {
       val destination = ""
@@ -35,7 +35,7 @@ class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
         Configuration(("filters.whitelist.destination" -> destination), ("filters.whitelist.excludedPaths" -> excluded))
 
       assertThrows[ConfigException] {
-        new WhitelistFilter(config, materializer)
+        new AllowlistFilter(config, materializer)
       }
     }
 
@@ -49,9 +49,9 @@ class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
         ("filters.whitelist.ips"           -> ips)
       )
 
-      val whitelistFilter = new WhitelistFilter(config, materializer)
+      val allowlistFilter = new AllowlistFilter(config, materializer)
 
-      whitelistFilter.whitelist mustBe Seq.empty
+      allowlistFilter.whitelist mustBe Seq.empty
     }
 
     "give a valid sequence for comma separated string" in {
@@ -64,9 +64,9 @@ class WhitelistFilterSpec extends WordSpec with MustMatchers with MockitoSugar {
         ("filters.whitelist.ips"           -> ips)
       )
 
-      val whitelistFilter = new WhitelistFilter(config, materializer)
+      val allowlistFilter = new AllowlistFilter(config, materializer)
 
-      whitelistFilter.whitelist mustBe Seq("0.0.0.0", "255.255.255.255")
+      allowlistFilter.whitelist mustBe Seq("0.0.0.0", "255.255.255.255")
     }
   }
 }

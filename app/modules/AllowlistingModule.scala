@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package filters
+package modules
 
-import com.google.inject.Inject
-import play.api.http.DefaultHttpFilters
-import uk.gov.hmrc.play.bootstrap.filters.FrontendFilters
+import controllers.OtacAuthConnectorImpl
+import play.api.inject.{Binding, Module}
+import play.api.{Configuration, Environment}
+import uk.gov.hmrc.auth.otac.OtacAuthConnector
 
-class Filters @Inject()(
-                         sessionIdFilter: SessionIdFilter,
-                         frontendFilters: FrontendFilters,
-                         campaignAllowlistingFilter: CampaignAllowlistingFilter
-                       ) extends DefaultHttpFilters(frontendFilters.filters :+ campaignAllowlistingFilter :+ sessionIdFilter: _*)
+class AllowlistingModule extends Module {
+
+  override def bindings(environment: Environment, configuration: Configuration): Seq[Binding[_]] = {
+    Seq(bind[OtacAuthConnector].to[OtacAuthConnectorImpl])
+  }
+}
