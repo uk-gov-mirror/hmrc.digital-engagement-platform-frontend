@@ -16,31 +16,31 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.AdditionalNeedsHelpView
 
 class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[AdditionalNeedsHelpView]
+  private val view = app.injector.instanceOf[AdditionalNeedsHelpView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-    "Additional Needs Help view" must {
-      val returnUrl: String =
-        "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
+  "Additional Needs Help view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-from-hmrc-s-extra-support-team"
 
-      behave like normalPage(
-        createView,
-        "HMRC’s Extra Support team: webchat",
-        "HMRC’s Extra Support team: webchat",
-        "Return to Contact HMRC",
-        returnUrl,
+    behave like normalPage(
+      createView,
+      "HMRC’s Extra Support team: webchat",
+      "HMRC’s Extra Support team: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Seq(
         "Opening times:",
-        "Monday to Friday, 9am to 5pm",
-        "Closed weekends and bank holidays."
+        "Monday to Friday, 8am to 8pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
       )
-    }
+    )
+  }
 }

@@ -16,15 +16,12 @@
 
 package controllers
 
-import config.AppConfig
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{Cookie, MessagesControllerComponents}
+import play.api.mvc.{AnyContentAsEmpty, Cookie}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import services.NuanceEncryptionService
-import views.html._
 
 class IvrControllerSpec
     extends WordSpec
@@ -32,34 +29,9 @@ class IvrControllerSpec
     with GuiceOneAppPerSuite
     with ScalaCheckPropertyChecks {
 
-  implicit private val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private implicit val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  implicit val appConfig = app.injector.instanceOf[AppConfig]
-  val taxCreditsView = app.injector.instanceOf[TaxCreditsView]
-  val childBenefitView = app.injector.instanceOf[ChildBenefitView]
-  val incomeTaxEnquiriesView = app.injector.instanceOf[IncomeTaxEnquiriesView]
-  val employerEnquiriesView = app.injector.instanceOf[EmployerEnquiriesView]
-  val vatEnquiriesView = app.injector.instanceOf[VatEnquiriesView]
-  val nationalInsuranceNumbersView = app.injector.instanceOf[NationalInsuranceNumbersView]
-  val customsEnquiriesView = app.injector.instanceOf[CustomsEnquiriesView]
-  val selfAssessmentView = app.injector.instanceOf[SelfAssessmentView]
-  val eatOutToHelpOutView = app.injector.instanceOf[EatOutToHelpOutView]
-  val nuanceEncryptionService = app.injector.instanceOf[NuanceEncryptionService]
-
-  val messagesCC = app.injector.instanceOf[MessagesControllerComponents]
-  private val controller = new IvrController(
-    appConfig,
-    messagesCC,
-    taxCreditsView,
-    childBenefitView,
-    incomeTaxEnquiriesView,
-    employerEnquiriesView,
-    vatEnquiriesView,
-    nationalInsuranceNumbersView,
-    customsEnquiriesView,
-    selfAssessmentView,
-    eatOutToHelpOutView,
-    nuanceEncryptionService)
+  private val controller = app.injector.instanceOf[IvrController]
 
   "ivr redirect URLs" should {
 
@@ -99,10 +71,10 @@ class IvrControllerSpec
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/national-insurance-numbers?nuance=ivr")
     }
 
-    "render customs page" in {
-      val result = controller.customsEnquiries(fakeRequest)
+    "render excise page" in {
+      val result = controller.exciseEnquiries(fakeRequest)
       status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/customs-international-trade-and-excise-enquiries?nuance=ivr")
+      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/excise-enquiries?nuance=ivr")
     }
 
     "render self-assessment page" in {
@@ -121,12 +93,6 @@ class IvrControllerSpec
       val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
       status(result) shouldBe SEE_OTHER
       redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
-    }
-
-    "render eat out to help out page" in {
-      val result = controller.eatOutToHelpOut(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/eat-out-to-help-out-scheme?nuance=ivr")
     }
   }
 }

@@ -16,17 +16,14 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.ProbateView
 
 class ProbateViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[ProbateView]
+  private val view = app.injector.instanceOf[ProbateView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
   "Probate view" must {
     val returnUrl: String =
@@ -38,9 +35,11 @@ class ProbateViewSpec extends ChatViewBehaviours {
       "Coronavirus (COVID-19): Probate",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 9am to 5pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 9am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

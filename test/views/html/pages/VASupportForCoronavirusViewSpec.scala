@@ -16,59 +16,55 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.VASupportForCoronavirusView
 
 class VASupportForCoronavirusViewSpec extends ChatViewBehaviours {
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[VASupportForCoronavirusView]
-  val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
-  val coronavirusHelplineUrl: String =
+  private val view = app.injector.instanceOf[VASupportForCoronavirusView]
+  private val coronavirusGeneralInfoUrl: String = "https://www.gov.uk/coronavirus"
+  private val coronavirusHelplineUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/coronavirus-covid-19-helpline"
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-    "Support For Coronavirus view" must {
-      "behave like a normal page" when {
-        "rendered" must {
+  "Support For Coronavirus view" must {
+    "behave like a normal page" when {
+      "rendered" must {
 
-          "have the correct banner title" in {
-            val doc = asDocument(createView())
-            val nav = doc.getElementById("proposition-menu")
-            val span = nav.children.first
-            span.text mustBe messages("Ask HMRC’s digital assistant")
-          }
-
-          "display the correct browser title" in {
-            val doc = asDocument(createView())
-            assertEqualsMessage(doc, "title", "Use HMRC’s digital assistant")
-          }
-
-          "display the correct page title" in {
-            val doc = asDocument(createView())
-            doc.getElementsByTag("h1")
-            assertPageTitleEqualsMessage(doc, "Use HMRC’s digital assistant")
-          }
+        "have the correct banner title" in {
+          val doc = asDocument(createView())
+          val nav = doc.getElementById("proposition-menu")
+          val span = nav.children.first
+          span.text mustBe messages("Ask HMRC’s digital assistant")
         }
 
-        "display coronavirus general information link" in {
+        "display the correct browser title" in {
           val doc = asDocument(createView())
-          val a = doc.getElementById("coronavirus-general-info-link")
-
-          val href = a.attr("href")
-          href mustBe coronavirusGeneralInfoUrl
+          assertEqualsMessage(doc, "title", "Use HMRC’s digital assistant")
         }
 
-
-        "display coronavirus helpline link" in {
+        "display the correct page title" in {
           val doc = asDocument(createView())
-          val a = doc.getElementById("coronavirus-helpline-return-link")
-          val href = a.attr("href")
-          href mustBe coronavirusHelplineUrl
+          doc.getElementsByTag("h1")
+          assertPageTitleEqualsMessage(doc, "Use HMRC’s digital assistant")
         }
       }
+
+      "display coronavirus general information link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("coronavirus-general-info-link")
+
+        val href = a.attr("href")
+        href mustBe coronavirusGeneralInfoUrl
+      }
+
+      "display coronavirus helpline link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("coronavirus-helpline-return-link")
+        val href = a.attr("href")
+        href mustBe coronavirusHelplineUrl
+      }
     }
+  }
 }

@@ -19,7 +19,6 @@ package controllers
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html._
 
@@ -32,6 +31,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   taxCreditsView: TaxCreditsView,
                                   childBenefitView: ChildBenefitView,
                                   customsEnquiriesView: CustomsEnquiriesView,
+                                  exciseEnquiriesView: ExciseEnquiriesView,
                                   employerEnquiriesView: EmployerEnquiriesView,
                                   incomeTaxEnquiriesView: IncomeTaxEnquiriesView,
                                   nationalInsuranceNumbersView: NationalInsuranceNumbersView,
@@ -54,8 +54,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   inheritanceTaxView: InheritanceTaxView,
                                   additionalNeedsHelpView: AdditionalNeedsHelpView,
                                   eatOutToHelpOutView: EatOutToHelpOutView,
-                                  personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView,
-                                  nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                                  personalTransportUnitEnquiriesView: PersonalTransportUnitEnquiriesView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -101,6 +100,10 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def customsEnquiries: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(customsEnquiriesView(isIvrRedirect())))
+  }
+
+  def exciseEnquiries: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(exciseEnquiriesView(isIvrRedirect())))
   }
 
   def incomeTaxEnquiries: Action[AnyContent] = Action.async { implicit request =>

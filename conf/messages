@@ -66,6 +66,9 @@ national.insurance.title=National Insurance: webchat
 #Imports and Exports Webchat
 customs.title=Imports and exports: webchat
 
+#Excise Enquiries
+excise.enquiries.title=Excise: webchat
+
 #Income Tax Enquiries
 income.tax.title=Income tax for individuals, pensioners and employees: webchat
 
@@ -141,6 +144,12 @@ eat.out.to.help.out.title=Eat Out to Help Out scheme: webchat
 #Personal Transport Unit Enquiries
 personal.transport.unit.enquiries.title=Personal Transport Unit: webchat
 
+#Stamp Duty & Annual Tax on Enveloped Dwellings
+stamp.duty.land.tax.title=Stamp Duty Land Tax: webchat
+stamp.duty.reserve.tax.title=Stamp Duty Reserve Tax: webchat
+stamp.duty.shares.and.land.tax.title=Stamp Duty shares and land: webchat
+annual.tax.enveloped.dwellings.title=Annual Tax on Enveloped Dwellings: webchat
+
 #Payment Problems
 payment.problems.title=Coronavirus (COVID-19): tax support for businesses and self-employed
 payment.problems.p1=If you run a business or are self-employed, you might be eligible for support through our Time To Pay service. This can help you if you are facing financial difficulties and have outstanding tax liabilities.
@@ -171,6 +180,9 @@ support.for.coronavirus.linkto.coronavirus.help=contact HMRC for coronavirus hel
 #Tax Credits Enquiries
 tax-credits-enquiries.li1=manage your tax credits online
 tax-credits-enquiries.li2=find more ways to contact HMRC
+
+#Nuance Full Page CUI Test Page
+nuance.full.page.cui.test.page.title=Test full page UCI for webchat
 
 #Accessibility Statement
 accessibility.statement.title=Accessibility statement for webchat and digital assistant
@@ -210,8 +222,8 @@ accessibility.statement.howaccessible.li10=JAWS announces every 2 minutes how lo
 accessibility.statement.howaccessible.li11=When using zoom on a mobile browser (chrome or safari accessibility settings), the auto-selection of the keyboard makes the text difficult to read before proceeding.
 
 accessibility.statement.reportingproblems.h2=Reporting accessibility problems with this service
-accessibility.statement.reportingproblems.p1=We’re always looking to improve the accessibility of the webchat. If you find any problems not listed on this page or think we are not meeting accessibility requirements, contact
-accessibility.statement.reportingproblems.emailtext=digitalengagementplatform@hmrc.gov.uk
+accessibility.statement.reportingproblems.p1=We are always looking to improve the accessibility of this service. If you find any problems that are not listed on this page or think we are not meeting accessibility requirements, report the
+accessibility.statement.reportingproblems.linktext=accessibility problem (opens in a new window or tab).
 
 accessibility.statement.ifyournothappy.h2=What to do if you are not happy with how we respond to your complaint
 accessibility.statement.ifyournothappy.p1a=The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No.2) Accessibility Regulations 2018 (the  ‘accessibility regulations’).

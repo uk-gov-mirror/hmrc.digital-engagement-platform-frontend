@@ -1,6 +1,6 @@
 # microservice specific routes
 
-GET         /assets/*file                                                               controllers.Assets.at(path="/public", file)
+GET         /assets/*file                                                               controllers.Assets.versioned(path="/public", file: Asset)
 
 GET         /webchat/self-assessment                                                    controllers.WebchatController.selfAssessment
 GET         /webchat/tax-credits-enquiries                                              controllers.WebchatController.taxCredits
@@ -10,7 +10,9 @@ GET         /webchat/vat-enquiries                                              
 GET         /webchat/vat-online-services-helpdesk                                       controllers.WebchatController.vatOnlineServicesHelpdesk
 GET         /webchat/online-services-helpdesk                                           controllers.WebchatController.onlineServicesHelpdesk
 GET         /webchat/national-insurance-numbers                                         controllers.WebchatController.nationalInsuranceNumbers
+GET         /webchat/customs-international-trade                                        controllers.WebchatController.customsEnquiries
 GET         /webchat/customs-international-trade-and-excise-enquiries                   controllers.WebchatController.customsEnquiries
+GET         /webchat/excise-enquiries                                                   controllers.WebchatController.exciseEnquiries
 GET         /webchat/income-tax-enquiries-for-individuals-pensioners-and-employees      controllers.WebchatController.incomeTaxEnquiries
 GET         /webchat/charities-and-community-sports                                     controllers.WebchatController.charitiesCommunitySports
 GET         /webchat/employing-expatriate-employees                                     controllers.WebchatController.employingExpatriateEmployees
@@ -27,8 +29,12 @@ GET         /webchat/probate                                                    
 GET         /webchat/inheritance-tax                                                    controllers.WebchatController.inheritanceTax
 GET         /webchat/help-for-users-with-additional-needs                               controllers.WebchatController.additionalNeedsHelp
 GET         /webchat/c19-employer-enquiries                                             controllers.WebchatController.c19EmployerEnquiries
-GET         /webchat/eat-out-to-help-out-scheme                                         controllers.WebchatController.eatOutToHelpOut
 GET         /webchat/personal-transport-unit-enquiries                                  controllers.WebchatController.personalTransportUnitEnquiries
+
+GET         /webchat/stamp-duty/land-tax                                                controllers.StampDutyController.landTax
+GET         /webchat/stamp-duty/reserve-tax                                             controllers.StampDutyController.reserveTax
+GET         /webchat/stamp-duty/shares-and-land                                         controllers.StampDutyController.sharesAndLand
+GET         /webchat/annual-tax-on-enveloped-dwellings                                  controllers.StampDutyController.annualTaxOnEnvelopedDwellings
 
 GET         /webchat/payment-problems                                                   controllers.PaymentProblemsController.paymentProblem
 
@@ -38,14 +44,15 @@ GET         /ivr/paye                                                           
 GET         /ivr/employers                                                              controllers.IvrController.employerEnquiries
 GET         /ivr/vat                                                                    controllers.IvrController.vatEnquiries
 GET         /ivr/nino                                                                   controllers.IvrController.nationalInsuranceNumbers
-GET         /ivr/excise                                                                 controllers.IvrController.customsEnquiries
+GET         /ivr/excise                                                                 controllers.IvrController.exciseEnquiries
 GET         /ivr/sa                                                                     controllers.IvrController.selfAssessment
 GET         /ivr/jobretention                                                           controllers.IvrController.jobRetentionScheme
 GET         /ivr/c19seiss                                                               controllers.IvrController.selfEmploymentIncomeSupportScheme
 GET         /ivr/c19employer                                                            controllers.IvrController.c19EmployerEnquiries
-GET         /ivr/eatout                                                                 controllers.IvrController.eatOutToHelpOut
 
 GET         /virtual-assistant/support-for-coronavirus                                  controllers.VirtualAssistantController.supportForCoronavirus
 GET         /virtual-assistant/tax-credits-enquiries                                    controllers.VirtualAssistantController.taxCreditsEnquiries
 
-GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibility
+GET         /accessibility-statement                                                    controllers.AccessibilityStatementController.accessibilityNuance
+GET         /accessibility-statement/*pageUri                                           controllers.AccessibilityStatementController.accessibility(pageUri: String)
+

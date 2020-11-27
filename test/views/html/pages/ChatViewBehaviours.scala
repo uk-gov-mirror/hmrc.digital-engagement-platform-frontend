@@ -25,7 +25,8 @@ trait ChatViewBehaviours extends ViewSpecBase {
                  messageHeading: String,
                  urlLinkText: String,
                  returnUrlLink: String,
-                 openingTimes: String*): Unit = {
+                 openingTimes: Seq[String],
+                 chatIds: Seq[String] = Seq("HMRC_Fixed_1")): Unit = {
 
     "behave like a normal page" when {
       "rendered" must {
@@ -65,13 +66,24 @@ trait ChatViewBehaviours extends ViewSpecBase {
           val doc = asDocument(view())
           for (key <- openingTimes) assertContainsText(doc, messages(s"$key"))
         }
+
+        "insert the Nuance container tag(s)" in {
+          val doc = asDocument(view())
+          for (chatId <- chatIds) doc.getElementById(chatId) must not be null
+        }
+
+        "insert the Nuance required tag" in {
+          val doc = asDocument(view())
+          doc.getElementById("WEBCHAT_TEST_RequiredElements") must not be null
+        }
       }
     }
   }
 
   def generalContent(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
-                     betaBannerText: String
+                     betaBannerText: String,
+                     getHelpWithPageText: String
                     ): Unit = {
     "adds to a all pages" when {
       "display the correct page title" in {
@@ -84,6 +96,12 @@ trait ChatViewBehaviours extends ViewSpecBase {
         val doc = asDocument(view())
         doc.getElementById("beta-banner")
         assertContainsText(doc, betaBannerText)
+      }
+
+      "display the 'Get help with this page' text" in {
+        val doc = asDocument(view())
+        doc.getElementById("get-help-action")
+        assertContainsText(doc, getHelpWithPageText)
       }
     }
   }

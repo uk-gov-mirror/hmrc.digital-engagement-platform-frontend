@@ -19,7 +19,6 @@ package controllers
 import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html.AccessibilityStatementView
 
@@ -28,12 +27,20 @@ import scala.concurrent.Future
 @Singleton
 class AccessibilityStatementController @Inject()(appConfig: AppConfig,
                                                  mcc: MessagesControllerComponents,
-                                                 accessibilityStatementView: AccessibilityStatementView,
-                                                 nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                                                 accessibilityStatementView: AccessibilityStatementView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-  def accessibility: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(accessibilityStatementView()))
+  def accessibility(pageUri: String): Action[AnyContent] = Action.async { implicit request =>
+    val uri = appConfig.accessibilityReportUrl(pageUri)
+    val deckproIdentifier: String = "-nuance"
+    Future.successful(Ok(accessibilityStatementView(uri + deckproIdentifier)))
   }
+
+  def accessibilityNuance: Action[AnyContent] = Action.async { implicit request =>
+    val pageUri: String = "nuance"
+    val uri = appConfig.accessibilityReportUrl(pageUri)
+    Future.successful(Ok(accessibilityStatementView(uri)))
+  }
+
 }

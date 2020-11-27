@@ -16,12 +16,11 @@
 
 package controllers
 
+import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import config.AppConfig
-import services.NuanceEncryptionService
-import views.html._
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+import views.html._
 
 import scala.concurrent.Future
 
@@ -34,10 +33,9 @@ class IvrController @Inject()(appConfig: AppConfig,
                               employerEnquiriesView: EmployerEnquiriesView,
                               vatEnquiriesView: VatEnquiriesView,
                               nationalInsuranceNumbersView: NationalInsuranceNumbersView,
-                              customsEnquiriesView: CustomsEnquiriesView,
+                              exciseEnquiriesView: ExciseEnquiriesView,
                               selfAssessmentView: SelfAssessmentView,
-                              eatOutToHelpOut: EatOutToHelpOutView,
-                              nuanceEncryptionService: NuanceEncryptionService) extends FrontendController(mcc) {
+                              eatOutToHelpOut: EatOutToHelpOutView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -67,8 +65,8 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(controllers.routes.WebchatController.nationalInsuranceNumbers().url + param))
   }
 
-  def customsEnquiries: Action[AnyContent] = Action.async {
-    Future.successful(Redirect(controllers.routes.WebchatController.customsEnquiries().url + param))
+  def exciseEnquiries: Action[AnyContent] = Action.async {
+    Future.successful(Redirect(controllers.routes.WebchatController.exciseEnquiries().url + param))
   }
 
   def selfAssessment: Action[AnyContent] = Action.async {
@@ -87,7 +85,8 @@ class IvrController @Inject()(appConfig: AppConfig,
     Future.successful(Redirect(controllers.routes.WebchatController.c19EmployerEnquiries().url + param))
   }
 
-  def eatOutToHelpOut: Action[AnyContent] = Action.async {
+ //TODO: Once Eat Out to Help Out scheme is confirmed decomissioned, remove the below. Commented as referencing non existent route.
+ /* def eatOutToHelpOut: Action[AnyContent] = Action.async {
     Future.successful(Redirect(controllers.routes.WebchatController.eatOutToHelpOut().url + param))
-  }
+  }*/
 }

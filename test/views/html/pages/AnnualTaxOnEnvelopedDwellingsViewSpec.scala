@@ -16,32 +16,30 @@
 
 package views.html.pages
 
-import play.api.mvc.Cookie
-import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.CustomsEnquiriesView
+import views.html.AnnualTaxOnEnvelopedDwellingsView
 
-class CustomerEnquiriesViewSpec extends ChatViewBehaviours {
+class AnnualTaxOnEnvelopedDwellingsViewSpec extends ChatViewBehaviours {
 
-  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+  private val view = app.injector.instanceOf[AnnualTaxOnEnvelopedDwellingsView]
 
-  val view = app.injector.instanceOf[CustomsEnquiriesView]
+  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
-
-  "Customs Enquiries View" must {
+  "Annual Tax On Enveloped Dwellings View" must {
     val returnUrl: String =
-      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
 
     behave like normalPage(
       createView,
-      "Imports and exports: webchat",
-      "Imports and exports: webchat",
+      "Annual Tax on Enveloped Dwellings: webchat",
+      "Annual Tax on Enveloped Dwellings: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      "Opening times:",
-      "Monday to Friday, 8am to 6pm",
-      "Closed weekends and bank holidays."
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

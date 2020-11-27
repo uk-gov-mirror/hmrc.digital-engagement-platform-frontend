@@ -16,27 +16,32 @@
 
 package config
 
+import java.net.URLEncoder
+
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
-import services.NuanceEncryptionService
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
+import utils.StringHelpers
 
 @Singleton
 class AppConfig @Inject()(config: Configuration,
-                          servicesConfig: ServicesConfig,
-                          val nuanceEncryptionService: NuanceEncryptionService) {
+                          servicesConfig: ServicesConfig) {
 
   private val contactHost = config.get[String]("contact-frontend.host")
 
+  private def encodeUrl(url: String): String = URLEncoder.encode(url, "UTF-8")
+
   private val assetsUrl = config.get[String]("assets.url")
   private val serviceIdentifier = "digital-engagement-platform-frontend"
+
+  lazy val host: String = config.get[String]("host")
+  lazy val self: String = servicesConfig.getConfString(s"$serviceIdentifier.www.url", "")
 
   val assetsPrefix: String = assetsUrl + config.get[String]("assets.version")
   val analyticsToken: String = config.get[String](s"google-analytics.token")
   val analyticsHost: String = config.get[String](s"google-analytics.host")
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
-  val preProdMode: Boolean = config.get[Boolean](s"pre-prod.mode")
   val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
   val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
@@ -46,11 +51,6 @@ class AppConfig @Inject()(config: Configuration,
   val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$serviceIdentifier"
   val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$serviceIdentifier"
   val betaFeedbackUnauthenticatedUrl = s"$contactHost/contact/beta-feedback-unauthenticated?service=$serviceIdentifier"
-
-  val nuanceUrl: String =
-    "https://hmrc-uk.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
-  val nuancePreProdUrl: String =
-    "https://hmrc-uk-preprod.digital.nuance.com/chatskins/launch/inqChatLaunch10006719.js"
 
   val contactUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact"
@@ -75,6 +75,8 @@ class AppConfig @Inject()(config: Configuration,
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
   val customsEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
+  val exciseEnquiriesReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/excise-enquiries"
   val charitiesCommunityAmateurSportsUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/charities-and-community-amateur-sports-clubs-cascs"
   val employingExpatriateEmployeesUrl: String =
@@ -120,25 +122,37 @@ class AppConfig @Inject()(config: Configuration,
   val personalTransportUnitEnquiriesReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/personal-transport-unit-enquiries"
 
+  val stampDutyLAndTaxReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-land-tax"
+  val stampDutyReserveTaxReturnUrl: String =
+  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-reserve-tax"
+  val stampDutySharesAndLAndReturnUrl: String =
+  "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/stamp-duty-enquiries-shares-and-land"
+  val AnnualTaxOnEnvelopedDwellingsReturnUrl: String =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/annual-tax-on-enveloped-dwellings-ated"
+
   val generalAccessibilityStatementUrl: String = "https://www.gov.uk/help/accessibility-statement"
   val hmRevenueCustomsUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs"
   val abilityNetUrl: String = "https://mcmw.abilitynet.org.uk/"
-  val reportingProblemsEmail: String = "digitalengagementplatform@hmrc.gov.uk"
+
+  def accessibilityReportUrl(pageUri: String): String = {
+    s"$contactHost/contact/accessibility-unauthenticated?service=" +
+      s"${serviceIdentifier}&userAction=${StringHelpers.tidyUpString(encodeUrl(pageUri))}"
+  }
+
+  lazy val reportProblemUrl: String = config.get[String]("gov-uk.reportProblemUrl")
   val equalityAdvisoryServiceUrl: String = "https://www.equalityadvisoryservice.com/"
   val technicalInformationUrl: String = "https://www.w3.org/TR/WCAG21/"
   val equalityOrgUrl: String = "https://www.equalityni.org/Home"
   val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
-
-  val accessibilityStatementUrl: String = "https://www.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlDev: String = "https://www.development.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlQa: String = "https://www.qa.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlStaging: String = "https://www.staging.tax.service.gov.uk/ask-hmrc/accessibility-statement"
-  val accessibilityStatementUrlExternalTest: String = "https://test-www.tax.service.gov.uk/ask-hmrc/webchat/self-assessment"
-  val accessibilityStatementUrlLocal: String = "http://localhost:9956/ask-hmrc/accessibility-statement"
 
   lazy val authUrl = servicesConfig.baseUrl("auth")
   lazy val isCampaignAllowlistingEnabled =
     config.getOptional[Boolean]("passcodeAuthentication.enabled").contains(true)
   lazy val otacUrl = config.get[String]("otac.url")
   lazy val loginContinueURL = config.get[String]("otac.loginContinue")
+
+  def accessibilityStatementUrl(pageUri: String): String = {
+    StringHelpers.tidyUpString(controllers.routes.AccessibilityStatementController.accessibility(pageUri).url)
+  }
 }
