@@ -31,6 +31,7 @@ class WebchatControllerSpec
 
   "fixed URLs" should {
     "render self-assessment page" in {
+
       val result = controller.selfAssessment(fakeRequest)
       val doc = asDocument(contentAsString(result))
 

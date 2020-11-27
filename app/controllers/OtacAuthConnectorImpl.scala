@@ -14,14 +14,20 @@
  * limitations under the License.
  */
 
-package filters
+package controllers
 
-import com.google.inject.Inject
-import play.api.http.DefaultHttpFilters
-import uk.gov.hmrc.play.bootstrap.filters.FrontendFilters
+import com.google.inject.{Inject, Singleton}
+import config.AppConfig
+import uk.gov.hmrc.auth.otac._
+import uk.gov.hmrc.play.bootstrap.http.HttpClient
 
-class Filters @Inject()(
-                         sessionIdFilter: SessionIdFilter,
-                         frontendFilters: FrontendFilters,
-                         campaignAllowlistingFilter: CampaignAllowlistingFilter
-                       ) extends DefaultHttpFilters(frontendFilters.filters :+ campaignAllowlistingFilter :+ sessionIdFilter: _*)
+import scala.language.implicitConversions
+
+@Singleton
+class OtacAuthConnectorImpl @Inject()(
+                                       val http: HttpClient,
+                                       config: AppConfig
+                                     ) extends PlayOtacAuthConnector {
+
+  override val serviceUrl: String = config.authUrl
+}

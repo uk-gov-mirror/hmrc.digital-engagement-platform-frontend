@@ -47,7 +47,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
                                   constructionIndustrySchemeView: ConstructionIndustrySchemeView,
                                   vatRegistrationView: VatRegistrationView,
                                   nationalClearanceHubView: NationalClearanceHubView,
-                                  jobRetentionSchemeView: JobRetentionSchemeView,
+                                   jobRetentionSchemeView: JobRetentionSchemeView,
                                   selfEmploymentIncomeSupportSchemeView: SelfEmploymentIncomeSupportView,
                                   c19EmployerEnquiriesView: C19EmployerEnquiriesView,
                                   probateView: ProbateView,
@@ -67,7 +67,7 @@ class WebchatController @Inject()(appConfig: AppConfig,
   }
 
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
+      Future.successful(Ok(selfAssessmentView(isIvrRedirect())))
   }
 
   def taxCredits: Action[AnyContent] = Action.async { implicit request =>
