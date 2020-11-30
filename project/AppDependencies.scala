@@ -9,7 +9,6 @@ object AppDependencies {
     "uk.gov.hmrc" %% "govuk-template" % "5.60.0-play-26",
     "uk.gov.hmrc" %% "play-ui" % "8.18.0-play-26",
     "uk.gov.hmrc" %% "bootstrap-play-26" % "2.1.0",
-    "uk.gov.hmrc" %% "play-whitelist-filter" % "3.1.0-play-26",
     "uk.gov.hmrc" %% "url-builder" % "3.4.0-play-26",
     "uk.gov.hmrc" %% "digital-engagement-platform-chat" % "0.13.0-play-26"
   )
