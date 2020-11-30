@@ -146,12 +146,6 @@ class AppConfig @Inject()(config: Configuration,
   val equalityOrgUrl: String = "https://www.equalityni.org/Home"
   val getHelpHmrcExtraSupportUrl: String = "https://www.gov.uk/get-help-hmrc-extra-support"
 
-  lazy val authUrl = servicesConfig.baseUrl("auth")
-  lazy val isCampaignAllowlistingEnabled =
-    config.getOptional[Boolean]("passcodeAuthentication.enabled").contains(true)
-  lazy val otacUrl = config.get[String]("otac.url")
-  lazy val loginContinueURL = config.get[String]("otac.loginContinue")
-
   def accessibilityStatementUrl(pageUri: String): String = {
     StringHelpers.tidyUpString(controllers.routes.AccessibilityStatementController.accessibility(pageUri).url)
   }
