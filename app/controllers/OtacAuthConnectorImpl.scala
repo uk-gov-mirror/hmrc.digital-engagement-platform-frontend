@@ -21,8 +21,6 @@ import config.AppConfig
 import uk.gov.hmrc.auth.otac._
 import uk.gov.hmrc.play.bootstrap.http.HttpClient
 
-import scala.language.implicitConversions
-
 @Singleton
 class OtacAuthConnectorImpl @Inject()(
                                        val http: HttpClient,
