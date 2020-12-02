@@ -21,6 +21,7 @@ import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import views.html.NuanceFullPageCUIView
+import views.html.IdTestView
 
 import scala.concurrent.Future
 
@@ -28,11 +29,15 @@ import scala.concurrent.Future
 class NuanceFullPageCUIController @Inject()(
   appConfig: AppConfig,
   mcc: MessagesControllerComponents,
-  nuanceFullPageCUIView: NuanceFullPageCUIView) extends FrontendController(mcc) {
+  nuanceFullPageCUIView: NuanceFullPageCUIView,
+  idTestView: IdTestView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
   def nuanceFullPageCUI: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(nuanceFullPageCUIView()))
+  }
+  def idTest: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(idTestView()))
   }
 }
