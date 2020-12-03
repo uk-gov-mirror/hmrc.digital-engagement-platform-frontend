@@ -25,10 +25,19 @@
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(title = messages("nuance.full.page.cui.test.page.title")) {
+    <style type="text/css">
+        #nuanMessagingFrame {
+           width: 100% !important;
+           height: 634px !important;
+           position: relative !important;
+           float: left;
+        }
+        .content__body {
+           width: 100%;
+        }
+    </style>
 
     <h1 class="header-margin-top">@messages("nuance.full.page.cui.test.page.title")</h1>
 
-    @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer()}
-    }
+    <div id="nuanMessagingFrame"></div>
 }
