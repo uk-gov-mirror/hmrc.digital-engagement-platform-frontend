@@ -42,7 +42,6 @@ class AppConfig @Inject()(config: Configuration,
   val analyticsHost: String = config.get[String](s"google-analytics.host")
 
   val performanceTest: Boolean = config.get[Boolean](s"performance-test.mode")
-  val accessibilityStatementMode: String = config.get[String](s"accessibility-statement.mode")
 
   val optimizelyMode: Boolean = config.get[Boolean]("optimizely.mode")
   val optimizelyProjectId: String = config.get[String]("optimizely.projectId")
