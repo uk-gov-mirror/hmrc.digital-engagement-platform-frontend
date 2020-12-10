@@ -32,10 +32,8 @@ class NuanceFullPageCUIControllerSpec
   "Nuance Full Page UCI Test Controller" should {
     "render page" in {
       val result = controller.nuanceFullPageCUI(fakeRequest)
-      val doc = asDocument(contentAsString(result))
 
       status(result) mustBe OK
-      doc.select("h1").text() mustBe "Test full page UCI for webchat"
     }
   }
 }
