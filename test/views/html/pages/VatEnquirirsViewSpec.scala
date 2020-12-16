@@ -36,8 +36,9 @@ class VatEnquirirsViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Friday, 8am to 6pm",
-        "Closed weekends and bank holidays."
+//        "Monday to Friday, 8am to 6pm",
+//        "Closed weekends and bank holidays."
+        "19 to 20 December, closed"
       )
     )
   }

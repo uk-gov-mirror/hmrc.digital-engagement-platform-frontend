@@ -36,8 +36,9 @@ class TaxCreditsViewSpec extends ChatViewBehaviours {
       returnUrl,
       Seq(
         "Opening times:",
-        "Monday to Saturday, 8am to 8pm",
-        "Closed Sundays and bank holidays."
+//        "Monday to Saturday, 8am to 8pm",
+//        "Closed Sundays and bank holidays."
+        "19 to 20 December, closed"
       )
     )
   }
