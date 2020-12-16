@@ -39,7 +39,7 @@ class CorporationTaxEnquiriesViewSpec extends ChatViewBehaviours {
 //        "Opening times:",
 //        "Monday to Friday, 8am to 6pm",
 //        "Closed weekends and bank holidays."
-        "Opening times: Christmas and New Year opening times",
+        "Christmas and New Year opening times:",
         "19 to 20 December, closed"
       )
     )
