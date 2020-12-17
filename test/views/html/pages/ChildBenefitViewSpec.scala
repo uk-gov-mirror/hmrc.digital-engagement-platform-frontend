@@ -34,11 +34,14 @@ class ChildBenefitViewSpec extends ChatViewBehaviours {
       "Child Benefit: webchat",
       "Return to Contact HMRC",
       returnUrl,
+      //Revert back for the 4th Jan
       Seq(
-        "Opening times:",
-        "Monday to Friday, 8am to 8pm",
-        "Saturday, 8am to 4pm",
-        "Closed Sundays and bank holidays."
+//        "Opening times:",
+//        "Monday to Friday, 8am to 8pm",
+//        "Saturday, 8am to 4pm",
+//        "Closed Sundays and bank holidays."
+        "Christmas and New Year opening times:",
+        "19 to 20 December, closed"
       )
     )
   }
