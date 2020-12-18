@@ -36,43 +36,18 @@
     </aside>
 }
 
-@myStyle = {
-<style type="text/css">
-        .app-related-items {
-            border-top: 2px solid #1d70b8;
-            padding-top: 10px;
-        }
-        #subsection-title {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        .gem-c-govspeak .address, .gem-c-govspeak .contact {
-            border-left: 1px solid #b1b4b6;
-            padding-left: 15px;
-            margin-bottom: 30px;
-            margin-top: 30px;
-        }
-
-        .service-info .logo {
-            display: none;
-        }
-    </style>
-}
-
 @main_template(title = "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
                navTitle=Some(""),
                sidebarLinks=Some(sidebarLinks)
 ){
-    @myStyle
 
-    @components.back_link()
+<!--@components.back_link()-->
 
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
-            <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>
-        </div>
-    </div>
+<!--<div class="govuk-grid-row">-->
+<!--    <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">-->
+<!--        <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>-->
+<!--    </div>-->
+<!--</div>-->
 
     <div id="nuanMessagingFrame"></div>
 
