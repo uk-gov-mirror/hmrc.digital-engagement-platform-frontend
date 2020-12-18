@@ -1,51 +1,30 @@
 @*
-* Copyright 2020 HM Revenue & Customs
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*@
+ * Copyright 2020 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
 
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
-main_template: MainTemplate,
-appConfig: AppConfig,
-webChatClient: WebChatClient)
+    main_template: MainTemplateUCI,
+    appConfig: AppConfig,
+    webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@contentHeader = {
-    <div class="govuk-breadcrumbs">
-        <ol class="govuk-breadcrumbs__list">
-            <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
-            </li>
-            <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="#">HM Revenue &amp; Customs</a>
-            </li>
-            <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link">Contact HM Revenue &amp; Customs</a>
-            </li>
-        </ol>
-    </div>
 
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
-            <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>
-        </div>
-    </div>
-
-}
 
 @sidebarLinks = {
     <aside class="app-related-items govuk-body govuk-body-m" role="complementary">
@@ -59,13 +38,6 @@ webChatClient: WebChatClient)
 
 @myStyle = {
 <style type="text/css">
-        #nuanMessagingFrame {
-           width: 100% !important;
-           height: 634px !important;
-           position: relative !important;
-           float: left;
-           margin-bottom: 2em;
-        }
         .app-related-items {
             border-top: 2px solid #1d70b8;
             padding-top: 10px;
@@ -73,82 +45,6 @@ webChatClient: WebChatClient)
         #subsection-title {
             margin-top: 0;
             margin-bottom: 0;
-        }
-        .govuk-breadcrumbs__list {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-            display: inline;
-        }
-
-        .govuk-breadcrumbs__list-item:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: -3.31px;
-            width: 7px;
-            height: 7px;
-            margin: auto 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-            border: solid;
-            border-width: 1px 1px 0 0;
-            border-color: #505a5f;
-        }
-
-        .govuk-breadcrumbs__list-item {
-            display: inline-block;
-            position: relative;
-            margin-bottom: 5px;
-            margin-left: 10px;
-            padding-left: 15.655px;
-            float: left;
-        }
-
-        .govuk-breadcrumbs {
-            font-family: "GDS Transport", arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-weight: 400;
-            font-size: 14px;
-            font-size: 0.875rem;
-            line-height: 1.14286;
-            color: #0b0c0c;
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-
-        @@media (min-width: 40.0625em) {
-            .govuk-breadcrumbs {
-                font-size: 16px;
-                font-size: 1rem;
-                line-height: 1.25;
-            }
-        }
-
-        .govuk-breadcrumbs__list:after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited, .govuk-breadcrumbs__link:hover, .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-            color: #0b0c0c;
-        }
-
-        .govuk-breadcrumbs__link {
-            font-family: "GDS Transport", arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 16px;
-            color: #0b0c0c;
-        }
-
-        .phase-banner {
-            display: none;
         }
 
         .gem-c-govspeak .address, .gem-c-govspeak .contact {
@@ -166,10 +62,18 @@ webChatClient: WebChatClient)
 
 @main_template(title = "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
                navTitle=Some(""),
-               sidebarLinks=Some(sidebarLinks),
-               contentHeader=Some(contentHeader)
+               sidebarLinks=Some(sidebarLinks)
 ){
     @myStyle
+
+    @components.back_link()
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
+            <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>
+        </div>
+    </div>
+
     <div id="nuanMessagingFrame"></div>
 
     <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak" style="margin-top:2em;">
