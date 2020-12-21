@@ -14,32 +14,28 @@
  * limitations under the License.
  */
 
-package controllers.testOnlyDoNotUseInAppConf
+package controllers.UciController
 
 import config.AppConfig
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
+import uk.gov.hmrc.play.bootstrap.controller.FrontendController
+import views.html.UCIViews.JRSVariantOneTestView
 
 import javax.inject.{Inject, Singleton}
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.UCIViews.{JRSVariantOneTestView, NuanceFullPageCUIView}
-import views.html.IdTestView
-
 import scala.concurrent.Future
 
 @Singleton
-class NuanceFullPageCUIController @Inject()(
-  appConfig: AppConfig,
-  mcc: MessagesControllerComponents,
-  nuanceFullPageCUIView: NuanceFullPageCUIView,
-  idTestView: IdTestView,
-  jrsVariantOneTestView: JRSVariantOneTestView) extends FrontendController(mcc) {
+class UciController @Inject()(appConfig: AppConfig,
+                              mcc: MessagesControllerComponents,
+                              jrsVariantOneTestView: JRSVariantOneTestView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
-  def nuanceFullPageCUI: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(nuanceFullPageCUIView()))
+  private def isEntertainersRedirect()(implicit request: RequestHeader): Boolean = {
+    request.getQueryString("redirect").contains("entertainers")
   }
-  def idTest: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(idTestView()))
+
+  def jrsVariantOneTest: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(jrsVariantOneTestView()))
   }
 }

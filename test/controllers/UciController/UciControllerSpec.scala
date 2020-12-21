@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package controllers.testOnlyDoNotUseInAppConf
+package controllers.UciController
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -25,19 +25,13 @@ import views.html.pages.AppBuilderSpecBase
 class NuanceFullPageCUIControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
-  private val controller = app.injector.instanceOf[NuanceFullPageCUIController]
+  private val controller = app.injector.instanceOf[UciController]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
   "Nuance Full Page UCI Test Controller" should {
-    "render Nuance test page" in {
-      val result = controller.nuanceFullPageCUI(fakeRequest)
-
-      status(result) mustBe OK
-    }
-
-    "render idTest page" in {
-      val result = controller.idTest(fakeRequest)
+    "render JRS Variant One Test page" in {
+      val result = controller.jrsVariantOneTest(fakeRequest)
 
       status(result) mustBe OK
     }
