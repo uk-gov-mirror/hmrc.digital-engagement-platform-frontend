@@ -35,5 +35,11 @@ class NuanceFullPageCUIControllerSpec
 
       status(result) mustBe OK
     }
+
+    "render JRS Variant Two Test page" in {
+      val result = controller.jrsVariantTwoTest(fakeRequest)
+
+      status(result) mustBe OK
+    }
   }
 }

@@ -19,7 +19,7 @@ package controllers.UciController
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.UCIViews.JRSVariantOneTestView
+import views.html.UCIViews.{JRSVariantOneTestView, JRSVariantTwoTestView}
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
@@ -27,7 +27,8 @@ import scala.concurrent.Future
 @Singleton
 class UciController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              jrsVariantOneTestView: JRSVariantOneTestView) extends FrontendController(mcc) {
+                              jrsVariantOneTestView: JRSVariantOneTestView,
+                              jrsVariantTwoTestView: JRSVariantTwoTestView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -38,4 +39,9 @@ class UciController @Inject()(appConfig: AppConfig,
   def jrsVariantOneTest: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(jrsVariantOneTestView()))
   }
+
+  def jrsVariantTwoTest: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(jrsVariantTwoTestView()))
+  }
+
 }

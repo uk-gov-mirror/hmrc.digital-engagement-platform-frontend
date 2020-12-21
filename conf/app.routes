@@ -56,3 +56,4 @@ GET         /accessibility-statement                                            
 GET         /accessibility-statement/*pageUri                                           controllers.AccessibilityStatementController.accessibility(pageUri: String)
 
 GET         /contact-us/url-for-jrs-variant-one                                         controllers.UciController.UciController.jrsVariantOneTest
+GET         /contact-us/url-for-jrs-variant-two                                         controllers.UciController.UciController.jrsVariantTwoTest
