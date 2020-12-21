@@ -31,6 +31,7 @@ class VatRegistrationViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "VAT registration: webchat",
       "VAT registration: webchat",
       "Return to Contact HMRC",

@@ -30,6 +30,7 @@ class JobRetentionSchemeViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Coronavirus (COVID-19): Job Retention Scheme",
       "Coronavirus (COVID-19): Job Retention Scheme",
       "",

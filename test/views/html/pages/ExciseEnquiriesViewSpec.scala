@@ -31,6 +31,7 @@ class ExciseEnquiriesViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Excise: webchat",
       "Excise: webchat",
       "Return to Contact HMRC",

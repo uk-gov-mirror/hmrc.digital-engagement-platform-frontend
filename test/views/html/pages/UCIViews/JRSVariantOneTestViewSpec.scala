@@ -28,34 +28,17 @@ class JRSVariantOneTestViewSpec extends ChatViewBehaviours {
 
   "JRS Variant One Test View" must {
     "rendered" must {
-      "have the correct banner title" in {
-        val doc = asDocument(createView())
-        val nav = doc.getElementById("proposition-menu")
-        val span = nav.children.first
-        //TODO add title when dicided what it will be
-        span.text mustBe messages("")
-      }
-
-      "display the correct browser title" in {
-        val doc = asDocument(createView())
-        assertEqualsMessage(doc, "title", s"Get help with the Coronavirus Job Retention Scheme - GOV.UK")
-      }
-
-      "display the correct page title" in {
-        val doc = asDocument(createView())
-        doc.getElementsByTag("h1")
-        assertPageTitleEqualsMessage(doc, s"Coronavirus Job Retention Scheme: chat")
-      }
-
-//    behave like normalPage(
-//      createView,
-//      "Test full page UCI for webchat",
-//      "Test full page UCI for webchat",
-//      "",
-//      "",
-//      Nil,
-//      Seq("nuanMessagingFrame")
-//    )
+      //TODO add title when dicided what it will be
+      behave like normalPage(
+        createView,
+        "",
+        "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
+        "Coronavirus Job Retention Scheme: chat",
+        "",
+        "",
+        Nil,
+        Seq("nuanMessagingFrame")
+      )
     }
   }
 }

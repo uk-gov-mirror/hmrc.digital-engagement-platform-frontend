@@ -31,6 +31,7 @@ class ProbateViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Coronavirus (COVID-19): Probate",
       "Coronavirus (COVID-19): Probate",
       "Return to Contact HMRC",

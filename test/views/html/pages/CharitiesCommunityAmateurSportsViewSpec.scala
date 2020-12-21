@@ -31,6 +31,7 @@ class CharitiesCommunityAmateurSportsViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Charities and Community Amateur Sports Clubs: webchat",
       "Charities and Community Amateur Sports Clubs: webchat",
       "Return to Contact HMRC",

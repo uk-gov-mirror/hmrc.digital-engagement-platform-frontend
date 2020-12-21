@@ -30,6 +30,7 @@ class VatEnquirirsViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "VAT: webchat",
       "VAT: webchat",
       "Return to Contact HMRC",

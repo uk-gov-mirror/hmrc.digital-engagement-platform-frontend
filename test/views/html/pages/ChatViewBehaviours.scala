@@ -21,6 +21,7 @@ import play.twirl.api.HtmlFormat
 trait ChatViewBehaviours extends ViewSpecBase {
 
   def normalPage(view: () => HtmlFormat.Appendable,
+                 bannerTitle: String,
                  messageKeyPrefix: String,
                  messageHeading: String,
                  urlLinkText: String,
@@ -34,7 +35,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
           val doc = asDocument(view())
           val nav = doc.getElementById("proposition-menu")
           val span = nav.children.first
-          span.text mustBe messages("global.nav.title")
+          span.text mustBe messages(s"$bannerTitle")
         }
 
         "display the correct browser title" in {

@@ -31,6 +31,7 @@ class InheritanceTaxViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Coronavirus (COVID-19): Inheritance Tax",
       "Coronavirus (COVID-19): Inheritance Tax",
       "Return to Contact HMRC",

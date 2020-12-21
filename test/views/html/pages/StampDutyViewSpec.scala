@@ -30,6 +30,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Stamp Duty Land Tax: webchat",
       "Stamp Duty Land Tax: webchat",
       "Return to Contact HMRC",
@@ -45,6 +46,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Stamp Duty Reserve Tax: webchat",
       "Stamp Duty Reserve Tax: webchat",
       "Return to Contact HMRC",
@@ -60,6 +62,7 @@ class StampDutyViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Stamp Duty shares and land: webchat",
       "Stamp Duty shares and land: webchat",
       "Return to Contact HMRC",

@@ -31,6 +31,7 @@ class EatOutToHelpOutViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Eat Out to Help Out scheme: webchat",
       "Eat Out to Help Out scheme: webchat",
       "Return to Contact HMRC",

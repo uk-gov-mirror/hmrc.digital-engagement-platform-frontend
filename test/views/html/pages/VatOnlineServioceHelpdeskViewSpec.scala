@@ -30,6 +30,7 @@ class VatOnlineServioceHelpdeskViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "VAT online services helpdesk: webchat",
       "VAT online services helpdesk: webchat",
       "Return to Contact HMRC",

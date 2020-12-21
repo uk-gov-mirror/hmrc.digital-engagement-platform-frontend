@@ -31,6 +31,7 @@ class AdditionalNeedsHelpViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "HMRC’s Extra Support team: webchat",
       "HMRC’s Extra Support team: webchat",
       "Return to Contact HMRC",

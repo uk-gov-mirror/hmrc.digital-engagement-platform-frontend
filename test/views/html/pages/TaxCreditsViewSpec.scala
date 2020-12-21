@@ -30,6 +30,7 @@ class TaxCreditsViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Tax credits: webchat",
       "Tax credits: webchat",
       "Return to Contact HMRC",

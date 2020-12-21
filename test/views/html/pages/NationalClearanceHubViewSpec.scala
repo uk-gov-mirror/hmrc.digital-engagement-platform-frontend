@@ -31,6 +31,7 @@ class NationalClearanceHubViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "National Clearance Hub: webchat",
       "National Clearance Hub: webchat",
       "Return to Contact HMRC",

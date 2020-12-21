@@ -30,6 +30,7 @@ class SelfEmploymentIncomeSupportViewSpec extends ChatViewBehaviours {
 
     behave like normalPage(
       createView,
+      "Ask HMRC - Webchat",
       "Coronavirus (COVID-19): Self-Employment Income Support Scheme",
       "Coronavirus (COVID-19): Self-Employment Income Support Scheme",
       "Return to Contact HMRC",
