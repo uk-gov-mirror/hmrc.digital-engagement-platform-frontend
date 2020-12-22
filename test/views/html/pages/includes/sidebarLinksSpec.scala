@@ -18,7 +18,7 @@ package views.html.pages.includes
 
 import play.twirl.api.HtmlFormat
 import views.html.UCIViews.JRSVariantOneTestView
-import views.html.pages.ViewSpecBase
+import views.html.pages.helpers.ViewSpecBase
 
 class sidebarLinksSpec extends ViewSpecBase {
 

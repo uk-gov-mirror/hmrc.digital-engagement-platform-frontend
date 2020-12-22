@@ -18,6 +18,7 @@ package views.html.pages
 
 import play.twirl.api.HtmlFormat
 import views.html.AccessibilityStatementView
+import views.html.pages.helpers.ChatViewBehaviours
 
 class AccessibilityStatementViewSpec extends ChatViewBehaviours {
   private val view = app.injector.instanceOf[AccessibilityStatementView]

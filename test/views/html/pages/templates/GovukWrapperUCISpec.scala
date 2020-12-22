@@ -20,7 +20,7 @@ import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.UCIViews.JRSVariantOneTestView
-import views.html.pages.ChatViewBehaviours
+import views.html.pages.helpers.ChatViewBehaviours
 
 class GovukWrapperUCISpec extends ChatViewBehaviours {
 

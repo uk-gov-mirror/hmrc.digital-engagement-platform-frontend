@@ -20,7 +20,7 @@ import config.AppConfig
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
+import views.html.va.{VASupportForCoronavirusView, VATaxCreditsEnquiriesView}
 
 import scala.concurrent.Future
 

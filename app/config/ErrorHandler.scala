@@ -21,7 +21,7 @@ import play.api.i18n.MessagesApi
 import play.api.mvc.Request
 import play.twirl.api.Html
 import uk.gov.hmrc.play.bootstrap.http.FrontendErrorHandler
-import views.html.ErrorTemplate
+import views.html.templates.ErrorTemplate
 
 @Singleton
 class ErrorHandler @Inject()(val messagesApi: MessagesApi,

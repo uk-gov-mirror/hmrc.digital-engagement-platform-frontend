@@ -14,31 +14,34 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.webchat
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantTwoTestView
 import views.html.pages.helpers.ChatViewBehaviours
+import views.html.webchat.EatOutToHelpOutView
 
-class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
+class EatOutToHelpOutViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[JRSVariantTwoTestView]
+  private val view = app.injector.instanceOf[EatOutToHelpOutView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "JRS Variant Two Test View" must {
-    "rendered" must {
-      //TODO add title when decided what it will be
-      behave like normalPage(
-        createView,
-        "",
-        "Coronavirus Job Retention Scheme: chat",
-        "Coronavirus Job Retention Scheme: chat",
-        "",
-        "",
-        Nil,
-        Seq("nuanMessagingFrame")
+  "Probate view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/get-help-with-the-eat-out-to-help-out-scheme"
+
+    behave like normalPage(
+      createView,
+      "Ask HMRC - Webchat",
+      "Eat Out to Help Out scheme: webchat",
+      "Eat Out to Help Out scheme: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Closed weekends and bank holidays."
       )
-    }
+    )
   }
 }

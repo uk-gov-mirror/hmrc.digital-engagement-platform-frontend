@@ -14,31 +14,34 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.webchat
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantTwoTestView
 import views.html.pages.helpers.ChatViewBehaviours
+import views.html.webchat.NationalInsuranceNumbersView
 
-class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
+class NationalInsuranceNumbersViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[JRSVariantTwoTestView]
+  private val view = app.injector.instanceOf[NationalInsuranceNumbersView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "JRS Variant Two Test View" must {
-    "rendered" must {
-      //TODO add title when decided what it will be
-      behave like normalPage(
-        createView,
-        "",
-        "Coronavirus Job Retention Scheme: chat",
-        "Coronavirus Job Retention Scheme: chat",
-        "",
-        "",
-        Nil,
-        Seq("nuanMessagingFrame")
+  "National Insurance Numbers View" must {
+    val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-insurance-numbers"
+
+    behave like normalPage(
+      createView,
+      "Ask HMRC - Webchat",
+      "National Insurance: webchat",
+      "National Insurance: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays."
       )
-    }
+    )
   }
 }

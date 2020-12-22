@@ -14,31 +14,29 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.webchat
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantTwoTestView
 import views.html.pages.helpers.ChatViewBehaviours
+import views.html.webchat.EmployerEnquiriesView
 
-class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
+class EmployerEnquiriesViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[JRSVariantTwoTestView]
+  private val view = app.injector.instanceOf[EmployerEnquiriesView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "JRS Variant Two Test View" must {
-    "rendered" must {
-      //TODO add title when decided what it will be
-      behave like normalPage(
-        createView,
-        "",
-        "Coronavirus Job Retention Scheme: chat",
-        "Coronavirus Job Retention Scheme: chat",
-        "",
-        "",
-        Nil,
-        Seq("nuanMessagingFrame")
-      )
-    }
+  "Employer Enquiries view" must {
+    val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/employer-enquiries"
+
+    behave like normalPage(
+      createView,
+      "Ask HMRC - Webchat",
+      "Employers: webchat",
+      "Employers: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Nil
+    )
   }
 }

@@ -20,7 +20,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
-import views.html.pages.AppBuilderSpecBase
+import views.html.pages.helpers.AppBuilderSpecBase
 
 class PaymentProblemsControllerSpec
     extends AppBuilderSpecBase with ScalaCheckPropertyChecks {

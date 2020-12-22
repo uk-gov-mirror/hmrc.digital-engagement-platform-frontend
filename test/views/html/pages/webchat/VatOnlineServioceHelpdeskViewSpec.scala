@@ -14,31 +14,33 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.webchat
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantTwoTestView
 import views.html.pages.helpers.ChatViewBehaviours
+import views.html.webchat.VatOnlineServicesHelpdeskView
 
-class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
+class VatOnlineServioceHelpdeskViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[JRSVariantTwoTestView]
+  private val view = app.injector.instanceOf[VatOnlineServicesHelpdeskView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "JRS Variant Two Test View" must {
-    "rendered" must {
-      //TODO add title when decided what it will be
-      behave like normalPage(
-        createView,
-        "",
-        "Coronavirus Job Retention Scheme: chat",
-        "Coronavirus Job Retention Scheme: chat",
-        "",
-        "",
-        Nil,
-        Seq("nuanMessagingFrame")
+  "Vat Online Services Helpdesk View" must {
+    val returnUrl: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-online-services-helpdesk"
+
+    behave like normalPage(
+      createView,
+      "Ask HMRC - Webchat",
+      "VAT online services helpdesk: webchat",
+      "VAT online services helpdesk: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 6pm",
+        "Closed weekends and bank holidays."
       )
-    }
+    )
   }
 }

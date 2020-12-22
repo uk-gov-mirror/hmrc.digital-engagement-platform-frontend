@@ -17,8 +17,8 @@
 package views.html.pages.UCIViews
 
 import play.twirl.api.HtmlFormat
-import views.html.pages.ChatViewBehaviours
 import views.html.UCIViews.JRSVariantOneTestView
+import views.html.pages.helpers.ChatViewBehaviours
 
 class JRSVariantOneTestViewSpec extends ChatViewBehaviours {
 

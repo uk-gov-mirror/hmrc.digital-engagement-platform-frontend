@@ -18,7 +18,7 @@ package views.html.pages.UCIViews
 
 import play.twirl.api.HtmlFormat
 import views.html.UCIViews.NuanceFullPageCUIView
-import views.html.pages.ChatViewBehaviours
+import views.html.pages.helpers.ChatViewBehaviours
 
 class NuanceFullPageUCIViewSpec extends ChatViewBehaviours {
 

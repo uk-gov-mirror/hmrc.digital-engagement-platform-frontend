@@ -14,28 +14,37 @@
  * limitations under the License.
  */
 
-package views.html.pages.templates
+package views.html.pages.webchat
 
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.webchat.ChildBenefitView
 import views.html.pages.helpers.ChatViewBehaviours
+import views.html.webchat.EmployingExpatriateEmployeesView
 
-class GovukWrapperSpec extends ChatViewBehaviours {
-
+class EmployingExpatriateEmployeesViewSpec extends ChatViewBehaviours {
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[ChildBenefitView]
+  val view = app.injector.instanceOf[EmployingExpatriateEmployeesView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "GovukWrapper" must {
-    behave like generalContent(
+  "Employing expatriate employees view" must {
+    val returnUrl: String =
+      "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/enquiries-from-employers-with-expatriate-employees"
+
+    behave like normalPage(
       createView,
-      "Child Benefit: webchat",
-      "This is a new service",
-      "Is this page not working properly?"
+      "Ask HMRC - Webchat",
+      "Employing expatriate employees: webchat",
+      "Employing expatriate employees: webchat",
+      "Return to Contact HMRC",
+      returnUrl,
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 5pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }

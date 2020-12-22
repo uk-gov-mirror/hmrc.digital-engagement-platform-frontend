@@ -20,7 +20,7 @@ import config.AppConfig
 import javax.inject.Inject
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.{AnnualTaxOnEnvelopedDwellingsView, StampDutyView}
+import views.html.webchat.{AnnualTaxOnEnvelopedDwellingsView, StampDutyView}
 
 import scala.concurrent.Future
 

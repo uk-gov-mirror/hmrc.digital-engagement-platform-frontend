@@ -21,7 +21,7 @@ import config.AppConfig
 import javax.inject.Singleton
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html._
+import views.html.webchat.PaymentProblemsView
 
 import scala.concurrent.Future
 
