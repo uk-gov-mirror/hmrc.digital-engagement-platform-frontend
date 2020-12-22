@@ -14,31 +14,29 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.templates
 
+import play.api.mvc.Cookie
+import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantTwoTestView
+import views.html.UCIViews.JRSVariantOneTestView
 import views.html.pages.ChatViewBehaviours
 
-class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
+class GovukWrapperUCISpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[JRSVariantTwoTestView]
+  implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  val view = app.injector.instanceOf[JRSVariantOneTestView]
 
-  "JRS Variant Two Test View" must {
-    "rendered" must {
-      //TODO add title when decided what it will be
-      behave like normalPage(
-        createView,
-        "",
-        "Coronavirus Job Retention Scheme: chat",
-        "Coronavirus Job Retention Scheme: chat",
-        "",
-        "",
-        Nil,
-        Seq("nuanMessagingFrame")
-      )
-    }
+  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+
+  "GovukWrapperUCI" must {
+    behave like generalContentUCI(
+      createView,
+      "Coronavirus Job Retention Scheme: chat",
+      "This is a new service",
+      "Is this page not working properly?",
+      "Help from HMRC"
+    )
   }
 }

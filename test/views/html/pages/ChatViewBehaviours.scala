@@ -106,4 +106,37 @@ trait ChatViewBehaviours extends ViewSpecBase {
       }
     }
   }
+
+  def generalContentUCI(view: () => HtmlFormat.Appendable,
+                     messageHeading: String,
+                     betaBannerText: String,
+                     getHelpWithPageText: String,
+                     sidebarText: String
+                    ): Unit = {
+    "adds to a all pages" when {
+      "display the correct page title" in {
+        val doc = asDocument(view())
+        doc.getElementsByTag("h1")
+        assertPageTitleEqualsMessage(doc, s"$messageHeading")
+      }
+
+      "display the beta banner" in {
+        val doc = asDocument(view())
+        doc.getElementById("beta-banner")
+        assertContainsText(doc, betaBannerText)
+      }
+
+      "display the 'Get help with this page' text" in {
+        val doc = asDocument(view())
+        doc.getElementById("get-help-action")
+        assertContainsText(doc, getHelpWithPageText)
+      }
+
+      "display the sidebar text" in {
+        val doc = asDocument(view())
+        doc.getElementById("sidebar-header")
+        assertContainsText(doc, sidebarText)
+      }
+    }
+  }
 }
