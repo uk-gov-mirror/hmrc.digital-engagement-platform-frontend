@@ -24,6 +24,29 @@
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
+@contentHeader = {
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">HM Revenue &amp; Customs</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link">Contact HM Revenue &amp; Customs</a>
+        </li>
+    </ol>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
+        <h1 class="heading-margin-top">Coronavirus business support: chat</h1>
+    </div>
+</div>
+
+}
+
 @sidebarLinks = {
     <aside class="app-related-items govuk-body govuk-body-m" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title" style="margin-bottom:20px;">Help from HMRC</h2>
