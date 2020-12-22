@@ -20,24 +20,25 @@
 @import views.html.includes.sidebarLinks
 
 @this(
-main_template: MainTemplateUCI,
-appConfig: AppConfig,
-webChatClient: WebChatClient)
+    main_template: MainTemplateUCI,
+    appConfig: AppConfig,
+    webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("uci.job.retention.scheme.title"),
+@main_template(
+    title = messages("uci.job.retention.scheme.title"),
     navTitle=Some(""),
     sidebarLinks=Some(sidebarLinks())
 ){
 
-<!--@components.back_link()-->
+    @components.back_link()
 
-<!--<div class="govuk-grid-row">-->
-<!--    <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">-->
-<!--        <h1 class="heading-margin-top">Coronavirus Job Retention Scheme: chat</h1>-->
-<!--    </div>-->
-<!--</div>-->
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
+            <h1 class="heading-margin-top">@Messages("uci.job.retention.scheme.title")</h1>
+        </div>
+    </div>
 
     <div id="nuanMessagingFrame"></div>
 
