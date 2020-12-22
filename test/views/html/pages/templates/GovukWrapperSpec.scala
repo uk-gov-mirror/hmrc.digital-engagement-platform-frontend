@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package views.html.pages
+package views.html.pages.templates
 
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
 import views.html.ChildBenefitView
+import views.html.pages.ChatViewBehaviours
 
 class GovukWrapperSpec extends ChatViewBehaviours {
 
