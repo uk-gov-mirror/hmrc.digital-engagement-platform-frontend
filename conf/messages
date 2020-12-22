@@ -57,6 +57,7 @@ global.banner.text = This is a new service – your
 global.banner.feedback = feedback
 global.banner.helpimprove = will help us to improve it.
 
+#Webchat pages
 #Self Assessment Webchat
 self.assessment.title=Self Assessment: webchat
 self.assessment.p1=Return to Contact HMRC
@@ -202,6 +203,15 @@ tax-credits-enquiries.li2=find more ways to contact HMRC
 
 #Nuance Full Page CUI Test Page
 nuance.full.page.cui.test.page.title=Test full page UCI for webchat
+
+#UCI pages
+#Sidebar
+uci.sidebar.h2.header=Help from HMRC
+uci.sidebar.p1=This chatbot can answer questions about the support offered under the Coronavirus Job Retention Scheme.
+uci.sidebar.p2=If it cannot help you, it can transfer you to an HMRC adviser if they're available.
+
+#JRSVariant test pages
+uci.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
 
 #Accessibility Statement
 accessibility.statement.title=Accessibility statement for webchat and digital assistant

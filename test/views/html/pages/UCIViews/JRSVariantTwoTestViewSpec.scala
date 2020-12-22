@@ -32,7 +32,7 @@ class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
       behave like normalPage(
         createView,
         "",
-        "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
+        "Coronavirus Job Retention Scheme: chat",
         "Coronavirus Job Retention Scheme: chat",
         "",
         "",
