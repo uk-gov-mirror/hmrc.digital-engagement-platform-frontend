@@ -208,7 +208,7 @@ nuance.full.page.cui.test.page.title=Test full page UCI for webchat
 #Sidebar
 uci.sidebar.h2.header=Help from HMRC
 uci.sidebar.p1=This chatbot can answer questions about the support offered under the Coronavirus Job Retention Scheme.
-uci.sidebar.p2=If it cannot help you, it can transfer you to an HMRC adviser if they're available.
+uci.sidebar.p2=If it cannot help you, it can transfer you to an HMRC adviser if they''re available.
 
 #JRSVariant test pages
 uci.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
