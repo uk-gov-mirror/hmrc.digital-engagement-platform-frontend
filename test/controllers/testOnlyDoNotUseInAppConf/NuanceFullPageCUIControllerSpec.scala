@@ -29,7 +29,7 @@ class NuanceFullPageCUIControllerSpec
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "Nuance Full Page UCI Test Controller" should {
+  "Nuance Full Page CUI Test Controller" should {
     "render Nuance test page" in {
       val result = controller.nuanceFullPageCUI(fakeRequest)
 

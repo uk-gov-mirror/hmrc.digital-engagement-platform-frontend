@@ -22,7 +22,7 @@ import play.twirl.api.HtmlFormat
 import views.html.CUIViews.JobRetentionSchemeHelpView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class GovukWrapperUCISpec extends ChatViewBehaviours {
+class GovukWrapperCUISpec extends ChatViewBehaviours {
 
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 

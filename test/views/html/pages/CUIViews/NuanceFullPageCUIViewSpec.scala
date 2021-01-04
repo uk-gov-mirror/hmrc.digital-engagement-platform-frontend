@@ -20,7 +20,7 @@ import play.twirl.api.HtmlFormat
 import views.html.CUIViews.NuanceFullPageCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class NuanceFullPageUCIViewSpec extends ChatViewBehaviours {
+class NuanceFullPageCUIViewSpec extends ChatViewBehaviours {
 
 //TODO this needs refactoring to work with ChatViewBehaviours
   private val view = app.injector.instanceOf[NuanceFullPageCUIView]
