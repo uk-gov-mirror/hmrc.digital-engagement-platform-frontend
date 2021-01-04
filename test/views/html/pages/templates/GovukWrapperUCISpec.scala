@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,19 @@ package views.html.pages.templates
 import play.api.mvc.Cookie
 import play.api.test.FakeRequest
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantOneTestView
+import views.html.CUIViews.JobRetentionSchemeHelpView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class GovukWrapperUCISpec extends ChatViewBehaviours {
 
   implicit override val fakeRequest = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
 
-  val view = app.injector.instanceOf[JRSVariantOneTestView]
+  val view = app.injector.instanceOf[JobRetentionSchemeHelpView]
 
   def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "GovukWrapperUCI" must {
-    behave like generalContentUCI(
+  "GovukWrapperCUI" must {
+    behave like generalContentCUI(
       createView,
       "Coronavirus Job Retention Scheme: chat",
       "This is a new service",

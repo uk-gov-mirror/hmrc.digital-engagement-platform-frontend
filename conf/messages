@@ -183,16 +183,16 @@ tax-credits-enquiries.li1=manage your tax credits online
 tax-credits-enquiries.li2=find more ways to contact HMRC
 
 #Nuance Full Page CUI Test Page
-nuance.full.page.cui.test.page.title=Test full page UCI for webchat
+nuance.full.page.cui.test.page.title=Test full page CUI for webchat
 
-#UCI pages
+#CUI pages
 #Sidebar
-uci.sidebar.h2.header=Help from HMRC
-uci.sidebar.p1=This chatbot can answer questions about the support offered under the Coronavirus Job Retention Scheme.
-uci.sidebar.p2=If it cannot help you, it can transfer you to an HMRC adviser if they''re available.
+cui.sidebar.h2.header=Help from HMRC
+cui.sidebar.p1=This chatbot can answer questions about the support offered under the Coronavirus Job Retention Scheme.
+cui.sidebar.p2=If it cannot help you, it can transfer you to an HMRC adviser if they''re available.
 
 #JRSVariant test pages
-uci.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
+cui.job.retention.scheme.title=Coronavirus Job Retention Scheme: chat
 
 #Accessibility Statement
 accessibility.statement.title=Accessibility statement for webchat and digital assistant

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.CUIViews
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantTwoTestView
+import views.html.CUIViews.HelpJobRetentionSchemeView
 import views.html.pages.helpers.ChatViewBehaviours
 
-class JRSVariantTwoTestViewSpec extends ChatViewBehaviours {
+class HelpJobRetentionSchemeViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[JRSVariantTwoTestView]
+  private val view = app.injector.instanceOf[HelpJobRetentionSchemeView]
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 

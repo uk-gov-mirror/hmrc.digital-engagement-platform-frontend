@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,12 @@
 package views.html.pages.includes
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.JRSVariantOneTestView
+import views.html.CUIViews.JobRetentionSchemeHelpView
 import views.html.pages.helpers.ViewSpecBase
 
 class sidebarLinksSpec extends ViewSpecBase {
 
-  private val viewWithTemplate = app.injector.instanceOf[JRSVariantOneTestView]
+  private val viewWithTemplate = app.injector.instanceOf[JobRetentionSchemeHelpView]
 
   private def createView: () => HtmlFormat.Appendable = () => viewWithTemplate()(fakeRequest, messages)
 

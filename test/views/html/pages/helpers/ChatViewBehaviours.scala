@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,23 +35,23 @@ trait ChatViewBehaviours extends ViewSpecBase {
           val doc = asDocument(view())
           val nav = doc.getElementById("proposition-menu")
           val span = nav.children.first
-          span.text mustBe messages(s"$bannerTitle")
+          span.text mustBe bannerTitle
         }
 
         "display the correct browser title" in {
           val doc = asDocument(view())
-          assertEqualsMessage(doc, "title", s"$messageKeyPrefix")
+          assertEqualsMessage(doc, "title", messageKeyPrefix)
         }
 
         "display the correct page title" in {
           val doc = asDocument(view())
           doc.getElementsByTag("h1")
-          assertPageTitleEqualsMessage(doc, s"$messageHeading")
+          assertPageTitleEqualsMessage(doc, messageHeading)
         }
 
         "display the correct link text" in {
           val doc = asDocument(view())
-          assertContainsText(doc, s"$urlLinkText")
+          assertContainsText(doc, urlLinkText)
         }
 
         "confirm the correct return link back to the correct gov.uk page" in {
@@ -65,7 +65,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
 
         "display the opening times text" in {
           val doc = asDocument(view())
-          for (key <- openingTimes) assertContainsText(doc, messages(s"$key"))
+          for (key <- openingTimes) assertContainsText(doc, messages(key))
         }
 
         "insert the Nuance container tag(s)" in {
@@ -90,7 +90,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
       "display the correct page title" in {
         val doc = asDocument(view())
         doc.getElementsByTag("h1")
-        assertPageTitleEqualsMessage(doc, s"$messageHeading")
+        assertPageTitleEqualsMessage(doc, messageHeading)
       }
 
       "display the beta banner" in {
@@ -107,7 +107,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
     }
   }
 
-  def generalContentUCI(view: () => HtmlFormat.Appendable,
+  def generalContentCUI(view: () => HtmlFormat.Appendable,
                      messageHeading: String,
                      betaBannerText: String,
                      getHelpWithPageText: String,
@@ -117,7 +117,7 @@ trait ChatViewBehaviours extends ViewSpecBase {
       "display the correct page title" in {
         val doc = asDocument(view())
         doc.getElementsByTag("h1")
-        assertPageTitleEqualsMessage(doc, s"$messageHeading")
+        assertPageTitleEqualsMessage(doc, messageHeading)
       }
 
       "display the beta banner" in {

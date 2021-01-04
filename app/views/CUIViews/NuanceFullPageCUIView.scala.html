@@ -1,5 +1,5 @@
 @*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,19 @@
  *@
 
 @import config.AppConfig
-@import templates.MainTemplateUCI
+@import templates.MainTemplateCUI
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import views.html.includes.sidebarLinks
 
 @this(
-    main_template: MainTemplateUCI,
+    main_template: MainTemplateCUI,
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
 @()(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @main_template(
-    title = messages("uci.job.retention.scheme.title"),
+    title = "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
     navTitle=Some(""),
     sidebarLinks=Some(sidebarLinks())
 ){
@@ -36,7 +36,7 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
-            <h1 class="heading-margin-top">@Messages("uci.job.retention.scheme.title")</h1>
+            <h1 class="heading-margin-top">@Messages("cui.job.retention.scheme.title")</h1>
         </div>
     </div>
 

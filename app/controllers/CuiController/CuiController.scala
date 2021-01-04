@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package controllers.UciController
+package controllers.CuiController
 
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.UCIViews.{JRSVariantOneTestView, JRSVariantTwoTestView}
+import views.html.CUIViews.{JobRetentionSchemeHelpView, HelpJobRetentionSchemeView}
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
-class UciController @Inject()(appConfig: AppConfig,
+class CuiController @Inject()(appConfig: AppConfig,
                               mcc: MessagesControllerComponents,
-                              jrsVariantOneTestView: JRSVariantOneTestView,
-                              jrsVariantTwoTestView: JRSVariantTwoTestView) extends FrontendController(mcc) {
+                              jobRetentionSchemeHelpView: JobRetentionSchemeHelpView,
+                              helpJobRetentionSchemeView: HelpJobRetentionSchemeView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 
@@ -36,12 +36,12 @@ class UciController @Inject()(appConfig: AppConfig,
     request.getQueryString("redirect").contains("entertainers")
   }
 
-  def jrsVariantOneTest: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(jrsVariantOneTestView()))
+  def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(jobRetentionSchemeHelpView()))
   }
 
-  def jrsVariantTwoTest: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok(jrsVariantTwoTestView()))
+  def helpJobRetentionScheme: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(helpJobRetentionSchemeView()))
   }
 
 }

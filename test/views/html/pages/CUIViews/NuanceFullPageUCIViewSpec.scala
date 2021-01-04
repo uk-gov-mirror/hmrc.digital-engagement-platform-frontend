@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package views.html.pages.UCIViews
+package views.html.pages.CUIViews
 
 import play.twirl.api.HtmlFormat
-import views.html.UCIViews.NuanceFullPageCUIView
+import views.html.CUIViews.NuanceFullPageCUIView
 import views.html.pages.helpers.ChatViewBehaviours
 
 class NuanceFullPageUCIViewSpec extends ChatViewBehaviours {

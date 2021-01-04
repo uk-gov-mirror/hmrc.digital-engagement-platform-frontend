@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package controllers.UciController
+package controllers.CuiController
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -25,19 +25,19 @@ import views.html.pages.helpers.AppBuilderSpecBase
 class NuanceFullPageCUIControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
 
-  private val controller = app.injector.instanceOf[UciController]
+  private val controller = app.injector.instanceOf[CuiController]
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "Nuance Full Page UCI Test Controller" should {
+  "Nuance Full Page CUI Test Controller" should {
     "render JRS Variant One Test page" in {
-      val result = controller.jrsVariantOneTest(fakeRequest)
+      val result = controller.jobRetentionSchemeHelp(fakeRequest)
 
       status(result) mustBe OK
     }
 
     "render JRS Variant Two Test page" in {
-      val result = controller.jrsVariantTwoTest(fakeRequest)
+      val result = controller.helpJobRetentionScheme(fakeRequest)
 
       status(result) mustBe OK
     }
