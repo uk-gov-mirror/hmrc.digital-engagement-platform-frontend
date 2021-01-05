@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,11 @@
 package controllers.testOnlyDoNotUseInAppConf
 
 import config.AppConfig
+
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.NuanceFullPageCUIView
+import views.html.CUIViews.{JobRetentionSchemeHelpView, NuanceFullPageCUIView}
 import views.html.IdTestView
 
 import scala.concurrent.Future
@@ -30,7 +31,8 @@ class NuanceFullPageCUIController @Inject()(
   appConfig: AppConfig,
   mcc: MessagesControllerComponents,
   nuanceFullPageCUIView: NuanceFullPageCUIView,
-  idTestView: IdTestView) extends FrontendController(mcc) {
+  idTestView: IdTestView,
+  jobRetentionSchemeHelpView: JobRetentionSchemeHelpView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
 

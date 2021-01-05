@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import play.api.test.Helpers._
-import views.html.pages.AppBuilderSpecBase
+import views.html.pages.helpers.AppBuilderSpecBase
 
 class NuanceFullPageCUIControllerSpec
   extends AppBuilderSpecBase with ScalaCheckPropertyChecks {
@@ -29,9 +29,15 @@ class NuanceFullPageCUIControllerSpec
 
   def asDocument(html: String): Document = Jsoup.parse(html)
 
-  "Nuance Full Page UCI Test Controller" should {
-    "render page" in {
+  "Nuance Full Page CUI Test Controller" should {
+    "render Nuance test page" in {
       val result = controller.nuanceFullPageCUI(fakeRequest)
+
+      status(result) mustBe OK
+    }
+
+    "render idTest page" in {
+      val result = controller.idTest(fakeRequest)
 
       status(result) mustBe OK
     }

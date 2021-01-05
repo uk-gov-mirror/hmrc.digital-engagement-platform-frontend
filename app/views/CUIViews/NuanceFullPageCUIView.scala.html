@@ -1,0 +1,46 @@
+@*
+ * Copyright 2021 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@import config.AppConfig
+@import templates.MainTemplateCUI
+@import uk.gov.hmrc.webchat.client.WebChatClient
+@import views.html.includes.sidebarLinks
+
+@this(
+    main_template: MainTemplateCUI,
+    appConfig: AppConfig,
+    webChatClient: WebChatClient)
+
+@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+
+@main_template(
+    title = "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
+    navTitle=Some(""),
+    sidebarLinks=Some(sidebarLinks())
+){
+
+    @components.back_link()
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds" style="width: 66.6666%">
+            <h1 class="heading-margin-top">@Messages("cui.job.retention.scheme.title")</h1>
+        </div>
+    </div>
+
+    <div id="nuanMessagingFrame"></div>
+
+    <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak" style="margin-top:2em;"></div>
+}
