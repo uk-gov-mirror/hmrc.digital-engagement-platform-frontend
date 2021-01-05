@@ -31,7 +31,7 @@ class NuanceFullPageCUIViewSpec extends ChatViewBehaviours {
     "rendered" must {
       behave like normalPage(
         createView,
-        "",
+        "Ask HMRC",
         "Get help with the Coronavirus Job Retention Scheme - GOV.UK",
         "Coronavirus Job Retention Scheme: chat",
         "",

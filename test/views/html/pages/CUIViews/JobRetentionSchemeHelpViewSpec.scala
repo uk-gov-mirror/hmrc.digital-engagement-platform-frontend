@@ -31,7 +31,7 @@ class JobRetentionSchemeHelpViewSpec extends ChatViewBehaviours {
       //TODO add title when dicided what it will be
       behave like normalPage(
         createView,
-        "",
+        "Ask HMRC",
         "Coronavirus Job Retention Scheme: chat",
         "Coronavirus Job Retention Scheme: chat",
         "",
