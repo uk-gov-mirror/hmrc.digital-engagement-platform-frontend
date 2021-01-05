@@ -37,15 +37,15 @@ class sidebarLinksSpec extends ViewSpecBase {
     "show the sidebar chatbot can paragraph" in {
       val doc = asDocument(createView())
       doc.getElementById("chatbot-can")
-      assertContainsText(doc, "This chatbot can answer questions about the support " +
-        "offered under the Coronavirus Job Retention Scheme.")
+      assertContainsText(doc, "The HMRC chatbot is available at any time to answer " +
+        "your questions about the Coronavirus Job Retention Scheme.")
     }
 
     "show the sidebar chatbot cannot paragraph" in {
       val doc = asDocument(createView())
       doc.getElementById("chatbot-cannot")
-      assertContainsText(doc, "If it cannot help you, it can transfer you to an " +
-        "HMRC adviser if they're available.")
+      assertContainsText(doc, "If it cannot help you, you can ask to transfer to an HMRC adviser " +
+        "by typing ‘adviser’. Advisers work 8am to 8pm, Monday to Friday and do not work bank holidays.")
     }
   }
 }
