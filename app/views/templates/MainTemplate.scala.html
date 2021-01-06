@@ -31,7 +31,8 @@
     sidebarLinks: Option[Html] = None,
     contentHeader: Option[Html] = None,
     bodyClasses: Option[String] = None,
-    mainClass: Option[String] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+    mainClass: Option[String] = None,
+    showHelpForm: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @serviceInfoContent = {}
 
@@ -61,5 +62,6 @@
                contentHeader = contentHeader,
                mainContent = article(wrapMainContent),
                serviceInfoContent = serviceInfoContent,
-               scriptElem = Some(scriptElem)
+               scriptElem = Some(scriptElem),
+               showHelpForm = showHelpForm
 )

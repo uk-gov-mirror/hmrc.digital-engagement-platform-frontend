@@ -28,7 +28,8 @@ class GovukWrapperSpec extends ChatViewBehaviours {
 
   val view = app.injector.instanceOf[ChildBenefitView]
 
-  def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
+  def createView: () => HtmlFormat.Appendable = () => view(
+    showHelpForm = true)(fakeRequest, messages)
 
   "GovukWrapper" must {
     behave like generalContent(
@@ -36,6 +37,18 @@ class GovukWrapperSpec extends ChatViewBehaviours {
       "Child Benefit: webchat",
       "This is a new service",
       "Is this page not working properly?"
+    )
+  }
+
+  "test get Help is not displayed when showHelpForm is false" must {
+    def createView: () => HtmlFormat.Appendable = () => view(
+      showHelpForm = false)(fakeRequest, messages)
+
+    behave like generalContent(
+      createView,
+      "Child Benefit: webchat",
+      "This is a new service",
+      ""
     )
   }
 }
