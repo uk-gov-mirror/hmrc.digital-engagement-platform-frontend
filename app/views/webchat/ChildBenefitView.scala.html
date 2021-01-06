@@ -23,9 +23,9 @@
     appConfig: AppConfig,
     webChatClient: WebChatClient)
 
-@(isIvrRedirect: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(isIvrRedirect: Boolean = false, showHelpForm: Boolean = false)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("child.benefit.title")) {
+@main_template(title = messages("child.benefit.title"), showHelpForm = showHelpForm) {
 
     @if(!isIvrRedirect) {
         @components.back_link()

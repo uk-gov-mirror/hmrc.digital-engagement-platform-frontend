@@ -42,7 +42,8 @@
         mainContent: Html = HtmlFormat.empty,
         serviceInfoContent: Html = HtmlFormat.empty,
         scriptElem: Option[Html] = None,
-        navTitle: Option[String] = None)(implicit request: Request[_], messages: play.api.i18n.Messages)
+        navTitle: Option[String] = None,
+        showHelpForm: Boolean = true)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @headContent = {
     @head(
@@ -119,7 +120,7 @@
         mainDataAttributes = mainDataAttributes,
         mainContentHeader = mainContentHeader,
         serviceInfo = serviceInfoBlock,
-        getHelpForm = getHelpForm,
+        getHelpForm = if(showHelpForm) getHelpForm else Html(""),
         sidebar = sidebar)
 }
 
