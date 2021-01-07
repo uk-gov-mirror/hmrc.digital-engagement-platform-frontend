@@ -1,7 +1,7 @@
 import {availabilities} from './getAvailability'
 import {createDataLayerElement,reportEvent} from './addToDataLayer'
 
-export function waitForEl (element, callback, w, defaultTimeout = 1000, timesCheckedForElement = 0) {
+export function waitForEl(element, callback, w, defaultTimeout = 1000, timesCheckedForElement = 0) {
     const selector = element + ' div span';
     const maxNumberOfAttempts = 9;
 
