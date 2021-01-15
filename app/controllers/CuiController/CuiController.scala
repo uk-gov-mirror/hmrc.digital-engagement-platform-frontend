@@ -17,11 +17,11 @@
 package controllers.CuiController
 
 import config.AppConfig
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, RequestHeader}
-import uk.gov.hmrc.play.bootstrap.controller.FrontendController
-import views.html.CUIViews.{JobRetentionSchemeHelpView, HelpJobRetentionSchemeView}
-
 import javax.inject.{Inject, Singleton}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
+import views.html.CUIViews.{HelpJobRetentionSchemeView, JobRetentionSchemeHelpView}
+
 import scala.concurrent.Future
 
 @Singleton
@@ -31,10 +31,6 @@ class CuiController @Inject()(appConfig: AppConfig,
                               helpJobRetentionSchemeView: HelpJobRetentionSchemeView) extends FrontendController(mcc) {
 
   implicit val config: AppConfig = appConfig
-
-  private def isEntertainersRedirect()(implicit request: RequestHeader): Boolean = {
-    request.getQueryString("redirect").contains("entertainers")
-  }
 
   def jobRetentionSchemeHelp: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok(jobRetentionSchemeHelpView()))

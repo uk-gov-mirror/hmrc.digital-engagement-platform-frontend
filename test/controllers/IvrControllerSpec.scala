@@ -16,20 +16,10 @@
 
 package controllers
 
-import org.scalatest.{Matchers, WordSpec}
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.mvc.{AnyContentAsEmpty, Cookie}
-import play.api.test.FakeRequest
 import play.api.test.Helpers._
+import views.html.pages.helpers.AppBuilderSpecBase
 
-class IvrControllerSpec
-    extends WordSpec
-    with Matchers
-    with GuiceOneAppPerSuite
-    with ScalaCheckPropertyChecks {
-
-  private implicit val fakeRequest: FakeRequest[AnyContentAsEmpty.type] = FakeRequest("GET", "/").withCookies(Cookie("mdtp", "12345"))
+class IvrControllerSpec extends AppBuilderSpecBase{
 
   private val controller = app.injector.instanceOf[IvrController]
 
@@ -37,62 +27,62 @@ class IvrControllerSpec
 
     "render tax-credits page" in {
       val result = controller.taxCredits(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/tax-credits-enquiries?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/tax-credits-enquiries?nuance=ivr")
     }
 
     "render child benefit page" in {
       val result = controller.childBenefit(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/child-benefit?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/child-benefit?nuance=ivr")
     }
 
     "render income tax enquiries page" in {
       val result = controller.incomeTaxEnquiries(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/income-tax-enquiries-for-individuals-pensioners-and-employees?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/income-tax-enquiries-for-individuals-pensioners-and-employees?nuance=ivr")
     }
 
     "render employer enquiries page" in {
       val result = controller.employerEnquiries(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/employer-enquiries?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/employer-enquiries?nuance=ivr")
     }
 
     "render vat enquiries page" in {
       val result = controller.vatEnquiries(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/vat-enquiries?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/vat-enquiries?nuance=ivr")
     }
 
     "render national insurance page" in {
       val result = controller.nationalInsuranceNumbers(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/national-insurance-numbers?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/national-insurance-numbers?nuance=ivr")
     }
 
     "render excise page" in {
       val result = controller.exciseEnquiries(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/excise-enquiries?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/excise-enquiries?nuance=ivr")
     }
 
     "render self-assessment page" in {
       val result = controller.selfAssessment(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-assessment?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/self-assessment?nuance=ivr")
     }
 
     "render job retention page" in {
       val result = controller.jobRetentionScheme(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/job-retention-scheme?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/job-retention-scheme?nuance=ivr")
     }
 
     "self employment income support scheme page" in {
       val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
-      status(result) shouldBe SEE_OTHER
-      redirectLocation(result) shouldBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/ask-hmrc/webchat/self-employment-income-support-scheme?nuance=ivr")
     }
   }
 }
