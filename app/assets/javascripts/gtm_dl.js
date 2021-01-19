@@ -1,3 +1,7 @@
 import * as nuanceWatcher from './waitForChanges'
 
-nuanceWatcher.waitForChanges(document, window);
+if (window.isCUI) {
+    nuanceWatcher.waitForCUI(window, document);
+} else {
+    nuanceWatcher.waitForChanges(window, document);
+}
