@@ -40,6 +40,10 @@
     margin-bottom: 0;
 }
 
+.content__body {
+    position: relative;
+}
+
 .gem-c-govspeak .address, .gem-c-govspeak .contact {
     border-left: 1px solid #b1b4b6;
     padding-left: 15px;
@@ -49,4 +53,16 @@
 
 .webchat-unavailable > #HMRC_Fixed_1 {
     display: none;
+}
+
+#cui-loading-animation {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#cui-messaging-container {
+    width: 100%;
 }

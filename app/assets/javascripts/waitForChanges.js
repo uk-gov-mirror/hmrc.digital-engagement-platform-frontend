@@ -8,22 +8,24 @@ export function waitForCUI(w, d) {
   $(w).on("load", function () {
       var loadingAnimation = $('#cui-loading-animation')
       var messagingFrame = $('#nuanMessagingFrame')
+      var messagingContainer = $('#cui-messaging-container')
 
-      messagingFrame.hide();
+      messagingContainer.fadeTo(0, 0.0);
       loadingAnimation.show();
 
       var el = '#nuanMessagingFrame';
       elementWatcher.waitForEl(el + ' #inqChatStage', function () {
-        console.log("found nuance chat!")
-        messagingFrame.show();
-        loadingAnimation.hide();
+        w.setTimeout(function() {
+            messagingContainer.fadeTo(2000, 1.0);
+            loadingAnimation.fadeTo(1500, 0.0);
+        }, 2000);
 
+        // TODO: Reinstate these, if it makes sense.
 //        dataLayerUpdater.updateDataLayer(el,w,d);
 //        statusObserver.observeStatus(el,w,d);
       },
       function() {
         loadingAnimation.hide();
-        console.log("Timed out waiting for CUI chat to appear");
       });
   });
 };
@@ -42,7 +44,7 @@ export function waitForChanges(w, d) {
 };
 
 function waitForNuanceElement(el,w,d) {
-  elementWatcher.waitForEl(el + ' div span',
+  elementWatcher.waitForEl(el + ' div',
     function () {
       dataLayerUpdater.updateDataLayer(el,w,d);
       statusObserver.observeStatus(el,w,d);
