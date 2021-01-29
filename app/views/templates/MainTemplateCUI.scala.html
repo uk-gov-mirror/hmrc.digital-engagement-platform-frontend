@@ -78,14 +78,16 @@ var chatListener = {
         console.log("Chat Launched: chatID=" +evt.chatID+
             ",customerID=" +evt.customerID + " Chat Type: " + evt.chatType + " Biz Rule Name: " + evt.bizRuleName + " Event Type: " + evt.evtType);
 
-        if (this.engageTimeout) {
-            clearTimeout(this.engageTimeout);
-            this.engageTimeout = null;
-        }
-        this.showNuanceDiv();
+        // Wait for Nuance div to settle. We should get a "shown" event,
+        // but if not, then show anyway but later.
+        var self = this;
+        setTimeout(function() {
+            self.chatHasEngaged();
+        }, 2000);
     },
     onChatShown: function(evt) {
         console.log("Chat shown:", evt);
+        this.chatHasEngaged();
     },
     onChatEvent: function(evt) {
         console.log("Chat event:", evt);
@@ -130,6 +132,13 @@ var chatListener = {
             }, 5000);
         }
     },
+    chatHasEngaged: function() {
+        if (this.engageTimeout) {
+            clearTimeout(this.engageTimeout);
+            this.engageTimeout = null;
+        }
+        this.showNuanceDiv();
+    },
     showNuanceDiv: function() {
         console.log("showNuanceDiv");
 
@@ -154,6 +163,7 @@ var chatListener = {
         $('#nuanMessagingFrame').append(newDiv);
     },
     startup: function() {
+        localStorage.enableJSLogging = true;
         var self = this;
         console.log("chatListener start...");
         $(window).on("load", function() {
