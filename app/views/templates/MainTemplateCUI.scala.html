@@ -53,7 +53,9 @@ window.isCUI = true;
 
 @if(!appConfig.performanceTest){
 <script>
-    var chatListener = {
+var chatListener = {
+    nuanceDownTimeout: null,
+    engageTimeout: null,
     onPageLanding: function(evt) {
         console.log("On Page Landing: data=", evt.data, "page=", evt.page, "reinitialized=", evt.reinitialized);
     },
@@ -75,6 +77,27 @@ window.isCUI = true;
     onChatLaunched: function(evt) {
         console.log("Chat Launched: chatID=" +evt.chatID+
             ",customerID=" +evt.customerID + " Chat Type: " + evt.chatType + " Biz Rule Name: " + evt.bizRuleName + " Event Type: " + evt.evtType);
+
+        if (this.engageTimeout) {
+            clearTimeout(this.engageTimeout);
+            this.engageTimeout = null;
+        }
+        this.showNuanceDiv();
+    },
+    onChatShown: function(evt) {
+        console.log("Chat shown:", evt);
+    },
+    onChatEvent: function(evt) {
+        console.log("Chat event:", evt);
+    },
+    onBeforeChatClosed: function(evt) {
+        console.log("onBeforeChatClosed:", evt);
+    },
+    onAgentMsg: function(evt) {
+        console.log("onAgentMsg:", evt);
+    },
+    onCustomerMsg: function(evt) {
+        console.log("onCustomerMsg:", evt);
     },
     onChatClosed: function(evt){
         console.log("Chat Closed: chatID=" +evt.chatID+ ", chatType="+evt.chatType+ ", evtType=" +evt.evtType + " Biz Rule Name: " + evt.bizRuleName + ",customerID=" +evt.customerID);
@@ -97,13 +120,59 @@ window.isCUI = true;
     },
     onAnyEvent: function(evt) {
         console.log("Chat any event:", evt);
-    }
+        if (this.nuanceDownTimeout) {
+            clearTimeout(this.nuanceDownTimeout);
+            this.nuanceDownTimeout = null;
+            var self = this;
+            this.engageTimeout = setTimeout(function() {
+                console.log("Chat did not start...");
+                self.technicalError();
+            }, 5000);
+        }
+    },
+    showNuanceDiv: function() {
+        console.log("showNuanceDiv");
 
+        var loadingAnimation = $('#cui-loading-animation')
+        var messagingContainer = $('#cui-messaging-container')
+        messagingContainer.fadeTo(2000, 1.0);
+        loadingAnimation.fadeTo(1500, 0.0);
+    },
+    showLoadingAnimation: function() {
+        console.log("showLoadingAnimation");
+        var loadingAnimation = $('#cui-loading-animation')
+        var messagingContainer = $('#cui-messaging-container')
+
+        messagingContainer.fadeTo(0, 0.0);
+        loadingAnimation.show();
+    },
+    technicalError: function() {
+        console.log("technicalError");
+        this.showNuanceDiv();
+        var newDiv = $("<p>")
+        newDiv.text('Chat is experiencing technical difficulties. Please keep refreshing the page to try again.')
+        $('#nuanMessagingFrame').append(newDiv);
+    },
+    startup: function() {
+        var self = this;
+        console.log("chatListener start...");
+        $(window).on("load", function() {
+            self.showLoadingAnimation();
+            console.log("chatListener onLoad");
+            self.nuanceDownTimeout = setTimeout(function() {
+                console.log("Nuance is down...");
+                self.technicalError();
+            }, 10000);
+        });
+    }
 };
 
 var InqRegistry = {
     listeners: [chatListener]
 };
+
+chatListener.startup();
+
 </script>
 
         @{webChatClient.loadWebChatContainer("HMRC_Anchored_1")}

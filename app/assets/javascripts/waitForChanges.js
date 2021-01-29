@@ -6,6 +6,7 @@ import {availabilities} from './getAvailability'
 
 export function waitForCUI(w, d) {
   $(w).on("load", function () {
+    return;
       var loadingAnimation = $('#cui-loading-animation')
       var messagingFrame = $('#nuanMessagingFrame')
       var messagingContainer = $('#cui-messaging-container')
@@ -26,6 +27,10 @@ export function waitForCUI(w, d) {
       },
       function() {
         loadingAnimation.hide();
+        messagingContainer.fadeTo(0, 1.0);
+
+        $(el).text('Chat is experiencing technical difficulties. Please keep refreshing the page to try again.')
+        reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
       });
   });
 };
