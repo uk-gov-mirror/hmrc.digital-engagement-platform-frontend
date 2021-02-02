@@ -4,37 +4,6 @@ import * as dataLayerUpdater from './updateDatalayer'
 import {createDataLayerElement,reportEvent} from './addToDataLayer'
 import {availabilities} from './getAvailability'
 
-export function waitForCUI(w, d) {
-  $(w).on("load", function () {
-    return;
-      var loadingAnimation = $('#cui-loading-animation')
-      var messagingFrame = $('#nuanMessagingFrame')
-      var messagingContainer = $('#cui-messaging-container')
-
-      messagingContainer.fadeTo(0, 0.0);
-      loadingAnimation.show();
-
-      var el = '#nuanMessagingFrame';
-      elementWatcher.waitForEl(el + ' #inqChatStage', function () {
-        w.setTimeout(function() {
-            messagingContainer.fadeTo(2000, 1.0);
-            loadingAnimation.fadeTo(1500, 0.0);
-        }, 2000);
-
-        // TODO: Reinstate these, if it makes sense.
-//        dataLayerUpdater.updateDataLayer(el,w,d);
-//        statusObserver.observeStatus(el,w,d);
-      },
-      function() {
-        loadingAnimation.hide();
-        messagingContainer.fadeTo(0, 1.0);
-
-        $(el).text('Chat is experiencing technical difficulties. Please keep refreshing the page to try again.')
-        reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
-      });
-  });
-};
-
 export function waitForChanges(w, d) {
   $(w).on("load", function () {
     if (w.location.pathname.includes("payment-problems")) {
