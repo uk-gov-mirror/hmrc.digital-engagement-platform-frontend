@@ -31,7 +31,7 @@ class sidebarLinksSpec extends ViewSpecBase {
     "show the sidebar header" in {
       val doc = asDocument(createView())
       doc.getElementById("sidebar-header")
-      assertContainsText(doc, "Help from HMRC")
+      assertContainsText(doc, "Help for businesses and employers")
     }
 
     "show the sidebar chatbot can paragraph" in {
