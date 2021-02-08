@@ -48,8 +48,9 @@
     @head(linkElem = None, headScripts = None)
 
     <style type="text/css">
-        .service-info .logo {
-            display: none;
+        #content {
+          border-top: 10px solid;
+          border-top-color: #1d70b8;
         }
     </style>
 
@@ -60,14 +61,12 @@
         }
 }
 
-@headerNavLinks = {}
-
 @insideHeader = {
     @header_nav(
         navTitle = navTitle.orElse(Some("")),
         navTitleLink = None,
         showBetaLink = false,
-        navLinks = Some(headerNavLinks))
+        navLinks = None)
 }
 
 @afterHeader = {}
@@ -133,7 +132,6 @@
         mainClass = mainClass,
         mainDataAttributes = mainDataAttributes,
         mainContentHeader = mainContentHeader,
-        serviceInfo = serviceInfoBlock,
         getHelpForm = getHelpForm,
         sidebar = sidebar)
 }
