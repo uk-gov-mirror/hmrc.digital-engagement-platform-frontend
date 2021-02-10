@@ -1,4 +1,5 @@
 window.isCUI = true;
+window.dataLayer = window.dataLayer || [];
 
 var chatListener = {
     downTimeoutDuration: 15000,
