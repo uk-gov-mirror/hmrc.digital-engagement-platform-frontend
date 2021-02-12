@@ -47,6 +47,9 @@
 }
 
 @scriptElem = {
+
+    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/webchatListener.js")'></script>
+
     @if(!appConfig.performanceTest){
         @{webChatClient.loadWebChatContainer("HMRC_Anchored_1")}
         @{webChatClient.loadRequiredElements()}

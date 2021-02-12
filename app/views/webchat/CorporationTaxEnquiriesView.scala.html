@@ -39,11 +39,16 @@
 
     <h2 class="margin-top">@messages("global.webchat.title.h2")</h2>
 
-    @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer()}
-    }
-
     <p class="margin-top">@messages("corporation.tax.enquiries.p1")</p>
+
+    <div id="webchat-messaging-container">
+        @if(!appConfig.performanceTest){
+            @{webChatClient.loadWebChatContainer()}
+        }
+    </div>
+    <div id="webchat-loading-text" style="display:none" alt="Chat is loading">
+        <p class="margin-top">Checking adviser availability...</p>
+    </div>
 
     <p class="margin-top">@messages("global.adviser.busy.p1")</p>
 
