@@ -27,7 +27,7 @@
 
 @main_template(title = messages("corporation.tax.enquiries.title")) {
 
-@components.back_link()
+    @components.back_link()
 
     <h1 class="header-margin-top">@messages("corporation.tax.enquiries.title")</h1>
 
@@ -41,14 +41,9 @@
 
     <p class="margin-top">@messages("corporation.tax.enquiries.p1")</p>
 
-    <div id="webchat-messaging-container">
-        @if(!appConfig.performanceTest){
-            @{webChatClient.loadWebChatContainer()}
-        }
-    </div>
-    <div id="webchat-loading-text" style="display:none" alt="Chat is loading">
-        <p class="margin-top">Checking adviser availability...</p>
-    </div>
+    @components.webchat_text()
+
+    @components.webchat_loading_text()
 
     <p class="margin-top">@messages("global.adviser.busy.p1")</p>
 
