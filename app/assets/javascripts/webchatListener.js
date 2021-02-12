@@ -119,15 +119,15 @@ var chatListener = {
         var loadingText = $(this.loadingTextSelector)
         var messagingContainer = $(this.messagingContainerSelector)
         console.log("show Nuance Div text...");
-        messagingContainer.fadeTo(2000, 1.0);
-        loadingText.fadeTo(1500, 0.0);
+        messagingContainer.show()
+        loadingText.hide()
     },
     showloadingText: function() {
         var loadingText = $(this.loadingTextSelector);
         var messagingContainer = $(this.messagingContainerSelector);
         console.log("show loading text...");
-        messagingContainer.fadeTo(0, 0.0);
-        loadingText.show();
+          messagingContainer.hide()
+          loadingText.show()
     },
 
     technicalError: function() {
