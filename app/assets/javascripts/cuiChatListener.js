@@ -1,12 +1,11 @@
-window.isCUI = true;
-
-var chatListener = {
+export var chatListener = {
     downTimeoutDuration: 15000,
     engagementTimeoutDuration: 10000,
     loadingAnimationSelector: '#cui-loading-animation',
     messagingContainerSelector: '#cui-messaging-container',
     nuanceDownTimeout: null,
     engageTimeout: null,
+    engaged: false,
     onPageLanding: function(evt) {
         console.log("On Page Landing: data=", evt.data, "page=", evt.page, "reinitialized=", evt.reinitialized);
     },
@@ -74,12 +73,17 @@ var chatListener = {
     onAnyEvent: function(evt) {
         console.log("Chat any event:", evt);
         if (this.nuanceDownTimeout) {
+            console.log("Clear down timeout.")
             clearTimeout(this.nuanceDownTimeout);
             this.nuanceDownTimeout = null;
             this.waitForEngagement();
         }
     },
     waitForEngagement: function() {
+        if (this.engaged) {
+            return;
+        }
+
         var self = this;
         this.engageTimeout = setTimeout(function() {
             console.log("Chat did not start...");
@@ -91,6 +95,7 @@ var chatListener = {
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
+        this.engaged = true;
         $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
         this.showNuanceDiv();
     },
@@ -118,26 +123,27 @@ var chatListener = {
     },
     waitForSignsOfLife: function() {
         var self = this;
+
         this.nuanceDownTimeout = setTimeout(function() {
             console.log("Nuance is down...");
             self.technicalError();
         }, this.downTimeoutDuration);
     },
-    startup: function() {
-        localStorage.enableJSLogging = true;
+    startup: function(w) {
+//        localStorage.enableJSLogging = true;
         var self = this;
-        console.log("chatListener start...");
-        $(window).on("load", function() {
+        $(w).on("load", function() {
             self.showLoadingAnimation();
-            console.log("chatListener onLoad");
             self.waitForSignsOfLife();
         });
     }
 };
 
-var InqRegistry = {
-    listeners: [chatListener]
-};
+export function initChatListener(w) {
+    w.InqRegistry = {
+        listeners: [chatListener]
+    };
 
-chatListener.startup();
+    chatListener.startup(w);
+}
 
