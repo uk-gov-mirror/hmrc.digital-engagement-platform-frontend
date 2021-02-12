@@ -72,6 +72,7 @@ var chatListener = {
     //In console
     onC2CStateChanged: function(evt) {
         console.log("C2C State Changed - rule= "+evt.bizRuleName+", oldstate: " + evt.oldState + ", newstate: "+evt.newState + ",customerID=" +evt.customerID);
+        this.chatHasEngaged();
     },
     //Not seen in console
     onC2CDisplayed: function(evt) {
