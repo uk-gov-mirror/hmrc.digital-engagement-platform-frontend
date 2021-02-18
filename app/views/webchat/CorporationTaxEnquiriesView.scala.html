@@ -41,11 +41,7 @@
 
     <p class="margin-top">@messages("corporation.tax.enquiries.p1")</p>
 
-    <div id="webchat-messaging-container">
-        @if(!appConfig.performanceTest){
-            @{webChatClient.loadWebChatContainer()}
-        }
-    </div>
+    @components.webchat_text(appConfig, webChatClient)
 
     @components.webchat_loading_text()
 

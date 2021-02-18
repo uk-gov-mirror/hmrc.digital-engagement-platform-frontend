@@ -17,10 +17,7 @@
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
-@this(appConfig: AppConfig,
-    webChatClient: WebChatClient)
-
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(appConfig: AppConfig, webChatClient: WebChatClient)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 <div id="webchat-messaging-container">
     @if(!appConfig.performanceTest){
