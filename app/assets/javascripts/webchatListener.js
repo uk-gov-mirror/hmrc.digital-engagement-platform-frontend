@@ -156,9 +156,11 @@ var chatListener = {
     }
 };
 
-var InqRegistry = {
-    listeners: [chatListener]
-};
-
-chatListener.startup();
+export function initChatListener(w) {
+    w.InqRegistry = {
+        listeners: [chatListener]
+    };
+    
+    chatListener.startup(w);
+}
 
