@@ -35,8 +35,7 @@ describe("Webchat listener", () => {
         });
 
         it("will have basic properties", () => {
-            expect(testListener.downTimeoutDuration).toBe(15*1000);
-            expect(testListener.engagementTimeoutDuration).toBe(10*1000);
+            expect(testListener.downTimeoutDuration).toBe(9*1000);
             expect(testListener.loadingTextSelector).toBe('#webchat-loading-text');
             expect(testListener.messagingContainerSelector).toBe('#webchat-messaging-container');
         });
@@ -50,38 +49,24 @@ describe("Webchat listener", () => {
             expect(text.css("display")).toBe("block");
         });
 
-        it("will not show an error if activity and then shown", () => {
+        it("will hide the loading text if activity and then shown", () => {
             testListener.startup(window);
             $(window).trigger('load');
 
+            testListener.onC2CStateChanged({});
             testListener.onAnyEvent({});
 
-            testListener.onChatLaunched({});
-            testListener.onAnyEvent({});
+            expect($('#webchat-loading-text').css("display")).toBe("none");
+        });
 
-            testListener.onChatShown({});
-            testListener.onAnyEvent({});
+        it("will hide the loading text if timeout", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
 
             jest.runOnlyPendingTimers();
 
-            let text = $('#webchat-loading-text')
-            expect(text.length).toBe(1);
+            expect($('#webchat-loading-text').css("display")).toBe("none");
         });
 
-        it("will show the Nuance div if activity and then shown", () => {
-
-        });
-
-        it("will not show an error if activity and then shown after timeout", () => {
-
-        });
-
-        it("will not show an error if activity and then shown after timeout", () => {
-
-        });
-
-        it("will not show an error if activity and then shown before any other event", () => {
-
-        });
     });
 });

@@ -1,10 +1,8 @@
 export var chatListener = {
-    downTimeoutDuration: 15000,
-    engagementTimeoutDuration: 10000,
+    downTimeoutDuration: 9000,
     loadingTextSelector: '#webchat-loading-text',
     messagingContainerSelector: '#webchat-messaging-container',
     nuanceDownTimeout: null,
-    engageTimeout: null,
 
     //In console
     onPageLanding: function(evt) {
@@ -34,18 +32,10 @@ export var chatListener = {
     onChatLaunched: function(evt) {
         console.log("Chat Launched: chatID=" +evt.chatID+
             ",customerID=" +evt.customerID + " Chat Type: " + evt.chatType + " Biz Rule Name: " + evt.bizRuleName + " Event Type: " + evt.evtType);
-
-        // Wait for Nuance div to settle. We should get a "shown" event,
-        // but if not, then show anyway but later.
-        var self = this;
-        setTimeout(function() {
-            self.chatHasEngaged();
-        }, 2000);
     },
     //In console
     onChatShown: function(evt) {
         console.log("Chat shown:", evt);
-        this.chatHasEngaged();
     },
     //In console
     onChatEvent: function(evt) {
@@ -69,7 +59,7 @@ export var chatListener = {
     },
     //In console
     onC2CStateChanged: function(evt) {
-        console.log("C2C State Changed - rule= "+evt.bizRuleName+", oldstate: " + evt.oldState + ", newstate: "+evt.newState + ",customerID=" +evt.customerID);
+        console.log("C2C State Changed = ", evt);
         this.chatHasEngaged();
     },
     //Not seen in console
@@ -91,22 +81,11 @@ export var chatListener = {
     //In console
     onAnyEvent: function(evt) {
         console.log("Chat any event:", evt);
+    },
+    chatHasEngaged: function() {
         if (this.nuanceDownTimeout) {
             clearTimeout(this.nuanceDownTimeout);
             this.nuanceDownTimeout = null;
-            this.waitForEngagement();
-        }
-    },
-    waitForEngagement: function() {
-        var self = this;
-        this.engageTimeout = setTimeout(function() {
-            self.technicalError();
-        }, this.engagementTimeoutDuration);
-    },
-    chatHasEngaged: function() {
-        if (this.engageTimeout) {
-            clearTimeout(this.engageTimeout);
-            this.engageTimeout = null;
         }
         this.showNuanceDiv();
     },
@@ -131,6 +110,7 @@ export var chatListener = {
         var self = this;
         this.nuanceDownTimeout = setTimeout(function() {
             console.log("Nuance is down...");
+            self.showNuanceDiv();
         }, this.downTimeoutDuration);
     },
     startup: function() {
