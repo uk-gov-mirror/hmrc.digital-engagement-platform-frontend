@@ -34,25 +34,21 @@ describe("Webchat listener", () => {
             $.fx.off = false;
         });
 
-
-
-
-
         it("will have basic properties", () => {
-//            expect(testListener.downTimeoutDuration).toBe(15*1000);
-//            expect(testListener.engagementTimeoutDuration).toBe(10*1000);
-//            expect(testListener.loadingAnimationSelector).toBe('#webchat-loading-text');
-//            expect(testListener.messagingContainerSelector).toBe('#webchat-messaging-container');
+            expect(testListener.downTimeoutDuration).toBe(15*1000);
+            expect(testListener.engagementTimeoutDuration).toBe(10*1000);
+            expect(testListener.loadingTextSelector).toBe('#webchat-loading-text');
+            expect(testListener.messagingContainerSelector).toBe('#webchat-messaging-container');
         });
 
-//        it("will do show the loading animation on load after startup is called", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//
-//            let animation = $('#cui-loading-animation')
-//            expect(animation.length).toBe(1);
-//            expect(animation.css("display")).toBe("block");
-//        });
+        it("will do show the loading text on load after startup is called", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
+
+            let animation = $('#webchat-loading-text')
+            expect(animation.length).toBe(1);
+            expect(animation.css("display")).toBe("block");
+        });
 
 //        it("will do show an error if times out with no activity", () => {
 //            testListener.startup(window);
@@ -63,27 +59,27 @@ describe("Webchat listener", () => {
 //            expect($('.cui-technical-error').length).toBe(1);
 //        });
 
-//        it("will not show an error if activity and then shown", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatLaunched({});
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatShown({});
-//            testListener.onAnyEvent({});
-//
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(0);
-//        });
+        it("will not show an error if activity and then shown", () => {
+            testListener.startup(window);
+            $(window).trigger('load');
+            expect($('.webchat-technical-error').length).toBe(0);
+
+            testListener.onAnyEvent({});
+
+            testListener.onChatLaunched({});
+            testListener.onAnyEvent({});
+
+            testListener.onChatShown({});
+            testListener.onAnyEvent({});
+
+            jest.runOnlyPendingTimers();
+            expect($('.webchat-technical-error').length).toBe(0);
+        });
 
 //        it("will show the Nuance div if activity and then shown", () => {
 //            testListener.startup(window);
 //            $(window).trigger('load');
-//            expect($('#cui-messaging-container').css("opacity")).toBe("0");
+//            expect($('#webchat-messaging-container').css("opacity")).toBe("0");
 //
 //            testListener.onAnyEvent({});
 //
@@ -94,7 +90,7 @@ describe("Webchat listener", () => {
 //            testListener.onAnyEvent({});
 //
 //            jest.runOnlyPendingTimers();
-//            expect($('#cui-messaging-container').css("opacity")).toBe("1");
+//            expect($('#webchat-messaging-container').css("opacity")).toBe("1");
 //            expect($('.cui-technical-error').length).toBe(0);
 //
 //            // Make sure there are no lingering behaviours.

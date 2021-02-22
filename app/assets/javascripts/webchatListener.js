@@ -1,6 +1,4 @@
-window.isCUI = false;
-
-var chatListener = {
+export var chatListener = {
     downTimeoutDuration: 15000,
     engagementTimeoutDuration: 10000,
     loadingTextSelector: '#webchat-loading-text',
@@ -112,7 +110,7 @@ var chatListener = {
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
-        $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
+        $('.webchat-technical-error').hide();   // If we showed the technical error, clear it.
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
@@ -133,7 +131,7 @@ var chatListener = {
     technicalError: function() {
         console.log("technicalError");
         this.showNuanceDiv();
-        var newDiv = $("<p>", {"class": "cui-technical-error error-message"})
+        var newDiv = $("<p>", {"class": "webchat-technical-error error-message"})
         newDiv.text('There’s a problem with chat. Try again later.')
         $('#nuanMessagingFrame').append(newDiv);
     },
@@ -160,7 +158,7 @@ export function initChatListener(w) {
     w.InqRegistry = {
         listeners: [chatListener]
     };
-    
+
     chatListener.startup(w);
 }
 
