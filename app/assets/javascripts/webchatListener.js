@@ -110,6 +110,7 @@ export var chatListener = {
             this.engageTimeout = null;
         }
         //$('.webchat-technical-error').hide();   // If we showed the technical error, clear it.
+        console.log("clear technical error...");
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {

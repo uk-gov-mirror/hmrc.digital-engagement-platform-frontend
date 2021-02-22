@@ -92,13 +92,11 @@ export var chatListener = {
     },
     chatHasEngaged: function() {
         if (this.engageTimeout) {
-        console.log("Chat has changed...");
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
         this.engaged = true;
-//        $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
-        console.log("clear technical error...");
+        $('.cui-technical-error').hide();   // If we showed the technical error, clear it.
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
