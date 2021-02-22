@@ -100,7 +100,6 @@ export var chatListener = {
     waitForEngagement: function() {
         var self = this;
         this.engageTimeout = setTimeout(function() {
-            console.log("Chat did not start...");
             self.technicalError();
         }, this.engagementTimeoutDuration);
     },
@@ -110,20 +109,19 @@ export var chatListener = {
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
-        $('.webchat-technical-error').hide();   // If we showed the technical error, clear it.
+        //$('.webchat-technical-error').hide();   // If we showed the technical error, clear it.
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
+        console.log("show Nuance Div text...");
         var loadingText = $(this.loadingTextSelector)
         var messagingContainer = $(this.messagingContainerSelector)
-        console.log("show Nuance Div text...");
         messagingContainer.show()
         loadingText.hide()
     },
     showloadingText: function() {
         var loadingText = $(this.loadingTextSelector);
         var messagingContainer = $(this.messagingContainerSelector);
-        console.log("show loading text...");
           messagingContainer.hide()
           loadingText.show()
     },
@@ -131,24 +129,18 @@ export var chatListener = {
     technicalError: function() {
         console.log("technicalError");
         this.showNuanceDiv();
-        var newDiv = $("<p>", {"class": "webchat-technical-error error-message"})
-        newDiv.text('There’s a problem with chat. Try again later.')
-        $('#nuanMessagingFrame').append(newDiv);
     },
     waitForSignsOfLife: function() {
         var self = this;
         this.nuanceDownTimeout = setTimeout(function() {
             console.log("Nuance is down...");
-            self.technicalError();
         }, this.downTimeoutDuration);
     },
     startup: function() {
-        localStorage.enableJSLogging = true;
+        //localStorage.enableJSLogging = true;
         var self = this;
-        console.log("chatListener start...");
         $(window).on("load", function() {
             self.showloadingText();
-            console.log("chatListener onLoad");
             self.waitForSignsOfLife();
         });
     }
