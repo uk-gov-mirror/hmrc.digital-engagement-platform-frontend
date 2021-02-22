@@ -45,24 +45,14 @@ describe("Webchat listener", () => {
             testListener.startup(window);
             $(window).trigger('load');
 
-            let animation = $('#webchat-loading-text')
-            expect(animation.length).toBe(1);
-            expect(animation.css("display")).toBe("block");
+            let text = $('#webchat-loading-text')
+            expect(text.length).toBe(1);
+            expect(text.css("display")).toBe("block");
         });
-
-//        it("will do show an error if times out with no activity", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(1);
-//        });
 
         it("will not show an error if activity and then shown", () => {
             testListener.startup(window);
             $(window).trigger('load');
-            expect($('.webchat-technical-error').length).toBe(0);
 
             testListener.onAnyEvent({});
 
@@ -73,117 +63,25 @@ describe("Webchat listener", () => {
             testListener.onAnyEvent({});
 
             jest.runOnlyPendingTimers();
-            expect($('.webchat-technical-error').length).toBe(0);
+
+            let text = $('#webchat-loading-text')
+            expect(text.length).toBe(1);
         });
 
-//        it("will show the Nuance div if activity and then shown", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('#webchat-messaging-container').css("opacity")).toBe("0");
-//
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatLaunched({});
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatShown({});
-//            testListener.onAnyEvent({});
-//
-//            jest.runOnlyPendingTimers();
-//            expect($('#webchat-messaging-container').css("opacity")).toBe("1");
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            // Make sure there are no lingering behaviours.
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(0);
-//        });
+        it("will show the Nuance div if activity and then shown", () => {
 
-//        it("will show an error if activity and then not engaged or shown", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            testListener.onAnyEvent({});
-//
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(1);
-//        });
+        });
 
-//        it("will not show an error if activity and then shown after timeout", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            testListener.onAnyEvent({});
-//
-//            jest.runOnlyPendingTimers();
-//
-//            expect($('.cui-technical-error').length).toBe(1);
-//            expect($('.cui-technical-error').css("display")).toBe("block");
-//
-//            testListener.onChatLaunched({});
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatShown({});
-//            testListener.onAnyEvent({});
-//
-//            expect($('.cui-technical-error').length).toBe(1);
-//            expect($('.cui-technical-error').css("display")).toBe("none");
-//
-//            // Make sure there are no lingering behaviours.
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(1);
-//            expect($('.cui-technical-error').css("display")).toBe("none");
-//
-//        });
+        it("will not show an error if activity and then shown after timeout", () => {
 
-//        it("will not show an error if activity and then shown after timeout", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            jest.runOnlyPendingTimers();
-//
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatLaunched({});
-//            testListener.onAnyEvent({});
-//
-//            testListener.onChatShown({});
-//            testListener.onAnyEvent({});
-//
-//            expect($('.cui-technical-error').length).toBe(1);
-//            expect($('.cui-technical-error').css("display")).toBe("none");
-//
-//            // Make sure there are no lingering behaviours.
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(1);
-//            expect($('.cui-technical-error').css("display")).toBe("none");
-//        });
+        });
 
-//        it("will not show an error if activity and then shown before any other event", () => {
-//            testListener.startup(window);
-//            $(window).trigger('load');
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            testListener.onChatShown({});
-//            testListener.onAnyEvent({});
-//
-//            jest.runOnlyPendingTimers();
-//
-//            expect($('.cui-technical-error').length).toBe(0);
-//
-//            // Make sure there are no lingering behaviours.
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            jest.runOnlyPendingTimers();
-//            expect($('.cui-technical-error').length).toBe(0);
-//        });
+        it("will not show an error if activity and then shown after timeout", () => {
+
+        });
+
+        it("will not show an error if activity and then shown before any other event", () => {
+
+        });
     });
 });

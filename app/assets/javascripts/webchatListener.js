@@ -105,12 +105,9 @@ export var chatListener = {
     },
     chatHasEngaged: function() {
         if (this.engageTimeout) {
-            console.log("Chat has engaged...");
             clearTimeout(this.engageTimeout);
             this.engageTimeout = null;
         }
-        //$('.webchat-technical-error').hide();   // If we showed the technical error, clear it.
-        console.log("clear technical error...");
         this.showNuanceDiv();
     },
     showNuanceDiv: function() {
@@ -126,7 +123,6 @@ export var chatListener = {
           messagingContainer.hide()
           loadingText.show()
     },
-
     technicalError: function() {
         console.log("technicalError");
         this.showNuanceDiv();
