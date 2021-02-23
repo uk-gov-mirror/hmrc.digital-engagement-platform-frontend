@@ -27,9 +27,6 @@
 
 @main_template(title = messages("tax.credits.title")) {
 
-    @components.webchat_container(appConfig, webChatClient)
-    @components.webchat_loading_text()
-
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("tax.credits.title")</h1>
 
     <div class="govuk-inset-text">
