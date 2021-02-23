@@ -29,6 +29,7 @@ function waitForNuanceElement(el,w,d) {
         : "webchat";
       $(el).text("There's a problem with " + assistantUsed + ". Try again later.")
       reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
+      $(".hide-text-on-error").hide();
     }
   );
 }
