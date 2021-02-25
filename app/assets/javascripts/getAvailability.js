@@ -17,7 +17,7 @@ export function getAvailability(nuanceAvailabilityMessage) {
 
 export const availabilityMessages = Object.freeze({
       Ready: "Advisers are available to chat.", 
-      Busy: "<p>All of our advisers are busy at the moment. Keep checking this page until the 'speak to an adviser' link becomes available.</p>",
+      Busy: "All of our advisers are busy at the moment. Keep checking this page until the 'speak to an adviser' link becomes available.",
       InProgress: "You are in a webchat.",
       Offline: "Webchat is now closed.",
       InChat: "You are in a webchat. If you cannot access it, you may have another chat window open."
