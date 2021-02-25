@@ -145,7 +145,7 @@ describe("When loading a page and waiting for changes", () => {
             var timeoutFunction = elementWatcherMock.mock.calls[0][2];
             timeoutFunction();
 
-            expect($("#HMRC_Fixed_1").text()).toEqual("There's a problem with digital assistant. Try again later.")
+            expect($("#HMRC_Fixed_1").text()).toEqual("There's a problem with the digital assistant. Try again later.")
 
         });
         it("will raise event on data layer if timeout for virtual assistant", () => {

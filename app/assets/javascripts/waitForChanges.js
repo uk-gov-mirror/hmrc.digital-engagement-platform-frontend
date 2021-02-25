@@ -25,7 +25,7 @@ function waitForNuanceElement(el,w,d) {
     },
     function() {
       const assistantUsed = w.location.pathname.includes("virtual-assistant")
-        ? "digital assistant"
+        ? "the digital assistant"
         : "webchat";
       $(el).text("There's a problem with " + assistantUsed + ". Try again later.")
       reportEvent(w,createDataLayerElement(availabilities.NuanceUnavailable, el))
