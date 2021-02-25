@@ -17,10 +17,10 @@
 @import config.AppConfig
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
-@(appConfig: AppConfig, webChatClient: WebChatClient)(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(appConfig: AppConfig, webChatClient: WebChatClient, id: String = "HMRC_Fixed_1")(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-<div id="webchat-messaging-container">
+<div class="webchat-messaging-container">
     @if(!appConfig.performanceTest){
-        @{webChatClient.loadWebChatContainer()}
+        @{webChatClient.loadWebChatContainer(id)}
     }
 </div>

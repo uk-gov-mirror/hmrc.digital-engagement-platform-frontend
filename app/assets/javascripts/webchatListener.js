@@ -1,7 +1,7 @@
 export var chatListener = {
     downTimeoutDuration: 9000,
-    loadingTextSelector: '#webchat-loading-text',
-    messagingContainerSelector: '#webchat-messaging-container',
+    loadingTextSelector: '.webchat-loading-text',
+    messagingContainerSelector: '.webchat-messaging-container',
     nuanceDownTimeout: null,
 
     //In console

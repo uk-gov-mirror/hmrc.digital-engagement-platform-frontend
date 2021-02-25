@@ -18,11 +18,11 @@ describe("Webchat listener", () => {
             testListener = Object.assign({}, protoListener)
             testListener.name = "test listener #" + index++;
             document.body.innerHTML = `
-                <div id="webchat-messaging-container">
+                <div class="webchat-messaging-container">
                     <div id="HMRC_Fixed_1"></div>
                 </div>
-                <div id="webchat-loading-text" style="display:none">
-                    "Checking adviser availability" alt="Chat is loading">
+                <div class="webchat-loading-text" style="display:none">
+                    "Checking adviser availability." alt="Chat is loading">
                 </div>
             `;
             jest.useFakeTimers();
@@ -36,15 +36,15 @@ describe("Webchat listener", () => {
 
         it("will have basic properties", () => {
             expect(testListener.downTimeoutDuration).toBe(9*1000);
-            expect(testListener.loadingTextSelector).toBe('#webchat-loading-text');
-            expect(testListener.messagingContainerSelector).toBe('#webchat-messaging-container');
+            expect(testListener.loadingTextSelector).toBe('.webchat-loading-text');
+            expect(testListener.messagingContainerSelector).toBe('.webchat-messaging-container');
         });
 
         it("will do show the loading text on load after startup is called", () => {
             testListener.startup(window);
             $(window).trigger('load');
 
-            let text = $('#webchat-loading-text')
+            let text = $('.webchat-loading-text')
             expect(text.length).toBe(1);
             expect(text.css("display")).toBe("block");
         });
@@ -56,7 +56,7 @@ describe("Webchat listener", () => {
             testListener.onC2CStateChanged({});
             testListener.onAnyEvent({});
 
-            expect($('#webchat-loading-text').css("display")).toBe("none");
+            expect($('.webchat-loading-text').css("display")).toBe("none");
         });
 
         it("will hide the loading text if timeout", () => {
@@ -65,7 +65,7 @@ describe("Webchat listener", () => {
 
             jest.runOnlyPendingTimers();
 
-            expect($('#webchat-loading-text').css("display")).toBe("none");
+            expect($('.webchat-loading-text').css("display")).toBe("none");
         });
 
     });
