@@ -89,18 +89,20 @@ export var chatListener = {
         }
         this.showNuanceDiv();
     },
+    showElements: function(selector, displayState) {
+        var elements = document.querySelectorAll(selector);
+        for (var i = 0; i < elements.length; ++i) {
+            elements[i].style.display = (displayState ? "block": "none");
+        }
+    },
     showNuanceDiv: function() {
         console.log("show Nuance Div text...");
-        var loadingText = $(this.loadingTextSelector)
-        var messagingContainer = $(this.messagingContainerSelector)
-        messagingContainer.show()
-        loadingText.hide()
+        this.showElements(this.loadingTextSelector, false);
+        this.showElements(this.messagingContainerSelector, true);
     },
-    showloadingText: function() {
-        var loadingText = $(this.loadingTextSelector);
-        var messagingContainer = $(this.messagingContainerSelector);
-          messagingContainer.hide()
-          loadingText.show()
+    showLoadingText: function() {
+        this.showElements(this.messagingContainerSelector, false);
+        this.showElements(this.loadingTextSelector, true);
     },
     technicalError: function() {
         console.log("technicalError");
@@ -113,13 +115,18 @@ export var chatListener = {
             self.showNuanceDiv();
         }, this.downTimeoutDuration);
     },
-    startup: function() {
-        //localStorage.enableJSLogging = true;
+    loadFunction: null,
+    startup: function(w) {
+//        localStorage.enableJSLogging = true;
         var self = this;
-        $(window).on("load", function() {
-            self.showloadingText();
+        this.loadFunction = function() {
+            self.showLoadingText();
             self.waitForSignsOfLife();
-        });
+        }
+        w.addEventListener("load", this.loadFunction);
+    },
+    shutdown: function(w) {
+        w.removeEventListener("load", this.loadFunction);
     }
 };
 

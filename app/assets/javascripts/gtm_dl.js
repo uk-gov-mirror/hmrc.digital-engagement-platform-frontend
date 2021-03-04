@@ -10,3 +10,4 @@ if (!window.isCUI) {
 } else {
     chatListener.initChatListener(window)
 }
+

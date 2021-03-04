@@ -1,37 +1,46 @@
-$(document).ready(function() {
 
-      // =====================================================
-      // Back link mimics browser back functionality
-      // =====================================================
-      // store referrer value to cater for IE - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/10474810/  */
-      var docReferrer = document.referrer
-      // prevent resubmit warning
-      if (window.history && window.history.replaceState && typeof window.history.replaceState === 'function') {
-        window.history.replaceState(null, null, window.location.href);
-      }
-      $('#back-link').on('click', function(e){
+window.GOVUKFrontend.initAll();
+window.HMRCFrontend.initAll();
+
+window.addEventListener('DOMContentLoaded', function() {
+
+    // =====================================================
+    // Back link mimics browser back functionality
+    // =====================================================
+
+    // back link
+    var backLink = document.querySelector('.govuk-back-link');
+    if(backLink){
+        backLink.addEventListener('click', function(e){
+            e.preventDefault();
+            if (window.history && window.history.back && typeof window.history.back === 'function'){
+                window.history.back();
+            }
+        });
+    }
+
+    // Introduce direct skip link control, to work around voiceover failing of hash links
+    // https://bugs.webkit.org/show_bug.cgi?id=179011
+    // https://axesslab.com/skip-links/
+    document.querySelector('.govuk-skip-link').addEventListener('click',function(e) {
         e.preventDefault();
-        window.history.back();
-      })
-
-
-      // ------------------------------------
-      // Introduce direct skip link control, to work around voiceover failing of hash links
-      // https://bugs.webkit.org/show_bug.cgi?id=179011
-      // https://axesslab.com/skip-links/
-      // ------------------------------------
-      $('.skiplink').click(function(e) {
-          e.preventDefault();
-          $(':header:first').attr('tabindex', '-1').focus();
-      });
+        var header = [].slice.call(document.querySelectorAll('h1'))[0];
+        if(header!=undefined){
+            header.setAttribute('tabindex', '-1')
+            header.focus();
+            setTimeout(function(){
+                header.removeAttribute('tabindex')
+            }, 1000)
+        }
+    });
 
 });
 
 // dynamically re-position nuance divs before footer for accessibility
-$(window).on("load", function() {
+window.addEventListener('load', function() {
 
     var waitForEl = function(selector, callback, count) {
-        if (jQuery(selector).length) {
+        if (document.querySelector(selector) !== null) {
             callback();
         } else {
             setTimeout(function() {
@@ -46,7 +55,10 @@ $(window).on("load", function() {
     waitForEl(
         "#inqChatStage",
          function() {
-            $('#footer').appendTo(document.body);
+            var footer = document.querySelector('#footer');
+            if (footer !== null) {
+                document.body.appendChild(footer);
+            }
          },
          0
     );

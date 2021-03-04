@@ -15,36 +15,18 @@
  *@
 
 @import config.AppConfig
-@import uk.gov.hmrc.play.views.html.layouts
 @import uk.gov.hmrc.webchat.client.WebChatClient
 
 @this(
     govuk_wrapper: GovukWrapper,
-    sidebar: Sidebar,
-    article: Article,
     appConfig: AppConfig,
     webChatClient: WebChatClient
 )
 
 @(title: String,
     navTitle: Option[String] = None,
-    sidebarLinks: Option[Html] = None,
-    contentHeader: Option[Html] = None,
-    bodyClasses: Option[String] = None,
-    mainClass: Option[String] = None,
-    showHelpForm: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
-
-@serviceInfoContent = {}
-
-@sidebarContent = {
-    @if(sidebarLinks.isDefined) {
-        @sidebar(sidebarLinks.get, Some("sidebar"))
-    }
-}
-
-@wrapMainContent = {
-    @mainContent
-}
+    showHelpForm: Boolean = true,
+    showBackLink: Boolean = true)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @scriptElem = {
 
@@ -57,15 +39,10 @@
     }
 }
 
-@govuk_wrapper(appConfig = appConfig,
-               title = title,
+@govuk_wrapper(title = title,
                navTitle = navTitle,
-               mainClass = mainClass,
-               bodyClasses = bodyClasses,
-               sidebar = sidebarContent,
-               contentHeader = contentHeader,
-               mainContent = article(wrapMainContent),
-               serviceInfoContent = serviceInfoContent,
-               scriptElem = Some(scriptElem),
-               showHelpForm = showHelpForm
+               mainContent = mainContent,
+               scriptElem = scriptElem,
+               showHelpForm = showHelpForm,
+               showBackLink = showBackLink
 )

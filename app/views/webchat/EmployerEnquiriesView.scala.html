@@ -27,21 +27,16 @@
 
 @payeLink = {@components.link(appConfig.payeOnlineUrl, "paye-online-link", "employers.enquiries.paye.link.text", true)}
 
-@main_template(title = messages("employers.enquiries.title")) {
-
-    @if(!isIvrRedirect) {
-        @components.back_link()
-    }
+@main_template(title = messages("employers.enquiries.title"), showBackLink = !isIvrRedirect) {
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("employers.enquiries.title")</h1>
 
     @components.webchat_container(appConfig, webChatClient)
     @components.webchat_loading_text()
 
+    <p>@messages("employers.enquiries.paye.link.part1")@payeLink@messages("employers.enquiries.paye.link.part2")</p>
 
-    <p class="margin-top">@messages("employers.enquiries.paye.link.part1")@payeLink@messages("employers.enquiries.paye.link.part2")</p>
-
-    <p class="margin-top">
+    <p>
         <a id="return-link" href="@appConfig.employerEnquiriesReturnUrl">
             @if(isIvrRedirect) {@messages("global.text.link.ivr.to.govuk.p1")} else {@messages("global.text.link.back.to.govuk.p1")}
         </a>
