@@ -43,8 +43,6 @@ class AppConfig @Inject()(config: Configuration,
 
   var featureNoChatExperiment: Boolean = config.getOptional[Boolean]("features.noChatExperiment").getOrElse(false)
 
-  val payeOnlineUrl: String = "https://www.gov.uk/paye-online"
-
   val selfAssessmentReturnUrl: String =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment"
   val taxCreditsEnquiriesReturnUrl: String =
