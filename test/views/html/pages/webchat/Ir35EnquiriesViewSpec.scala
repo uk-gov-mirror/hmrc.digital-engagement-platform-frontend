@@ -37,7 +37,11 @@ class Ir35EnquiriesViewSpec extends ChatViewBehaviours {
       "IR35: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      Nil
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8:30am to 4:30pm",
+        "Closed weekends and bank holidays."
+      )
     )
   }
 }
