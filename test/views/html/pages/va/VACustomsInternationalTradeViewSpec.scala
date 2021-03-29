@@ -16,23 +16,23 @@
 
 package views.html.pages.va
 
-import play.twirl.api.HtmlFormat
 import views.html.pages.helpers.ChatViewBehaviours
-import views.html.va.VATaxCreditsEnquiriesView
+import views.html.va.VACustomsInternationalTradeView
+import play.twirl.api.HtmlFormat
 
-class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours {
+class VACustomsInternationalTradeViewSpec extends ChatViewBehaviours {
 
-  private val view = app.injector.instanceOf[VATaxCreditsEnquiriesView]
-  private val taxCreditsEnquiriesUrl1: String = "https://www.gov.uk/manage-your-tax-credits"
-  private val taxCreditsEnquiriesUrl2: String =
-    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/tax-credits-enquiries"
+  private val view = app.injector.instanceOf[VACustomsInternationalTradeView]
+  private val eoriUrl = "https://www.gov.uk/eori"
+  private val tariffLink = "https://www.gov.uk/trade-tariff"
+  private val importsExportsGeneralEnquiries =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries"
 
   private def createView: () => HtmlFormat.Appendable = () => view()(fakeRequest, messages)
 
-  "VA Tax credits enquiries view" must {
+  "Customs International Trade view" must {
     "behave like a normal page" when {
       "rendered" must {
-
         "have the correct banner title" in {
           val doc = asDocument(createView())
           val nav = doc.getElementsByClass("govuk-header__link--service-name")
@@ -52,19 +52,28 @@ class VATaxCreditsEnquiriesViewSpec extends ChatViewBehaviours {
         }
       }
 
-      "display coronavirus general information link" in {
+      "display EORI link" in {
         val doc = asDocument(createView())
-        val a = doc.getElementById("tax-credits-enquiries-general-info-link")
+        val a = doc.getElementById("customs-internation-trade-eori-link")
 
         val href = a.attr("href")
-        href mustBe taxCreditsEnquiriesUrl1
+        href mustBe eoriUrl
       }
 
-      "display coronavirus helpline link" in {
+      "display commodity codes, duty and VAT rates link" in {
         val doc = asDocument(createView())
-        val a = doc.getElementById("tax-credits-enquiries-contact-link")
+        val a = doc.getElementById("customs-internation-trade-tariff-link")
+
         val href = a.attr("href")
-        href mustBe taxCreditsEnquiriesUrl2
+        href mustBe tariffLink
+      }
+
+      "display imports and exports general enquiries link" in {
+        val doc = asDocument(createView())
+        val a = doc.getElementById("customs-general-enquiries-link")
+
+        val href = a.attr("href")
+        href mustBe importsExportsGeneralEnquiries
       }
     }
   }
