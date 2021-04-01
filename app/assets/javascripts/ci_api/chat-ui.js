@@ -78,9 +78,9 @@ ChatSkin.registerEventListener = function() {
 ChatSkin.addText = function(msg, agent) {
   var msgDiv = "";
   if (agent) {
-    msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='ciapiSkinAgentMsg'>" + msg + "</div></div>";
+    msgDiv = "<div class='ciapiSkinTranscriptAgentLine'><div class='bubble agent-bubble background-img enter'>" + msg + "</div></div>";
   } else {
-    msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='ciapiSkinCustMsg'>" + msg + "</div></div>";
+    msgDiv = "<div class='ciapiSkinTranscriptCustLine'><div class='bubble customer-bubble background-img enter'>" + msg + "</div></div>";
   }
   ChatSkin.content.insertAdjacentHTML("beforeend", msgDiv);
   ChatSkin.content.scrollTo(0, ChatSkin.content.scrollHeight);
@@ -91,8 +91,9 @@ ChatSkin.addSystemMsg = function(msg) {
   ChatSkin.content.scrollTo(0, ChatSkin.content.scrollHeight);
 }
 ChatSkin.displayOpenerScripts = function(openerScripts) {
+  console.log("displayOpenerScripts: ", openerScripts);
   if (openerScripts != null && openerScripts.length > 0) {
-    for (i = 0; i < openerScripts.length; i++) {
+    for (var i = 0; i < openerScripts.length; i++) {
       var msgDiv = "<div class='ciapiSkinTranscriptOpener'><div class='ciapiSkinOpener'>" + openerScripts[i] + "</div></div>";
       ChatSkin.content.insertAdjacentHTML("beforeend", msgDiv);
     }
@@ -214,26 +215,19 @@ function nuanceTobiC2CLaunch(c2cObj, divID) {
 var chatListener = {
   onAnyEvent: function(evt) {
     console.log("Chat any event:", evt);
-    if (this.nuanceDownTimeout) {
-      clearTimeout(this.nuanceDownTimeout);
-      this.nuanceDownTimeout = null;
-      var self = this;
-      this.engageTimeout = setTimeout(function() {
-        console.log("Chat did not start...");
-        self.technicalError();
-      }, 5000);
-    }
+  },
+  onC2CStateChanged: function(evt) {
+      ChatSkin.updateC2CButtonsToInProgress();
   }
+
 };
 
 var InqRegistry = {
   listeners: [chatListener]
 };
 
-
-
 function nuanceFrameworkLoaded() {
-	console.log(`### framework loaded`);
+	console.log("### framework loaded");
 
 	if (Inq.SDK.isChatInProgress()) {
 		setTimeout(ChatSkin.main, 2000);
