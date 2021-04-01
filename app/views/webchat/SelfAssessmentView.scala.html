@@ -29,6 +29,12 @@
 
     <h1 @if(!isIvrRedirect){class="header-margin-top"}>@messages("self.assessment.title")</h1>
 
+    <div class="govuk-inset-text">
+        <p>@messages("global.opening.times.title")</p>
+        <p>@messages("global.opening.times.mon.sat.8to8")</p>
+        <p>@messages("global.closed.time.sun.bankholidays")</p>
+    </div>
+
     @components.webchat_container(appConfig, webChatClient)
     @components.webchat_loading_text()
 
