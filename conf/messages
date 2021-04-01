@@ -18,6 +18,7 @@ global.opening.times.8_30to4_30=Monday to Friday, 8:30am to 4:30pm
 global.opening.times.8_30to5=Monday to Friday, 8:30am to 5pm
 global.opening.times.8to6=Monday to Friday, 8am to 6pm
 global.opening.times.8to8=Monday to Friday, 8am to 8pm
+global.opening.times.8to10=Monday to Friday, 8am to 10pm
 global.opening.times.8to4.includesat=Monday to Saturday, 8am to 4pm
 global.opening.times.mon.sat.8to8=Monday to Saturday, 8am to 8pm
 global.opening.times.mon.sun.8to10=Monday to Sunday, 8am to 10pm
@@ -185,7 +186,7 @@ tax-credits-enquiries.li1=manage your tax credits online
 tax-credits-enquiries.li2=find more ways to contact HMRC
 
 #Customs International Trade
-custom.international.trade.li1=find out how to get an EORI
+custom.international.trade.li1=find out how to get an EORI number
 custom.international.trade.li2=look up commodity codes, duty and VAT rates
 custom.international.trade.li3=find more ways to contact HMRC
 

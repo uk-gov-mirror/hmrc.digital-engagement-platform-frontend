@@ -36,7 +36,12 @@ class OnlineServiceHelpdeckViewSpec extends ChatViewBehaviours {
       "Online services helpdesk: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      Nil
+      Seq(
+        "Opening times:",
+        "Monday to Friday, 8am to 8pm",
+        "Saturday, 8am to 4pm",
+        "Closed Sundays and bank holidays"
+      )
     )
   }
 }

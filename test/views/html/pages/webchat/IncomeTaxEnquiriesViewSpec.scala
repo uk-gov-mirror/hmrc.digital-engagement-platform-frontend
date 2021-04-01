@@ -37,7 +37,11 @@ class IncomeTaxEnquiriesViewSpec extends ChatViewBehaviours {
       "Income tax for individuals, pensioners and employees: webchat",
       "Return to Contact HMRC",
       returnUrl,
-      Nil
+      Seq(
+        "Opening times:",
+        "Monday to Saturday, 8am to 8pm",
+        "Closed Sundays and bank holidays."
+      )
     )
   }
 }
