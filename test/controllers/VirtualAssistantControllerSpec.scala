@@ -54,4 +54,12 @@ class VirtualAssistantControllerSpec
     status(result) mustBe OK
     doc.select("h1").text() mustBe "Use HMRC’s digital assistant"
   }
+
+  "render self employment income support scheme" in {
+    val result = controller.selfEmploymentIncomeSupportScheme(fakeRequest)
+    val doc = asDocument(contentAsString(result))
+
+    status(result) mustBe OK
+    doc.select("h1").text() mustBe "Use HMRC’s digital assistant"
+  }
 }
