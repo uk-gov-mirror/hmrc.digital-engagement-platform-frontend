@@ -32,11 +32,7 @@
     <div class="margin-bottom">@components.webchat_container(appConfig, webChatClient)</div>
     @components.webchat_loading_text()
 
-    <p class="margin-top">@messages("va.global.h1.bullet.title")</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-        <li>
-            <a id="self-employment-income-support-scheme-link" href="@appConfig.selfEmploymentIncomeSupportReturnUrl">@messages("self-employment-income-support.li1")</a>
-        </li>
-    </ul>
+    <div>
+        <a id="self-employment-income-support-scheme-link" href="@appConfig.selfEmploymentIncomeSupportReturnUrl">@messages("self-employment-income-support.li1")</a>
+    </div>
 }
