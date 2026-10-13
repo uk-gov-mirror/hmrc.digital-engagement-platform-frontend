@@ -41,7 +41,7 @@ GET         /chat/childcare-service                                         cont
 GET         /chat/additional-income                                         controllers.CiapiController.CiapiController.additionalIncome
 GET         /chat/mtd-income-tax                                            controllers.CiapiController.CiapiController.makingTaxDigital
 GET         /chat/hmrc-app                                                  controllers.CiapiController.CiapiController.getHelpFromHmrcDa
-
+GET         /chat/navTestPage                                                  controllers.CiapiController.CiapiController.navTestPageLoad
 
 GET         /feature-switches/:switchName                                   controllers.FeatureSwitchController.getFeatureSwitch(switchName: String)
 

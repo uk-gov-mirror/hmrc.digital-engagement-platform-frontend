@@ -33,6 +33,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
                                 mcc: MessagesControllerComponents,
                                 auditHelper: AuditHelper,
                                 askHMRCOnlineCIAPIView: AskHMRCOnlineCIAPIView,
+                                askHMRCOnlineCIAPIViewNav: AskHMRCOnlineCIAPIViewNav,
                                 nationalMinimumWageCUIView: NationalMinimumWageCUIView,
                                 tradeTariffCUIView: TradeTariffCUIView,
                                 debtManagementCUIView: DebtManagementCUIView,
@@ -244,4 +245,16 @@ class CiapiController @Inject()(appConfig: AppConfig,
       Future.successful(NotFound)
     }
   }
+
+
+  def navTestPageLoad: Action[AnyContent] = Action.async { implicit request =>
+    if (config.showGetHelpFromHmrcDa) {
+      auditHelper.audit(DAv3AuditModel("navTestPageLoad"))
+      val navChannelId="chat_2eb777e8-4c6f-4728-af23-26329f3ab463"
+      Future.successful(Ok(askHMRCOnlineCIAPIViewNav()))
+    } else {
+      Future.successful(NotFound)
+    }
+  }
+  
 }
