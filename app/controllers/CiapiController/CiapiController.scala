@@ -91,7 +91,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showSACUI) {
       auditHelper.audit(DAv3AuditModel("selfAssessment"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true)))
+      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true, niceChannelId="chat_2eb777e8-4c6f-4728-af23-26329f3ab463")))
     } else {
       Future.successful(NotFound)
     }
@@ -250,8 +250,7 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def navTestPageLoad: Action[AnyContent] = Action.async { implicit request =>
     if (config.showGetHelpFromHmrcDa) {
       auditHelper.audit(DAv3AuditModel("navTestPageLoad"))
-      val navChannelId="chat_2eb777e8-4c6f-4728-af23-26329f3ab463"
-      Future.successful(Ok(askHMRCOnlineCIAPIViewNav()))
+      Future.successful(Ok(askHMRCOnlineCIAPIViewNav(niceChannelId="chat_2eb777e8-4c6f-4728-af23-26329f3ab463")))
     } else {
       Future.successful(NotFound)
     }
