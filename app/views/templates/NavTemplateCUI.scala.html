@@ -24,7 +24,7 @@ appConfig: AppConfig,
 webChatClient: WebChatClient
 )
 
-@(title: String, sidebar: Option[Html] = None, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false)(mainContent: Html)(implicit request : Request[_], messages: Messages)
+@(title: String, sidebar: Option[Html] = None, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false, niceChannelId: String = "")(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
 @if(sidebar.isDefined) {
@@ -36,7 +36,8 @@ webChatClient: WebChatClient
 
 <script @{CSPNonce.attr}>
     window.isCUI = true;
-    window.featureSwitchUrl = "@{appConfig.featureSwitchUrl}"
+    window.featureSwitchUrl = "@{appConfig.featureSwitchUrl}";
+    window.niceChannelId = "@{niceChannelId}";
 </script>
 <!--This is only used for fading elements.-->
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
@@ -56,5 +57,6 @@ displayBannerTC = displayBannerTC,
 displayBannerOSH = displayBannerOSH,
 displayBannerADL = displayBannerADL,
 displayBannerPAYE = displayBannerPAYE,
-displayBannerSA = displayBannerSA
+displayBannerSA = displayBannerSA,
+niceChannelId = niceChannelId
 )
