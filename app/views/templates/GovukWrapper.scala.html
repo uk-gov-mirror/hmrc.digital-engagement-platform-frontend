@@ -24,6 +24,7 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukNotificationBanner
 @import uk.gov.hmrc.govukfrontend.views.Aliases.NotificationBanner
 @import uk.gov.hmrc.govukfrontend.views.Aliases.HtmlContent
+@import models.NiceConnectionConfig
 
 @import views.html.layouts.OurGovukLayout
 @import views.html.helper.CSPNonce
@@ -50,7 +51,8 @@
     navTitle: Option[String] = None,
     showHelpForm: Boolean = true,
     showBackLink: Boolean = true,
-    displayBannerTC: Boolean = false
+    displayBannerTC: Boolean = false,
+    niceConfig: Option[NiceConnectionConfig] = None
 )(implicit request: RequestHeader, messages: play.api.i18n.Messages)
 
 @content = {

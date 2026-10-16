@@ -17,10 +17,11 @@
 package controllers
 
 import config.AppConfig
-import controllers.CiapiController.{routes => ciapiRoutes}
+import controllers.CiapiController.routes as ciapiRoutes
+import models.NiceConnectionConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.webchat._
+import views.html.webchat.*
 import views.html.webchat.dav4.DAv4NationalClearanceHubView
 import views.html.webchat.dav4.DAv4AdditionalNeedsHelpView
 import views.html.webchat.dav4.DAv4PAYESAResolutionsView
@@ -86,7 +87,8 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def wmrNiRepayment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4WMRNIRepayment) {
-      Future.successful(Ok(dav4WMRNIRepaymentView()))
+      var niceConConfg= NiceConnectionConfig("chat_2eb777e8-4c6f-4728-af23-26329f3ab463",1027,true)
+      Future.successful(Ok(dav4WMRNIRepaymentView(niceConfig= Some(niceConConfg))))
     } else {
       Future.successful(NotFound)
     }

@@ -18,13 +18,15 @@
 @import uk.gov.hmrc.webchat.client.WebChatClient
 @import templates.GovukWrapper
 @import views.html.helper.CSPNonce
+@import models.NiceConnectionConfig
+@import play.api.libs.json.{Format, Json}
 
 @this(
 	govuk_wrapper: GovukWrapper,
 	appConfig: AppConfig,
 	webChatClient: WebChatClient)
 
-@()(implicit request: Request[_], messages: play.api.i18n.Messages)
+@( niceConfig: Option[NiceConnectionConfig]=None)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
 @mainContent = {
 	<h1 class="header-margin-top">@messages("wmr.ni.repayment.title")</h1>
@@ -43,13 +45,17 @@
 }
 
 @scriptElem = {
+	<script @{CSPNonce.attr}>
+		window.niceChannelId="@{niceConfig.map(_.niceChannelId)}"
+		window.isLiveThread="@{niceConfig.map(_.isLiveThread)}"
 
+</script>
 	<script @{CSPNonce.attr}> window.isCUI = true; </script>
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
 	@if(!appConfig.performanceTest){
-		@{webChatClient.loadRequiredElements()}
+		<!--@{webChatClient.loadRequiredElements()}-->
 		@{webChatClient.loadHMRCChatSkinElement("popup")}
 	}
 }
@@ -58,5 +64,6 @@
 mainContent = mainContent,
 scriptElem = Some(scriptElem),
 showHelpForm = true,
-showBackLink = true
+showBackLink = true,
+niceConfig = niceConfig
 )
