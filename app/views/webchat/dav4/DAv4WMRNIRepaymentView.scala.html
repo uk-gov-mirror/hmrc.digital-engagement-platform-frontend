@@ -48,6 +48,7 @@
 	<script @{CSPNonce.attr}>
 		window.niceChannelId="@{niceConfig.map(_.niceChannelId)}"
 		window.isLiveThread="@{niceConfig.map(_.isLiveThread)}"
+		window.applicationName="@{niceConfig.map(_.appName)}"
 
 </script>
 	<script @{CSPNonce.attr}> window.isCUI = true; </script>

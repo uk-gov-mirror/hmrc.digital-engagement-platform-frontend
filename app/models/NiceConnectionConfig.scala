@@ -19,7 +19,7 @@ package models
 import play.api.libs.json.{Format, Json, OWrites}
 
 
-case class NiceConnectionConfig(niceChannelId: String, brandId: Int, isLiveThread: Boolean)
+case class NiceConnectionConfig(niceChannelId: String, brandId: Int, appName:String, isLiveThread: Boolean)
 
 object NiceConnectionConfig {
   implicit val jsonFormat: Format[NiceConnectionConfig] = Json.format[NiceConnectionConfig]
