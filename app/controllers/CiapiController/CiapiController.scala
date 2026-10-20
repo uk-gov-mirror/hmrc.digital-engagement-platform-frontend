@@ -20,9 +20,10 @@ import audit.AuditHelper
 import config.AppConfig
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import views.html.CIAPIViews._
+import views.html.CIAPIViews.*
+
 import javax.inject.{Inject, Singleton}
-import models.DAv3AuditModel
+import models.{DAv3AuditModel, NiceConnectionConfig}
 import views.html.webchat.dav4.DAv4DebtManagementView
 
 import scala.concurrent.Future
@@ -91,7 +92,13 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def selfAssessment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showSACUI) {
       auditHelper.audit(DAv3AuditModel("selfAssessment"))
-      Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true, niceChannelId="chat_2eb777e8-4c6f-4728-af23-26329f3ab463")))
+      if (config.useNuanceSDK) {
+        Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true)))
+      }else {
+        var niceConConfg = NiceConnectionConfig("chat_2eb777e8-4c6f-4728-af23-26329f3ab463", 1027, "navTestLink", false, false)
+        Future.successful(Ok(askHMRCOnlineCIAPIView(displayBannerSA = true,niceConfig = Some(niceConConfg))))
+      }
+
     } else {
       Future.successful(NotFound)
     }
@@ -250,7 +257,8 @@ class CiapiController @Inject()(appConfig: AppConfig,
   def navTestPageLoad: Action[AnyContent] = Action.async { implicit request =>
     if (config.showGetHelpFromHmrcDa) {
       auditHelper.audit(DAv3AuditModel("navTestPageLoad"))
-      Future.successful(Ok(askHMRCOnlineCIAPIViewNav(niceChannelId="chat_2eb777e8-4c6f-4728-af23-26329f3ab463")))
+      var niceConConfg= NiceConnectionConfig("chat_2eb777e8-4c6f-4728-af23-26329f3ab463",1027,"navTestLink",false, false)
+      Future.successful(Ok(askHMRCOnlineCIAPIViewNav(niceConfig= Some(niceConConfg))))
     } else {
       Future.successful(NotFound)
     }

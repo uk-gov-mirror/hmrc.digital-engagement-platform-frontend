@@ -87,8 +87,13 @@ class WebchatController @Inject()(appConfig: AppConfig,
 
   def wmrNiRepayment: Action[AnyContent] = Action.async { implicit request =>
     if (config.showDAv4WMRNIRepayment) {
-      var niceConConfg= NiceConnectionConfig("chat_2eb777e8-4c6f-4728-af23-26329f3ab463",1027,"wmrNiRepayment",true)
+      if(config.useNuanceSDK)
+        {
+          Future.successful(Ok(dav4WMRNIRepaymentView()))
+        }else {
+      val niceConConfg= NiceConnectionConfig("chat_2eb777e8-4c6f-4728-af23-26329f3ab463",1027,"wmrNiRepayment",true, true)
       Future.successful(Ok(dav4WMRNIRepaymentView(niceConfig= Some(niceConConfg))))
+      }
     } else {
       Future.successful(NotFound)
     }

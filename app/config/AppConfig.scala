@@ -32,6 +32,7 @@ class AppConfig @Inject()(config: Configuration) {
   val serviceIdentifier: String = "digital-engagement-platform-frontend-hmrc-chatskin"
 
   val performanceTest: Boolean = config.get[Boolean]("performance-test.mode")
+  val useNuanceSDK: Boolean = config.get[Boolean]("useNuanceSDK")
 
   // Feature Toggles
   val shutter: Boolean = config.getOptional[Boolean]("features.shutter").getOrElse(false)

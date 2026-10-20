@@ -24,7 +24,7 @@ appConfig: AppConfig,
 webChatClient: WebChatClient
 )
 
-@(title: String, sidebar: Option[Html] = None, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false, niceChannelId: String = "")(mainContent: Html)(implicit request : Request[_], messages: Messages)
+@(title: String, sidebar: Option[Html] = None, displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false, niceConfig: Option[NiceConnectionConfig] = None)(mainContent: Html)(implicit request : Request[_], messages: Messages)
 
 @sidebarContent = {
 @if(sidebar.isDefined) {
@@ -37,14 +37,22 @@ webChatClient: WebChatClient
 <script @{CSPNonce.attr}>
     window.isCUI = true;
     window.featureSwitchUrl = "@{appConfig.featureSwitchUrl}";
-    window.niceChannelId = "@{niceChannelId}";
+    window.niceChannelId="@{niceConfig.map(_.niceChannelId)}"
+    window.isLiveThread="@{niceConfig.map(_.isLiveThread)}"
+    window.applicationName="@{niceConfig.map(_.appName)}"
+    window.isReactiveChat = "@{niceConfig.map(_.isReactiveChat)}"
+    window.useNuanceSDK = "@{appConfig.useNuanceSDK}";
+    <!--This to be fetched from Nice SDK   chatactive | outofhours | ready | busy  -->
+    window.displayState='ready'
 </script>
 <!--This is only used for fading elements.-->
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/custom.js")'></script>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bundle.js")'></script>
 
 @if(!appConfig.performanceTest){
-<!--@{webChatClient.loadRequiredElements()}-->
+  @if(appConfig.useNuanceSDK){
+     @{webChatClient.loadRequiredElements()}
+  }
 @{webChatClient.loadHMRCChatSkinElement("embedded")}
 }
 }
@@ -58,5 +66,5 @@ displayBannerOSH = displayBannerOSH,
 displayBannerADL = displayBannerADL,
 displayBannerPAYE = displayBannerPAYE,
 displayBannerSA = displayBannerSA,
-niceChannelId = niceChannelId
+niceConfig = niceConfig
 )

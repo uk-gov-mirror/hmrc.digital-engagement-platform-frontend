@@ -24,7 +24,7 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.GovukNotificationBanner
 @import uk.gov.hmrc.govukfrontend.views.Aliases.NotificationBanner
 @import uk.gov.hmrc.govukfrontend.views.Aliases.HtmlContent
-
+@import models.NiceConnectionConfig
 @import views.html.layouts.OurGovukLayout
 @import views.html.helper.CSPNonce
 
@@ -51,7 +51,7 @@
     displayBannerADL: Boolean = false,
     displayBannerPAYE: Boolean = false,
     displayBannerSA: Boolean = false,
-    niceChannelId: String = ""
+    niceConfig: Option[NiceConnectionConfig] = None
 )(implicit request: RequestHeader, messages: play.api.i18n.Messages)
 
 @content = {

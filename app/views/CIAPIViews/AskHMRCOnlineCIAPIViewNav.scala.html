@@ -16,12 +16,13 @@
 
 @import config.AppConfig
 @import templates.NavTemplateCUI
+@import models.NiceConnectionConfig
 
 @this(main_template: NavTemplateCUI, appConfig: AppConfig)
 
-@(displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false, niceChannelId: String = "")(implicit request: Request[_], messages: play.api.i18n.Messages)
+@(displayBannerTC: Boolean = false, displayBannerOSH: Boolean = false, displayBannerADL: Boolean = false, displayBannerPAYE: Boolean = false, displayBannerSA: Boolean = false, niceConfig: Option[NiceConnectionConfig] = None)(implicit request: Request[_], messages: play.api.i18n.Messages)
 
-@main_template(title = messages("ciapi.page.title"), displayBannerTC = displayBannerTC, displayBannerOSH = displayBannerOSH, displayBannerADL = displayBannerADL, displayBannerPAYE = displayBannerPAYE, displayBannerSA = displayBannerSA, niceChannelId =niceChannelId ) {
+@main_template(title = messages("ciapi.page.title"), displayBannerTC = displayBannerTC, displayBannerOSH = displayBannerOSH, displayBannerADL = displayBannerADL, displayBannerPAYE = displayBannerPAYE, displayBannerSA = displayBannerSA, niceConfig =niceConfig ) {
 <div class="cui-wrapper">
     <div id="cui-messaging-container">
         <div id="nuanMessagingFrame">
